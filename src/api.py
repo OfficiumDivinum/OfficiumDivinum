@@ -1,4 +1,3 @@
-from officiumdivinum.api import api  # noqa
-from officiumdivinum.api import init
+from officiumdivinum.api import create_app  # noqa
 
-init()
+create_app()

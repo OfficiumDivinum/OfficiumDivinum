@@ -1,19 +1,22 @@
+from flask import Blueprint
 from flask import abort
+from flask import current_app
 from flask import request
 from flask_api.decorators import set_renderers
 from flask_api.renderers import BrowsableAPIRenderer
 from flask_api.renderers import JSONRenderer
 
 from ..bible import Vulgate
-from .api import api
 from .renderers import objectHTMLRenderer
+
+bible = Blueprint("bible", __name__, url_prefix="/bible")
 
 # from .errors import InvalidInput
 
 versions = {"vulgate": Vulgate("Sixto-Clementine Vulgate")}
 
 
-@api.route("/bible/", methods=["Get"])
+@bible.route("/", methods=["Get"])
 @set_renderers(JSONRenderer, objectHTMLRenderer, BrowsableAPIRenderer)
 def get_verses():
 
@@ -22,7 +25,7 @@ def get_verses():
         args = request.args
         bible = versions[args["version"]]
         if not bible.content:
-            bible.load()
+            bible.load(current_app)
 
         try:
             start = args["start"]
@@ -38,7 +41,7 @@ def get_verses():
 
         bible = versions[query["version"]]
         if not bible.content:
-            bible.load()
+            bible.load(current_app)
         verses = []
         try:
             for book, chapter, verse in query["verses"]:

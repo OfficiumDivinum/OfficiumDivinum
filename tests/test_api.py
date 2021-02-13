@@ -1,31 +1,44 @@
+import tempfile
 from itertools import combinations
 from urllib.parse import urlencode
 
 import pytest
 
-from officiumdivinum import api
+from officiumdivinum.api import create_app
+from officiumdivinum.api import database as db
 
 
 @pytest.fixture
-def client():
-    """Test client for all tests in this file."""
-    # code to init things goes here
+def app():
+    """Create test app."""
 
-    with api.api.test_client() as client:
-        with api.api.app_context():
-            api.init()
-        yield client
+    db_fd, db_path = tempfile.mkstemp()
 
-    # code to undo things goes here
+    app = create_app({"TESTING": True, "APP_DATABASE": db_path})
+
+    with app.app_context():
+        db.init(app)
+    yield app
 
 
-def test_test_page(client):
+@pytest.fixture
+def client(app):
+    """Client."""
+    return app.test_client()
+
+
+def test_hello_page(client):
+    resp = client.get("/hello")
+    assert resp.data == b"hello world"
+
+
+def test_test_page(client, app):
     """
     Test that testpage loads.
 
     Will drop this when the page is dropped.
     """
-    resp = client.get("/")
+    resp = client.get("/test/")
     assert resp.status == "200 OK"
 
 
@@ -39,7 +52,6 @@ def object_parts(client, endpoint):
     for part in parts:
         url = endpoint + urlencode({"part": part})
         resp = client.get(url).status
-        print(resp)
         resps.append(resp)
 
     return resps
@@ -84,4 +96,4 @@ def object_endpoint(client, endpoint):
 
 
 def test_office_endpoint(client):
-    object_endpoint(client, "/office")
+    object_endpoint(client, "/office/")

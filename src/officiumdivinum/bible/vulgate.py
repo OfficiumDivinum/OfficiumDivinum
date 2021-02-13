@@ -3,7 +3,6 @@ from re import search
 
 from dotmap import DotMap
 
-from ..api.api import api
 from ..objects import Verse
 from .bible import Bible
 
@@ -39,7 +38,7 @@ class Vulgate(Bible):
                     )
         self.content[book_name] = book
 
-    def load(self):
+    def load(self, app):
         """
         Load content.
 
@@ -48,5 +47,5 @@ class Vulgate(Bible):
         import os
 
         print(os.getcwd())
-        fn = Path(api.root_path) / "../bible/vulgate.txt"
+        fn = Path(app.root_path) / "../bible/vulgate.txt"
         self.from_file(fn)

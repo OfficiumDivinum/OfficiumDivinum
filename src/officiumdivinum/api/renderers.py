@@ -3,8 +3,6 @@ from flask import render_template
 from flask import request
 from flask_api.renderers import BaseRenderer
 
-from .api import api
-
 
 class objectHTMLRenderer(BaseRenderer):
     """

@@ -12,14 +12,16 @@ requesting a page.
 """
 from datetime import datetime
 
+from flask import Blueprint
 from flask import abort
 from flask import request
 from flask_api.decorators import set_renderers
 from flask_api.renderers import JSONRenderer
 
 from . import database
-from .api import api
 from .renderers import objectHTMLRenderer
+
+office = Blueprint("office", __name__, url_prefix="/office")
 
 
 def get_partlist(things):
@@ -30,7 +32,7 @@ def get_partlist(things):
     return partlist
 
 
-@api.route("/office", methods=["GET"])
+@office.route("/", methods=["GET"])
 @set_renderers(JSONRenderer, objectHTMLRenderer)
 def get_office():
     args = request.args

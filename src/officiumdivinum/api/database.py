@@ -10,6 +10,7 @@ from typing import Union
 
 import dateutil.parser as dp
 import jsonpickle
+from flask import current_app
 
 from ..objects import Prime
 from ..objects import datastructures  # needed for unpickling.
@@ -51,25 +52,22 @@ def eval_year(year, yearless):
     return yeared
 
 
-def load_martyrology():
+def load_martyrology(app):
     """"""
     global martyrology
     p = Path("martyrology.json")
     if not p.exists():
-        from .api import api
-
-        p = Path(api.root_path) / p
+        p = Path(app.root_path) / p
     with p.open() as f:
         raw_tables["martyrology"] = jsonpickle.decode(
             f.read(), classes=[datastructures.Date, datastructures.Martyrology]
         )
 
 
-def load_psalms():
+def load_psalms(app):
     """"""
-    from .api import api
 
-    p = Path(api.root_path) / Path("psalms.json")
+    p = Path(app.root_path) / Path("psalms.json")
     with p.open() as f:
         try:
             raw_tables["psalms"]
@@ -159,10 +157,10 @@ def martyrology_query(day, table):
     return assemble_martyrology(candidates, day.year)
 
 
-def init():
+def init(app):
     """Start database."""
-    load_martyrology()
-    load_psalms()
+    load_martyrology(app)
+    load_psalms(app)
 
 
 def get_psalm(psalm, language, start=None, stop=None):

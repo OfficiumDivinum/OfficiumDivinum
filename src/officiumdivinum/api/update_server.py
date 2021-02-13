@@ -12,10 +12,11 @@ import os
 from subprocess import run
 
 import git
+from flask import Blueprint
 from flask import abort
 from flask import request
 
-from .api import api
+update_server = Blueprint("update_server", __name__, url_prefix="/update_server")
 
 try:
     w_secret = os.environ["WEBHOOK_SECRET"]
@@ -31,7 +32,7 @@ def is_valid_signature(x_hub_signature, data, private_key):
     return hmac.compare_digest(mac.hexdigest(), github_signature)
 
 
-@api.route("/update_server", methods=["POST"])
+@update_server.route("/", methods=["POST"])
 def webhook():
     if request.method != "POST":
         return "OK"
