@@ -16,11 +16,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
+      - name: Get .env file from secret
+        run:
+          cat ${{ secrets.DOCKER_ENV }} >> .env
+
       - name: Set up git repo
         uses: actions/checkout@v2
       
       - name: Run build script
         run: |
-          TAG=prod FRONTEND_ENV=production sh ${{ github.repository }}/scripts/build-push.sh
+          TAG=prod FRONTEND_ENV=production sh ./scripts/build-push.sh
         
     
