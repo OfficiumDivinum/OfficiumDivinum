@@ -16,14 +16,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
+
+      - name: Set up git repo
+        uses: actions/checkout@v2
+
       - name: Get .env file from secret
         run: |
           echo "${{ secrets.DOCKER_ENV }}" > .env
           head -n 1 .env
           pwd
-
-      - name: Set up git repo
-        uses: actions/checkout@v2
       
       - name: Run build script
         run: |
