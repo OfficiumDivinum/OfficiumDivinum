@@ -6,7 +6,7 @@ on:
 
 name: Build docker images
 
-jobs:
+jobs: 
   build:
     runs-on: ubuntu-latest
     steps:
@@ -17,8 +17,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Get .env file from secret
-        run:
+        run: |
           echo "${{ secrets.DOCKER_ENV }}" > .env
+          head -n 1 .env
+          pwd
 
       - name: Set up git repo
         uses: actions/checkout@v2
