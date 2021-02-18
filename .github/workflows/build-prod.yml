@@ -42,11 +42,10 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/deploy.key
           chmod 600 ~/.ssh/deploy.key
           cat >>~/.ssh/config <<END
-          ls -lh ~/.ssh/
           Host deploy
               HostName ${{ secrets.SSH_HOST }}
               User ${{ secrets.SSH_USER }}
-              IdentifyFile ~/.ssh/deploy.key
+              IdentityFile ~/.ssh/deploy.key
               StrickHostKeyChecking no
           END
           scp docker-stack.yml deploy:
