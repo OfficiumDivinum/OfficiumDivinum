@@ -37,11 +37,12 @@ jobs:
           TAG=prod \
           docker-compose \
           -f docker-compose.yml \
-          config > docker-stack.yml\
-          mkdir -p ~/.ssh\
+          config > docker-stack.yml \
+          mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/deploy.key
           chmod 600 ~/.ssh/deploy.key
           cat >>~/.ssh/config <<END
+          ls -lh ~/.ssh/
           Host deploy
               HostName ${{ secrets.SSH_HOST }}
               User ${{ secrets.SSH_USER }}
