@@ -1,0 +1,26 @@
+on:
+  push:
+    branches: master
+  pull_request:
+  workflow_dispatch:
+
+name: Build docker images
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Docker Hub
+        users: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Set up git repo
+        uses: actions/checkout@v2
+      
+      - name: Run build script
+        run: |
+          TAG=prod FRONTEND_ENV=production sh ${{ github.repository }}/scripts/build-push.sh
+        
+    
