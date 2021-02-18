@@ -18,7 +18,7 @@ jobs:
 
       - name: Get .env file from secret
         run:
-          echo ${{ secrets.DOCKER_ENV }} > .env
+          echo "${{ secrets.DOCKER_ENV }}" > .env
 
       - name: Set up git repo
         uses: actions/checkout@v2
