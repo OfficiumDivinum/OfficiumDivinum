@@ -46,7 +46,7 @@ jobs:
               HostName ${{ secrets.SSH_HOST }}
               User ${{ secrets.SSH_USER }}
               IdentityFile ~/.ssh/deploy.key
-              StrickHostKeyChecking no
+              StrictHostKeyChecking no
           END
           scp docker-stack.yml deploy:
          
