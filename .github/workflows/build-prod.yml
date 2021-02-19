@@ -53,4 +53,4 @@ jobs:
 
       - name: Deploy to swarm
         run: |
-          ssh deploy 'docker-auto-labels 2e0byo-co-uk && docker stack deploy -c docker-stack.yml 2e0byo-co-uk'
+          ssh deploy 'docker-auto-labels docker-stack.yml && docker stack deploy -c docker-stack.yml 2e0byo-co-uk'
