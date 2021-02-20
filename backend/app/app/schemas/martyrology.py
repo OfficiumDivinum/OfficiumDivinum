@@ -33,7 +33,7 @@ class MartyrologyUpdate(MartyrologyCreate):
 class MartyrologyInDBBase(MartyrologyBase):
     id: int
     title: str
-    old_date_template_id: int
+    old_date_template_id: Optional[int]
     parts: str
 
     class Config:
