@@ -1,0 +1,108 @@
+#+Title: A very small DSL for describing liturgical dates.
+
+* Rationale
+
+We frequently need to describe things like ‘Sunday within the range
+2-5 January or else 2 January’ or ‘n days after Epiphany’.  This DSL
+permits doing so in a human-readable but machine-parseable way.
+
+* Semantics
+
+The DSL is evaluated and then converted into a particular date.  Thus
+it needs very limited components.  These are:
+
+- conditionals :: No ‘if’ is provided; instead logical and/or should
+  be used.
+- AND :: the AND operator causes an evaluation of the conditions
+  either side of it and evaluates to True iff both sides are True.
+- OR :: the OR operator causes an evaluation of the conditions either
+  side of it and evaluates to True if either side is True.
+- NOT :: the NOT operator inverts a condition.
+- date expressions :: are the main thing.  Covered below.
+
+** Date expressions.
+Date expressions cannot have years (as these are not, I think, needed).  A
+calendar date is represented ‘x Mon’ where ‘Mon’ is the three-letter
+abbreviation of the month name in English, I.e. one of ‘Jan, Feb, Mar,
+Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec’.  Leading zeros are
+invalid. In addition, several special (moveable) dates are provided:
+
+- Easter Sunday :: use ~Easter~
+- 1st Sunday in Lent :: Lent
+- 1st Sunday in Advent :: Advent
+- Epiphany :: Epiphany
+- Christmas Day :: Christmas
+- Septuagesima :: Septuagesima 
+
+Anything except Easter is a convenience function representing some
+delta + Easter or some fixed date.
+
+Deltas are represented simply:
+
+- before :: indicates that we are ‘before’ a date.
+- after :: indicates that we are ‘after’ a date.
+- on or before :: indicates that we are ‘before or on’ a date.
+- on or after :: indicates that we are ‘after or on’ a date. 
+
+These must be combined with weekdays, which are indicated with
+their three-letter English abbreviation, i.e. one of ‘Sun, Mon, Tue,
+Wed, Thu, Fri, Sat’.  They may be combined with ordinals, which must
+be of the form ‘1st’, ‘2nd’, ‘3rd’, ‘4th’, etc.  Thus to express ‘the
+first Thursday before January the 2nd you would put:
+
+#+begin_src
+[1st] Thu before 2 Jan
+#+end_src
+
+1st is presumed if no ordinal is given.  Note that ‘0th’ is a valid
+ordinal, and evaluates to true if the specified date is the day, so:
+
+#+begin_src
+0th Sun before Easter
+#+end_src
+
+evaluates to Easter Sunday.
+
+In addition, we have ranges.  These are expressed with ‘between’ as follows:
+
+#+begin_src 
+Thu between 2 Jan 4 Jan => Evaluates to the date, or False
+#+end_src
+
+Thus
+- between :: is always followed by two dates.  Note that the order of
+  consideration is ‘forwards’, i.e. ‘between 4 Jan 3 Jan’ means ‘3 Jan
+  /next year/’.
+
+** Parsing
+
+Expressions are evaluated left-to-right, assuming the largest possible
+unit, and returning the first match if more than one is found.  Thus:
+
+#+begin_src 
+2 Jan OR 4 Jan => both are True, returns 2 Jan
+1st Sun between 2 Jan 6 Jan OR 4 Jan =>first is possibly True, second is True
+#+end_src
+
+Then the parser simply returns /the first match/.  Thus in the first
+case it would return ~2 Jan~, but in the second, evaluated in a year
+where there is no Sunday between 2 Jan and 6 Jan it would return the
+second group---the 4th Jan.
+
+If the first group /were/ True it would return the relevant date (as a
+datetime.datetime object). This takes advantage of most things being
+truthy in Python to ease parsing.
+
+Invalid expressions fail simply, but notice that many ‘invalid’
+expressions might well make it through the parser as no great effort
+has been made to make the parser detect syntax errors.
+
+* Parser
+
+The parser uses pyparsing, and is currently not very neat
+(specifically, it chooses to manipulate strings rather than parsed
+objects, and so is rather redundant in its handling).  It handles all
+valid input cases and has some basic error handling.
+
+If we need more complex date expressions I will 1. rewrite the parser
+to deal entirely in objects and 2. make it recursive to handle brackets.
