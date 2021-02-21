@@ -41,6 +41,7 @@ class MartyrologyInDB(MartyrologyInDBBase):
 
 
 class Ordinals(BaseModel):
+    id: int
     content: List
     language: str
 
@@ -51,7 +52,7 @@ class Ordinals(BaseModel):
 class OldDateTemplate(BaseModel):
     content: str
     language: str
-    ordinals: Ordinals
+    ordinals_id: int
 
     class Config:
         orm_mode = True
