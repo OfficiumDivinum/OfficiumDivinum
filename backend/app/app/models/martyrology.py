@@ -44,6 +44,7 @@ class Martyrology(Base):
     """Martyrology object in database."""
 
     id = Column(Integer, primary_key=True, index=True)
+    owner_id = Column(Integer, ForeignKey("user.id"))
     title = Column(String, index=True)
     rubrics = Column(String)
     language = Column(String)
@@ -82,6 +83,7 @@ class Ordinals(Base):
     """Class to represent a list of ordinals in some language or other."""
 
     id = Column(Integer, primary_key=True, index=True)
+    owner_id = Column(Integer, ForeignKey("user.id"))
     content = Column(MutableList.as_mutable(PickleType), default=[])
     language = Column(String())
 
@@ -95,6 +97,7 @@ class OldDateTemplate(Base):
     """
 
     id = Column(Integer, primary_key=True, index=True)
+    owner_id = Column(Integer, ForeignKey("user.id"))
     content = Column(String())
     language = Column(String(), index=True)
     ordinals_id = Column(Integer, ForeignKey("ordinals.id"))
