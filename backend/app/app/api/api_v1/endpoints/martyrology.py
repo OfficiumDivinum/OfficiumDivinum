@@ -16,7 +16,6 @@ ordinals_router = create_item_crud(schemas.Ordinals, crud.ordinals)
 martyrology_router.include_router(
     ordinals_router,
     prefix="/ordinals",
-    tags=["martyrology"],
 )
 
 old_date_template_router = create_item_crud(
@@ -25,5 +24,4 @@ old_date_template_router = create_item_crud(
 martyrology_router.include_router(
     old_date_template_router,
     prefix="/old-date-template",
-    tags=["old date template"],
 )
