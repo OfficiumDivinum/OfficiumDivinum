@@ -46,6 +46,7 @@ class Martyrology(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     rubrics = Column(String)
+    language = Column(String)
 
     datestr = Column(String, index=True)
     old_date_template_id = Column(Integer, ForeignKey("olddatetemplate.id"))
