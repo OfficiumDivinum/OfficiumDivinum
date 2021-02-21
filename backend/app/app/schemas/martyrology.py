@@ -8,17 +8,7 @@ from .office_parts import BlockBase, LineBase
 class MartyrologyBase(BlockBase):
     datestr: str
     title: str
-
-
-class Ordinals(BaseModel):
-    content: List
     language: str
-
-
-class OldDateTemplate(BaseModel):
-    content: str
-    language: str
-    ordinals: Ordinals
 
 
 class MartyrologyCreate(MartyrologyBase):
@@ -34,7 +24,7 @@ class MartyrologyInDBBase(MartyrologyBase):
     id: int
     title: str
     old_date_template_id: Optional[int]
-    parts: str
+    parts: List[LineBase]
 
     class Config:
         orm_mode = True
@@ -48,3 +38,20 @@ class Martyrology(MartyrologyInDBBase):
 # Properties properties stored in DB
 class MartyrologyInDB(MartyrologyInDBBase):
     pass
+
+
+class Ordinals(BaseModel):
+    content: List
+    language: str
+
+    class Config:
+        orm_mode = True
+
+
+class OldDateTemplate(BaseModel):
+    content: str
+    language: str
+    ordinals: Ordinals
+
+    class Config:
+        orm_mode = True
