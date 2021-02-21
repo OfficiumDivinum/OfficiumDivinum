@@ -22,7 +22,7 @@ class OldDateTemplate(BaseModel):
 
 
 class MartyrologyCreate(MartyrologyBase):
-    old_date_template: Optional[OldDateTemplate]
+    old_date_template_id: Optional[int]
 
 
 class MartyrologyUpdate(MartyrologyCreate):
@@ -42,7 +42,7 @@ class MartyrologyInDBBase(MartyrologyBase):
 
 # Properties to return to client
 class Martyrology(MartyrologyInDBBase):
-    parts: List[LineBase]
+    pass
 
 
 # Properties properties stored in DB
