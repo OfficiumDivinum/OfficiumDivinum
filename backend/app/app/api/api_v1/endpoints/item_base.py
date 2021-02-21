@@ -34,7 +34,7 @@ def create_item_crud(
             limit: int = 100,
         ) -> Any:
             """Retrieve items."""
-            if self.current_user.is_superuser(self.current_user):
+            if self.current_user.is_superuser:
                 items = item_crud.get_multi(self.db, skip=skip, limit=limit)
             else:
                 items = item_crud.get_multi_by_owner(
@@ -60,7 +60,7 @@ def create_item_crud(
             item = item_crud.get(db=self.db, id=id)
             if not item:
                 raise HTTPException(status_code=404, detail="Item not found")
-            if not self.current_user.is_superuser(self.current_user) and (
+            if not self.current_user.is_superuser and (
                 item.owner_id != self.current_user.id
             ):
                 raise HTTPException(status_code=400, detail="Not enough permissions")
@@ -76,7 +76,7 @@ def create_item_crud(
             item = item_crud.get(db=self.db, id=id)
             if not item:
                 raise HTTPException(status_code=404, detail="Item not found")
-            if not self.current_user.is_superuser(self.current_user) and (
+            if not self.current_user.is_superuser and (
                 item.owner_id != self.current_user.id
             ):
                 raise HTTPException(status_code=400, detail="Not enough permissions")
@@ -91,7 +91,7 @@ def create_item_crud(
             item = item_crud.get(db=self.db, id=id)
             if not item:
                 raise HTTPException(status_code=404, detail="Item not found")
-            if not self.current_user.is_superuser(self.current_user) and (
+            if not self.current_user.is_superuser and (
                 item.owner_id != self.current_user.id
             ):
                 raise HTTPException(status_code=400, detail="Not enough permissions")
