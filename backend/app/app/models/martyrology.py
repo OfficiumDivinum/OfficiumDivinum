@@ -69,7 +69,7 @@ class Martyrology(Base):
         self.date = dsl_parser(self.datestr, year)
         age = self.lunar()
 
-        from jinja2 import Environment, BaseLoader
+        from jinja2 import BaseLoader, Environment
 
         template = self.old_date_template.content
         template = Environment(loader=BaseLoader).from_string(template)
