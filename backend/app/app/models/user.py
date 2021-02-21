@@ -17,3 +17,6 @@ class User(Base):
     is_active = Column(Boolean(), default=True)
     is_superuser = Column(Boolean(), default=False)
     items = relationship("Item", back_populates="owner")
+    ordinals = relationship("Ordinals", back_populates="owner")
+    old_date_templates = relationship("OldDateTemplate", back_populates="owner")
+    martyrologies = relationship("Martyrology", back_populates="owner")

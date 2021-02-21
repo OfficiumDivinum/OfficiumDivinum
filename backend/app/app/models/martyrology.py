@@ -44,7 +44,6 @@ class Martyrology(Base):
     """Martyrology object in database."""
 
     id = Column(Integer, primary_key=True, index=True)
-    owner_id = Column(Integer, ForeignKey("user.id"))
     title = Column(String, index=True)
     rubrics = Column(String)
     language = Column(String)
@@ -53,9 +52,9 @@ class Martyrology(Base):
     old_date_template_id = Column(Integer, ForeignKey("olddatetemplate.id"))
     old_date_template = relationship("OldDateTemplate")
     old_date = None
-    parts = Column(
-        MutableList.as_mutable(JSONEncodedDict), default=[]
-    )  # nb: need to make this blob I think as not deserialising properly
+    parts = Column(MutableList.as_mutable(JSONEncodedDict), default=[])
+    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner = relationship("User", back_populates="martyrologies")
 
     def lunar(self):
         """Calculate age of moon as integer."""
@@ -83,9 +82,10 @@ class Ordinals(Base):
     """Class to represent a list of ordinals in some language or other."""
 
     id = Column(Integer, primary_key=True, index=True)
-    owner_id = Column(Integer, ForeignKey("user.id"))
     content = Column(MutableList.as_mutable(PickleType), default=[])
     language = Column(String())
+    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner = relationship("User", back_populates="ordinals")
 
 
 class OldDateTemplate(Base):
@@ -97,8 +97,9 @@ class OldDateTemplate(Base):
     """
 
     id = Column(Integer, primary_key=True, index=True)
-    owner_id = Column(Integer, ForeignKey("user.id"))
     content = Column(String())
     language = Column(String(), index=True)
     ordinals_id = Column(Integer, ForeignKey("ordinals.id"))
     ordinals = relationship("Ordinals")
+    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner = relationship("User", back_populates="old_date_templates")
