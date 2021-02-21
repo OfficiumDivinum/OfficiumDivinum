@@ -51,6 +51,7 @@ class Martyrology(Base):
     datestr = Column(String, index=True)
     old_date_template_id = Column(Integer, ForeignKey("olddatetemplate.id"))
     old_date_template = relationship("OldDateTemplate")
+    julian_date = Column(String)
     old_date = None
     parts = Column(MutableList.as_mutable(JSONEncodedDict), default=[])
     owner_id = Column(Integer, ForeignKey("user.id"))
