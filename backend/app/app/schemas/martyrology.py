@@ -30,16 +30,12 @@ class MartyrologyInDBBase(MartyrologyBase):
         orm_mode = True
 
 
-# Properties to return to client
-class Martyrology(MartyrologyInDBBase):
-    pass
-
-
 # Properties properties stored in DB
 class MartyrologyInDB(MartyrologyInDBBase):
     pass
 
 
+# Properties to return to client
 class Ordinals(BaseModel):
     id: int
     content: List
@@ -49,10 +45,27 @@ class Ordinals(BaseModel):
         orm_mode = True
 
 
+# Properties to return to client
 class OldDateTemplate(BaseModel):
+    content: str
+    language: str
+    ordinals_id: int
+    ordinals: Ordinals
+
+    class Config:
+        orm_mode = True
+
+
+# Properties to accept on creation/update
+class OldDateTemplateCreate(BaseModel):
     content: str
     language: str
     ordinals_id: int
 
     class Config:
         orm_mode = True
+
+
+# Properties to return to client
+class Martyrology(MartyrologyInDBBase):
+    old_date_template: OldDateTemplate

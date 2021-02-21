@@ -5,6 +5,7 @@ from .martyrology import (
     MartyrologyInDB,
     MartyrologyUpdate,
     OldDateTemplate,
+    OldDateTemplateCreate,
     Ordinals,
 )
 from .msg import Msg

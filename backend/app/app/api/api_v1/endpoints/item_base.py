@@ -12,13 +12,13 @@ from app.crud.base import CreateSchemaType, CRUDType, SchemaType, UpdateSchemaTy
 def create_item_crud(
     item_schema: SchemaType,
     item_crud: CRUDType,
-    item_update_schema: Optional[UpdateSchemaType] = None,
     item_create_schema: Optional[CreateSchemaType] = None,
+    item_update_schema: Optional[UpdateSchemaType] = None,
 ):
-    if not item_update_schema:
-        item_update_schema = item_schema
     if not item_create_schema:
-        item_create_schema = item_update_schema
+        item_create_schema = item_schema
+    if not item_update_schema:
+        item_update_schema = item_create_schema
 
     router = APIRouter()
 
