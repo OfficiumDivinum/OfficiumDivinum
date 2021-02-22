@@ -1,0 +1,56 @@
+#+Title: Divinumofficium Parsers
+* Description
+
+This directory contains parsers to turn divinumofficium /text/ files
+(i.e. stuff not hard coded) into whatever we want to use it for.  The
+expectation is that these parsers will only be run once---at the
+beginning---and then we will use the parsed data directly.  However we
+implement parsers since it is plausible the data structures we want to
+use will change as the code evolves, and it is /much/ easier to edit a
+parser than do everything by hand e.g. with regexs in Emacs.
+
+* Content
+
+The following parsers are supplied:
+
+- K2obj :: parse files called things like ~K1960.txt~ which represent
+  immovable feasts into feast objects.
+- M2obj :: parse martyrology files into Martyrology objects.
+- T20bj :: parse temporal files
+
+Needed:
+
+- S2Obj :: parse sanctoral files which are in Sancti/ 
+
+* Discoveries
+- Holy Name of Jesus :: This feast is celebrated on the 2nd Sunday
+  after Epiphany since 1721, then since 1913 the Sunday between 2nd
+  5th January inclusive, or if no such Sunday exists, the 2nd
+  January.  Divinumofficium handles this by assigning it to the 0th
+  January in the immovable feast list, presumably on the basis that it
+  doesn’t move based on Easter or the moon.  We put it in the
+  moveables, so we return a single moveable object.
+- Tempora :: Rest of tempora stuff is [[../DO_web/www/horas/Latin/Tempora/]].
+- Non-integer ranks :: Occasionally (twice in the 1962 calendar)
+  Divinumofficium has a non-integer rank for a day, both times of
+  1.5. This seems to mean a rank of 2 (i.e. III. Class feast) which
+  would be defeated by any other III. Class feast to fall on the same
+  day.  We handle this with an optional boolean argument ~defeatable~
+  to the ~Rank~ object, which causes the numerical rank used in
+  sorting to be decreased by 0.5, effecting the same thing.
+- Tempora :: per ~horascommon.pl~:
+  #+begin_src perl
+  #*** monthday($forcetomorrow)
+  # returns an empty string or mmn-d format
+  # e.g. 081-1 for monday after the firs Sunday of August
+  #+end_src
+  The files named ~xxy-z.txt~ are for xx=Month, y=nth Sunday in month,
+  z = weekday (0=Sunday).  Easy enough to put in the DSL.
+
+* Unsolved Mysteries
+- r in dates :: some dates (but not others) have ‘r’ appended to their
+  date, e.g. [[./DO_web/www/horas/Latin/Tabulae/K1960.txt::01-05=01-05r=Die Quinta Januarii=1=][5 Jan]] in 1962.  I have no idea what this signifies and
+  can’t find out either how it works, or what is so special about
+  these days.  Some other dates have ‘t’ appended to them.  (Per
+  email: probably related to generating calendars earlier.  Ignore
+  for now.)
