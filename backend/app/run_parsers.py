@@ -94,7 +94,8 @@ def crud_pokemon(
                 data["parts"].append(
                     {"prefix": None, "suffix": None, "rubrics": None, "content": par}
                 )
-            client.post(endpoint, json=data)
+            resp = client.post(endpoint, json=data)
+            assert resp.status_code == 200
 
 
 if __name__ == "__main__":
