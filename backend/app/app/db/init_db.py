@@ -15,7 +15,7 @@ def init_db(db: Session) -> None:
     # the tables un-commenting the next line
     from os import getenv
 
-    if getenv["DOMAIN"] == "localhost":
+    if getenv("DOMAIN") == "localhost":
         base.Base.metadata.create_all(bind=session.engine)  # uncomment for testing
 
     user = crud.user.get_by_email(db, email=settings.FIRST_SUPERUSER)
