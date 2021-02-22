@@ -17,7 +17,6 @@ class CRUDMartyrology(
 
     def get(self, db: Session, id: int):
         obj = db.query(self.model).get(id)
-        obj.render_old_date()
         return obj
 
 
