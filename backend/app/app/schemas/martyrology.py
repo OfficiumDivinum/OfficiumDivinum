@@ -13,6 +13,7 @@ class MartyrologyBase(BlockBase):
 
 class MartyrologyCreate(MartyrologyBase):
     old_date_template_id: Optional[int]
+    julian_date: str
 
 
 class MartyrologyUpdate(MartyrologyCreate):
@@ -25,6 +26,7 @@ class MartyrologyInDBBase(MartyrologyBase):
     title: str
     old_date_template_id: Optional[int]
     parts: List[LineBase]
+    julian_date: str
 
     class Config:
         orm_mode = True
@@ -51,6 +53,7 @@ class OldDateTemplate(BaseModel):
     language: str
     ordinals_id: int
     ordinals: Ordinals
+    id: int
 
     class Config:
         orm_mode = True
