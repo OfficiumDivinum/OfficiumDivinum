@@ -1,6 +1,7 @@
+import json
 from typing import Any, List, Optional
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi_utils.cbv import cbv
 from sqlalchemy.orm import Session
 
@@ -22,6 +23,12 @@ def create_item_crud(
 
     router = APIRouter()
 
+    def filter_dict(filters: Optional[List[str]] = Query(None)):
+        try:
+            return list(map(json.loads, filters))
+        except json.JSONDecodeError:
+            raise HTTPException(status_code=400, detail="Invalid filter input supplied")
+
     @cbv(router)
     class ItemCBV:
         db: Session = Depends(deps.get_db)
@@ -32,13 +39,21 @@ def create_item_crud(
             self,
             skip: int = 0,
             limit: int = 100,
+            test: List = [2, 4],
+            filters: Optional[List] = Depends(filter_dict),
         ) -> Any:
             """Retrieve items."""
             if self.current_user.is_superuser:
-                items = item_crud.get_multi(self.db, skip=skip, limit=limit)
+                items = item_crud.get_multi(
+                    self.db, skip=skip, limit=limit, filters=filters
+                )
             else:
                 items = item_crud.get_multi_by_owner(
-                    db=self.db, owner_id=self.current_user.id, skip=skip, limit=limit
+                    db=self.db,
+                    owner_id=self.current_user.id,
+                    skip=skip,
+                    limit=limit,
+                    filters=filters,
                 )
             return items
 
@@ -51,11 +66,7 @@ def create_item_crud(
             return item
 
         @router.put("/{id}", response_model=item_schema)
-        def update_item(
-            self,
-            id: int,
-            item_in: item_update_schema,
-        ) -> Any:
+        def update_item(self, id: int, item_in: item_update_schema,) -> Any:
             """Update an item."""
             item = item_crud.get(db=self.db, id=id)
             if not item:
@@ -68,10 +79,7 @@ def create_item_crud(
             return item
 
         @router.get("/{id}", response_model=item_schema)
-        def read_item(
-            self,
-            id: int,
-        ) -> Any:
+        def read_item(self, id: int,) -> Any:
             """Get item by ID."""
             item = item_crud.get(db=self.db, id=id)
             if not item:
@@ -83,10 +91,7 @@ def create_item_crud(
             return item
 
         @router.delete("/{id}", response_model=item_schema)
-        def delete_item(
-            self,
-            id: int,
-        ) -> Any:
+        def delete_item(self, id: int,) -> Any:
             """Delete an item."""
             item = item_crud.get(db=self.db, id=id)
             if not item:
