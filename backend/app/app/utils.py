@@ -10,6 +10,10 @@ from jose import jwt
 from app.core.config import settings
 
 
+class EmailException(Exception):
+    pass
+
+
 def send_email(
     email_to: str,
     subject_template: str = "",
@@ -31,6 +35,8 @@ def send_email(
         smtp_options["password"] = settings.SMTP_PASSWORD
     response = message.send(to=email_to, render=environment, smtp=smtp_options)
     logging.info(f"send email result: {response}")
+    if not response.status_code == 250:
+        raise EmailException("Send Failed")
 
 
 def send_test_email(email_to: str) -> None:
@@ -93,7 +99,9 @@ def generate_password_reset_token(email: str) -> str:
     expires = now + delta
     exp = expires.timestamp()
     encoded_jwt = jwt.encode(
-        {"exp": exp, "nbf": now, "sub": email}, settings.SECRET_KEY, algorithm="HS256",
+        {"exp": exp, "nbf": now, "sub": email},
+        settings.SECRET_KEY,
+        algorithm="HS256",
     )
     return encoded_jwt
 
