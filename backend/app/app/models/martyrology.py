@@ -5,7 +5,7 @@ import pylunar
 from sqlalchemy import Column, ForeignKey, Integer, PickleType, String, types
 from sqlalchemy.ext.mutable import MutableList
 from sqlalchemy.orm import relationship
-from sqlalchemy.types import VARCHAR, TypeDecorator
+from sqlalchemy.types import VARCHAR, Date, TypeDecorator
 
 from app.db.base_class import Base
 
@@ -107,3 +107,14 @@ class OldDateTemplate(Base):
     ordinals = relationship("Ordinals")
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="old_date_templates")
+
+
+def get_date_table(table_name):
+    class DateTable(Base):
+        __tablename__ = table_name
+
+        id = Column(Integer, primary_key=True, index=True)
+        calendar_date = Column(Date(), index=True)
+        datestrs = Column(MutableList.as_mutable(PickleType), default=[])
+
+    return DateTable
