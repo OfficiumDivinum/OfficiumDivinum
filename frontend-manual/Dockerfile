@@ -14,6 +14,6 @@ FROM nginx:1.15
 
 RUN mkdir -p /usr/share/nginx/html/manual
 
-COPY --from=build-stage /app/dist/ /usr/share/nginx/html/manual
+COPY --from=build-stage /app/srv /usr/share/nginx/html/manual
 COPY ./nginx-conf/nginx-backend-not-found.conf /etc/nginx/extra-conf.d/backend-not-found.conf
 COPY ./nginx-conf/01-login.conf /etc/nginx/extra-conf.d/01-login.conf
