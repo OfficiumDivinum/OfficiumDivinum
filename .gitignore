@@ -5,3 +5,4 @@ docker-stack.yml
 /cookiecutter-config-file.yml
 /.env_quoted
 /.secrets
+.DS_Store
