@@ -24,20 +24,8 @@ to only one date in any one year.
 from datetime import date
 
 from dateutil import easter
-from dateutil.relativedelta import FR
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import SA
-from dateutil.relativedelta import SU
-from dateutil.relativedelta import TH
-from dateutil.relativedelta import TU
-from dateutil.relativedelta import WE
-from dateutil.relativedelta import relativedelta
-from pyparsing import Group
-from pyparsing import Optional
-from pyparsing import Regex
-from pyparsing import Word
-from pyparsing import nums
-from pyparsing import oneOf
+from dateutil.relativedelta import FR, MO, SA, SU, TH, TU, WE, relativedelta
+from pyparsing import Group, Optional, Regex, Word, nums, oneOf
 
 try:
     from .util import days
