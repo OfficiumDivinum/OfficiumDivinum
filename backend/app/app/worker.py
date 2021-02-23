@@ -28,4 +28,5 @@ def resolve_datestrs(datestrs: List[str], year: int) -> List[date]:
 
 @celery_app.task()
 def linear_resolve_datestrs(datestrs, year):
-    resolved = (dsl_parser(i, year) for i in datestrs)
+    resolved = [dsl_parser(i, year) for i in datestrs]
+    return resolved
