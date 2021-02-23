@@ -181,8 +181,21 @@ services:
       labels:
         - traefik.enable=true
         - traefik.constraint-label-stack=${TRAEFIK_TAG?Variable not set}
-        - traefik.http.routers.${STACK_NAME?Variable not set}-frontend-http.rule=PathPrefix(`/`)
+        - traefik.http.routers.${STACK_NAME?Variable not set}-frontend-http.rule=PathPrefix(`/auto/`)
         - traefik.http.services.${STACK_NAME?Variable not set}-frontend.loadbalancer.server.port=80
+    
+  frontend-manual:
+    image: '${DOCKER_IMAGE_FRONTEND?Variable not set}-manual:${TAG-latest}'
+    build:
+      context: ./frontend-manual
+      args:
+        FRONTEND_ENV: ${FRONTEND_ENV-production}
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.constraint-label-stack=${TRAEFIK_TAG?Variable not set}
+        - traefik.http.routers.${STACK_NAME?Variable not set}-frontend-manual-http.rule=PathPrefix(`/manual/`)
+        - traefik.http.services.${STACK_NAME?Variable not set}-frontend-manual.loadbalancer.server.port=80
 
 volumes:
   app-db-data:
