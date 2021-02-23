@@ -28,6 +28,8 @@ def create_item_crud(
             return list(map(json.loads, filters))
         except json.JSONDecodeError:
             raise HTTPException(status_code=400, detail="Invalid filter input supplied")
+        except TypeError:
+            pass
 
     @cbv(router)
     class ItemCBV:
