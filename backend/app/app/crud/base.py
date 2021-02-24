@@ -10,7 +10,7 @@ from sqlalchemy_utils.functions import get_mapper
 
 from app.db.base_class import Base
 
-logger = logging.get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 ModelType = TypeVar("ModelType", bound=Base)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
