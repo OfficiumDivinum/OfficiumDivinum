@@ -150,9 +150,11 @@ class MartyrologyLine(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     rubrics = Column(String)
-    line = Column(String)
+    content = Column(String)
+    prefix = Column(String, index=True)
+    suffix = Column(String, index=True)
     martyrologies = relationship(
         "Martyrology", secondary=line_association_table, back_populates="parts"
     )
     owner_id = Column(Integer, ForeignKey("user.id"))
-    owner = relationship("User", back_populates="old_date_templates")
+    owner = relationship("User", back_populates="martyrology_lines")

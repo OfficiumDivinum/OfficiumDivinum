@@ -20,3 +20,4 @@ class User(Base):
     ordinals = relationship("Ordinals", back_populates="owner")
     old_date_templates = relationship("OldDateTemplate", back_populates="owner")
     martyrologies = relationship("Martyrology", back_populates="owner")
+    martyrology_lines = relationship("MartyrologyLine", back_populates="owner")

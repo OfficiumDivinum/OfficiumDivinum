@@ -102,19 +102,21 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                     clear_print(target_data)
                     if not target_data:
                         continue
-                    current = getattr(db_obj, name)
-                    setattr(
-                        db_obj,
-                        name,
-                        current.append(
-                            self.create_or_match(
-                                db,
-                                obj_in=target_data,
-                                owner_id=owner_id,
-                                model=target_model,
-                            )
-                        ),
-                    )
+                    for entry in target_data:
+
+                        current = getattr(db_obj, name)
+                        setattr(
+                            db_obj,
+                            name,
+                            current.append(
+                                self.create_or_match(
+                                    db,
+                                    obj_in=entry,
+                                    owner_id=owner_id,
+                                    model=target_model,
+                                )
+                            ),
+                        )
                     delattr(obj_in, name)
             # db.update(db_obj, obj_in)
 
