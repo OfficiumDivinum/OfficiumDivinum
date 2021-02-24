@@ -94,6 +94,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             for k, v in dict(obj_in).items()
             if any((isinstance(v, str), isinstance(v, int), isinstance(v, float)))
         }
+        db_obj = model(owner_id=owner_id)
 
         query = db.query(model).filter_by(**safe_filter)
         try:
@@ -105,7 +106,6 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             return d
         except NoResultFound:
             logger.info(f"No matches for {obj_in}, creating")
-            db_obj = model(owner_id=owner_id)
             mapper = get_mapper(db_obj)
             for name, target in mapper.relationships.items():
                 if target.secondary is not None:

@@ -4,6 +4,7 @@ from typing import List
 from uuid import uuid4
 
 from fastapi import BackgroundTasks, Depends, status
+from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
@@ -31,6 +32,7 @@ tasks_by_year = {}
 
 def build_association_table(year, taskid):
     """Build association table for given year."""
+    get_status.tasks.append(taskid)
     results = celery_app.send_task(
         "app.worker.linear_resolve_martyrology_datestrs", args=[year]
     )
@@ -85,14 +87,13 @@ async def get_or_generate(
     ):
         martyrology_objs.append(martyrology)
 
-    return martyrology_objs
+    return jsonable_encoder(martyrology_objs)
 
 
 ordinals_router = create_item_crud(schemas.Ordinals, crud.ordinals)
 
 martyrology_router.include_router(
-    ordinals_router,
-    prefix="/ordinals",
+    ordinals_router, prefix="/ordinals",
 )
 
 old_date_template_router = create_item_crud(
@@ -100,6 +101,5 @@ old_date_template_router = create_item_crud(
 )
 
 martyrology_router.include_router(
-    old_date_template_router,
-    prefix="/old-date-template",
+    old_date_template_router, prefix="/old-date-template",
 )
