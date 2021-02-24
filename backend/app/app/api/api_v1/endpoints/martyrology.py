@@ -26,6 +26,8 @@ martyrology_router = create_item_crud(
 
 logger = logging.Logger(__name__)
 
+tasks_by_year = {}
+
 
 def build_association_table(year, taskid):
     """Build association table for given year."""
@@ -34,6 +36,7 @@ def build_association_table(year, taskid):
     )
     results.get()
     get_status.tasks.remove(taskid)
+    del tasks_by_year[year]
 
 
 class TaskIDMsg(BaseModel):
@@ -43,7 +46,7 @@ class TaskIDMsg(BaseModel):
 
 
 @martyrology_router.get(
-    "/{date}",
+    "/date/{date}",
     response_model=List[schemas.Martyrology],
     responses={202: {"model": TaskIDMsg}},
 )
@@ -64,9 +67,14 @@ async def get_or_generate(
     date_mdl = models.martyrology.DateTable
     matches = db.query(date_mdl).filter(date_mdl.calendar_date == date).all()
     if len(matches) == 0:
-        logger.info(f"No matches found, generating for year {date.year}")
-        taskid = str(uuid4())
-        background_tasks.add_task(build_association_table, (year, taskid))
+        try:
+            taskid = tasks_by_year[year]
+            logger.info(f"Already generating for year {year}")
+        except KeyError:
+            logger.info(f"No matches found, generating for year {year}")
+            taskid = str(uuid4())
+            background_tasks.add_task(build_association_table, year, taskid)
+            tasks_by_year[year] = taskid
         return JSONResponse(
             status_code=status.HTTP_202_ACCEPTED, content={"taskid": taskid}
         )
