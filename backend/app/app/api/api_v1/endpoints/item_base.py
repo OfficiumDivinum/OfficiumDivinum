@@ -2,6 +2,7 @@ import json
 from typing import Any, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi.encoders import jsonable_encoder
 from fastapi_utils.cbv import cbv
 from sqlalchemy.orm import Session
 
@@ -57,7 +58,7 @@ def create_item_crud(
                     limit=limit,
                     filters=filters,
                 )
-            return items
+            return jsonable_encoder(items)
 
         @router.post("/", response_model=item_schema)
         def create_item(self, *, item_in: item_create_schema) -> Any:
@@ -81,7 +82,7 @@ def create_item_crud(
             item = item_crud.create_or_match(
                 db=self.db, obj_in=item_in, owner_id=self.current_user.id,
             )
-            return item
+            return jsonable_encoder(item)
 
         @router.put("/{id}", response_model=item_schema)
         def update_item(self, id: int, item_in: item_update_schema,) -> Any:
@@ -94,7 +95,7 @@ def create_item_crud(
             ):
                 raise HTTPException(status_code=400, detail="Not enough permissions")
             item = item_crud.update(db=self.db, db_obj=item, obj_in=item_in)
-            return item
+            return jsonable_encoder(item)
 
         @router.get("/{id}", response_model=item_schema)
         def read_item(self, id: int,) -> Any:
@@ -106,7 +107,7 @@ def create_item_crud(
                 item.owner_id != self.current_user.id
             ):
                 raise HTTPException(status_code=400, detail="Not enough permissions")
-            return item
+            return jsonable_encoder(item)
 
         @router.delete("/{id}", response_model=item_schema)
         def delete_item(self, id: int,) -> Any:
@@ -119,6 +120,6 @@ def create_item_crud(
             ):
                 raise HTTPException(status_code=400, detail="Not enough permissions")
             item = item_crud.remove(db=self.db, id=id)
-            return item
+            return jsonable_encoder(item)
 
     return router
