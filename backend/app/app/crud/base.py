@@ -38,9 +38,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         self.model = model
 
     def get(self, db: Session, id: Any) -> Optional[ModelType]:
-        return jsonable_encoder(
-            db.query(self.model).filter(self.model.id == id).first()
-        )
+        return db.query(self.model).filter(self.model.id == id).first()
 
     def get_multi(
         self,
@@ -51,12 +49,10 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         filters: Optional[List[Dict]] = None,
     ) -> List[ModelType]:
         if not filters:
-            return jsonable_encoder(
-                db.query(self.model).offset(skip).limit(limit).all()
-            )
+            return db.query(self.model).offset(skip).limit(limit).all()
         else:
             filters = ChainMap(*filters)
-            return jsonable_encoder(
+            return (
                 db.query(self.model)
                 .filter_by(**filters)
                 .offset(skip)
@@ -151,7 +147,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
-        return jsonable_encoder(db_obj)
+        return db_obj
 
     def update(
         self,
@@ -171,13 +167,13 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
-        return jsonable_encoder(db_obj)
+        return db_obj
 
     def remove(self, db: Session, *, id: int) -> ModelType:
         obj = db.query(self.model).get(id)
         db.delete(obj)
         db.commit()
-        return jsonable_encoder(obj)
+        return obj
 
 
 CRUDType = TypeVar("CRUDType", bound=CRUDBase)
@@ -192,7 +188,7 @@ class CRUDWithOwnerBase(CRUDBase[ModelType, CreateSchemaType, UpdateSchemaType])
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
-        return jsonable_encoder(db_obj)
+        return db_obj
 
     def get_multi_by_owner(
         self,
@@ -204,7 +200,7 @@ class CRUDWithOwnerBase(CRUDBase[ModelType, CreateSchemaType, UpdateSchemaType])
         filters: Optional[List[Dict]] = None,
     ) -> List[ModelType]:
         if not filters:
-            return jsonable_encoder(
+            return (
                 db.query(self.model)
                 .filter(self.model.owner_id == owner_id)
                 .offset(skip)
@@ -213,7 +209,7 @@ class CRUDWithOwnerBase(CRUDBase[ModelType, CreateSchemaType, UpdateSchemaType])
             )
         else:
             filters = ChainMap(*filters)
-            return jsonable_encoder(
+            return (
                 db.query(self.model)
                 .filter(self.model.owner_id == owner_id)
                 .filter_by(**filters)
