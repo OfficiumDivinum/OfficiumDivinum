@@ -20,20 +20,28 @@ def upgrade():
     op.create_table(
         "date_association_table",
         sa.Column(
-            "date_id", sa.Integer, sa.ForeignKey("datetable.id"), primary_key=True
+            "date_id", sa.INTEGER(), sa.ForeignKey("datetable.id"), primary_key=True
         ),
-        sa.Column("martyrology_id", sa.ForeignKey("martyrology.id"), primary_key=True),
+        sa.Column(
+            "martyrology_id",
+            sa.INTEGER(),
+            sa.ForeignKey("martyrology.id"),
+            primary_key=True,
+        ),
     )
     op.create_table(
         "line_association_table",
         sa.Column(
             "martyrology_id",
-            sa.Integer,
+            sa.INTEGER(),
             sa.ForeignKey("martyrology.id"),
             primary_key=True,
         ),
         sa.Column(
-            "martyrologyline_id", sa.ForeignKey("martyrologyline.id"), primary_key=True
+            "martyrologyline_id",
+            sa.INTEGER(),
+            sa.ForeignKey("martyrologyline.id"),
+            primary_key=True,
         ),
     )
     op.drop_index("ix_thing_id", table_name="thing")
