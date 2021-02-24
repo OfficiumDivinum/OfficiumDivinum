@@ -71,10 +71,10 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         print("=====End=====")
         # get the object anew so we have all the
         debug(model)
-        # obj = db.query(self.model).filter(self.model.id == obj.id).first()
+        obj = db.query(self.model).filter(self.model.id == obj.id).first()
         debug(jsonable_encoder(obj))
         # debug(obj.parts)
-        return obj
+        return jsonable_encoder(obj)
 
     def create_or_match_loopfn(
         self, db: Session, *, obj_in: CreateSchemaType, owner_id: int, model=None

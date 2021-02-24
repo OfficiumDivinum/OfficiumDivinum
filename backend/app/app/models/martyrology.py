@@ -67,18 +67,22 @@ class Martyrology(Base):
 
     datestr = Column(String, index=True)
     old_date_template_id = Column(Integer, ForeignKey("olddatetemplate.id"))
-    old_date_template = relationship("OldDateTemplate")
+    old_date_template = relationship("OldDateTemplate", lazy="joined")
     julian_date = Column(String)
     old_date = None
     parts = relationship(
         "MartyrologyLine",
         secondary=line_association_table,
         back_populates="martyrologies",
+        lazy="joined",
     )
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="martyrologies")
     dates = relationship(
-        "DateTable", secondary=date_association_table, back_populates="martyrologies"
+        "DateTable",
+        secondary=date_association_table,
+        back_populates="martyrologies",
+        lazy="joined",
     )
 
     def lunar(self):
@@ -128,7 +132,7 @@ class OldDateTemplate(Base):
     content = Column(String())
     language = Column(String(), index=True)
     ordinals_id = Column(Integer, ForeignKey("ordinals.id"))
-    ordinals = relationship("Ordinals")
+    ordinals = relationship("Ordinals", lazy="joined")
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="old_date_templates")
 
@@ -140,7 +144,10 @@ class DateTable(Base):
     calendar_date = Column(Date(), index=True)
     # datestrs = Column(MutableList.as_mutable(PickleType), default=[])
     martyrologies = relationship(
-        "Martyrology", secondary=date_association_table, back_populates="dates"
+        "Martyrology",
+        secondary=date_association_table,
+        back_populates="dates",
+        lazy="joined",
     )
 
 
@@ -154,7 +161,10 @@ class MartyrologyLine(Base):
     prefix = Column(String, index=True)
     suffix = Column(String, index=True)
     martyrologies = relationship(
-        "Martyrology", secondary=line_association_table, back_populates="parts"
+        "Martyrology",
+        secondary=line_association_table,
+        back_populates="parts",
+        lazy="joined",
     )
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="martyrology_lines")
