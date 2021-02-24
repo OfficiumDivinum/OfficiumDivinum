@@ -108,6 +108,15 @@ class Martyrology(Base):
             julian_date=self.julian_date,
         )
 
+    def __len__(self):
+        return sum(len(line.content) for line in self.parts)
+
+    def __lt__(self, other):
+        return self.__len__() < other.__len__()
+
+    def __gt__(self, other):
+        return self.__len() > other.__len__()
+
 
 class Ordinals(Base):
     """Class to represent a list of ordinals in some language or other."""
