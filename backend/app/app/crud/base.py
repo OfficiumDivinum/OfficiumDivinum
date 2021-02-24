@@ -1,11 +1,16 @@
+import logging
 from collections import ChainMap
 from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union
 
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
+from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
+from sqlalchemy_utils.functions import get_mapper
 
 from app.db.base_class import Base
+
+logger = logging.get_logger(__name__)
 
 ModelType = TypeVar("ModelType", bound=Base)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
@@ -47,6 +52,38 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                 .limit(limit)
                 .all()
             )
+
+    def create_or_match(self, db: Session, obj_in_data, model):
+        """
+        Match an object if it exists, or if not create one.
+
+        This function is recursive and always returns the outmost
+        object.
+        """
+        db_obj = model()
+        query = db.query(db_obj).filter_by(obj_in_data)
+        try:
+            query.one()
+        except MultipleResultsFound:
+            logger.info(f"Multiple matches found for {obj_in_data}, using first")
+            return query.first()
+        except NoResultFound:
+            logger.info(f"No matches for {obj_in_data}, creating")
+            mapper = get_mapper(db_obj)
+            for name, target in mapper.relationships.items():
+                if target.secondary:
+                    target_model = None  # find a way to get this programmatically
+                    target_data = obj_in_data[name]
+                    current = getattr(db_obj, name)
+                    setattr(
+                        db_obj,
+                        name,
+                        current.append(
+                            self.create_or_match(db, target_data, target_model)
+                        ),
+                    )
+                    del obj_in_data[name]
+            db_obj.update(obj_in_data)
 
     def create(self, db: Session, *, obj_in: CreateSchemaType) -> ModelType:
         obj_in_data = jsonable_encoder(obj_in)
