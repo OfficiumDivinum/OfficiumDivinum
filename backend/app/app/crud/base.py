@@ -18,6 +18,12 @@ UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 SchemaType = TypeVar("SchemaType", bound=BaseModel)
 
 
+def clear_print(*args):
+    print("\n\n\n")
+    print(*args)
+    print("\n\n\n")
+
+
 class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def __init__(self, model: Type[ModelType]):
         """
@@ -53,41 +59,75 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                 .all()
             )
 
-    def create_or_match(self, db: Session, obj_in_data, model):
+    def create_or_match(
+        self, db: Session, *, obj_in: CreateSchemaType, owner_id: int, model=None
+    ):
         """
         Match an object if it exists, or if not create one.
 
         This function is recursive and always returns the outmost
         object.
         """
+
+        if not model:
+            model = self.model
+
         db_obj = model()
-        query = db.query(db_obj).filter_by(obj_in_data)
+
+        clear_print(obj_in)
+
+        safe_filter = {
+            k: v
+            for k, v in dict(obj_in).items()
+            if any((isinstance(v, str), isinstance(v, int), isinstance(v, float)))
+        }
+
+        clear_print(safe_filter)
+        query = db.query(model).filter_by(**safe_filter)
         try:
-            query.one()
+            return query.one()
         except MultipleResultsFound:
-            logger.info(f"Multiple matches found for {obj_in_data}, using first")
+            logger.info(f"Multiple matches found for {obj_in}, using first")
             return query.first()
         except NoResultFound:
-            logger.info(f"No matches for {obj_in_data}, creating")
+            logger.info(f"No matches for {obj_in}, creating")
             mapper = get_mapper(db_obj)
             for name, target in mapper.relationships.items():
-                if target.secondary:
-                    target_model = get_class_by_table(target.target)
-                    target_data = obj_in_data[name]
+                if target.secondary is not None:
+                    target_model = get_class_by_table(Base, target.target)
+                    try:
+                        target_data = getattr(obj_in, name)
+                    except AttributeError:
+                        continue
+                    clear_print(target_data)
+                    if not target_data:
+                        continue
                     current = getattr(db_obj, name)
                     setattr(
                         db_obj,
                         name,
                         current.append(
-                            self.create_or_match(db, target_data, target_model)
+                            self.create_or_match(
+                                db,
+                                obj_in=target_data,
+                                owner_id=owner_id,
+                                model=target_model,
+                            )
                         ),
                     )
-                    del obj_in_data[name]
-            db_obj.update(obj_in_data)
+                    delattr(obj_in, name)
+            # db.update(db_obj, obj_in)
+
+        for k, v in obj_in:
+            setattr(db_obj, k, v)
+        db.add(db_obj)
+        db.commit()
+        db.refresh(db_obj)
+        return db_obj
 
     def create(self, db: Session, *, obj_in: CreateSchemaType) -> ModelType:
-        obj_in_data = jsonable_encoder(obj_in)
-        db_obj = self.model(**obj_in_data)  # type: ignore
+        obj_in = jsonable_encoder(obj_in)
+        db_obj = self.model(**obj_in)  # type: ignore
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
@@ -127,8 +167,8 @@ class CRUDWithOwnerBase(CRUDBase[ModelType, CreateSchemaType, UpdateSchemaType])
     def create_with_owner(
         self, db: Session, *, obj_in: CreateSchemaType, owner_id: int
     ) -> ModelType:
-        obj_in_data = jsonable_encoder(obj_in)
-        db_obj = self.model(**obj_in_data, owner_id=owner_id)
+        obj_in = jsonable_encoder(obj_in)
+        db_obj = self.model(**obj_in, owner_id=owner_id)
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
