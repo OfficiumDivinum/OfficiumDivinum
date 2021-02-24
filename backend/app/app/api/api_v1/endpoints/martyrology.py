@@ -1,18 +1,18 @@
 import logging
 from datetime import date
 from typing import List
+from uuid import uuid4
 
-from fastapi import Depends
-from sqlalchemy import inspect
-from sqlalchemy.exc import InvalidRequestError
+from fastapi import BackgroundTasks, Depends, status
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
 from app.api import deps
 from app.core.celery_app import celery_app
-from app.db.base_class import Base
-from app.models import tablelist
 
+from . import get_status
 from .item_base import create_item_crud
 
 item_schema = schemas.Martyrology
@@ -27,49 +27,49 @@ martyrology_router = create_item_crud(
 logger = logging.Logger(__name__)
 
 
-def chunker(iterable, size):
-    chunks = []
-    for i in range(0, len(iterable), size):
-        chunks.append(iterable[i : (i + size)])
-    return chunks
+def build_association_table(year, taskid):
+    """Build association table for given year."""
+    results = celery_app.send_task(
+        "app.worker.linear_resolve_martyrology_datestrs", args=[year]
+    )
+    results.get()
+    get_status.tasks.remove(taskid)
+
+
+class TaskIDMsg(BaseModel):
+    """Response model for taskids."""
+
+    taskid: str
 
 
 @martyrology_router.get(
-    "/test-datestr/{date}", response_model=List[schemas.Martyrology]
+    "/{date}",
+    response_model=List[schemas.Martyrology],
+    responses={202: {"model": TaskIDMsg}},
 )
-async def gen_datestrs(
+async def get_or_generate(
     *,
     db: Session = Depends(deps.get_db),
     date: date,
+    background_tasks: BackgroundTasks
     # current_user: models.User = Depends(deps.get_current_active_user),
 ):
+    """
+    Get martyrology by a given date.
+
+    If no such date exists, return a taskid allowing polling until the
+    association table is built.
+    """
     year = date.year
     date_mdl = models.martyrology.DateTable
     matches = db.query(date_mdl).filter(date_mdl.calendar_date == date).all()
     if len(matches) == 0:
         logger.info(f"No matches found, generating for year {date.year}")
-
-        results = celery_app.send_task(
-            "app.worker.linear_resolve_martyrology_datestrs", args=[year]
+        taskid = str(uuid4())
+        background_tasks.add_task(build_association_table, (year, taskid))
+        return JSONResponse(
+            status_code=status.HTTP_202_ACCEPTED, content={"taskid": taskid}
         )
-        results.get()
-
-        # calendar_dates = []
-        # for chunk in results.children:
-        #     calendar_dates += chunk.get()[0]
-
-        # date_objs = {}
-        # for calendar_date in set(calendar_dates):
-        #     mdl = date_mdl(calendar_date=calendar_date)
-        #     db.add(mdl)
-        #     date_objs[calendar_date] = mdl
-        # print(db.dirty)
-
-        # for martyrology, calendar_date in zip(matches, calendar_dates):
-        #     calendar_date = date_objs[calendar_date]
-        #     martyrology.dates.append(calendar_date)
-
-        # db.commit()
 
     martyrology_objs = []
     for martyrology in (
