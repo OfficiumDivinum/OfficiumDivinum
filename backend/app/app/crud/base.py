@@ -69,7 +69,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         )
         db.commit()
         print("=====End=====")
-        # get the object anew so we have all the
+        # get the object anew so we have all the content
         debug(model)
         obj = db.query(self.model).filter(self.model.id == obj.id).first()
         debug(jsonable_encoder(obj))
@@ -89,30 +89,23 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         if not model:
             model = self.model
 
-        db_obj = model()
-
-        clear_print(obj_in)
-
         safe_filter = {
             k: v
             for k, v in dict(obj_in).items()
             if any((isinstance(v, str), isinstance(v, int), isinstance(v, float)))
         }
 
-        clear_print(safe_filter)
         query = db.query(model).filter_by(**safe_filter)
         try:
             d = query.one()
             mapper = get_mapper(d)
-            clear_print(mapper.attrs)
-            clear_print("Returning from here", d)
         except MultipleResultsFound:
             logger.info(f"Multiple matches found for {obj_in}, using first")
             d = query.first()
-            clear_print("Returning from here instead", d)
             return d
         except NoResultFound:
             logger.info(f"No matches for {obj_in}, creating")
+            db_obj = model(owner_id=owner_id)
             mapper = get_mapper(db_obj)
             for name, target in mapper.relationships.items():
                 if target.secondary is not None:
@@ -121,23 +114,22 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                         target_data = getattr(obj_in, name)
                     except AttributeError:
                         continue
-                    clear_print(target_data)
                     if not target_data:
                         continue
                     for entry in target_data:
 
                         current = getattr(db_obj, name)
 
-                        current.append(
-                            self.create_or_match_loopfn(
-                                db, obj_in=entry, owner_id=owner_id, model=target_model
-                            )
+                        new = self.create_or_match_loopfn(
+                            db, obj_in=entry, owner_id=owner_id, model=target_model
                         )
+                        if new in current:
+                            # always duplicate identical lines
+                            new = target_model(**jsonable_encoder(entry))
+                        current.append(new)
 
-                        clear_print(f"Current is: {current}")
                         setattr(db_obj, name, current)
                     delattr(obj_in, name)
-            # db.update(db_obj, obj_in)
 
         for k, v in obj_in:
             print(f"k: {k}, v: {v}")
@@ -146,9 +138,6 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             except (TypeError, AttributeError):
                 pass
         db.add(db_obj)
-        # db.commit()
-        # db.refresh(db_obj)
-        clear_print("db_obj", db_obj)
 
         return db_obj
 

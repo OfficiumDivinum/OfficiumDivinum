@@ -61,9 +61,25 @@ def create_item_crud(
 
         @router.post("/", response_model=item_schema)
         def create_item(self, *, item_in: item_create_schema) -> Any:
-            """Create new item."""
-            item = item_crud.create_with_owner(
-                db=self.db, obj_in=item_in, owner_id=self.current_user.id
+            """
+            Match an object if it exists, or if not create one, recursively through the
+            relations.
+
+            Note that it is not possible to create entirely duplicated
+            entries in this way.  But you can throw a complete schema at
+            the endpoint in JSON and it will be stored in the db with
+            minimum duplication.
+
+            If using this endpoint to create things you think *ought* to
+            be linked, good code would check that they *are* linked later
+            (by comparing the ids.) This will require administrator
+            privileges to get the object ids, since we will shortly be
+            hiding them from unauthenticated sessions.
+
+            Only new objects will have the owner property set.
+            """
+            item = item_crud.create_or_match(
+                db=self.db, obj_in=item_in, owner_id=self.current_user.id,
             )
             return item
 
