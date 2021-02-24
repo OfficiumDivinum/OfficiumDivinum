@@ -15,10 +15,6 @@ class CRUDMartyrology(
     def get_by_datestr(self, db: Session, *, datestr: str) -> Optional[Martyrology]:
         return db.query(Martyrology).filter(Martyrology.datestr == datestr)
 
-    def get(self, db: Session, id: int):
-        obj = db.query(self.model).get(id)
-        return obj
-
 
 martyrology = CRUDMartyrology(Martyrology)
 
