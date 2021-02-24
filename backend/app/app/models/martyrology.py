@@ -2,13 +2,12 @@ import json
 from typing import TYPE_CHECKING
 
 import pylunar
-from sqlalchemy import Column, ForeignKey, Integer, PickleType, String, Table, types
+from sqlalchemy import Column, ForeignKey, Integer, PickleType, String, Table
 from sqlalchemy.ext.mutable import MutableList
 from sqlalchemy.orm import relationship
 from sqlalchemy.types import VARCHAR, Date, TypeDecorator
 
 from app.db.base_class import Base
-from app.models import tablelist
 
 from ..DSL import dsl_parser
 
