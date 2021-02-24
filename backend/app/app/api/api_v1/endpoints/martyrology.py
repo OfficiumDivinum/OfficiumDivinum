@@ -90,6 +90,18 @@ async def get_or_generate(
     return jsonable_encoder(martyrology_objs)
 
 
+# @martyrology_router.delete("/datetable/clear")
+# async def delete_datetable(
+#     db: Session = Depends(deps.get_db),
+#     current_user: models.User = Depends(deps.get_current_active_user),
+# ):
+#     """Clear the datetable entirely."""
+#     for row in db.query(models.martyrology.DateTable).all():
+#         row.martyrologies = []
+#         db.commit()
+#     return True
+
+
 ordinals_router = create_item_crud(schemas.Ordinals, crud.ordinals)
 
 martyrology_router.include_router(
