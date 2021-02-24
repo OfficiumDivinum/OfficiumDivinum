@@ -49,6 +49,14 @@ date_association_table = Table(
 )
 
 
+line_association_table = Table(
+    "line_association_table",
+    Base.metadata,
+    Column("martyrology_id", Integer, ForeignKey("martyrology.id"), primary_key=True),
+    Column("martyrologyline_id", ForeignKey("martyrologyline.id"), primary_key=True),
+)
+
+
 class Martyrology(Base):
     """Martyrology object in database."""
 
@@ -62,7 +70,11 @@ class Martyrology(Base):
     old_date_template = relationship("OldDateTemplate")
     julian_date = Column(String)
     old_date = None
-    parts = Column(MutableList.as_mutable(JSONEncodedDict), default=[])
+    parts = relationship(
+        "MartyrologyLine",
+        secondary=line_association_table,
+        back_populates="martyrologies",
+    )
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="martyrologies")
     dates = relationship(
@@ -130,3 +142,17 @@ class DateTable(Base):
     martyrologies = relationship(
         "Martyrology", secondary=date_association_table, back_populates="dates"
     )
+
+
+class MartyrologyLine(Base):
+    """Base class for line objects."""
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    rubrics = Column(String)
+    line = Column(String)
+    martyrologies = relationship(
+        "Martyrology", secondary=line_association_table, back_populates="parts"
+    )
+    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner = relationship("User", back_populates="old_date_templates")
