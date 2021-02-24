@@ -2,12 +2,13 @@ import json
 from typing import TYPE_CHECKING
 
 import pylunar
-from sqlalchemy import Column, ForeignKey, Integer, PickleType, String, types
+from sqlalchemy import Column, ForeignKey, Integer, PickleType, String, Table, types
 from sqlalchemy.ext.mutable import MutableList
 from sqlalchemy.orm import relationship
 from sqlalchemy.types import VARCHAR, Date, TypeDecorator
 
 from app.db.base_class import Base
+from app.models import tablelist
 
 from ..DSL import dsl_parser
 
@@ -40,6 +41,14 @@ class JSONEncodedDict(TypeDecorator):
         return value
 
 
+date_association_table = Table(
+    "date_association_table",
+    Base.metadata,
+    Column("date_id", Integer, ForeignKey("datetable.id"), primary_key=True),
+    Column("martyrology_id", ForeignKey("martyrology.id"), primary_key=True),
+)
+
+
 class Martyrology(Base):
     """Martyrology object in database."""
 
@@ -56,6 +65,9 @@ class Martyrology(Base):
     parts = Column(MutableList.as_mutable(JSONEncodedDict), default=[])
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="martyrologies")
+    dates = relationship(
+        "DateTable", secondary=date_association_table, back_populates="martyrologies"
+    )
 
     def lunar(self):
         """Calculate age of moon as integer."""
@@ -109,12 +121,12 @@ class OldDateTemplate(Base):
     owner = relationship("User", back_populates="old_date_templates")
 
 
-def get_date_table(table_name):
-    class DateTable(Base):
-        __tablename__ = table_name
+class DateTable(Base):
+    """Date table to resolve calendar dates into datestrs."""
 
-        id = Column(Integer, primary_key=True, index=True)
-        calendar_date = Column(Date(), index=True)
-        datestrs = Column(MutableList.as_mutable(PickleType), default=[])
-
-    return DateTable
+    id = Column(Integer, primary_key=True, index=True)
+    calendar_date = Column(Date(), index=True)
+    # datestrs = Column(MutableList.as_mutable(PickleType), default=[])
+    martyrologies = relationship(
+        "Martyrology", secondary=date_association_table, back_populates="dates"
+    )
