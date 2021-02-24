@@ -1,13 +1,14 @@
-from datetime import date
-from typing import List
+import logging
 
-from celery import group
 from raven import Client
 
+from app import models
 from app.core.celery_app import celery_app
 from app.core.config import settings
+from app.db.session import SessionLocal
 from app.DSL import dsl_parser
 
+logger = logging.getLogger(__name__)
 client_sentry = Client(settings.SENTRY_DSN)
 
 
@@ -17,16 +18,27 @@ def test_celery(word: str) -> str:
 
 
 @celery_app.task()
-def resolve_datestr(datestr: str, year: int) -> date:
-    return dsl_parser(datestr, year)
+def linear_resolve_martyrology_datestrs(year):
+    """Resolve datestrs for martyrologies for given year."""
 
+    date_mdl = models.martyrology.DateTable
+    db = SessionLocal()
+    matches = db.query(models.Martyrology)
+    datestrs = [i.datestr for i in matches]
+    logger.debug(f"Found {len(list(datestrs))} datestrs to resolve.")
 
-@celery_app.task()
-def resolve_datestrs(datestrs: List[str], year: int) -> List[date]:
-    return group((linear_resolve_datestrs.s(i, year) for i in datestrs))()
-
-
-@celery_app.task()
-def linear_resolve_datestrs(datestrs, year):
     resolved = [dsl_parser(i, year) for i in datestrs]
-    return resolved
+
+    logger.debug(f"resolved {len(resolved)}")
+
+    date_objs = {}
+    for calendar_date in set(resolved):
+        mdl = date_mdl(calendar_date=calendar_date)
+        db.add(mdl)
+        date_objs[calendar_date] = mdl
+
+    for martyrology, calendar_date in zip(matches, resolved):
+        calendar_date = date_objs[calendar_date]
+        martyrology.dates.append(calendar_date)
+
+    db.commit()
