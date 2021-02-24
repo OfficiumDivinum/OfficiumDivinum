@@ -6,7 +6,7 @@ from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
-from sqlalchemy_utils.functions import get_mapper
+from sqlalchemy_utils.functions import get_class_by_table, get_mapper
 
 from app.db.base_class import Base
 
@@ -72,7 +72,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             mapper = get_mapper(db_obj)
             for name, target in mapper.relationships.items():
                 if target.secondary:
-                    target_model = None  # find a way to get this programmatically
+                    target_model = get_class_by_table(target.target)
                     target_data = obj_in_data[name]
                     current = getattr(db_obj, name)
                     setattr(
