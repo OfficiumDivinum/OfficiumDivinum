@@ -95,7 +95,8 @@ def crud_pokemon(
                     {"prefix": None, "suffix": None, "rubrics": None, "content": par}
                 )
             resp = client.post(endpoint, json=data)
-            assert resp.status_code == 200
+            if resp.status_code != 200:
+                raise Exception(f"Failed to upload, response was {res.json()}")
 
 
 if __name__ == "__main__":

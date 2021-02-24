@@ -235,7 +235,7 @@ def dsl_parser(datestr: str, year: int) -> date:
     try:
         return parsed[0]
     except IndexError:
-        raise DSLError("Unable to parse")
+        raise DSLError(f"Unable to parse input {datestr}")
 
 
 if __name__ == "__main__":

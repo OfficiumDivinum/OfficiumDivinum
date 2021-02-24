@@ -1,7 +1,7 @@
 from datetime import date
 from typing import List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .office_parts import BlockBase, LineBase
 
@@ -27,7 +27,7 @@ class MartyrologyUpdate(MartyrologyCreate):
 
 # Properties shared by models stored in DB
 class MartyrologyInDBBase(MartyrologyBase):
-    id: int
+    id: int = Field(gt=0)
     title: str
     old_date_template_id: Optional[int]
     parts: List[LineBase]
@@ -44,7 +44,7 @@ class MartyrologyInDB(MartyrologyInDBBase):
 
 # Properties to return to client
 class Ordinals(BaseModel):
-    id: int
+    id: int = Field(gt=0)
     content: List
     language: str
 
@@ -56,9 +56,9 @@ class Ordinals(BaseModel):
 class OldDateTemplate(BaseModel):
     content: str
     language: str
-    ordinals_id: int
+    ordinals_id: int = Field(gt=0)
     ordinals: Ordinals
-    id: int
+    id: int = Field(gt=0)
 
     class Config:
         orm_mode = True
@@ -68,7 +68,7 @@ class OldDateTemplate(BaseModel):
 class OldDateTemplateCreate(BaseModel):
     content: str
     language: str
-    ordinals_id: int
+    ordinals_id: int = Field(gt=0)
 
     class Config:
         orm_mode = True
