@@ -1,6 +1,5 @@
 import logging
 from datetime import date
-from typing import List
 from uuid import uuid4
 
 from fastapi import BackgroundTasks, Depends, status
@@ -12,6 +11,7 @@ from sqlalchemy.orm import Session
 from app import crud, models, schemas
 from app.api import deps
 from app.core.celery_app import celery_app
+from app.versions import versions_dict
 
 from . import get_status
 from .item_base import create_item_crud
@@ -49,13 +49,14 @@ class TaskIDMsg(BaseModel):
 
 @martyrology_router.get(
     "/date/{date}",
-    response_model=List[schemas.Martyrology],
+    response_model=schemas.Martyrology,
     responses={202: {"model": TaskIDMsg}},
 )
 async def get_or_generate(
     *,
     db: Session = Depends(deps.get_db),
     date: date,
+    version: str = "1960",
     background_tasks: BackgroundTasks
     # current_user: models.User = Depends(deps.get_current_active_user),
 ):
@@ -87,7 +88,7 @@ async def get_or_generate(
     ):
         martyrology_objs.append(martyrology)
 
-    return jsonable_encoder(martyrology_objs)
+    return jsonable_encoder(versions_dict[version].resolve(*martyrology_objs))
 
 
 # @martyrology_router.delete("/datetable/clear")
@@ -105,7 +106,8 @@ async def get_or_generate(
 ordinals_router = create_item_crud(schemas.Ordinals, crud.ordinals)
 
 martyrology_router.include_router(
-    ordinals_router, prefix="/ordinals",
+    ordinals_router,
+    prefix="/ordinals",
 )
 
 old_date_template_router = create_item_crud(
@@ -113,5 +115,6 @@ old_date_template_router = create_item_crud(
 )
 
 martyrology_router.include_router(
-    old_date_template_router, prefix="/old-date-template",
+    old_date_template_router,
+    prefix="/old-date-template",
 )

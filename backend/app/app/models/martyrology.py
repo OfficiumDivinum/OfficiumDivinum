@@ -112,10 +112,10 @@ class Martyrology(Base):
         return sum(len(line.content) for line in self.parts)
 
     def __lt__(self, other):
-        return self.__len__() < other.__len__()
+        return len(self) < len(other)
 
     def __gt__(self, other):
-        return self.__len() > other.__len__()
+        return len(self) > len(other)
 
 
 class Ordinals(Base):
