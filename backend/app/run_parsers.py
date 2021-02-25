@@ -1,8 +1,8 @@
+import logging
 import os
 from getpass import getpass
 from json import dumps
 from pathlib import Path
-from typing import List
 
 import typer
 from fastapi.encoders import jsonable_encoder
@@ -11,6 +11,8 @@ from requests_oauthlib import OAuth2Session
 
 from app.parsers import M2obj, P2obj, divinumofficium_structures
 from app.schemas import OldDateTemplateCreate, OrdinalsCreate
+
+logger = logging.getLogger(__name__)
 
 app = typer.Typer()
 
@@ -33,6 +35,7 @@ translations = {
 
 
 def crud_login(host="localhost", user="admin@2e0byo.co.uk"):
+    logger.info("Logging in.")
     oauth = OAuth2Session(client=LegacyApplicationClient(client_id=None))
     token = oauth.fetch_token(
         token_url=f"{host}/api/v1/login/access-token",
@@ -43,57 +46,26 @@ def crud_login(host="localhost", user="admin@2e0byo.co.uk"):
 
 
 @app.command()
-def crud_pokemon(
+def parse_upload_martyrologies(
+    root: Path,
     lang: str,
-    calendar: str,
-    root: str,
+    version: str,
     user: str,
     host: str = "http://localhost",
 ):
-    """
-    Catch them all!
-
-    Get all the relevant data for a particular calendar from a
-    supplied root (which should be a cloned divinumofficium
-    repository's web directory.)
-
-    Parameters
-    ----------
-
-    lang: str : The language, e.g. `Latin`.
-
-    calendar: str : The calendar.
-
-    root: str : The root, as a string.
-
-    Returns
-    -------
-    List
-        Lists of Feast and Martyrology objects.
-    """
-    print("Logging in.")
+    """Parse and upload martyrologies."""
 
     client = crud_login(host=host, user=user)
 
-    print("Parsing source files.")
+    logger.info("Parsing source files.")
 
-    root = Path(f"{root}/{lang}").expanduser()
-    with_cal = root / f"Martyrologium{calendar}"
+    title = translations[lang.lower()]["martyrology_title"]
+
+    root = root / lang
+    with_cal = root / f"Martyrologium{version}"
     files = list(with_cal.glob("*.txt"))
     if not files:
         files = (root / "Martyrologium").glob("*.txt")
-    title = translations[lang.lower()]["martyrology_title"]
-    parse_upload_martyrologies(client, files, host, lang, title)
-
-
-def parse_upload_martyrologies(
-    client,
-    files: List[Path],
-    host: str,
-    lang: str,
-    title: str,
-):
-    """Parse and upload martyrologies."""
     martyrology = []
     for f in files:
         if f.name == "Mobile.txt":
@@ -119,7 +91,7 @@ def parse_upload_martyrologies(
 
     # martyrology = martyrology[:1]
 
-    print("Uploading Martyrologies to server.")
+    logger.info("Uploading Martyrologies to server.")
 
     with typer.progressbar(martyrology) as progress:
         for entry in progress:
@@ -138,22 +110,21 @@ def parse_upload_martyrologies(
 
 @app.command()
 def parse_upload_psalms(
+    root: Path,
     lang: str,
     version: str,
-    root: Path,
     user: str,
     host: str = "http://localhost",
 ):
-    print("Logging in.")
 
     client = crud_login(host=host, user=user)
 
-    print("Parsing psalm files")
+    logger.info("Parsing psalm files")
     psalms = []
     for fn in (root / f"{lang}/psalms1").glob("*.txt"):
         psalms.append(P2obj.parse_file(fn, lang, version))
 
-    print("Uploading Psalms to server.")
+    logger.info("Uploading Psalms to server.")
 
     verses = []
     for psalm in psalms:
