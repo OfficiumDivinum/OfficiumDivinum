@@ -8,7 +8,10 @@ from requests_oauthlib import OAuth2Session
 
 from app.parsers import M2obj
 
+# required if uploading to localhost, as https not setup locally
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
+translations = {"latin": {"martyrology_title": "Martyrologium"}}
 
 
 def crud_login(host="localhost", user="admin@2e0byo.co.uk"):
@@ -25,7 +28,6 @@ def crud_pokemon(
     lang: str,
     calendar: str,
     root: str,
-    title: str,
     user: str,
     host: str = "http://localhost",
 ):
@@ -57,6 +59,18 @@ def crud_pokemon(
     print("Parsing source files.")
 
     root = Path(f"{root}/{lang}").expanduser()
+    title = translations[lang]["martyrology_title"]
+    parse_upload_martyrologies(client, root, host, lang, title)
+
+
+def parse_upload_martyrologies(
+    client,
+    root: Path,
+    host: str,
+    lang: str,
+    title: str,
+):
+    """Parse and upload martyrologies."""
     martyrology = []
     for f in (root / "Martyrologium").glob("*.txt"):
         if f.name == "Mobile.txt":
