@@ -21,16 +21,14 @@ It also has a parser to turn expressions into dates.  Expressions should evaluat
 to only one date in any one year.
 """
 
+from calendar import isleap
 from datetime import date
 
 from dateutil import easter
 from dateutil.relativedelta import FR, MO, SA, SU, TH, TU, WE, relativedelta
 from pyparsing import Group, Optional, Regex, Word, nums, oneOf
 
-try:
-    from .util import days, months, ordinals
-except ImportError:
-    from util import days, months, ordinals
+from .util import days, months, ordinals
 
 
 class DSLError(Exception):
@@ -49,6 +47,30 @@ specials = {
     + relativedelta(weeks=-9, weekday=SU),
     "Pentecost": lambda year: easter.easter(year) + relativedelta(weeks=7, weekday=SU),
 }
+
+
+def _parse_leapyear(t):
+    """Parse leapyear."""
+
+    def testfn(year):
+        if isleap(year):
+            return t[0][0]
+        else:
+            return "False"
+
+    return testfn
+
+
+def _parse_notleapyear(t):
+    """Parse leapyear."""
+
+    def testfn(year):
+        if isleap(year):
+            return "False"
+        else:
+            return t[0][0]
+
+    return testfn
 
 
 def _parse_and(t):
@@ -154,6 +176,18 @@ def dsl_parser(datestr: str, year: int) -> date:
 
     # All dates are now isodates.
     isodate = Regex(r"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]")
+
+    # handle leapyears
+
+    leapyear = Group(isodate + "LEAPYEAR")
+    leapyear.setParseAction(lambda t: _parse_leapyear(t)(year))
+    _leapyears = leapyear[...]
+    datestr = _leapyears.transformString(datestr)
+
+    leapyear = Group(isodate + "NOTLEAPYEAR")
+    leapyear.setParseAction(lambda t: _parse_notleapyear(t)(year))
+    _leapyears = leapyear[...]
+    datestr = _leapyears.transformString(datestr)
 
     # handle [ordinals] weekdays + timedeltas
     timedelta = Group(
