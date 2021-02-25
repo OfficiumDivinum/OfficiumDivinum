@@ -16,13 +16,11 @@ from app.versions import versions_dict
 from . import get_status
 from .item_base import create_item_crud
 
-item_schema = schemas.Martyrology
-item_update_schema = schemas.MartyrologyUpdate
-item_create_schema = schemas.MartyrologyCreate
-item_crud = crud.martyrology
-
 martyrology_router = create_item_crud(
-    item_schema, item_crud, item_create_schema, item_update_schema
+    schemas.Martyrology,
+    crud.martyrology,
+    schemas.MartyrologyUpdate,
+    schemas.MartyrologyCreate,
 )
 
 logger = logging.Logger(__name__)
