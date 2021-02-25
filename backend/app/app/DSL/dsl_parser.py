@@ -28,13 +28,9 @@ from dateutil.relativedelta import FR, MO, SA, SU, TH, TU, WE, relativedelta
 from pyparsing import Group, Optional, Regex, Word, nums, oneOf
 
 try:
-    from .util import days
-    from .util import months
-    from .util import ordinals
+    from .util import days, months, ordinals
 except ImportError:
-    from util import days
-    from util import months
-    from util import ordinals
+    from util import days, months, ordinals
 
 
 class DSLError(Exception):
