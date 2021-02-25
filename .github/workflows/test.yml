@@ -34,7 +34,8 @@ jobs:
           END
 
       - name: test copy .env
-        run: scp .env deploy:
+        run: |
+          scp .env "deploy:"
 
       # - name: Test
       #   run: bash ./scripts/test.sh
