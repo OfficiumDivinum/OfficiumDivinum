@@ -1,7 +1,7 @@
 from sqlalchemy import Column, ForeignKey, Integer, PickleType, String, Table
 from sqlalchemy.orm import relationship
 
-from app.db.base import Base
+from app.db.base_class import Base
 from app.models.office_parts import LineMixin
 
 
@@ -13,6 +13,7 @@ class Verse(Base, LineMixin):
     book = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="martyrologies")
+
     # chapters = relationship(
     #     "Chapter",
     #     secondary=line_association_table,

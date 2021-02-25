@@ -1,3 +1,4 @@
+from .bible import *
 from .item import Item, ItemCreate, ItemInDB, ItemUpdate
 from .martyrology import (
     Martyrology,

@@ -25,3 +25,15 @@ class ChapterInDB(ChapterBase):
 
     class Config:
         orm_mode = True
+
+
+class Verse(VerseInDB):
+    pass
+
+
+class VerseCreate(VerseInDB):
+    pass
+
+
+class VerseUpdate(VerseInDB):
+    pass
