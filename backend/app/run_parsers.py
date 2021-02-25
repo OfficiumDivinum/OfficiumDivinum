@@ -9,7 +9,7 @@ from fastapi.encoders import jsonable_encoder
 from oauthlib.oauth2 import LegacyApplicationClient
 from requests_oauthlib import OAuth2Session
 
-from app.parsers import M2obj, divinumofficium_structures
+from app.parsers import M2obj, P2obj, divinumofficium_structures
 from app.schemas import OldDateTemplateCreate, OrdinalsCreate
 
 app = typer.Typer()
@@ -125,6 +125,40 @@ def parse_upload_martyrologies(
                 entry.old_date_template_id = template_id
             else:
                 entry.old_date_template = template
+            # print(dumps(jsonable_encoder(entry), indent=2))
+            resp = client.post(endpoint, json=jsonable_encoder(entry))
+            if resp.status_code != 200:
+                raise Exception(
+                    f"Failed to upload, response was {dumps(resp.json(), indent=2)}"
+                )
+
+
+@app.command()
+def parse_upload_psalms(
+    lang: str,
+    version: str,
+    root: Path,
+    user: str,
+    host: str = "http://localhost",
+):
+    print("Logging in.")
+
+    client = crud_login(host=host, user=user)
+
+    print("Parsing psalm files")
+    psalms = []
+    for fn in (root / f"{lang}/psalms1").glob("*.txt"):
+        psalms.append(P2obj.parse_file(fn, lang, version))
+
+    print("Uploading Psalms to server.")
+
+    verses = []
+    for psalm in psalms:
+        verses += psalm
+
+    with typer.progressbar(verses) as progress:
+        for entry in progress:
+            endpoint = f"{host}/api/v1/bible/"
             # print(dumps(jsonable_encoder(entry), indent=2))
             resp = client.post(endpoint, json=jsonable_encoder(entry))
             if resp.status_code != 200:

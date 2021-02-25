@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import Field
 
 from .office_parts import BlockBase, LineBase
@@ -6,7 +8,8 @@ from .office_parts import BlockBase, LineBase
 class VerseBase(LineBase):
     language: str
     version: str
-    book: str
+    book: Optional[str] = None
+    aka: Optional[str] = None
 
 
 class VerseInDB(VerseBase):
