@@ -21,3 +21,4 @@ class User(Base):
     old_date_templates = relationship("OldDateTemplate", back_populates="owner")
     martyrologies = relationship("Martyrology", back_populates="owner")
     martyrology_lines = relationship("MartyrologyLine", back_populates="owner")
+    verses = relationship("Verse", back_populates="owner")
