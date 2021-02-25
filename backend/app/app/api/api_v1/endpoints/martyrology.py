@@ -81,12 +81,15 @@ async def get_or_generate(
         )
 
     martyrology_objs = []
+    print("------gere")
     for martyrology in (
         db.query(date_mdl).filter(date_mdl.calendar_date == date).one().martyrologies
     ):
+        print("id", martyrology.id)
         martyrology_objs.append(martyrology)
-
-    return jsonable_encoder(versions_dict[version].resolve(*martyrology_objs))
+    mart = versions_dict[version].resolve(*martyrology_objs)
+    mart.render_old_date(year)
+    return jsonable_encoder(mart)
 
 
 # @martyrology_router.delete("/datetable/clear")

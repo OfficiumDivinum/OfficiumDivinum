@@ -76,6 +76,7 @@ class OldDateTemplateCreate(BaseModel):
 # Properties to return to client
 class Martyrology(MartyrologyInDBBase):
     old_date_template: Optional[OldDateTemplate]
+    old_date: Optional[str]
 
 
 class MartyrologyCreate(MartyrologyBase):
