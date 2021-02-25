@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 
 from app.DSL import days, months, ordinals, specials
+from app.schemas import LineBase, MartyrologyCreate
 
 from .T2obj import parse_DO_sections
 
@@ -36,8 +37,9 @@ def parse_file(fn: Path):
         for line in f.readlines():
             line = line.strip()
             if not line == "_":
-                content.append(line)
-    return {"datestr": datestr, "julian_date": old_date, "content": content}
+                content.append(LineBase(content=line))
+
+    return MartyrologyCreate(content=content, datestr=datestr, julian_date=julian_date)
 
 
 def parse_mobile_file(fn: Path):
@@ -72,6 +74,7 @@ def parse_mobile_file(fn: Path):
             elif datestr == "Defuncti":  # Not sure what we need this for.
                 continue
                 # datestr = "2 Nov"
+        line = LineBase(content=section)
+        mobile.append(MartyrologyCreate(datestr=datestr, content=line)
 
-        mobile.append({"datestr": datestr, "content": section})
     return mobile

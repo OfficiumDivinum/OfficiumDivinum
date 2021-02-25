@@ -16,15 +16,6 @@ class MartyrologyBase(BlockBase):
     language: str
 
 
-class MartyrologyCreate(MartyrologyBase):
-    old_date_template_id: Optional[int]
-    julian_date: Optional[str]
-
-
-class MartyrologyUpdate(MartyrologyCreate):
-    pass
-
-
 # Properties shared by models stored in DB
 class MartyrologyInDBBase(MartyrologyBase):
     id: int = Field(gt=0)
@@ -69,6 +60,7 @@ class OldDateTemplateCreate(BaseModel):
     content: str
     language: str
     ordinals_id: int = Field(gt=0)
+    ordinals: Optional[Ordinals]
 
     class Config:
         orm_mode = True
@@ -77,3 +69,13 @@ class OldDateTemplateCreate(BaseModel):
 # Properties to return to client
 class Martyrology(MartyrologyInDBBase):
     old_date_template: OldDateTemplate
+
+
+class MartyrologyCreate(MartyrologyBase):
+    old_date_template_id: Optional[int]
+    julian_date: Optional[str]
+    old_date_template: Optional[OldDateTemplate]
+
+
+class MartyrologyUpdate(MartyrologyCreate):
+    pass
