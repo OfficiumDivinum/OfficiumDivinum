@@ -21,6 +21,21 @@ jobs:
         run: |
           echo "${{ secrets.DOCKER_ENV }}" > .env
 
+      - name: Set up ssh
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/deploy.key
+          chmod 600 ~/.ssh/deploy.key
+          cat >>~/.ssh/config <<END
+          Host deploy
+              HostName ${{ secrets.SSH_HOST }}
+              User ${{ secrets.SSH_USER }}
+              IdentityFile ~/.ssh/deploy.key
+              StrictHostKeyChecking no
+          END
+
+      - name: test copy .env
+        run: scp .env deploy:
+
       # - name: Test
       #   run: bash ./scripts/test.sh
       - name: setup docker-stack.yml
