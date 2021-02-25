@@ -16,7 +16,7 @@ class LineBase(BaseModel):
 class BlockBase(BaseModel):
     title: Optional[str] = None
     rubrics: Optional[str] = None
-    parts: List[Union[LineBase, None]] = None
+    parts: Optional[List[Union[LineBase, None]]] = None
 
 
 class Office(BaseModel):

@@ -1,6 +1,8 @@
 import os
 from getpass import getpass
+from json import JSONDecodeError, dumps
 from pathlib import Path
+from typing import List
 
 import typer
 from fastapi.encoders import jsonable_encoder
@@ -8,6 +10,9 @@ from oauthlib.oauth2 import LegacyApplicationClient
 from requests_oauthlib import OAuth2Session
 
 from app.parsers import M2obj, divinumofficium_structures
+from app.schemas import OldDateTemplateCreate, OrdinalsCreate
+
+app = typer.Typer()
 
 # required if uploading to localhost, as https not setup locally
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -15,11 +20,14 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 translations = {
     "latin": {
         "martyrology_title": "Martyrologium",
-        "old_date_template": {
-            "content": "{julian_date} Luna {ordinals[age] | capitalise} Anno Domini {year}",
-            "language": "latin",
-            "ordinals": divinumofficium_structures.latin_feminine_ordinals,
-        },
+        "old_date_template": OldDateTemplateCreate(
+            content="{julian_date} Luna {ordinals[age] | capitalise} Anno Domini {year}",
+            language="latin",
+            ordinals=OrdinalsCreate(
+                language="latin",
+                content=divinumofficium_structures.latin_feminine_ordinals,
+            ),
+        ),
     }
 }
 
@@ -34,6 +42,7 @@ def crud_login(host="localhost", user="admin@2e0byo.co.uk"):
     return OAuth2Session(token=token)
 
 
+@app.command()
 def crud_pokemon(
     lang: str,
     calendar: str,
@@ -69,28 +78,37 @@ def crud_pokemon(
     print("Parsing source files.")
 
     root = Path(f"{root}/{lang}").expanduser()
+    with_cal = root / f"Martyrologium{calendar}"
+    files = list(with_cal.glob("*.txt"))
+    if not files:
+        files = (root / "Martyrologium").glob("*.txt")
     title = translations[lang.lower()]["martyrology_title"]
-    parse_upload_martyrologies(client, root, host, lang, title)
+    parse_upload_martyrologies(client, files, host, lang, title)
 
 
 def parse_upload_martyrologies(
     client,
-    root: Path,
+    files: List[Path],
     host: str,
     lang: str,
     title: str,
 ):
     """Parse and upload martyrologies."""
     martyrology = []
-    for f in (root / "Martyrologium").glob("*.txt"):
+    for f in files:
         if f.name == "Mobile.txt":
-            martyrology += M2obj.parse_mobile_file(f)
+            martyrology += M2obj.parse_mobile_file(f, lang.lower(), title)
         else:
-            martyrology.append(M2obj.parse_file(f))
+            martyrology.append(M2obj.parse_file(f, lang.lower(), title))
 
     # get correct template str
     endpoint = f"{host}/api/v1/martyrology/old-date-template/"
-    templates = client.get(endpoint, params={"skip": 0, "limit": 100}).json()
+    try:
+        resp = client.get(endpoint, params={"skip": 0, "limit": 100})
+        templates = resp.json()
+    except JSONDecodeError:
+        print(resp.raw)
+        templates = []
     template_id = None
     for i in templates:
         if i["language"] == lang.lower():
@@ -104,15 +122,16 @@ def parse_upload_martyrologies(
         for entry in progress:
             endpoint = f"{host}/api/v1/martyrology/"
             if template_id:
-                entry.template_id = template_id
+                entry.old_date_template_id = template_id
             else:
-                entry.template = template
-            entry.title = title
-            entry.language = lang.lower()
+                entry.old_date_template = template
+            print(dumps(jsonable_encoder(entry), indent=2))
             resp = client.post(endpoint, json=jsonable_encoder(entry))
             if resp.status_code != 200:
-                raise Exception(f"Failed to upload, response was {resp.json()}")
+                raise Exception(
+                    f"Failed to upload, response was {dumps(resp.json(), indent=2)}"
+                )
 
 
 if __name__ == "__main__":
-    typer.run(crud_pokemon)
+    app()

@@ -58,6 +58,8 @@ def create_item_crud(
                     limit=limit,
                     filters=filters,
                 )
+
+            print(items, jsonable_encoder(items))
             return jsonable_encoder(items)
 
         @router.post("/", response_model=item_schema)
@@ -80,12 +82,18 @@ def create_item_crud(
             Only new objects will have the owner property set.
             """
             item = item_crud.create_or_match(
-                db=self.db, obj_in=item_in, owner_id=self.current_user.id,
+                db=self.db,
+                obj_in=item_in,
+                owner_id=self.current_user.id,
             )
             return jsonable_encoder(item)
 
         @router.put("/{id}", response_model=item_schema)
-        def update_item(self, id: int, item_in: item_update_schema,) -> Any:
+        def update_item(
+            self,
+            id: int,
+            item_in: item_update_schema,
+        ) -> Any:
             """Update an item."""
             item = item_crud.get(db=self.db, id=id)
             if not item:
@@ -98,7 +106,10 @@ def create_item_crud(
             return jsonable_encoder(item)
 
         @router.get("/{id}", response_model=item_schema)
-        def read_item(self, id: int,) -> Any:
+        def read_item(
+            self,
+            id: int,
+        ) -> Any:
             """Get item by ID."""
             item = item_crud.get(db=self.db, id=id)
             if not item:
@@ -110,7 +121,10 @@ def create_item_crud(
             return jsonable_encoder(item)
 
         @router.delete("/{id}", response_model=item_schema)
-        def delete_item(self, id: int,) -> Any:
+        def delete_item(
+            self,
+            id: int,
+        ) -> Any:
             """Delete an item."""
             item = item_crud.get(db=self.db, id=id)
             if not item:

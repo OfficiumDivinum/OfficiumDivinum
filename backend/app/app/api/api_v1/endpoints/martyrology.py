@@ -19,8 +19,8 @@ from .item_base import create_item_crud
 martyrology_router = create_item_crud(
     schemas.Martyrology,
     crud.martyrology,
-    schemas.MartyrologyUpdate,
     schemas.MartyrologyCreate,
+    schemas.MartyrologyUpdate,
 )
 
 logger = logging.Logger(__name__)
@@ -101,7 +101,9 @@ async def get_or_generate(
 #     return True
 
 
-ordinals_router = create_item_crud(schemas.Ordinals, crud.ordinals)
+ordinals_router = create_item_crud(
+    schemas.Ordinals, crud.ordinals, schemas.OrdinalsCreate
+)
 
 martyrology_router.include_router(
     ordinals_router,

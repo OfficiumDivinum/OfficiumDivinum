@@ -19,7 +19,7 @@ UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 SchemaType = TypeVar("SchemaType", bound=BaseModel)
 
 
-def clear_print(*args):
+def clear_debug(*args):
     print("\n\n\n")
     debug(*args)
     print("\n\n\n")
@@ -48,8 +48,12 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         limit: int = 100,
         filters: Optional[List[Dict]] = None,
     ) -> List[ModelType]:
+        clear_debug("Calling get multi")
         if not filters:
-            return db.query(self.model).offset(skip).limit(limit).all()
+            obj = db.query(self.model).offset(skip).limit(limit).all()
+            clear_debug(jsonable_encoder(obj))
+            return obj
+
         else:
             filters = ChainMap(*filters)
             return (
@@ -70,14 +74,14 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db.commit()
         print("=====End=====")
         # get the object anew so we have all the content
-        debug(model)
+        clear_debug(model)
         obj = db.query(self.model).filter(self.model.id == obj.id).first()
-        debug(jsonable_encoder(obj))
-        # debug(obj.parts)
+        clear_debug(jsonable_encoder(obj))
+        # clear_debug(obj.parts)
         return jsonable_encoder(obj)
 
     def create_or_match_loopfn(
-        self, db: Session, *, obj_in: CreateSchemaType, owner_id: int, model=None
+        self, db: Session, *, obj_in: Any, owner_id: int, model=None
     ):
         """
         Match an object if it exists, or if not create one.
@@ -85,10 +89,11 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         This function is recursive and always returns the outmost
         object.
         """
-
+        clear_debug("Starting loop")
         if not model:
             model = self.model
 
+        clear_debug(obj_in)
         safe_filter = {
             k: v
             for k, v in dict(obj_in).items()
@@ -96,18 +101,24 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         }
         db_obj = model(owner_id=owner_id)
 
+        clear_debug("Querying")
         query = db.query(model).filter_by(**safe_filter)
         try:
             d = query.one()
             mapper = get_mapper(d)
+            return d
         except MultipleResultsFound:
             logger.info(f"Multiple matches found for {obj_in}, using first")
+            clear_debug(f"Multiple matches found for {obj_in}, using first")
             d = query.first()
             return d
         except NoResultFound:
             logger.info(f"No matches for {obj_in}, creating")
+            clear_debug(f"No matches for {obj_in}, creating")
+            clear_debug("mapping")
             mapper = get_mapper(db_obj)
             for name, target in mapper.relationships.items():
+                clear_debug(f"Creating target {name} of type {target}")
                 if target.secondary is not None:
                     target_model = get_class_by_table(Base, target.target)
                     try:
@@ -117,9 +128,10 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                     if not target_data:
                         continue
                     for entry in target_data:
-
+                        clear_debug("Getting current data")
                         current = getattr(db_obj, name)
 
+                        clear_debug("Looping")
                         new = self.create_or_match_loopfn(
                             db, obj_in=entry, owner_id=owner_id, model=target_model
                         )
@@ -131,12 +143,36 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                         setattr(db_obj, name, current)
                     delattr(obj_in, name)
 
+                else:
+                    clear_debug(
+                        f"Making or getting non many-to-many object {name} of type {target}"
+                    )
+                    target_model = get_class_by_table(Base, target.target)
+                    try:
+                        target_data = getattr(obj_in, name)
+                    except AttributeError:
+                        continue
+                    if not target_data:
+                        continue
+
+                    new = self.create_or_match_loopfn(
+                        db, obj_in=target_data, owner_id=owner_id, model=target_model
+                    )
+
+                    setattr(db_obj, name, new)
+                    delattr(obj_in, name)
+                # else:
+                #     clear_debug(f"Got here, need to make obj {target.target}")
+
         for k, v in obj_in:
             print(f"k: {k}, v: {v}")
             try:
                 setattr(db_obj, k, v)
             except (TypeError, AttributeError):
                 pass
+        clear_debug(
+            type(obj_in), jsonable_encoder(db_obj), type(db_obj), type(db), type(model)
+        )
         db.add(db_obj)
 
         return db_obj

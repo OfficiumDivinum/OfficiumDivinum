@@ -34,21 +34,28 @@ class MartyrologyInDB(MartyrologyInDBBase):
 
 
 # Properties to return to client
-class Ordinals(BaseModel):
-    id: int = Field(gt=0)
-    content: List
+class OrdinalsBase(BaseModel):
+    content: List[str]
     language: str
 
     class Config:
         orm_mode = True
 
 
+class Ordinals(OrdinalsBase):
+    id: int = Field(gt=0)
+
+
+class OrdinalsCreate(OrdinalsBase):
+    pass
+
+
 # Properties to return to client
 class OldDateTemplate(BaseModel):
     content: str
     language: str
-    ordinals_id: int = Field(gt=0)
-    ordinals: Ordinals
+    ordinals_id: Optional[int] = Field(gt=0)
+    ordinals: Optional[Ordinals]
     id: int = Field(gt=0)
 
     class Config:
@@ -59,11 +66,11 @@ class OldDateTemplate(BaseModel):
 class OldDateTemplateCreate(BaseModel):
     content: str
     language: str
-    ordinals_id: int = Field(gt=0)
-    ordinals: Optional[Ordinals]
+    ordinals_id: Optional[int] = Field(gt=0)
+    ordinals: Optional[OrdinalsCreate]
 
-    class Config:
-        orm_mode = True
+    # class Config:
+    #     orm_mode = True
 
 
 # Properties to return to client
@@ -74,7 +81,8 @@ class Martyrology(MartyrologyInDBBase):
 class MartyrologyCreate(MartyrologyBase):
     old_date_template_id: Optional[int]
     julian_date: Optional[str]
-    old_date_template: Optional[OldDateTemplate]
+    old_date_template: Optional[OldDateTemplateCreate]
+    parts: Optional[List[LineBase]]
 
 
 class MartyrologyUpdate(MartyrologyCreate):

@@ -8,6 +8,7 @@ from .martyrology import (
     OldDateTemplate,
     OldDateTemplateCreate,
     Ordinals,
+    OrdinalsCreate,
 )
 from .msg import Msg
 from .office_parts import Block, BlockCreate, BlockInDB, BlockUpdate

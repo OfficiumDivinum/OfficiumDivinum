@@ -102,7 +102,7 @@ class Martyrology(Base):
         template = self.old_date_template.content
         template = Environment(loader=BaseLoader).from_string(template)
         self.old_date = template.render(
-            ordinals=self.ordinals.content,
+            ordinals=self.old_date_template.ordinals.content,
             year=year,
             age=age,
             julian_date=self.julian_date,
