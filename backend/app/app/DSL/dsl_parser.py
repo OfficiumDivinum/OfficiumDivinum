@@ -145,11 +145,11 @@ def dsl_parser(datestr: str, year: int) -> date:
     >>> dsl_parser("22nd Sun after Pentecost", 2021)
     datetime.date(2021, 10, 24)
 
-    >>> dsl_parser("Sun after 2 Jan LEAPYEaR or 16 Jan NOTLEAPYEAR", 2024)
+    >>> dsl_parser("Sun after 2 Jan LEAPYEAR OR 16 Jan NOTLEAPYEAR", 2024)
     datetime.date(2024, 1, 7)
 
-    >>> dsl_parser("Sun after 2 Jan LEAPYEaR or 16 Jan NOTLEAPYEAR", 2023)
-    datetime.date(2023, 1, 8)
+    >>> dsl_parser("Sun after 2 Jan LEAPYEAR OR 16 Jan NOTLEAPYEAR", 2023)
+    datetime.date(2023, 1, 16)
 
     Parameters
     ----------
