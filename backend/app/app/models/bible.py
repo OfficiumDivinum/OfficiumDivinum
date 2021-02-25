@@ -12,7 +12,7 @@ class Verse(Base, LineMixin):
     version = Column(String, index=True)
     book = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("user.id"))
-    owner = relationship("User", back_populates="martyrologies")
+    owner = relationship("User", back_populates="verses")
 
     # chapters = relationship(
     #     "Chapter",
