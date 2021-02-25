@@ -1,6 +1,6 @@
 import os
 from getpass import getpass
-from json import JSONDecodeError, dumps
+from json import dumps
 from pathlib import Path
 from typing import List
 
@@ -21,7 +21,7 @@ translations = {
     "latin": {
         "martyrology_title": "Martyrologium",
         "old_date_template": OldDateTemplateCreate(
-            content="{julian_date} Luna {ordinals[age] | capitalise} Anno Domini {year}",
+            content="{{julian_date}} Luna {{ordinals[age] | capitalize}} Anno Domini {{year}}",
             language="latin",
             ordinals=OrdinalsCreate(
                 language="latin",
@@ -102,19 +102,22 @@ def parse_upload_martyrologies(
             martyrology.append(M2obj.parse_file(f, lang.lower(), title))
 
     # get correct template str
-    endpoint = f"{host}/api/v1/martyrology/old-date-template/"
-    try:
-        resp = client.get(endpoint, params={"skip": 0, "limit": 100})
-        templates = resp.json()
-    except JSONDecodeError:
-        print(resp.raw)
-        templates = []
+    # endpoint = f"{host}/api/v1/martyrology/old-date-template/"
+    # try:
+    #     resp = client.get(endpoint, params={"skip": 0, "limit": 100})
+    #     templates = resp.json()
+    # except JSONDecodeError:
+    #     print(resp.raw)
+    #     templates = []
+    # template_id = None
+    # for i in templates:
+    #     if i["language"] == lang.lower():
+    #         template_id = i["id"]
+    # if not template_id:
     template_id = None
-    for i in templates:
-        if i["language"] == lang.lower():
-            template_id = i["id"]
-    if not template_id:
-        template = translations[lang.lower()]["old_date_template"]
+    template = translations[lang.lower()]["old_date_template"]
+
+    # martyrology = martyrology[:1]
 
     print("Uploading Martyrologies to server.")
 
