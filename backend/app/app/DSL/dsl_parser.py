@@ -1,7 +1,7 @@
 """
 Parser for a very basic dsl to describe liturgical dates.  It has fixed methods:
 
->>> from officiumdivinum.DSL.dsl_parser import specials
+>>> from app.DSL.dsl_parser import specials
 >>> specials["Christmas"](2020)
 datetime.date(2020, 12, 25)
 
@@ -28,7 +28,7 @@ from dateutil import easter
 from dateutil.relativedelta import FR, MO, SA, SU, TH, TU, WE, relativedelta
 from pyparsing import Group, Optional, Regex, Word, nums, oneOf
 
-from .util import days, months, ordinals
+from app.DSL.util import days, months, ordinals
 
 
 class DSLError(Exception):
@@ -129,7 +129,7 @@ def dsl_parser(datestr: str, year: int) -> date:
     """
     Parse dsl str for a given year.
 
-    >>> from officiumdivinum.DSL.dsl_parser import dsl_parser
+    >>> from app.DSL.dsl_parser import dsl_parser
     >>> dsl_parser("Easter", 2020)
     datetime.date(2020, 4, 12)
 
@@ -144,6 +144,12 @@ def dsl_parser(datestr: str, year: int) -> date:
 
     >>> dsl_parser("22nd Sun after Pentecost", 2021)
     datetime.date(2021, 10, 24)
+
+    >>> dsl_parser("Sun after 2 Jan LEAPYEaR or 16 Jan NOTLEAPYEAR", 2024)
+    datetime.date(2024, 1, 7)
+
+    >>> dsl_parser("Sun after 2 Jan LEAPYEaR or 16 Jan NOTLEAPYEAR", 2023)
+    datetime.date(2023, 1, 8)
 
     Parameters
     ----------
@@ -177,18 +183,6 @@ def dsl_parser(datestr: str, year: int) -> date:
     # All dates are now isodates.
     isodate = Regex(r"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]")
 
-    # handle leapyears
-
-    leapyear = Group(isodate + "LEAPYEAR")
-    leapyear.setParseAction(lambda t: _parse_leapyear(t)(year))
-    _leapyears = leapyear[...]
-    datestr = _leapyears.transformString(datestr)
-
-    leapyear = Group(isodate + "NOTLEAPYEAR")
-    leapyear.setParseAction(lambda t: _parse_notleapyear(t)(year))
-    _leapyears = leapyear[...]
-    datestr = _leapyears.transformString(datestr)
-
     # handle [ordinals] weekdays + timedeltas
     timedelta = Group(
         Optional(oneOf(ordinals))("ordinal")
@@ -220,6 +214,17 @@ def dsl_parser(datestr: str, year: int) -> date:
             raise DSLError(f"Recursion limit reached, got as far as {datestr}")
         count += 1
 
+    # handle leapyears
+
+    leapyear = Group(isodate + "LEAPYEAR")
+    leapyear.setParseAction(lambda t: _parse_leapyear(t)(year))
+    _leapyears = leapyear[...]
+    datestr = _leapyears.transformString(datestr)
+
+    leapyear = Group(isodate + "NOTLEAPYEAR")
+    leapyear.setParseAction(lambda t: _parse_notleapyear(t)(year))
+    _leapyears = leapyear[...]
+    datestr = _leapyears.transformString(datestr)
     # At this point we only have calendar dates, components of date
     # expressions ('before', 'after', 'on or before' or 'on or after';
     # ordinal weekdays and 'between' expressions) and operators ('AND'
