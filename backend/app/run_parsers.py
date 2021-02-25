@@ -125,7 +125,7 @@ def parse_upload_martyrologies(
                 entry.old_date_template_id = template_id
             else:
                 entry.old_date_template = template
-            print(dumps(jsonable_encoder(entry), indent=2))
+            # print(dumps(jsonable_encoder(entry), indent=2))
             resp = client.post(endpoint, json=jsonable_encoder(entry))
             if resp.status_code != 200:
                 raise Exception(

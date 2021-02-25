@@ -19,10 +19,12 @@ UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 SchemaType = TypeVar("SchemaType", bound=BaseModel)
 
 
+# def clear_debug(*args):
+#     print("\n\n\n")
+#     debug(*args)
+#     print("\n\n\n")
 def clear_debug(*args):
-    print("\n\n\n")
-    debug(*args)
-    print("\n\n\n")
+    pass
 
 
 class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
@@ -67,12 +69,12 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def create_or_match(
         self, db: Session, *, obj_in: CreateSchemaType, owner_id: int, model=None
     ):
-        print("=====Start=====")
+        # print("=====Start=====")
         obj = self.create_or_match_loopfn(
             db, obj_in=obj_in, owner_id=owner_id, model=model
         )
         db.commit()
-        print("=====End=====")
+        # print("=====End=====")
         # get the object anew so we have all the content
         clear_debug(model)
         obj = db.query(self.model).filter(self.model.id == obj.id).first()
@@ -120,12 +122,15 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             for name, target in mapper.relationships.items():
                 clear_debug(f"Creating target {name} of type {target}")
                 if target.secondary is not None:
+                    clear_debug("Target has secondary table.")
                     target_model = get_class_by_table(Base, target.target)
                     try:
                         target_data = getattr(obj_in, name)
                     except AttributeError:
+                        clear_debug("Input has no value, skipping")
                         continue
                     if not target_data:
+                        clear_debug("Input value is empty, skipping")
                         continue
                     for entry in target_data:
                         clear_debug("Getting current data")
@@ -165,14 +170,11 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                 #     clear_debug(f"Got here, need to make obj {target.target}")
 
         for k, v in obj_in:
-            print(f"k: {k}, v: {v}")
+            # print(f"k: {k}, v: {v}")
             try:
                 setattr(db_obj, k, v)
             except (TypeError, AttributeError):
                 pass
-        clear_debug(
-            type(obj_in), jsonable_encoder(db_obj), type(db_obj), type(db), type(model)
-        )
         db.add(db_obj)
 
         return db_obj

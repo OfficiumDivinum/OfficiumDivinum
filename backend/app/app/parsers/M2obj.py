@@ -31,7 +31,7 @@ def parse_file(fn: Path, lang: str, title: str):
     datestr = f"{day} {months[month - 1]}"
     content = []
 
-    print("File:", fn)
+    # print("File:", fn)
 
     with fn.open() as f:
         julian_date = f.readline().strip()
