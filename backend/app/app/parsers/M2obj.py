@@ -11,7 +11,7 @@ from .T2obj import parse_DO_sections
 christ_the_king_datestr = "Sat between 23 Oct 31 Oct"
 
 
-def parse_file(fn: Path):
+def parse_file(fn: Path, lang: str, title: str):
     """
     Parse Martyrology file.
 
@@ -31,18 +31,26 @@ def parse_file(fn: Path):
     datestr = f"{day} {months[month - 1]}"
     content = []
 
+    print("File:", fn)
+
     with fn.open() as f:
-        old_date = f.readline().strip()
+        julian_date = f.readline().strip()
         f.readline()
         for line in f.readlines():
             line = line.strip()
             if not line == "_":
                 content.append(LineBase(content=line))
 
-    return MartyrologyCreate(content=content, datestr=datestr, julian_date=julian_date)
+    return MartyrologyCreate(
+        parts=content,
+        datestr=datestr,
+        julian_date=julian_date,
+        language=lang,
+        title=title,
+    )
 
 
-def parse_mobile_file(fn: Path):
+def parse_mobile_file(fn: Path, lang: str, title: str):
     """
     Parse Martyrology 'Mobile' file.
 
@@ -74,7 +82,16 @@ def parse_mobile_file(fn: Path):
             elif datestr == "Defuncti":  # Not sure what we need this for.
                 continue
                 # datestr = "2 Nov"
-        line = LineBase(content=section)
-        mobile.append(MartyrologyCreate(datestr=datestr, content=line)
+        parts = []
+        for line in section:
+            parts.append(LineBase(content=line))
+        mobile.append(
+            MartyrologyCreate(
+                datestr=datestr,
+                content=parts,
+                title=title,
+                language=lang,
+            )
+        )
 
     return mobile
