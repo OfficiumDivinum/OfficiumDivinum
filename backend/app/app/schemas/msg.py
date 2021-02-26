@@ -7,3 +7,9 @@ class Msg(BaseModel):
 
 class ErrorMsg(BaseModel):
     detail: str
+
+
+class TaskIDMsg(BaseModel):
+    """Response model for taskids."""
+
+    taskid: str

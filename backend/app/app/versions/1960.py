@@ -2,6 +2,8 @@
 
 import itertools
 
+from fastapi.encoders import jsonable_encoder
+
 from app import models
 
 from . import CalendarBase
@@ -24,4 +26,9 @@ class Version1960(CalendarBase):
             objs.remove(base)
             for obj in sorted(objs, reverse=True):
                 base.parts = obj.parts + base.parts
+            return base
+        elif isinstance(objs[0], models.Feast):
+            base = max(objs)
+            objs.remove(base)
+            print(jsonable_encoder(objs))
             return base

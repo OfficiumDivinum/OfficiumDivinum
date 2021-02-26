@@ -5,15 +5,13 @@ from uuid import uuid4
 from fastapi import BackgroundTasks, Depends, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
 from app.api import deps
-from app.core.celery_app import celery_app
 from app.versions import versions_dict
 
-from . import get_status
+from .calendar import build_association_table, tasks_by_year
 from .item_base import create_item_crud
 
 martyrology_router = create_item_crud(
@@ -25,36 +23,18 @@ martyrology_router = create_item_crud(
 
 logger = logging.Logger(__name__)
 
-tasks_by_year = {}
-
-
-def build_association_table(year, taskid):
-    """Build association table for given year."""
-    get_status.tasks.append(taskid)
-    results = celery_app.send_task("app.worker.linear_resolve_datestrs", args=[year])
-    results.get()
-    get_status.tasks.remove(taskid)
-    del tasks_by_year[year]
-
-
-class TaskIDMsg(BaseModel):
-    """Response model for taskids."""
-
-    taskid: str
-
 
 @martyrology_router.get(
     "/date/{date}",
     response_model=schemas.Martyrology,
-    responses={202: {"model": TaskIDMsg}},
+    responses={202: {"model": schemas.TaskIDMsg}},
 )
 async def get_or_generate(
     *,
     db: Session = Depends(deps.get_db),
     date: date,
     version: str = "1960",
-    background_tasks: BackgroundTasks
-    # current_user: models.User = Depends(deps.get_current_active_user),
+    background_tasks: BackgroundTasks,
 ):
     """
     Get martyrology by a given date.
@@ -79,7 +59,6 @@ async def get_or_generate(
         )
 
     martyrology_objs = []
-    print("------gere")
     for martyrology in (
         db.query(date_mdl).filter(date_mdl.calendar_date == date).one().martyrologies
     ):
@@ -88,18 +67,6 @@ async def get_or_generate(
     mart = versions_dict[version].resolve(*martyrology_objs)
     mart.render_old_date(year)
     return jsonable_encoder(mart)
-
-
-# @martyrology_router.delete("/datetable/clear")
-# async def delete_datetable(
-#     db: Session = Depends(deps.get_db),
-#     current_user: models.User = Depends(deps.get_current_active_user),
-# ):
-#     """Clear the datetable entirely."""
-#     for row in db.query(models.martyrology.DateTable).all():
-#         row.martyrologies = []
-#         db.commit()
-#     return True
 
 
 ordinals_router = create_item_crud(
