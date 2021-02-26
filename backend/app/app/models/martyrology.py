@@ -1,4 +1,5 @@
 import json
+from functools import total_ordering
 from typing import TYPE_CHECKING
 
 import pylunar
@@ -56,6 +57,7 @@ line_association_table = Table(
 )
 
 
+@total_ordering
 class Martyrology(Base):
     """Martyrology object in database."""
 
