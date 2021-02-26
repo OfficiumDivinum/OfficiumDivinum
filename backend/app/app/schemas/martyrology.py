@@ -22,7 +22,7 @@ class MartyrologyInDBBase(MartyrologyBase):
     title: str
     old_date_template_id: Optional[int]
     parts: List[LineBase]
-    julian_date: Optional[str]
+    julian_date: Optional[str] = Field(None, nullable=True)
 
     class Config:
         orm_mode = True
@@ -55,7 +55,7 @@ class OldDateTemplate(BaseModel):
     content: str
     language: str
     ordinals_id: Optional[int] = Field(gt=0)
-    ordinals: Optional[Ordinals]
+    ordinals: Optional[Ordinals] = Field(None, nullable=True)
     id: int = Field(gt=0)
 
     class Config:
@@ -67,7 +67,7 @@ class OldDateTemplateCreate(BaseModel):
     content: str
     language: str
     ordinals_id: Optional[int] = Field(gt=0)
-    ordinals: Optional[OrdinalsCreate]
+    ordinals: Optional[OrdinalsCreate] = Field(None, nullable=True)
 
     # class Config:
     #     orm_mode = True
@@ -75,15 +75,15 @@ class OldDateTemplateCreate(BaseModel):
 
 # Properties to return to client
 class Martyrology(MartyrologyInDBBase):
-    old_date_template: Optional[OldDateTemplate]
-    old_date: Optional[str]
+    old_date_template: Optional[OldDateTemplate] = Field(None, nullable=True)
+    old_date: Optional[str] = Field(None, nullable=True)
 
 
 class MartyrologyCreate(MartyrologyBase):
-    old_date_template_id: Optional[int]
-    julian_date: Optional[str]
-    old_date_template: Optional[OldDateTemplateCreate]
-    parts: Optional[List[LineBase]]
+    old_date_template_id: Optional[int] = Field(None, nullable=True)
+    julian_date: Optional[str] = Field(None, nullable=True)
+    old_date_template: Optional[OldDateTemplateCreate] = Field(None, nullable=True)
+    parts: Optional[List[LineBase]] = Field(None, nullable=True)
 
 
 class MartyrologyUpdate(MartyrologyCreate):
