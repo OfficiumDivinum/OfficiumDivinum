@@ -95,3 +95,4 @@ class Feast(Base, RankMixin):
         back_populates="feasts",
         lazy="joined",
     )
+    language = Column(String, index=True)

@@ -40,6 +40,7 @@ class FeastBase(BaseModel):
     rank_defeatable: bool
     commemorations: Optional[List[Commemoration]]
     octave: str
+    language: str
 
 
 class FeastCreate(FeastBase):

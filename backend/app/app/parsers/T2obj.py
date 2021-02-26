@@ -46,7 +46,7 @@ def parse_DO_sections(lines: list) -> list:
     return sections
 
 
-def parse_file(fn: Path, calendar: str) -> FeastCreate:
+def parse_file(fn: Path, calendar: str, language: str) -> FeastCreate:
     """
     Parse provided file.
 
@@ -136,4 +136,5 @@ def parse_file(fn: Path, calendar: str) -> FeastCreate:
         rank_name=rank,
         calendar=calendar,
         commemorations=commemorations,
+        language=language,
     )
