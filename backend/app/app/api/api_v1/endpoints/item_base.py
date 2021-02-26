@@ -63,7 +63,9 @@ def create_item_crud(
             return jsonable_encoder(items)
 
         @router.post(
-            "/", response_model=item_schema, responses={404: {"model": schemas.Msg}}
+            "/",
+            response_model=item_schema,
+            responses={404: {"model": schemas.ErrorMsg}},
         )
         def create_item(self, *, item_in: item_create_schema) -> Any:
             """
@@ -91,7 +93,9 @@ def create_item_crud(
             return jsonable_encoder(item)
 
         @router.put(
-            "/{id}", response_model=item_schema, responses={404: {"model": schemas.Msg}}
+            "/{id}",
+            response_model=item_schema,
+            responses={404: {"model": schemas.ErrorMsg}},
         )
         def update_item(
             self,
@@ -110,7 +114,9 @@ def create_item_crud(
             return jsonable_encoder(item)
 
         @router.get(
-            "/{id}", response_model=item_schema, responses={404: {"model": schemas.Msg}}
+            "/{id}",
+            response_model=item_schema,
+            responses={404: {"model": schemas.ErrorMsg}},
         )
         def read_item(
             self,
@@ -127,7 +133,9 @@ def create_item_crud(
             return jsonable_encoder(item)
 
         @router.delete(
-            "/{id}", response_model=item_schema, responses={404: {"model": schemas.Msg}}
+            "/{id}",
+            response_model=item_schema,
+            responses={404: {"model": schemas.ErrorMsg}},
         )
         def delete_item(
             self,
