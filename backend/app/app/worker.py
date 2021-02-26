@@ -18,7 +18,7 @@ def test_celery(word: str) -> str:
 
 
 @celery_app.task()
-def linear_resolve_martyrology_datestrs(year):
+def linear_resolve_datestrs(year):
     """Resolve datestrs for martyrologies for given year."""
 
     date_mdl = models.martyrology.DateTable
@@ -38,7 +38,25 @@ def linear_resolve_martyrology_datestrs(year):
         date_objs[calendar_date] = mdl
 
     for martyrology, calendar_date in zip(matches, resolved):
-        calendar_date = date_objs[calendar_date]
-        martyrology.dates.append(calendar_date)
+        calendar_date_obj = date_objs[calendar_date]
+        martyrology.dates.append(calendar_date_obj)
+
+    # resolve feasts
+    matches = db.query(models.Feast)
+    datestrs = [i.datestr for i in matches]
+    logger.debug(f"Found {len(list(datestrs))} datestrs to resolve.")
+
+    resolved = [dsl_parser(i, year) for i in datestrs]
+
+    logger.debug(f"resolved {len(resolved)}")
+
+    for feast, calendar_date in zip(matches, resolved):
+        try:
+            calendar_date_obj = date_objs[calendar_date]
+        except KeyError:
+            calendar_date_obj = date_mdl(calendar_date=calendar_date)
+            db.add(calendar_date_obj)
+            date_objs[calendar_date] = calendar_date_obj
+        feast.dates.append(calendar_date_obj)
 
     db.commit()

@@ -31,9 +31,7 @@ tasks_by_year = {}
 def build_association_table(year, taskid):
     """Build association table for given year."""
     get_status.tasks.append(taskid)
-    results = celery_app.send_task(
-        "app.worker.linear_resolve_martyrology_datestrs", args=[year]
-    )
+    results = celery_app.send_task("app.worker.linear_resolve_datestrs", args=[year])
     results.get()
     get_status.tasks.remove(taskid)
     del tasks_by_year[year]
