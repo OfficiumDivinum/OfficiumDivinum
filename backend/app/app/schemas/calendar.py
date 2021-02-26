@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class CommemorationBase(BaseModel):
@@ -33,13 +33,13 @@ class Commemoration(CommemorationInDBBase):
 class FeastBase(BaseModel):
     """Common feast properties."""
 
-    name: str
+    name: str = "Feria"
     type_: str
     version: str
     rank_name: str
     rank_defeatable: bool
     commemorations: Optional[List[Commemoration]]
-    octave: str
+    octave: Optional[str] = Field(None, nullable=True)
     language: str
 
 

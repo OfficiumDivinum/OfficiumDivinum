@@ -12,15 +12,14 @@ def parse_DO_sections(lines: list) -> list:
     """
     Parse DO files into lists per section.
 
-    Parameters
-    ----------
-    lines: list : lines to break into sections.
+    Args:
+      lines(list : lines to break into sections.):
+      lines: list:
 
-
-    Returns
-    -------
-    A list of sections.
+    Returns:
     """
+
+    ocatve = None
     sections = {}
     current_section = None
     content = []
@@ -46,27 +45,27 @@ def parse_DO_sections(lines: list) -> list:
     return sections
 
 
-def parse_file(fn: Path, calendar: str, language: str) -> FeastCreate:
+def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
     """
-    Parse provided file.
+    Parse Divinumofficium temporal file into feast object (i.e. ignore most of the
+    data.)
 
-    Parameters
-    ----------
-    fn: Path : File to parse.
+    Args:
+      fn: Path: File to parse.
+      version: str: Version (i.g. 1960).
+      language: str: Language of the file in question.
 
-    calendar : str: Calendar to use (mainly for naming at this stage).
-
-
-    Returns
-    -------
-    A Feast object represeting the day.
+    Returns:
+      FeastCreate object represeting the date.
     """
+    octave = None
+
     try:
         after, day = fn.stem.split("-")
     except ValueError:
         return  # give up
     qualifiers = None
-    name = None
+    name = "Feria"
     try:
         int(after)
         date = after[:-1]
@@ -134,7 +133,9 @@ def parse_file(fn: Path, calendar: str, language: str) -> FeastCreate:
         type_="de Tempore",
         datestr=datestr,
         rank_name=rank,
-        calendar=calendar,
         commemorations=commemorations,
         language=language,
+        version=version,
+        rank_defeatable=False,  # pending further information
+        octave=octave,
     )
