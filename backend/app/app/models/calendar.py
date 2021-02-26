@@ -58,7 +58,7 @@ class Commemoration(Base, RankMixin):
     feasts = relationship(
         "Feast",
         secondary=commemoration_association_table,
-        back_populates="feasts",
+        back_populates="commemorations",
         lazy="joined",
     )
     owner_id = Column(Integer, ForeignKey("user.id"))
