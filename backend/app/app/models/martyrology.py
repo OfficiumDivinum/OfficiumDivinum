@@ -11,6 +11,7 @@ from sqlalchemy.types import VARCHAR, Date, TypeDecorator
 from app.db.base_class import Base
 
 from ..DSL import dsl_parser
+from .calendar import calendar_date_association_table
 
 if TYPE_CHECKING:
     from .user import User  # noqa: F401
@@ -147,6 +148,12 @@ class DateTable(Base):
     martyrologies = relationship(
         "Martyrology",
         secondary=date_association_table,
+        back_populates="dates",
+        lazy="joined",
+    )
+    feasts = relationship(
+        "Feast",
+        secondary=calendar_date_association_table,
         back_populates="dates",
         lazy="joined",
     )

@@ -23,6 +23,14 @@ commemoration_association_table = Table(
 )
 
 
+calendar_date_association_table = Table(
+    "calendar_date_association_table",
+    Base.metadata,
+    Column("date_id", Integer, ForeignKey("datetable.id"), primary_key=True),
+    Column("feast_id", ForeignKey("feast.id"), primary_key=True),
+)
+
+
 @total_ordering
 class RankMixin:
     """"""
@@ -81,3 +89,9 @@ class Feast(Base, RankMixin):
     octave = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="feasts")
+    date = relationship(
+        "DateTable",
+        secondary=calendar_date_association_table,
+        back_populates="feasts",
+        lazy="joined",
+    )
