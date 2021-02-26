@@ -1,6 +1,7 @@
-from .bible import *
-from .item import Item, ItemCreate, ItemInDB, ItemUpdate
-from .martyrology import (
+from .bible import *  # noqa
+from .calendar import Commemoration, CommemorationCreate, Feast, FeastCreate  # noqa
+from .item import Item, ItemCreate, ItemInDB, ItemUpdate  # noqa
+from .martyrology import (  # noqa
     Martyrology,
     MartyrologyCreate,
     MartyrologyInDB,
@@ -10,7 +11,7 @@ from .martyrology import (
     Ordinals,
     OrdinalsCreate,
 )
-from .msg import Msg
-from .office_parts import Block, BlockCreate, BlockInDB, BlockUpdate
-from .token import Token, TokenPayload
-from .user import User, UserCreate, UserInDB, UserUpdate
+from .msg import Msg  # noqa
+from .office_parts import Block, BlockCreate, BlockInDB, BlockUpdate  # noqa
+from .token import Token, TokenPayload  # noqa
+from .user import User, UserCreate, UserInDB, UserUpdate  # noqa
