@@ -36,3 +36,9 @@ class Version1960(VersionBase):
             for obj in sorted(objs, reverse=True):
                 base.parts = obj.parts + base.parts
             return base
+
+        elif isinstance(objs[0], models.Feast):
+            base = max(objs)
+            objs.remove(base)
+            print(jsonable_encoder(objs))
+            return base
