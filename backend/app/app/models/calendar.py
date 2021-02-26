@@ -54,6 +54,8 @@ class Feast(Base, RankMixin):
         lazy="joined",
     )
     octave = Column(String, index=True)
+    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner = relationship("User", back_populates="feasts")
 
     def _rank_to_int(self):
         """"""

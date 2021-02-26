@@ -22,3 +22,5 @@ class User(Base):
     martyrologies = relationship("Martyrology", back_populates="owner")
     martyrology_lines = relationship("MartyrologyLine", back_populates="owner")
     verses = relationship("Verse", back_populates="owner")
+    feasts = relationship("Feast", back_populates="owner")
+    commemorations = relationship("Commemoration", back_populates="owner")
