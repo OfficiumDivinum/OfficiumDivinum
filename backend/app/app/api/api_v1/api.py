@@ -2,6 +2,7 @@ from fastapi import APIRouter
 
 from app.api.api_v1.endpoints import (
     bible,
+    calendar,
     get_status,
     items,
     login,
@@ -23,3 +24,5 @@ api_router.include_router(
 )
 
 api_router.include_router(bible.router, prefix="/bible", tags=["bible"])
+
+api_router.include_router(calendar.router, prefix="/calendar", tags=["calendar"])

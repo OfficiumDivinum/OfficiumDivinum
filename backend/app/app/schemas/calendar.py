@@ -55,4 +55,6 @@ class FeastInDBBase(FeastBase):
     class config:
         orm_mode = True
 
-class Feast(FeastInDBBase)
+
+class Feast(FeastInDBBase):
+    pass
