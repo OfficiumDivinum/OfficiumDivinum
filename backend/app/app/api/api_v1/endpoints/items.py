@@ -13,7 +13,7 @@ router = APIRouter()
 def read_items(
     db: Session = Depends(deps.get_db),
     skip: int = Query(0, gt=-1),
-    limit: int = Query(100, gt=0),
+    limit: int = Query(100, gt=0, lt=200),
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """Retrieve items."""

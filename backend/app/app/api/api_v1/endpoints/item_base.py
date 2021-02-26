@@ -45,7 +45,7 @@ def create_item_crud(
         def read_items(
             self,
             skip: int = Query(0, gt=-1),
-            limit: int = Query(100, gt=0),
+            limit: int = Query(100, gt=0, lt=200),
             test: List = [2, 4],
             filters: Optional[List] = Depends(filter_dict),
         ) -> Any:
