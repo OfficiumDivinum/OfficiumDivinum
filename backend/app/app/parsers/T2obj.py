@@ -19,7 +19,6 @@ def parse_DO_sections(lines: list) -> list:
     Returns:
     """
 
-    ocatve = None
     sections = {}
     current_section = None
     content = []
