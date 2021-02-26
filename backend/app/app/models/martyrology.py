@@ -16,15 +16,6 @@ if TYPE_CHECKING:
     from .user import User  # noqa: F401
 
 
-# class Block(Base):
-#     """Base class for block objects."""
-
-#     id = Column(Integer, primary_key=True, index=True)
-#     title = Column(String, index=True)
-#     rubrics = Column(String)
-#     parts = None
-
-
 class JSONEncodedDict(TypeDecorator):
     """Represents an immutable structure as a json-encoded string."""
 
