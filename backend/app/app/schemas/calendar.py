@@ -37,13 +37,15 @@ class FeastBase(BaseModel):
     type_: str
     version: str
     rank_name: str
-    rank_defeatable: str
+    rank_defeatable: bool
     commemorations: Optional[List[Commemoration]]
     octave: str
 
 
 class FeastCreate(FeastBase):
     """Properties to recieve on creation."""
+
+    commemorations: Optional[List[CommemorationCreate]]
 
 
 class FeastInDBBase(FeastBase):
