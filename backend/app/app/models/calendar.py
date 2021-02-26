@@ -54,6 +54,7 @@ class Commemoration(Base, RankMixin):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
+    version = Column(String, index=True)
     feasts = relationship(
         "Feast",
         secondary=commemoration_association_table,
