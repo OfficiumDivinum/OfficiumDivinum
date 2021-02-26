@@ -6,3 +6,4 @@ docker-stack.yml
 /.env_quoted
 /.secrets
 *.bak
+*.lock
