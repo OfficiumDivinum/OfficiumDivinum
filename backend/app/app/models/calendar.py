@@ -1,3 +1,4 @@
+from functools import total_ordering
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Table
@@ -22,12 +23,35 @@ commemoration_association_table = Table(
 )
 
 
+@total_ordering
 class RankMixin:
+    """"""
+
     rank_name = Column(String, index=True)
     rank_defeatable = Column(Boolean)
 
+    def _rank_to_int(self):
+        """Converst rank to integer for comparison."""
+        name = self.rank_name.strip().lower()
+        try:
+            val = traditional_rank_lookup_table[name]
+        except ValueError:
+            try:
+                val = new_rank_table.index(name)
+            except ValueError:
+                return feria_ranks[name]
+        return val if not self.rank_defeatable else val - 0.1
+
+    def __gt__(self, other):
+        return self._rank_to_int() > other._rank_to_int()
+
+    def __lt__(self, other):
+        return self._rank_to_int() < other._rank_to_int()
+
 
 class Commemoration(Base, RankMixin):
+    """"""
+
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     feasts = relationship(
@@ -56,15 +80,3 @@ class Feast(Base, RankMixin):
     octave = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="feasts")
-
-    def _rank_to_int(self):
-        """"""
-        name = self.rank_name.strip().lower()
-        try:
-            val = traditional_rank_lookup_table[name]
-        except ValueError:
-            try:
-                val = new_rank_table.index(name)
-            except ValueError:
-                return feria_ranks[name]
-        return val if not self.rank_defeatable else val - 0.1
