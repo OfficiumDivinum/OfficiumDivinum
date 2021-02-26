@@ -43,7 +43,7 @@ class RankMixin:
         name = self.rank_name.strip().lower()
         try:
             val = traditional_rank_lookup_table[name]
-        except ValueError:
+        except KeyError:
             try:
                 val = new_rank_table.index(name)
             except ValueError:
@@ -89,7 +89,7 @@ class Feast(Base, RankMixin):
     octave = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="feasts")
-    date = relationship(
+    dates = relationship(
         "DateTable",
         secondary=calendar_date_association_table,
         back_populates="feasts",

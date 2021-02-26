@@ -57,6 +57,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             return obj
 
         else:
+            debug(filters)
             filters = ChainMap(*filters)
             return (
                 db.query(self.model)

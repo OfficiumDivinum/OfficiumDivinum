@@ -81,6 +81,6 @@ async def get_or_generate(
     feast_objs = []
     for feast in db.query(date_mdl).filter(date_mdl.calendar_date == date).one().feasts:
         feast_objs.append(feast)
+    print(feast_objs)
     feast = versions_dict[version].resolve(*feast_objs)
-    feast.render_old_date(year)
     return jsonable_encoder(feast)

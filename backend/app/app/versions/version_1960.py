@@ -3,6 +3,7 @@
 import itertools
 
 from devtools import debug
+from fastapi.encoders import jsonable_encoder
 
 from app import models
 

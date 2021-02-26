@@ -65,6 +65,13 @@ traditional_rank_lookup_table = {
     "semiduplex i classis": 2.5,
     "i ordinis": 6,
     "i classis": 6,
+    "feria minor": 0,
+    "feria major": 0.5,
+    "feria privilegiata": 8,  # outrank everything
+    "feria i classis": 8,  # outrank everything!
+    "feria ii classis": 5,  # same rank as 2nd class feasts, outranking solved in Calendar()
+    "feria iii classis": 2,  # same rank as 3rd class feasts, outranking solve in Calendar()
+    "feria iv classis": 0,
 }
 
 typo_translations = {

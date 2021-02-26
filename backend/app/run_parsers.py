@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Optional
 
 import typer
+from devtools import debug
 from fastapi.encoders import jsonable_encoder
 from oauthlib.oauth2 import LegacyApplicationClient
 from requests_oauthlib import OAuth2Session
@@ -14,6 +15,7 @@ from app.parsers import K2obj, M2obj, P2obj, T2obj, divinumofficium_structures
 from app.schemas import OldDateTemplateCreate, OrdinalsCreate
 
 logger = logging.getLogger(__name__)
+verbose = 0
 
 app = typer.Typer()
 
@@ -69,7 +71,8 @@ def upload(things, endpoint: str, client):
 
     with typer.progressbar(things) as progress:
         for entry in progress:
-            # print(dumps(jsonable_encoder(entry), indent=2))
+            if verbose > 1:
+                print(dumps(jsonable_encoder(entry), indent=2))
             resp = client.post(endpoint, json=jsonable_encoder(entry))
             if resp.status_code != 200:
                 raise Exception(
@@ -148,6 +151,7 @@ def parse_upload(
     psalms: Optional[bool] = None,
     temporal: Optional[bool] = None,
     sanctoral: Optional[bool] = None,
+    verbosity: int = 0,
 ):
     """
     Parse and upload something.
@@ -163,13 +167,16 @@ def parse_upload(
 
     Returns:
     """
+    global verbose
+    verbose = verbosity
+
     things = [martyrologies, psalms]
     if not things:
         logger.info("No output requested")
         return
 
-    # client = crud_login(host=host, user=user)
-    client = None
+    client = crud_login(host=host, user=user)
+    # client = None
 
     if martyrologies:
         parse_upload_martyrologies(root, lang, version, client, host)
@@ -232,14 +239,17 @@ def parse_upload_temporal(
 
     logger.info("Parsing Temporal files")
     feasts = []
-    print(root / f"{lang}/Tempora/")
     for fn in (root / f"{lang}/Tempora/").glob("*.txt"):
-        feasts.append(T2obj.parse_file(fn, lang, version))
+        resp = T2obj.parse_file(fn, lang, version)
+        if not resp:
+            continue
+        else:
+            feasts.append(resp)
 
     logger.info("Uploading Feasts to server.")
-    print(feasts)
 
-    # upload(feasts, endpoint, client)
+    endpoint = f"{host}/api/v1/calendar/feast"
+    upload(feasts, endpoint, client)
 
 
 def parse_upload_sanctoral(
@@ -263,10 +273,9 @@ def parse_upload_sanctoral(
     feasts = K2obj.parse_file(fn, lang, version)
 
     logger.info("Uploading Feasts to server.")
-    print(dumps(jsonable_encoder(feasts), indent=2))
-    # print(feasts)
 
-    # upload(feasts, endpoint, client)
+    endpoint = f"{host}/api/v1/calendar/feast"
+    upload(feasts, endpoint, client)
 
 
 if __name__ == "__main__":
