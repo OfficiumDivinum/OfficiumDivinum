@@ -6,7 +6,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi_utils.cbv import cbv
 from sqlalchemy.orm import Session
 
-from app import models
+from app import models, schemas
 from app.api import deps
 from app.crud.base import CreateSchemaType, CRUDType, SchemaType, UpdateSchemaType
 
@@ -62,7 +62,9 @@ def create_item_crud(
             print(items, jsonable_encoder(items))
             return jsonable_encoder(items)
 
-        @router.post("/", response_model=item_schema)
+        @router.post(
+            "/", response_model=item_schema, responses={404: {"model": schemas.Msg}}
+        )
         def create_item(self, *, item_in: item_create_schema) -> Any:
             """
             Match an object if it exists, or if not create one, recursively through the
@@ -88,7 +90,9 @@ def create_item_crud(
             )
             return jsonable_encoder(item)
 
-        @router.put("/{id}", response_model=item_schema)
+        @router.put(
+            "/{id}", response_model=item_schema, responses={404: {"model": schemas.Msg}}
+        )
         def update_item(
             self,
             id: int,
@@ -105,7 +109,9 @@ def create_item_crud(
             item = item_crud.update(db=self.db, db_obj=item, obj_in=item_in)
             return jsonable_encoder(item)
 
-        @router.get("/{id}", response_model=item_schema)
+        @router.get(
+            "/{id}", response_model=item_schema, responses={404: {"model": schemas.Msg}}
+        )
         def read_item(
             self,
             id: int,
@@ -120,7 +126,9 @@ def create_item_crud(
                 raise HTTPException(status_code=400, detail="Not enough permissions")
             return jsonable_encoder(item)
 
-        @router.delete("/{id}", response_model=item_schema)
+        @router.delete(
+            "/{id}", response_model=item_schema, responses={404: {"model": schemas.Msg}}
+        )
         def delete_item(
             self,
             id: int,
