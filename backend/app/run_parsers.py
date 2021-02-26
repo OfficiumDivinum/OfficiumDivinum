@@ -3,6 +3,7 @@ import os
 from getpass import getpass
 from json import dumps
 from pathlib import Path
+from typing import Bool, Optional
 
 import typer
 from fastapi.encoders import jsonable_encoder
@@ -35,6 +36,15 @@ translations = {
 
 
 def crud_login(host="localhost", user="admin@2e0byo.co.uk"):
+    """
+
+    Args:
+      host: (Default value = "localhost")
+      user: (Default value = "admin@2e0byo.co.uk")
+
+    Returns:
+
+    """
     logger.info("Logging in.")
     oauth = OAuth2Session(client=LegacyApplicationClient(client_id=None))
     token = oauth.fetch_token(
@@ -45,18 +55,22 @@ def crud_login(host="localhost", user="admin@2e0byo.co.uk"):
     return OAuth2Session(token=token)
 
 
-@app.command()
 def parse_upload_martyrologies(
-    root: Path,
-    lang: str,
-    version: str,
-    user: str,
-    host: str = "http://localhost",
+    root: Path, lang: str, version: str, client: OAuth2Session, host: str
 ):
-    """Parse and upload martyrologies."""
+    """
+    Parse and upload Martyrologies.
 
-    client = crud_login(host=host, user=user)
+    Args:
+      root: Path: Root path.
+      lang: str: Language.
+      version: str: Version.
+      client: OAuth2Session:  Client for server.
+      host: str: Server url.
 
+
+    Returns:
+    """
     logger.info("Parsing source files.")
 
     title = translations[lang.lower()]["martyrology_title"]
@@ -109,15 +123,66 @@ def parse_upload_martyrologies(
 
 
 @app.command()
-def parse_upload_psalms(
+def parse_upload(
     root: Path,
     lang: str,
     version: str,
     user: str,
     host: str = "http://localhost",
+    martyrologies: Optional[Bool] = None,
+    psalms: Optional[Bool] = None,
 ):
+    """
+    Parse and upload something.
+
+    Args:
+      root: Path: Root dir containing DO sources (before the Language)
+      lang: str: Language.
+      version: str: Version to use, e.g. 1960.
+      user: str: Username at server.
+      host: str: Hostname of server. (Default value = "http://localhost")
+      martyrologies: Optional[Bool]:  Parse Martyrologies. (Default value = None)
+      psalms: Optional[Bool]:  Parse Psalms. (Default value = None)
+      root: Path:
+      lang: str:
+      version: str:
+      user: str:
+      host: str:  (Default value = "http://localhost")
+      martyrologies: Optional[Bool]:  (Default value = None)
+      psalms: Optional[Bool]:  (Default value = None)
+
+    Returns:
+    """
+    things = [martyrologies, psalms]
+    if not things:
+        logger.info("No output requested")
+        return
 
     client = crud_login(host=host, user=user)
+
+    if martyrologies:
+        parse_upload_martyrologies(root, lang, version, client, host)
+
+    if psalms:
+        parse_upload_psalms(root, lang, version, client)
+
+
+def parse_upload_psalms(
+    root: Path, lang: str, version: str, client: OAuth2Session, host: str
+):
+    """
+    Parse and upload psalms.
+
+    Args:
+      root: Path: Root path.
+      lang: str: Language.
+      version: str: Version.
+      client: OAuth2Session:  Client for server.
+      host: str: Server url.
+
+
+    Returns:
+    """
 
     logger.info("Parsing psalm files")
     psalms = []
