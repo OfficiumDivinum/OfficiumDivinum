@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Bool, Column, ForeignKey, Integer, String, Table
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
@@ -24,7 +24,7 @@ commemoration_association_table = Table(
 
 class RankMixin:
     rank_name = Column(String, index=True)
-    rank_defeatable = Column(Bool)
+    rank_defeatable = Column(Boolean)
 
 
 class Commemoration(Base, RankMixin):
