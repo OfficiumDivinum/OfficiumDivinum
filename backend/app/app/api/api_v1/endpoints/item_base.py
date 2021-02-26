@@ -37,7 +37,11 @@ def create_item_crud(
         db: Session = Depends(deps.get_db)
         current_user: models.User = Depends(deps.get_current_active_user)
 
-        @router.get("/", response_model=List[item_schema])
+        @router.get(
+            "/",
+            response_model=List[item_schema],
+            responses={400: {"model": schemas.ErrorMsg}},
+        )
         def read_items(
             self,
             skip: int = Query(0, gt=-1),
