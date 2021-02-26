@@ -3,14 +3,14 @@ import os
 from getpass import getpass
 from json import dumps
 from pathlib import Path
-from typing import Bool, Optional
+from typing import Optional
 
 import typer
 from fastapi.encoders import jsonable_encoder
 from oauthlib.oauth2 import LegacyApplicationClient
 from requests_oauthlib import OAuth2Session
 
-from app.parsers import M2obj, P2obj, divinumofficium_structures
+from app.parsers import M2obj, P2obj, T2obj, divinumofficium_structures
 from app.schemas import OldDateTemplateCreate, OrdinalsCreate
 
 logger = logging.getLogger(__name__)
@@ -55,6 +55,28 @@ def crud_login(host="localhost", user="admin@2e0byo.co.uk"):
     return OAuth2Session(token=token)
 
 
+def upload(things, endpoint: str, client):
+    """
+    Upload to server.
+
+    Args:
+      things: Things to upload
+      endpoint: str: Endpoint to use
+      client: Client
+
+    Returns:
+    """
+
+    with typer.progressbar(things) as progress:
+        for entry in progress:
+            # print(dumps(jsonable_encoder(entry), indent=2))
+            resp = client.post(endpoint, json=jsonable_encoder(entry))
+            if resp.status_code != 200:
+                raise Exception(
+                    f"Failed to upload, response was {dumps(resp.json(), indent=2)}"
+                )
+
+
 def parse_upload_martyrologies(
     root: Path, lang: str, version: str, client: OAuth2Session, host: str
 ):
@@ -67,7 +89,11 @@ def parse_upload_martyrologies(
       version: str: Version.
       client: OAuth2Session:  Client for server.
       host: str: Server url.
-
+      root: Path:
+      lang: str:
+      version: str:
+      client: OAuth2Session:
+      host: str:
 
     Returns:
     """
@@ -107,19 +133,8 @@ def parse_upload_martyrologies(
 
     logger.info("Uploading Martyrologies to server.")
 
-    with typer.progressbar(martyrology) as progress:
-        for entry in progress:
-            endpoint = f"{host}/api/v1/martyrology/"
-            if template_id:
-                entry.old_date_template_id = template_id
-            else:
-                entry.old_date_template = template
-            # print(dumps(jsonable_encoder(entry), indent=2))
-            resp = client.post(endpoint, json=jsonable_encoder(entry))
-            if resp.status_code != 200:
-                raise Exception(
-                    f"Failed to upload, response was {dumps(resp.json(), indent=2)}"
-                )
+    endpoint = f"{host}/api/v1/martyrology/"
+    upload(martyrology, endpoint, client)
 
 
 @app.command()
@@ -129,8 +144,9 @@ def parse_upload(
     version: str,
     user: str,
     host: str = "http://localhost",
-    martyrologies: Optional[Bool] = None,
-    psalms: Optional[Bool] = None,
+    martyrologies: Optional[bool] = None,
+    psalms: Optional[bool] = None,
+    temporal: Optional[bool] = None,
 ):
     """
     Parse and upload something.
@@ -143,13 +159,6 @@ def parse_upload(
       host: str: Hostname of server. (Default value = "http://localhost")
       martyrologies: Optional[Bool]:  Parse Martyrologies. (Default value = None)
       psalms: Optional[Bool]:  Parse Psalms. (Default value = None)
-      root: Path:
-      lang: str:
-      version: str:
-      user: str:
-      host: str:  (Default value = "http://localhost")
-      martyrologies: Optional[Bool]:  (Default value = None)
-      psalms: Optional[Bool]:  (Default value = None)
 
     Returns:
     """
@@ -158,13 +167,17 @@ def parse_upload(
         logger.info("No output requested")
         return
 
-    client = crud_login(host=host, user=user)
+    # client = crud_login(host=host, user=user)
+    client = None
 
     if martyrologies:
         parse_upload_martyrologies(root, lang, version, client, host)
 
     if psalms:
-        parse_upload_psalms(root, lang, version, client)
+        parse_upload_psalms(root, lang, version, client, host)
+
+    if temporal:
+        parse_upload_temporal(root, lang, version, client, host)
 
 
 def parse_upload_psalms(
@@ -180,7 +193,6 @@ def parse_upload_psalms(
       client: OAuth2Session:  Client for server.
       host: str: Server url.
 
-
     Returns:
     """
 
@@ -194,16 +206,36 @@ def parse_upload_psalms(
     verses = []
     for psalm in psalms:
         verses += psalm
+    endpoint = f"{host}/api/v1/bible/"
+    upload(verses, endpoint, client)
 
-    with typer.progressbar(verses) as progress:
-        for entry in progress:
-            endpoint = f"{host}/api/v1/bible/"
-            # print(dumps(jsonable_encoder(entry), indent=2))
-            resp = client.post(endpoint, json=jsonable_encoder(entry))
-            if resp.status_code != 200:
-                raise Exception(
-                    f"Failed to upload, response was {dumps(resp.json(), indent=2)}"
-                )
+
+def parse_upload_temporal(
+    root: Path, lang: str, version: str, client: OAuth2Session, host: str
+):
+    """
+    Parse and upload Temporal.
+
+    Args:
+      root: Path: Root path.
+      lang: str: Language.
+      version: str: Version.
+      client: OAuth2Session:  Client for server.
+      host: str: Server url.
+
+    Returns:
+    """
+
+    logger.info("Parsing Temporal files")
+    feasts = []
+    print(root / f"{lang}/Tempora/")
+    for fn in (root / f"{lang}/Tempora/").glob("*.txt"):
+        feasts.append(T2obj.parse_file(fn, lang, version))
+
+    logger.info("Uploading Feasts to server.")
+    print(feasts)
+
+    # upload(feasts, endpoint, client)
 
 
 if __name__ == "__main__":
