@@ -19,7 +19,11 @@ from app.utils import (
 router = APIRouter()
 
 
-@router.post("/login/access-token", response_model=schemas.Token)
+@router.post(
+    "/login/access-token",
+    response_model=schemas.Token,
+    responses={404: {"model": schemas.ErrorMsg}, 400: {"model": schemas.ErrorMsg}},
+)
 def login_access_token(
     db: Session = Depends(deps.get_db), form_data: OAuth2PasswordRequestForm = Depends()
 ) -> Any:
@@ -40,13 +44,21 @@ def login_access_token(
     }
 
 
-@router.post("/login/test-token", response_model=schemas.User)
+@router.post(
+    "/login/test-token",
+    response_model=schemas.User,
+    responses={404: {"model": schemas.ErrorMsg}, 400: {"model": schemas.ErrorMsg}},
+)
 def test_token(current_user: models.User = Depends(deps.get_current_user)) -> Any:
     """Test access token."""
     return current_user
 
 
-@router.post("/password-recovery/{email}", response_model=schemas.Msg)
+@router.post(
+    "/password-recovery/{email}",
+    response_model=schemas.ErrorMsg,
+    responses={404: {"model": schemas.ErrorMsg}, 400: {"model": schemas.ErrorMsg}},
+)
 def recover_password(email: str, db: Session = Depends(deps.get_db)) -> Any:
     """Password Recovery."""
     user = crud.user.get_by_email(db, email=email)
@@ -65,8 +77,8 @@ def recover_password(email: str, db: Session = Depends(deps.get_db)) -> Any:
 
 @router.post(
     "/reset-password/",
-    response_model=schemas.Msg,
-    responses={400: {"model": schemas.Msg}},
+    response_model=schemas.ErrorMsg,
+    responses={404: {"model": schemas.ErrorMsg}, 400: {"model": schemas.ErrorMsg}},
 )
 def reset_password(
     token: str = Body(...),

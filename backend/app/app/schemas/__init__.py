@@ -11,7 +11,7 @@ from .martyrology import (  # noqa
     Ordinals,
     OrdinalsCreate,
 )
-from .msg import Msg  # noqa
+from .msg import ErrorMsg, Msg  # noqa
 from .office_parts import Block, BlockCreate, BlockInDB, BlockUpdate  # noqa
 from .token import Token, TokenPayload  # noqa
 from .user import User, UserCreate, UserInDB, UserUpdate  # noqa
