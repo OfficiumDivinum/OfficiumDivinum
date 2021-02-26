@@ -96,3 +96,4 @@ class Feast(Base, RankMixin):
         lazy="joined",
     )
     language = Column(String, index=True)
+    datestr = Column(String, index=True)

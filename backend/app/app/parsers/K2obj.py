@@ -1,13 +1,14 @@
 """Parse Divinumofficium's calendar tabulae into feast objects."""
-
 from pathlib import Path
 
+from devtools import debug
+
 from app.DSL import months
-from app.DSL.divinumofficium_structures import rank_table_by_calendar
+from app.parsers.divinumofficium_structures import rank_table_by_calendar
 from app.schemas import CommemorationCreate, FeastCreate
 
 
-def parse_line(line: str, version: str) -> FeastCreate:
+def parse_line(line: str, language: str, version: str) -> FeastCreate:
     """Parse a line of a divinumofficium calendar file."""
 
     line = line.strip()
@@ -29,6 +30,7 @@ def parse_line(line: str, version: str) -> FeastCreate:
     if len(parts) > 5 and parts[4]:
         commemorations = []
         commemoration_rank = None
+        commemoration_rank_name = "Feria"
         for part in parts[4:]:
             try:
                 commemoration_rank = float(part)  # noqa
@@ -39,13 +41,18 @@ def parse_line(line: str, version: str) -> FeastCreate:
                     commemoration_rank_name = rank_table[int(float(part) + 0.5)]
                     commemoration_defeatable = True
             except ValueError:
-                commemorations.append(
-                    CommemorationCreate(
-                        name=part,
-                        rank_name=commemoration_rank_name,
-                        defeatable=commemoration_defeatable,
-                    )
-                )
+                commemorations.append(part)
+
+        commemorations = [
+            CommemorationCreate(
+                name=x,
+                rank_name=commemoration_rank_name,
+                rank_defeatable=commemoration_defeatable,
+                language=language,
+                version=version,
+            )
+            for x in commemorations
+        ]
 
     qualifiers = None
     if date != duplicate_date:
@@ -67,11 +74,12 @@ def parse_line(line: str, version: str) -> FeastCreate:
         version=version,
         type_=Type,
         commemorations=commemorations,
-        defeatable=defeatable,
+        rank_defeatable=defeatable,
+        language=language,
     )
 
 
-def parse_file(fn: Path, version: str):
+def parse_file(fn: Path, language: str, version: str):
     """
     Parse a divinumofficium calendar file.
 
@@ -90,7 +98,7 @@ def parse_file(fn: Path, version: str):
 
     with fn.open() as f:
         for line in f.readlines():
-            parsed = parse_line(line, version)
+            parsed = parse_line(line, language, version)
             if parsed:
                 year.append(parsed)
 

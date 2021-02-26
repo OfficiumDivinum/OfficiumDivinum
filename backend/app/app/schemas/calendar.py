@@ -41,6 +41,7 @@ class FeastBase(BaseModel):
     commemorations: Optional[List[Commemoration]]
     octave: Optional[str] = Field(None, nullable=True)
     language: str
+    datestr: str
 
 
 class FeastCreate(FeastBase):
