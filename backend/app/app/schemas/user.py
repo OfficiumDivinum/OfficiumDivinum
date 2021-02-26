@@ -1,14 +1,14 @@
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 
 
 # Shared properties
 class UserBase(BaseModel):
-    email: Optional[EmailStr] = None
+    email: Optional[EmailStr] = Field(None, nullable=True)
     is_active: Optional[bool] = True
     is_superuser: bool = False
-    full_name: Optional[str] = None
+    full_name: Optional[str] = Field(None, nullable=True)
 
 
 # Properties to receive via API on creation
@@ -19,7 +19,7 @@ class UserCreate(UserBase):
 
 # Properties to receive via API on update
 class UserUpdate(UserBase):
-    password: Optional[str] = None
+    password: Optional[str] = Field(None, nullable=True)
 
 
 class UserInDBBase(UserBase):

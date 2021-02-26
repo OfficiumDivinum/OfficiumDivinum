@@ -1,6 +1,6 @@
 from typing import Any, List
 
-from fastapi import APIRouter, Body, Depends, HTTPException
+from fastapi import APIRouter, Body, Depends, HTTPException, Query
 from fastapi.encoders import jsonable_encoder
 from pydantic.networks import EmailStr
 from sqlalchemy.orm import Session
@@ -16,13 +16,11 @@ router = APIRouter()
 @router.get("/", response_model=List[schemas.User])
 def read_users(
     db: Session = Depends(deps.get_db),
-    skip: int = 0,
-    limit: int = 100,
+    skip: int = Query(0, gt=-1),
+    limit: int = Query(100, gt=0),
     current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
-    """
-    Retrieve users.
-    """
+    """Retrieve users."""
     users = crud.user.get_multi(db, skip=skip, limit=limit)
     return users
 
@@ -34,9 +32,7 @@ def create_user(
     user_in: schemas.UserCreate,
     current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
-    """
-    Create new user.
-    """
+    """Create new user."""
     user = crud.user.get_by_email(db, email=user_in.email)
     if user:
         raise HTTPException(
@@ -51,7 +47,7 @@ def create_user(
     return user
 
 
-@router.put("/me", response_model=schemas.User)
+@router.put("/me", response_model=schemas.User, response_model_exclude_unset=True)
 def update_user_me(
     *,
     db: Session = Depends(deps.get_db),
@@ -60,9 +56,7 @@ def update_user_me(
     email: EmailStr = Body(None),
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
-    """
-    Update own user.
-    """
+    """Update own user."""
     current_user_data = jsonable_encoder(current_user)
     user_in = schemas.UserUpdate(**current_user_data)
     if password is not None:
@@ -72,17 +66,20 @@ def update_user_me(
     if email is not None:
         user_in.email = email
     user = crud.user.update(db, db_obj=current_user, obj_in=user_in)
+
     return user
 
 
-@router.get("/me", response_model=schemas.User)
+@router.get("/me", response_model=schemas.User, response_model_exclude_unset=True)
 def read_user_me(
     db: Session = Depends(deps.get_db),
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
-    """
-    Get current user.
-    """
+    """Get current user."""
+    if not current_user.full_name:
+        delattr(current_user, "full_name")
+
+    print(jsonable_encoder(current_user))
     return current_user
 
 
@@ -94,9 +91,7 @@ def create_user_open(
     email: EmailStr = Body(...),
     full_name: str = Body(None),
 ) -> Any:
-    """
-    Create new user without the need to be logged in.
-    """
+    """Create new user without the need to be logged in."""
     if not settings.USERS_OPEN_REGISTRATION:
         raise HTTPException(
             status_code=403,
@@ -119,9 +114,7 @@ def read_user_by_id(
     current_user: models.User = Depends(deps.get_current_active_user),
     db: Session = Depends(deps.get_db),
 ) -> Any:
-    """
-    Get a specific user by id.
-    """
+    """Get a specific user by id."""
     user = crud.user.get(db, id=user_id)
     if user == current_user:
         return user
@@ -140,9 +133,7 @@ def update_user(
     user_in: schemas.UserUpdate,
     current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
-    """
-    Update a user.
-    """
+    """Update a user."""
     user = crud.user.get(db, id=user_id)
     if not user:
         raise HTTPException(

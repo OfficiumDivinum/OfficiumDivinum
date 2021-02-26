@@ -2,14 +2,14 @@ from typing import Optional
 
 from pydantic import Field
 
-from .office_parts import BlockBase, LineBase
+from .office_parts import LineBase
 
 
 class VerseBase(LineBase):
     language: str
     version: str
-    book: Optional[str] = None
-    aka: Optional[str] = None
+    book: Optional[str] = Field(None, nullable=True)
+    aka: Optional[str] = Field(None, nullable=True)
 
 
 class VerseInDB(VerseBase):

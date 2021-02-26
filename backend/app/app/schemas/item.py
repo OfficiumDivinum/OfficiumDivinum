@@ -1,12 +1,12 @@
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 # Shared properties
 class ItemBase(BaseModel):
-    title: Optional[str] = None
-    description: Optional[str] = None
+    title: Optional[str] = Field(None, nullable=True)
+    description: Optional[str] = Field(None, nullable=True)
 
 
 # Properties to receive on item creation

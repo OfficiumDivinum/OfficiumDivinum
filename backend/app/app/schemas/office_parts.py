@@ -2,28 +2,28 @@ from __future__ import annotations
 
 from typing import List, Optional, Union
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 # Shared properties
 class LineBase(BaseModel):
-    prefix: Optional[str] = None
-    suffix: Optional[str] = None
-    rubrics: Optional[str] = None
-    content: Optional[str] = None
+    prefix: Optional[str] = Field(None, nullable=True)
+    suffix: Optional[str] = Field(None, nullable=True)
+    rubrics: Optional[str] = Field(None, nullable=True)
+    content: Optional[str] = Field(None, nullable=True)
 
 
 class BlockBase(BaseModel):
-    title: Optional[str] = None
-    rubrics: Optional[str] = None
-    parts: Optional[List[Union[LineBase, None]]] = None
+    title: Optional[str] = Field(None, nullable=True)
+    rubrics: Optional[str] = Field(None, nullable=True)
+    parts: Optional[List[Union[LineBase, None]]] = Field(None, nullable=True)
 
 
 class Office(BaseModel):
-    officeHour: Optional[str] = None
-    officeDate: Optional[str] = None
-    officeClass: Optional[str] = None
-    parts: Union[BlockBase, LineBase] = None
+    officeHour: Optional[str] = Field(None, nullable=True)
+    officeDate: Optional[str] = Field(None, nullable=True)
+    officeClass: Optional[str] = Field(None, nullable=True)
+    parts: Union[BlockBase, LineBase] = Field(None, nullable=True)
 
 
 # Properties to receive on item creation

@@ -40,8 +40,8 @@ def create_item_crud(
         @router.get("/", response_model=List[item_schema])
         def read_items(
             self,
-            skip: int = 0,
-            limit: int = 100,
+            skip: int = Query(0, gt=-1),
+            limit: int = Query(100, gt=0),
             test: List = [2, 4],
             filters: Optional[List] = Depends(filter_dict),
         ) -> Any:
