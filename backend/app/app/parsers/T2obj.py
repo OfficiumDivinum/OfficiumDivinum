@@ -8,7 +8,7 @@ from app.DSL import days, months, ordinals, specials
 from app.schemas.calendar import FeastCreate
 
 
-def parse_DO_sections(lines: list) -> list:
+def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> list:
     """
     Parse DO files into lists per section.
 
@@ -22,25 +22,34 @@ def parse_DO_sections(lines: list) -> list:
     sections = {}
     current_section = None
     content = []
+    subcontent = []
     for line in lines:
         line = line.strip()
         if line == "_":
+            content.append(subcontent)
+            subcontent = []
             continue
-        if line.startswith("[") and line.endswith("]"):
+        header = re.search(section_header_regex, line)
+        if header:
             if current_section:
 
                 try:
-                    while content[-1].strip() == "":
-                        content.pop()
+                    while subcontent[-1].strip() == "":
+                        subcontent.pop()
                 except IndexError:
-                    content = None
+                    subcontent = None
+
+                content.append(subcontent)
+                if len(content) == 1:
+                    content = content[0]
 
                 sections[current_section] = content
 
-            current_section = line.strip("[]")
+            current_section = header.groups()[0]
             content = []
+            subcontent = []
         else:
-            content.append(line)
+            subcontent.append(line)
     return sections
 
 

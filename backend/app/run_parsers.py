@@ -11,7 +11,7 @@ from fastapi.encoders import jsonable_encoder
 from oauthlib.oauth2 import LegacyApplicationClient
 from requests_oauthlib import OAuth2Session
 
-from app.parsers import K2obj, M2obj, P2obj, T2obj, divinumofficium_structures
+from app.parsers import H2obj, K2obj, M2obj, P2obj, T2obj, divinumofficium_structures
 from app.schemas import OldDateTemplateCreate, OrdinalsCreate
 
 logger = logging.getLogger(__name__)
@@ -151,6 +151,7 @@ def parse_upload(
     psalms: Optional[bool] = None,
     temporal: Optional[bool] = None,
     sanctoral: Optional[bool] = None,
+    hymns: Optional[bool] = None,
     verbosity: int = 0,
 ):
     """
@@ -175,8 +176,8 @@ def parse_upload(
         logger.info("No output requested")
         return
 
-    client = crud_login(host=host, user=user)
-    # client = None
+    # client = crud_login(host=host, user=user)
+    client = None
 
     if martyrologies:
         parse_upload_martyrologies(root, lang, version, client, host)
@@ -189,6 +190,9 @@ def parse_upload(
 
     if sanctoral:
         parse_upload_sanctoral(root, lang, version, client, host)
+
+    if hymns:
+        parse_upload_hymns(root, lang, version, client, host)
 
 
 def parse_upload_psalms(
@@ -276,6 +280,31 @@ def parse_upload_sanctoral(
 
     endpoint = f"{host}/api/v1/calendar/feast"
     upload(feasts, endpoint, client)
+
+
+def parse_upload_hymns(
+    root: Path, lang: str, version: str, client: OAuth2Session, host: str
+):
+    """
+    Parse and upload Hymns.
+
+    Args:
+      root: Path: Root path.
+      lang: str: Language.
+      version: str: Version.
+      client: OAuth2Session:  Client for server.
+      host: str: Server url.
+
+    Returns:
+    """
+    logger.info("Parsing files and extracting all Hymns")
+    for fn in (root / f"{lang}/Tempora").glob("*.txt"):
+        H2obj.parse_file(fn, lang, version)
+
+    # logger.info("Uploading Hymns to server.")
+
+    # endpoint = f"{host}/api/v1/calendar/feast"
+    # upload(feasts, endpoint, client)
 
 
 if __name__ == "__main__":
