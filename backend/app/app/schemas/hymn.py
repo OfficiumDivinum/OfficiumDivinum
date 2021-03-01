@@ -41,7 +41,7 @@ class Hymn(HymnInDB):
 
 
 class HymnCreate(HymnBase):
-    pass
+    parts: List[VerseCreate]
 
 
 class HymnUpdate(HymnCreate):
