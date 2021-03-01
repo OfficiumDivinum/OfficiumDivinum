@@ -118,7 +118,9 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
             except AttributeError:
                 crossref = None
 
-            debug(key, section)
+            # remove odd line telling DO it's a hymn (seems to happen precisely once)
+            if "#Hymnus" in section[0][0]:
+                section[0] = section[0][1:]
 
             # remove rubbish at beginning of line
             nasty_stuff = r".*v. "
