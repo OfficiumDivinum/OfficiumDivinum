@@ -36,6 +36,10 @@ class HymnInDB(HymnBase):
     id: int = Field(None, nullable=True)
 
 
+class Hymn(HymnInDB):
+    pass
+
+
 class HymnCreate(HymnBase):
     pass
 

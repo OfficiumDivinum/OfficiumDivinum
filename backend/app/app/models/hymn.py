@@ -27,15 +27,15 @@ class HymnLine(Base, LineMixin):
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="hymn_lines")
     hymn_verses = relationship(
-        "Hymn_Verse",
+        "HymnVerse",
         secondary=hymn_line_association_table,
         back_populates="lines",
         lazy="joined",
     )
 
 
-class Hymn_Verse(Base, BlockMixin):
-    """Hymn_Verses of hymns."""
+class HymnVerse(Base, BlockMixin):
+    """HymnVerses of hymns."""
 
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="hymn_verses")
@@ -62,7 +62,7 @@ class Hymn(Base, BlockMixin):
     owner = relationship("User", back_populates="hymns")
 
     parts = relationship(
-        "Hymn_Verse",
+        "HymnVerse",
         secondary=hymn_verse_association_table,
         back_populates="hymns",
         lazy="joined",

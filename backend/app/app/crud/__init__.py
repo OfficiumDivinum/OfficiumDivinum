@@ -1,5 +1,6 @@
 from .crud_bible import bible  # noqa
 from .crud_calendar import commemoration, feast  # noqa
+from .crud_hymn import hymn  # noqa
 from .crud_item import item  # noqa
 from .crud_martyrology import martyrology, old_date_template, ordinals  # noqa
 from .crud_user import user  # noqa

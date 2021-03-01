@@ -5,18 +5,18 @@ from .base import CRUDWithOwnerBase
 
 class CRUDHymnVerse(
     CRUDWithOwnerBase[
-        models.hymn.Verse, schemas.hymn.VerseCreate, schemas.bible.VerseUpdate
+        models.hymn.HymnVerse, schemas.hymn.VerseCreate, schemas.bible.VerseUpdate
     ]
 ):
     pass
 
 
-verse = CRUDHymnVerse(models.hymn.Verse)
+hymn_verse = CRUDHymnVerse(models.hymn.HymnVerse)
 
 
 class CRUDHymnHymn(
     CRUDWithOwnerBase[
-        models.hymn.Hymn, schemas.hymn.HymnCreate, schemas.bible.HymnUpdate
+        models.hymn.Hymn, schemas.hymn.HymnCreate, schemas.hymn.HymnUpdate
     ]
 ):
     pass
