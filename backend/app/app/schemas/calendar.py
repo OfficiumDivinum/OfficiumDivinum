@@ -2,18 +2,22 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+from .custom_types import Datestr, RankLiteral
+
 
 class CommemorationBase(BaseModel):
     """Common Commemoration properties."""
 
     name: str
     version: str
-    rank_name: str
+    rank_name: RankLiteral
     rank_defeatable: bool
 
 
 class CommemorationCreate(CommemorationBase):
     """Properties to recieve on creation."""
+
+    datestr: Datestr
 
 
 class CommemorationInDBBase(CommemorationBase):
@@ -36,7 +40,7 @@ class FeastBase(BaseModel):
     name: str = "Feria"
     type_: str
     version: str
-    rank_name: str
+    rank_name: RankLiteral
     rank_defeatable: bool
     commemorations: Optional[List[Commemoration]]
     octave: Optional[str] = Field(None, nullable=True)
@@ -48,6 +52,7 @@ class FeastCreate(FeastBase):
     """Properties to recieve on creation."""
 
     commemorations: Optional[List[CommemorationCreate]]
+    datestr: Datestr
 
 
 class FeastInDBBase(FeastBase):

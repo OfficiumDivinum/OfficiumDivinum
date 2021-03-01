@@ -3,6 +3,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+from .custom_types import Datestr
 from .office_parts import BlockBase, LineBase
 
 
@@ -84,6 +85,7 @@ class MartyrologyCreate(MartyrologyBase):
     julian_date: Optional[str] = Field(None, nullable=True)
     old_date_template: Optional[OldDateTemplateCreate] = Field(None, nullable=True)
     parts: Optional[List[LineBase]] = Field(None, nullable=True)
+    datestr: Datestr
 
 
 class MartyrologyUpdate(MartyrologyCreate):
