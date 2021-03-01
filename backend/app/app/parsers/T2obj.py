@@ -27,6 +27,7 @@ def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> list:
         line = re.sub(r"\[([a-z])\]", "_\1_", line)
         line = line.strip()
         if line == "_":
+            subcontent = [x.strip() for x in subcontent if x.strip() != ""]
             content.append(subcontent)
             subcontent = []
             continue
@@ -34,11 +35,7 @@ def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> list:
         if header:
             if current_section:
 
-                try:
-                    while subcontent[-1].strip() == "":
-                        subcontent.pop()
-                except IndexError:
-                    subcontent = []
+                subcontent = [x.strip() for x in subcontent if x.strip() != ""]
 
                 content.append(subcontent)
                 if len(content) == 1:

@@ -176,8 +176,8 @@ def parse_upload(
         logger.info("No output requested")
         return
 
-    client = crud_login(host=host, user=user)
-    # client = None
+    # client = crud_login(host=host, user=user)
+    client = None
 
     if martyrologies:
         parse_upload_martyrologies(root, lang, version, client, host)
@@ -192,7 +192,7 @@ def parse_upload(
         parse_upload_sanctoral(root, lang, version, client, host)
 
     if hymns:
-        parse_upload_hymns(root, lang, version, client, host)
+        parse_upload_hymns(root, lang, client, host)
 
 
 def parse_upload_psalms(
@@ -282,9 +282,7 @@ def parse_upload_sanctoral(
     upload(feasts, endpoint, client)
 
 
-def parse_upload_hymns(
-    root: Path, lang: str, version: str, client: OAuth2Session, host: str
-):
+def parse_upload_hymns(root: Path, lang: str, client: OAuth2Session, host: str):
     """
     Parse and upload Hymns.
 
@@ -304,7 +302,7 @@ def parse_upload_hymns(
     hymns = []
     for fns in generators:
         for fn in fns:
-            hymns.append(H2obj.parse_file(fn, lang, version))
+            hymns.append(H2obj.parse_file(fn, lang))
 
     logger.info("Uploading Hymns to server.")
 

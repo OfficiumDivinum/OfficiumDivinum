@@ -94,11 +94,14 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
     else:
         section_header_regex = r"\[(.*)\]"
 
+    debug(fn)
+
     version = guess_version(fn)
 
     lines = fn.open().readlines()
 
     sections = parse_DO_sections(lines, section_header_regex)
+    # debug(sections)
     hymns = []
     for key, section in sections.items():
         if "Hymnus" in key:
@@ -111,9 +114,11 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
 
             # get DO key if it's there
             try:
-                crossref = re.search(r".*({.*}).*").groups()[0]
-            except ValueError:
+                crossref = re.search(r".*({.*}).*", key).groups()[0]
+            except AttributeError:
                 crossref = None
+
+            debug(key, section)
 
             # remove rubbish at beginning of line
             nasty_stuff = r".*v. "
