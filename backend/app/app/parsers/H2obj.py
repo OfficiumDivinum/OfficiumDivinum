@@ -30,20 +30,30 @@ def unicode_to_ascii(data, cleanup: bool = True):
 
 
 def parse_file(fn: Path, lang: str, version: str) -> List[HymnCreate]:
-    # print(fn)
+    if "Ordinarium" in str(fn):
+        section_header_regex = r"#(.*)"
+    else:
+        section_header_regex = r"\[(.*)\]"
+
     lines = fn.open().readlines()
 
-    sections = parse_DO_sections(lines)
+    sections = parse_DO_sections(lines, section_header_regex)
     hymns = []
     for key, section in sections.items():
         if "Hymnus" in key:
             # skip links
+            if not section:
+                continue  # something like 'Capitulum Hymnus...'
+
             if len(section) == 1:
                 continue
 
             # remove rubbish at beginning of line
             nasty_stuff = r".*v. "
             section[0][0] = re.sub(nasty_stuff, "", section[0][0])
+
+            nasty_stuff = r".*\* "
+            section[-1][0] = re.sub(nasty_stuff, "", section[-1][0])
 
             # create verse objects
             verses = []
@@ -54,21 +64,22 @@ def parse_file(fn: Path, lang: str, version: str) -> List[HymnCreate]:
                     verses.append(VerseCreate(parts=verse, rubrics=rubrics))
                     verse = []
                     rubrics = None
-                if thing[0].startswith("!"):
-                    rubrics = thing[0][1:]
+                try:
+                    if thing[0].startswith("!"):
+                        rubrics = thing[0][1:]
+                except TypeError:
+                    print(section)
+                    raise Exception
                 else:
                     verse = [LineBase(content=i) for i in thing]
             verses.append(VerseCreate(parts=verse, rubrics=rubrics))
-            debug(verses)
-            print("here")
+            # debug(verses)
 
-            debug(verses[0].parts)
+            # debug(verses[0].parts)
             title = re.search(r"(.*)[\.,;:]*", verses[0].parts[0].content).groups()[0]
             title = unicode_to_ascii(title)
             hymns.append(
                 HymnCreate(title=title, parts=verses, language=lang, version=version)
             )
-            debug(hymns)
 
-    if hymns:
-        debug(hymns)
+    return hymns

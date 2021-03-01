@@ -298,13 +298,20 @@ def parse_upload_hymns(
     Returns:
     """
     logger.info("Parsing files and extracting all Hymns")
-    for fn in (root / f"{lang}/Tempora").glob("*.txt"):
-        H2obj.parse_file(fn, lang, version)
+    candidates = ["Commune", "Sancti", "Tempora", "Ordinarium"]
+    generators = [(root / f"{lang}/{i}").glob("*.txt") for i in candidates]
 
-    # logger.info("Uploading Hymns to server.")
+    hymns = []
+    for fns in generators:
+        for fn in fns:
+            hymns.append(H2obj.parse_file(fn, lang, version))
 
-    # endpoint = f"{host}/api/v1/calendar/feast"
-    # upload(feasts, endpoint, client)
+    debug(hymns)
+
+    logger.info("Uploading Hymns to server.")
+
+    endpoint = f"{host}/api/v1/hymn/"
+    upload(hymn, endpoint, client)
 
 
 if __name__ == "__main__":
