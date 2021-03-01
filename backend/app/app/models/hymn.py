@@ -8,15 +8,15 @@ from .office_parts import BlockMixin, LineMixin
 hymn_line_association_table = Table(
     "hymn_line_association_table",
     Base.metadata,
-    Column("hymn_line_id", Integer, ForeignKey("hymnline.id"), primary_key=True),
-    Column("hymn_verse_id", ForeignKey("hymn_verse.id"), primary_key=True),
+    Column("hymnline_id", Integer, ForeignKey("hymnline.id"), primary_key=True),
+    Column("hymnverse_id", ForeignKey("hymnverse.id"), primary_key=True),
 )
 
 
 hymn_verse_association_table = Table(
     "hymn_verse_association_table",
     Base.metadata,
-    Column("hymn_verse_id", Integer, ForeignKey("hymn_verse.id"), primary_key=True),
+    Column("hymnverse_id", Integer, ForeignKey("hymnverse.id"), primary_key=True),
     Column("hymn_id", ForeignKey("hymn.id"), primary_key=True),
 )
 
@@ -26,10 +26,10 @@ class HymnLine(Base, LineMixin):
 
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="hymn_lines")
-    hymn_verses = relationship(
+    hymnverses = relationship(
         "HymnVerse",
         secondary=hymn_line_association_table,
-        back_populates="lines",
+        back_populates="parts",
         lazy="joined",
     )
 
@@ -43,7 +43,7 @@ class HymnVerse(Base, BlockMixin):
     parts = relationship(
         "HymnLine",
         secondary=hymn_line_association_table,
-        back_populates="hymn_verses",
+        back_populates="hymnverses",
         lazy="joined",
     )
 

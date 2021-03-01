@@ -27,3 +27,4 @@ class User(Base):
     hymns = relationship("Hymn", back_populates="owner")
     verses = relationship("Verse", back_populates="owner")
     hymn_lines = relationship("HymnLine", back_populates="owner")
+    hymn_verses = relationship("HymnVerse", back_populates="owner")

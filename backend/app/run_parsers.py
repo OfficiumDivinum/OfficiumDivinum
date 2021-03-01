@@ -176,8 +176,8 @@ def parse_upload(
         logger.info("No output requested")
         return
 
-    # client = crud_login(host=host, user=user)
-    client = None
+    client = crud_login(host=host, user=user)
+    # client = None
 
     if martyrologies:
         parse_upload_martyrologies(root, lang, version, client, host)
@@ -306,12 +306,10 @@ def parse_upload_hymns(
         for fn in fns:
             hymns.append(H2obj.parse_file(fn, lang, version))
 
-    debug(hymns)
-
     logger.info("Uploading Hymns to server.")
 
     endpoint = f"{host}/api/v1/hymn/"
-    upload(hymn, endpoint, client)
+    upload(hymns, endpoint, client)
 
 
 if __name__ == "__main__":
