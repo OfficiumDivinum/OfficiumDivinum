@@ -12,6 +12,7 @@ from app.db.base_class import Base
 
 from ..DSL import dsl_parser
 from .calendar import calendar_date_association_table
+from .office_parts import BlockMixin, LineMixin
 
 if TYPE_CHECKING:
     from .user import User  # noqa: F401
@@ -50,12 +51,9 @@ line_association_table = Table(
 
 
 @total_ordering
-class Martyrology(Base):
+class Martyrology(Base, BlockMixin):
     """Martyrology object in database."""
 
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    rubrics = Column(String)
     language = Column(String)
 
     datestr = Column(String, index=True)
@@ -159,15 +157,10 @@ class DateTable(Base):
     )
 
 
-class MartyrologyLine(Base):
-    """Base class for line objects."""
+class MartyrologyLine(Base, LineMixin):
+    """Lines of a martyrology entry."""
 
-    id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
-    rubrics = Column(String)
-    content = Column(String)
-    prefix = Column(String, index=True)
-    suffix = Column(String, index=True)
     martyrologies = relationship(
         "Martyrology",
         secondary=line_association_table,
