@@ -9,14 +9,14 @@ hymn_line_association_table = Table(
     "hymn_line_association_table",
     Base.metadata,
     Column("hymn_line_id", Integer, ForeignKey("hymnline.id"), primary_key=True),
-    Column("verse_id", ForeignKey("verse.id"), primary_key=True),
+    Column("hymn_verse_id", ForeignKey("hymn_verse.id"), primary_key=True),
 )
 
 
-verse_association_table = Table(
-    "verse_association_table",
+hymn_verse_association_table = Table(
+    "hymn_verse_association_table",
     Base.metadata,
-    Column("verse_id", Integer, ForeignKey("verse.id"), primary_key=True),
+    Column("hymn_verse_id", Integer, ForeignKey("hymn_verse.id"), primary_key=True),
     Column("hymn_id", ForeignKey("hymn.id"), primary_key=True),
 )
 
@@ -26,31 +26,31 @@ class HymnLine(Base, LineMixin):
 
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="hymn_lines")
-    verses = relationship(
-        "Verse",
+    hymn_verses = relationship(
+        "Hymn_Verse",
         secondary=hymn_line_association_table,
         back_populates="lines",
         lazy="joined",
     )
 
 
-class Verse(Base, BlockMixin):
-    """Verses of hymns."""
+class Hymn_Verse(Base, BlockMixin):
+    """Hymn_Verses of hymns."""
 
     owner_id = Column(Integer, ForeignKey("user.id"))
-    owner = relationship("User", back_populates="verses")
+    owner = relationship("User", back_populates="hymn_verses")
 
     lines = relationship(
         "HymnLine",
         secondary=hymn_line_association_table,
-        back_populates="verses",
+        back_populates="hymn_verses",
         lazy="joined",
     )
 
     hymns = relationship(
         "Hymn",
-        secondary=verse_association_table,
-        back_populates="verses",
+        secondary=hymn_verse_association_table,
+        back_populates="hymn_verses",
         lazy="joined",
     )
 
@@ -62,8 +62,8 @@ class Hymn(Base, BlockMixin):
     owner = relationship("User", back_populates="hymns")
 
     hymns = relationship(
-        "Verse",
-        secondary=verse_association_table,
+        "Hymn_Verse",
+        secondary=hymn_verse_association_table,
         back_populates="hymns",
         lazy="joined",
     )
