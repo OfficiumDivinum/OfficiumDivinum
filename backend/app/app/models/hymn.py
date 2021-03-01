@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, Table
+from sqlalchemy import Column, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
@@ -67,3 +67,5 @@ class Hymn(Base, BlockMixin):
         back_populates="hymns",
         lazy="joined",
     )
+    version: Column(String, index=True)
+    language: Column(String, index=True)
