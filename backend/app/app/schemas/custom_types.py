@@ -39,6 +39,18 @@ class Datestr(BaseModel):
         yield cls.validate
 
     @classmethod
+    def __modify_schema__(cls, field_schema):
+        """Update schema so we have some idea how to generate this stuff."""
+        field_schema.update(
+            examples=[
+                "Easter",
+                "1 Jan",
+                "Sun after 2 Jan LEAPYEAR OR 16 Jan NOTLEAPYEAR",
+                "Sun between 2 Jan 4 Jan OR 2 Jan",
+            ]
+        )
+
+    @classmethod
     def validate(cls, v):
         """Validate."""
         if not isinstance(v, str):
