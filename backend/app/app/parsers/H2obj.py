@@ -107,7 +107,13 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
                 continue  # something like 'Capitulum Hymnus...'
 
             if len(section) == 1:
-                continue
+                continue  # contains only a crossref
+
+            # get DO key if it's there
+            try:
+                crossref = re.search(r".*({.*}).*").groups()[0]
+            except ValueError:
+                crossref = None
 
             # remove rubbish at beginning of line
             nasty_stuff = r".*v. "
@@ -137,10 +143,17 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
             # debug(verses)
 
             # debug(verses[0].parts)
+            # we use a regex here to strip final punctuation.
             title = re.search(r"(.*)[\.,;:]*", verses[0].parts[0].content).groups()[0]
             title = unicode_to_ascii(title)
             hymns.append(
-                HymnCreate(title=title, parts=verses, language=lang, version=version)
+                HymnCreate(
+                    title=title,
+                    parts=verses,
+                    language=lang,
+                    version=version,
+                    crossref=crossref,
+                )
             )
 
     return hymns

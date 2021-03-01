@@ -69,3 +69,4 @@ class Hymn(Base, BlockMixin):
     )
     version: Column(String, index=True)
     language: Column(String, index=True)
+    crossref = Column(String, index=True)

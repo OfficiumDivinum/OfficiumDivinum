@@ -35,6 +35,9 @@ class HymnBase(BlockBase):
 class HymnInDB(HymnBase):
     id: int = Field(None, nullable=True)
 
+    class Config:
+        orm_mode = True
+
 
 class Hymn(HymnInDB):
     pass
@@ -42,6 +45,9 @@ class Hymn(HymnInDB):
 
 class HymnCreate(HymnBase):
     parts: List[VerseCreate]
+    crossref: str = Field(None, nullable=True)
+    title: str
+    version: str
 
 
 class HymnUpdate(HymnCreate):
