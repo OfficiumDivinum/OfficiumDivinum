@@ -19,12 +19,14 @@ UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 SchemaType = TypeVar("SchemaType", bound=BaseModel)
 
 
-# def clear_debug(*args):
-#     print("\n\n\n")
-#     debug(*args)
-#     print("\n\n\n")
 def clear_debug(*args):
-    pass
+    print("\n\n\n")
+    debug(*args)
+    print("\n\n\n")
+
+
+# def clear_debug(*args):
+#     pass
 
 
 class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
@@ -50,10 +52,10 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         limit: int = 100,
         filters: Optional[List[Dict]] = None,
     ) -> List[ModelType]:
-        clear_debug("Calling get multi")
+        debug("Calling get multi")
         if not filters:
             obj = db.query(self.model).offset(skip).limit(limit).all()
-            clear_debug(jsonable_encoder(obj))
+            debug(jsonable_encoder(obj))
             return obj
 
         else:
@@ -77,10 +79,10 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db.commit()
         # print("=====End=====")
         # get the object anew so we have all the content
-        clear_debug(model)
+        debug(model)
         obj = db.query(self.model).filter(self.model.id == obj.id).first()
-        clear_debug(jsonable_encoder(obj))
-        # clear_debug(obj.parts)
+        debug(jsonable_encoder(obj))
+        # debug(obj.parts)
         return jsonable_encoder(obj)
 
     def create_or_match_loopfn(
@@ -102,11 +104,11 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         Returns:
           An sqlalchemy object representing the obj created.
         """
-        clear_debug("Starting loop")
+        debug("Starting loop")
         if not model:
             model = self.model
 
-        clear_debug(obj_in)
+        debug(obj_in)
         safe_filter = {
             k: v
             for k, v in dict(obj_in).items()
@@ -114,40 +116,41 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         }
         db_obj = model(owner_id=owner_id)
 
-        clear_debug("Querying")
+        debug("Querying", safe_filter)
         query = db.query(model).filter_by(**safe_filter)
         try:
             d = query.one()
             mapper = get_mapper(d)
+            debug("Found exact match", mapper.attrs)
             return d
         except MultipleResultsFound:
-            logger.info(f"Multiple matches found for {obj_in}, using first")
-            clear_debug(f"Multiple matches found for {obj_in}, using first")
+            logger.info(f"Multiple matches found, using first", safe_filter)
+            debug(f"Multiple matches found, using first", safe_filter)
             d = query.first()
             return d
         except NoResultFound:
-            logger.info(f"No matches for {obj_in}, creating")
-            clear_debug(f"No matches for {obj_in}, creating")
-            clear_debug("mapping")
+            logger.info(f"No matches found, creating", safe_filter)
+            debug(f"No matches found, creating", safe_filter)
+            debug("mapping")
             mapper = get_mapper(db_obj)
             for name, target in mapper.relationships.items():
-                clear_debug(f"Creating target {name} of type {target}")
+                debug(f"Creating target {name} of type {target}")
                 if target.secondary is not None:
-                    clear_debug("Target has secondary table.")
+                    debug("Target has secondary table.")
                     target_model = get_class_by_table(Base, target.target)
                     try:
                         target_data = getattr(obj_in, name)
                     except AttributeError:
-                        clear_debug("Input has no value, skipping")
+                        debug("Input has no value, skipping")
                         continue
                     if not target_data:
-                        clear_debug("Input value is empty, skipping")
+                        debug("Input value is empty, skipping")
                         continue
                     for entry in target_data:
-                        clear_debug("Getting current data")
+                        debug("Getting current data")
                         current = getattr(db_obj, name)
 
-                        clear_debug("Looping")
+                        debug("Looping")
                         new = self.create_or_match_loopfn(
                             db, obj_in=entry, owner_id=owner_id, model=target_model
                         )
@@ -160,7 +163,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                     delattr(obj_in, name)
 
                 else:
-                    clear_debug(
+                    debug(
                         f"Making or getting non many-to-many object {name} of type {target}"
                     )
                     target_model = get_class_by_table(Base, target.target)
@@ -178,7 +181,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                     setattr(db_obj, name, new)
                     delattr(obj_in, name)
                 # else:
-                #     clear_debug(f"Got here, need to make obj {target.target}")
+                #     debug(f"Got here, need to make obj {target.target}")
 
         for k, v in obj_in:
             # print(f"k: {k}, v: {v}")
