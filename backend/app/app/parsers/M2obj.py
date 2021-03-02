@@ -87,10 +87,7 @@ def parse_mobile_file(fn: Path, lang: str, title: str):
             parts.append(LineBase(content=line))
         mobile.append(
             MartyrologyCreate(
-                datestr=datestr,
-                content=parts,
-                title=title,
-                language=lang,
+                datestr=datestr, content=parts, title=title, language=lang,
             )
         )
 

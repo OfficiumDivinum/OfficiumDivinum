@@ -296,18 +296,30 @@ def parse_upload_hymns(root: Path, lang: str, client: OAuth2Session, host: str):
     Returns:
     """
     logger.info("Parsing files and extracting all Hymns")
-    candidates = ["Commune", "Sancti", "Tempora", "Ordinarium"]
+    candidates = [
+        "Commune",
+        "CommuneM",
+        "Sancti",
+        "SanctiM",
+        "Tempora",
+        "TemporaM" "Ordinarium",
+    ]
+
+    # candidates = ["CommuneM"]
     generators = [(root / f"{lang}/{i}").glob("*.txt") for i in candidates]
 
     hymns = []
     for fns in generators:
         for fn in fns:
-            hymns.append(H2obj.parse_file(fn, lang))
+            resp = H2obj.parse_file(fn, lang)
+            if resp:
+                hymns.append(resp)
+    debug(hymns)
 
-    logger.info("Uploading Hymns to server.")
+    # logger.info("Uploading Hymns to server.")
 
-    endpoint = f"{host}/api/v1/hymn/"
-    upload(hymns, endpoint, client)
+    # endpoint = f"{host}/api/v1/hymn/"
+    # upload(hymns, endpoint, client)
 
 
 if __name__ == "__main__":
