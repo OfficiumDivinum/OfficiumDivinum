@@ -76,11 +76,18 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         obj = self.create_or_match_loopfn(
             db, obj_in=obj_in, owner_id=owner_id, model=model
         )
+        debug([i.title for i in obj.parts])
+        debug([i.verseno for i in obj.parts])
+        debug(type(obj.parts))
+        db.add(obj)
         db.commit()
         # print("=====End=====")
         # get the object anew so we have all the content
         debug(model)
-        obj = db.query(self.model).filter(self.model.id == obj.id).first()
+        obj = db.query(self.model).filter(self.model.id == obj.id).one()
+        debug([i.title for i in obj.parts])
+        debug([i.verseno for i in obj.parts])
+        debug(type(obj.parts))
         debug(jsonable_encoder(obj))
         # debug(obj.parts)
         return jsonable_encoder(obj)
@@ -149,6 +156,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 
         Args:
           obj_in: Any: The obj containing the properties to filter.
+
 
         Returns:
           A filter dict, all ready for filter_by()
@@ -230,21 +238,30 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                     if not target_data:
                         debug("Input value is empty, skipping")
                         continue
+                    objs = []
                     for entry in target_data:
-                        debug("Getting current data")
-                        current = getattr(db_obj, name)
+                        # debug("Getting current data")
+                        # current = getattr(db_obj, name)
 
                         debug("Looping to create or match entry", entry)
-                        new = self.create_or_match_loopfn(
+                        obj = self.create_or_match_loopfn(
                             db, obj_in=entry, owner_id=owner_id, model=target_model
                         )
-                        if new in current:
+                        if obj in objs:
                             # always duplicate identical lines
-                            new = target_model(**jsonable_encoder(entry))
-                        current.append(new)
+                            obj = target_model(**jsonable_encoder(entry))
+                        debug(
+                            "list was", [obj.title for obj in objs],
+                        )
+                        objs.append(obj)
+                        debug(
+                            "Appended new obj to list", [obj.title for obj in objs],
+                        )
 
-                    setattr(db_obj, name, current)
+                    debug(f"Setting dbobj.{name} to objs", [obj.title for obj in objs])
+                    setattr(db_obj, name, objs)
 
+                    # delete so we can loop over remaining properties later
                     delattr(obj_in, name)
 
                 else:
@@ -271,10 +288,11 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         for k, v in obj_in:
             # print(f"k: {k}, v: {v}")
             try:
+                debug(f"Setting dbobj {k} to {v} ")
                 setattr(db_obj, k, v)
             except (TypeError, AttributeError):
                 pass
-        db.add(db_obj)
+        # db.add(db_obj)
 
         return db_obj
 
