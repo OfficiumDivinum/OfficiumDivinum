@@ -67,6 +67,6 @@ class Hymn(Base, BlockMixin):
         back_populates="hymns",
         lazy="joined",
     )
-    version: Column(String, index=True)
-    language: Column(String, index=True)
+    language = Column(String, index=True)
     crossref = Column(String, index=True)
+    version = Column(String, index=True)
