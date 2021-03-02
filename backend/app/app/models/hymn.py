@@ -1,4 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer, String, Table
+from sqlalchemy.ext.orderinglist import ordering_list
 from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
@@ -40,6 +41,7 @@ class HymnVerse(Base, BlockMixin):
 
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="hymn_verses")
+    verseno = Column(Integer)
 
     parts = relationship(
         "HymnLine",
@@ -69,7 +71,8 @@ class Hymn(Base, BlockMixin):
         secondary=hymn_verse_association_table,
         back_populates="hymns",
         lazy="joined",
-        cascade="all, delete",
+        order_by="HymnVerse.verseno",
+        collection_class=ordering_list("verseno"),
     )
     language = Column(String, index=True)
     crossref = Column(String, index=True)
