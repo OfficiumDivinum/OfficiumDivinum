@@ -6,7 +6,6 @@ from devtools import debug
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 from sqlalchemy_utils.functions import get_class_by_table, get_mapper
 
 from app.db.base_class import Base
@@ -69,32 +68,19 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                 .all()
             )
 
-    def create_or_match(
+    def deep_create(
         self, db: Session, *, obj_in: CreateSchemaType, owner_id: int, model=None
     ):
-        # print("=====Start=====")
-        obj = self.create_or_match_loopfn(
-            db, obj_in=obj_in, owner_id=owner_id, model=model
-        )
-        debug([i.title for i in obj.parts])
-        debug([i.verseno for i in obj.parts])
-        debug(type(obj.parts))
+        obj = self.create_loopfn(db, obj_in=obj_in, owner_id=owner_id, model=model)
         db.add(obj)
         db.commit()
-        # print("=====End=====")
-        # get the object anew so we have all the content
-        debug(model)
-        obj = db.query(self.model).filter(self.model.id == obj.id).one()
-        debug([i.title for i in obj.parts])
-        debug([i.verseno for i in obj.parts])
-        debug(type(obj.parts))
+        # # get the object anew so we have all the content
+        # debug(model)
+        # obj = db.query(self.model).filter(self.model.id == obj.id).one()
         debug(jsonable_encoder(obj))
-        # debug(obj.parts)
         return jsonable_encoder(obj)
 
-    def create_or_match_loopfn(
-        self, db: Session, *, obj_in: Any, owner_id: int, model=None
-    ):
+    def create_loopfn(self, db: Session, *, obj_in: Any, owner_id: int, model=None):
         """
         Creates an object of arbitrary nested depth.
 
@@ -111,101 +97,56 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         Returns:
           An sqlalchemy object representing the obj created.
         """
-        debug("Starting loop")
         if not model:
             model = self.model
 
-        debug(obj_in)
-        safe_filter = self._safe_filter(obj_in)
         db_obj = model(owner_id=owner_id)
 
-        debug("Querying", safe_filter)
-        query = db.query(model).filter_by(**safe_filter)
-        try:
-            d = query.one()
-            mapper = get_mapper(d)
-            # does the model have relationships?
-            # we don't use a joined query as we don't know how deep the relationships go, and we want to handle any depth.
-            # if mapper.relationships:
-            #     # check *every single relationship* and make a whole new object if not.
-            #     if self._relationship_test(db, d, obj_in):
-            #         debug("Found exact match", mapper.attrs)
-            #         return d
-            return d
-        except MultipleResultsFound:
-            logger.info("Multiple matches found, using first", safe_filter)
-            debug("Multiple matches found, using first", safe_filter)
-            d = query.first()
-            return d
-        except NoResultFound:
-            logger.info("No matches found, creating", safe_filter)
-            debug("No matches found, creating", safe_filter)
-            debug("mapping")
-            mapper = get_mapper(db_obj)
-            for name, target in mapper.relationships.items():
-                debug(f"Creating target {name} of type {target}")
-                if target.secondary is not None:
-                    debug("Target has secondary table.")
-                    target_model = get_class_by_table(Base, target.target)
-                    try:
-                        target_data = getattr(obj_in, name)
-                    except AttributeError:
-                        debug("Input has no value, skipping")
-                        continue
-                    if not target_data:
-                        debug("Input value is empty, skipping")
-                        continue
-                    objs = []
-                    for entry in target_data:
-                        # debug("Getting current data")
-                        # current = getattr(db_obj, name)
+        mapper = get_mapper(db_obj)
 
-                        debug("Looping to create or match entry", entry)
-                        obj = self.create_or_match_loopfn(
-                            db, obj_in=entry, owner_id=owner_id, model=target_model
-                        )
-                        if obj in objs:
-                            # always duplicate identical lines
-                            obj = target_model(**jsonable_encoder(entry))
-                        debug(
-                            "list was", [obj.title for obj in objs],
-                        )
-                        objs.append(obj)
-                        debug(
-                            "Appended new obj to list", [obj.title for obj in objs],
-                        )
+        for name, target in mapper.relationships.items():
 
-                    debug(f"Setting dbobj.{name} to objs", [obj.title for obj in objs])
-                    setattr(db_obj, name, objs)
+            target_model = get_class_by_table(Base, target.target)
 
-                    # delete so we can loop over remaining properties later
-                    delattr(obj_in, name)
+            try:
+                target_data = getattr(obj_in, name)
+            except AttributeError:
+                debug(f"Input not supplied for {name}, skipping")
+                continue
+            if not target_data:
+                debug(f"Input value for {name} is empty, skipping")
+                continue
 
-                else:
-                    debug(
-                        f"Making or getting non many-to-many object {name} of type {target}"
+            if target.secondary is not None:
+
+                objs = []
+                for entry in target_data:
+
+                    obj = self.create_loopfn(
+                        db, obj_in=entry, owner_id=owner_id, model=target_model
                     )
-                    target_model = get_class_by_table(Base, target.target)
-                    try:
-                        target_data = getattr(obj_in, name)
-                    except AttributeError:
-                        continue
-                    if not target_data:
-                        continue
+                    objs.append(obj)
 
-                    new = self.create_or_match_loopfn(
-                        db, obj_in=target_data, owner_id=owner_id, model=target_model
-                    )
+                setattr(db_obj, name, objs)
 
-                    setattr(db_obj, name, new)
-                    delattr(obj_in, name)
-                # else:
-                #     debug(f"Got here, need to make obj {target.target}")
+                # delete so we can loop over remaining properties later
+                delattr(obj_in, name)
+
+            else:
+                debug(
+                    "Making or getting non many-to-many object"
+                    f"{name} of type {target}"
+                )
+
+                new = self.create_loopfn(
+                    db, obj_in=target_data, owner_id=owner_id, model=target_model
+                )
+
+                setattr(db_obj, name, new)
+                delattr(obj_in, name)
 
         for k, v in obj_in:
-            # print(f"k: {k}, v: {v}")
             try:
-                debug(f"Setting dbobj {k} to {v} ")
                 setattr(db_obj, k, v)
             except (TypeError, AttributeError):
                 pass

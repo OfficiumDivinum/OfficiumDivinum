@@ -72,27 +72,10 @@ def create_item_crud(
             responses={404: {"model": schemas.ErrorMsg}},
         )
         def create_item(self, *, item_in: item_create_schema) -> Any:
-            """
-            Match an object if it exists, or if not create one, recursively through the
-            relations.
-
-            Note that it is not possible to create entirely duplicated
-            entries in this way.  But you can throw a complete schema at
-            the endpoint in JSON and it will be stored in the db with
-            minimum duplication.
-
-            If using this endpoint to create things you think *ought* to
-            be linked, good code would check that they *are* linked later
-            (by comparing the ids.) This will require administrator
-            privileges to get the object ids, since we will shortly be
-            hiding them from unauthenticated sessions.
-
-            Only new objects will have the owner property set.
-            """
-            item = item_crud.create_or_match(
-                db=self.db,
-                obj_in=item_in,
-                owner_id=self.current_user.id,
+            """Create an object, iterating all the way through the supplied schema and
+            creating everything as required."""
+            item = item_crud.deep_create(
+                db=self.db, obj_in=item_in, owner_id=self.current_user.id,
             )
             return jsonable_encoder(item)
 
@@ -101,11 +84,7 @@ def create_item_crud(
             response_model=item_schema,
             responses={404: {"model": schemas.ErrorMsg}},
         )
-        def update_item(
-            self,
-            id: int,
-            item_in: item_update_schema,
-        ) -> Any:
+        def update_item(self, id: int, item_in: item_update_schema,) -> Any:
             """Update an item."""
             item = item_crud.get(db=self.db, id=id)
             if not item:
@@ -122,10 +101,7 @@ def create_item_crud(
             response_model=item_schema,
             responses={404: {"model": schemas.ErrorMsg}},
         )
-        def read_item(
-            self,
-            id: int,
-        ) -> Any:
+        def read_item(self, id: int,) -> Any:
             """Get item by ID."""
             item = item_crud.get(db=self.db, id=id)
             if not item:
@@ -141,10 +117,7 @@ def create_item_crud(
             response_model=item_schema,
             responses={404: {"model": schemas.ErrorMsg}},
         )
-        def delete_item(
-            self,
-            id: int,
-        ) -> Any:
+        def delete_item(self, id: int,) -> Any:
             """Delete an item."""
             item = item_crud.get(db=self.db, id=id)
             if not item:
