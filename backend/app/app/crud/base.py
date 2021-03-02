@@ -124,13 +124,13 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             debug("Found exact match", mapper.attrs)
             return d
         except MultipleResultsFound:
-            logger.info(f"Multiple matches found, using first", safe_filter)
-            debug(f"Multiple matches found, using first", safe_filter)
+            logger.info("Multiple matches found, using first", safe_filter)
+            debug("Multiple matches found, using first", safe_filter)
             d = query.first()
             return d
         except NoResultFound:
-            logger.info(f"No matches found, creating", safe_filter)
-            debug(f"No matches found, creating", safe_filter)
+            logger.info("No matches found, creating", safe_filter)
+            debug("No matches found, creating", safe_filter)
             debug("mapping")
             mapper = get_mapper(db_obj)
             for name, target in mapper.relationships.items():
