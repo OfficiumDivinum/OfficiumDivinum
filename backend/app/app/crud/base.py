@@ -87,10 +87,20 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         self, db: Session, *, obj_in: Any, owner_id: int, model=None
     ):
         """
-        Match an object if it exists, or if not create one.
+        Matches an object if it exists, or if not creates one.
 
         This function is recursive and always returns the outmost
         object.
+
+        Args:
+          db: Session: The db session to use.  We reuse a session.
+          obj_in: Any: Obj in.  Any introspectable obj (e.g. schema, dict).
+          owner_id: int: The owner.
+          model:  (Default value = None) The model to use.
+                  Only none in the outermost scope, when we use the self.model.
+
+        Returns:
+          An sqlalchemy object representing the obj created.
         """
         clear_debug("Starting loop")
         if not model:
