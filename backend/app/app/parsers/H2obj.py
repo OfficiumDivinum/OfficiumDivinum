@@ -231,7 +231,7 @@ def parse_file_as_dict(fn: Path, follow_links: bool = True) -> Dict:
         for i in range(len(section)):
             for j in range(len(section[i])):
                 # remove rubbish at beginning of line
-                nasty_stuff = r".*v. "
+                nasty_stuff = r".*v\. "
                 section[i][j] = re.sub(nasty_stuff, "", section[i][j])
 
                 nasty_stuff = r".*\* *"
