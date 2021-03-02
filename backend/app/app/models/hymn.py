@@ -31,7 +31,7 @@ class HymnLine(Base, LineMixin):
         secondary=hymn_line_association_table,
         back_populates="parts",
         lazy="joined",
-        passive_deletes=True,
+        passive_deletes="all",
     )
 
 
@@ -46,7 +46,7 @@ class HymnVerse(Base, BlockMixin):
         secondary=hymn_line_association_table,
         back_populates="hymnverses",
         lazy="joined",
-        cascade="all, delete",
+        passive_deletes="all",
     )
 
     hymns = relationship(
@@ -54,7 +54,7 @@ class HymnVerse(Base, BlockMixin):
         secondary=hymn_verse_association_table,
         back_populates="parts",
         lazy="joined",
-        passive_deletes=True,
+        passive_deletes="all",
     )
 
 
