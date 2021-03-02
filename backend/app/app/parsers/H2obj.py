@@ -6,10 +6,9 @@ from typing import Dict, List
 
 from devtools import debug
 
+from app.parsers.deref import deref
+from app.parsers.util import parse_DO_sections
 from app.schemas.hymn import HymnCreate, LineBase, VerseCreate
-
-from .deref import deref
-from .util import parse_DO_sections
 
 
 def unicode_to_ascii(data, cleanup: bool = True):
@@ -99,7 +98,6 @@ def substitute_linked_content(linked_content: List, line: str):
         return linked_content
 
     matched = False
-    debug(linked_content, line, pattern, sub, multiline)
 
     for linked_verse_index, linked_verse in enumerate(linked_content):
         for linked_line_index, linked_line in enumerate(linked_verse):
@@ -112,17 +110,17 @@ def substitute_linked_content(linked_content: List, line: str):
 
                 if multiline:
                     # trash everything after the match
-                    for i in range(linked_line_index, len(linked_verse)):
+                    for i in range(linked_line_index + 1, len(linked_verse)):
                         linked_verse.pop()
                     # trash any leftover verses
-                    for i in range(linked_verse_index, len(linked_content)):
+                    for i in range(linked_verse_index + 1, len(linked_content)):
                         linked_content.pop()
                     break
-                else:
-                    debug("not multiline")
 
     assert matched
-    return linked_content
+    return [
+        [line.strip() for line in verse if line.strip()] for verse in linked_content
+    ]
 
 
 def parse_file_as_dict(fn: Path, follow_links: bool = True) -> Dict:
@@ -150,10 +148,6 @@ def parse_file_as_dict(fn: Path, follow_links: bool = True) -> Dict:
         if "Hymnus" not in key:
             continue
 
-        if any(("s/" in x for x in (i for i in section))):
-            print("Dragons!")
-
-        debug(section)
         # skip links
         if not section:
             continue  # something like 'Capitulum Hymnus...'
@@ -190,7 +184,6 @@ def parse_file_as_dict(fn: Path, follow_links: bool = True) -> Dict:
                     continue
 
                 targetf, part = deref(line, fn)
-                debug(targetf, part)
 
                 linked_content = None
 
@@ -220,15 +213,20 @@ def parse_file_as_dict(fn: Path, follow_links: bool = True) -> Dict:
                 assert linked_content
 
                 if "s/" in line and follow_links:
-                    debug(fn, targetf)
                     linked_content = substitute_linked_content(linked_content, line)
+
+                for extra_line in verse[line_index + 1 :]:
+                    linked_content[-1].append(extra_line)
 
                 if line_index > 0:
                     section[verse_index] = verse[: line_index - 1] + linked_content[0]
                 else:
                     section[verse_index] = linked_content[0]
+
                 for i, linked_verse in enumerate(linked_content[1:]):
                     section.insert(verse_index + i + 1, linked_verse)
+
+                # add in anything else *after* matched section
 
         for i in range(len(section)):
             for j in range(len(section[i])):
@@ -241,7 +239,6 @@ def parse_file_as_dict(fn: Path, follow_links: bool = True) -> Dict:
 
         hymns[key] = {"content": section, "crossref": crossref}
 
-    debug(f"returning {len(hymns.keys())} hymns")
     return hymns
 
 
@@ -278,7 +275,7 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
                 if thing[0].startswith("!"):
                     rubrics = thing[0][1:]
             except TypeError:
-                print(content)
+                debug(content)
                 raise Exception
             else:
                 verse = [LineBase(content=i) for i in thing]
