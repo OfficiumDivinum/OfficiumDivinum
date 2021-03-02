@@ -31,6 +31,7 @@ class HymnLine(Base, LineMixin):
         secondary=hymn_line_association_table,
         back_populates="parts",
         lazy="joined",
+        passive_deletes=True,
     )
 
 
@@ -45,6 +46,7 @@ class HymnVerse(Base, BlockMixin):
         secondary=hymn_line_association_table,
         back_populates="hymnverses",
         lazy="joined",
+        cascade="all, delete",
     )
 
     hymns = relationship(
@@ -52,6 +54,7 @@ class HymnVerse(Base, BlockMixin):
         secondary=hymn_verse_association_table,
         back_populates="parts",
         lazy="joined",
+        passive_deletes=True,
     )
 
 
@@ -66,6 +69,7 @@ class Hymn(Base, BlockMixin):
         secondary=hymn_verse_association_table,
         back_populates="hymns",
         lazy="joined",
+        cascade="all, delete",
     )
     language = Column(String, index=True)
     crossref = Column(String, index=True)

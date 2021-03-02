@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from pydantic import Field
 
@@ -27,7 +27,7 @@ class VerseUpdate(VerseCreate):
 
 
 class HymnBase(BlockBase):
-    parts: List[Verse]
+    parts: Optional[List[Verse]] = Field(None, nullable=True)
     version: str
     language: str
 
