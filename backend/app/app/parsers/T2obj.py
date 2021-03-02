@@ -7,48 +7,7 @@ from devtools import debug
 from app.DSL import days, months, ordinals, specials
 from app.schemas.calendar import FeastCreate
 
-
-def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> list:
-    """
-    Parse DO files into lists per section.
-
-    Args:
-      lines(list : lines to break into sections.):
-      lines: list:
-
-    Returns:
-    """
-
-    sections = {}
-    current_section = None
-    content = []
-    subcontent = []
-    for line in lines:
-        line = re.sub(r"\[([a-z])\]", "_\1_", line)
-        line = line.strip()
-        if line == "_":
-            subcontent = [x.strip() for x in subcontent if x.strip() != ""]
-            content.append(subcontent)
-            subcontent = []
-            continue
-        header = re.search(section_header_regex, line)
-        if header:
-            if current_section:
-
-                subcontent = [x.strip() for x in subcontent if x.strip() != ""]
-
-                content.append(subcontent)
-                if len(content) == 1:
-                    content = content[0]
-
-                sections[current_section] = content
-
-            current_section = header.groups()[0]
-            content = []
-            subcontent = []
-        else:
-            subcontent.append(line)
-    return sections
+from .util import parse_DO_sections
 
 
 def parse_file(fn: Path, version: str, language: str) -> FeastCreate:

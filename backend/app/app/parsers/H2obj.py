@@ -8,7 +8,7 @@ from devtools import debug
 
 from app.schemas.hymn import HymnCreate, LineBase, VerseCreate
 
-from .T2obj import parse_DO_sections
+from .util import parse_DO_sections
 
 
 def unicode_to_ascii(data, cleanup: bool = True):

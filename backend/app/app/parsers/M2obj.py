@@ -6,7 +6,7 @@ from pathlib import Path
 from app.DSL import days, months, ordinals, specials
 from app.schemas import LineBase, MartyrologyCreate
 
-from .T2obj import parse_DO_sections
+from .util import parse_DO_sections
 
 christ_the_king_datestr = "Sat between 23 Oct 31 Oct"
 
