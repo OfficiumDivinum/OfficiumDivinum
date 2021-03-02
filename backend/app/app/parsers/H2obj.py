@@ -64,6 +64,7 @@ def guess_version(fn: Path):
         "OP": versions["do"],
         "Trid": versions["tr"],
         "M": versions["m"],
+        "r": versions["no"],
     }
     for key, val in stems.items():
         if fn.stem.endswith(key):
