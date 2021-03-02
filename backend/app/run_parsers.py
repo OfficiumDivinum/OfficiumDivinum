@@ -72,7 +72,7 @@ def upload(things, endpoint: str, client):
     with typer.progressbar(things) as progress:
         for entry in progress:
             if verbose > 1:
-                print(dumps(jsonable_encoder(entry), indent=2))
+                debug(jsonable_encoder(entry))
             resp = client.post(endpoint, json=jsonable_encoder(entry))
             if resp.status_code != 200:
                 raise Exception(
@@ -145,7 +145,7 @@ def parse_upload(
     root: Path,
     lang: str,
     version: str,
-    user: str,
+    user: Optional[str] = None,
     host: str = "http://localhost",
     martyrologies: Optional[bool] = None,
     psalms: Optional[bool] = None,
@@ -153,6 +153,7 @@ def parse_upload(
     sanctoral: Optional[bool] = None,
     hymns: Optional[bool] = None,
     verbosity: int = 0,
+    test: Optional[bool] = None,
 ):
     """
     Parse and upload something.
@@ -163,8 +164,14 @@ def parse_upload(
       version: str: Version to use, e.g. 1960.
       user: str: Username at server.
       host: str: Hostname of server. (Default value = "http://localhost")
-      martyrologies: Optional[Bool]:  Parse Martyrologies. (Default value = None)
-      psalms: Optional[Bool]:  Parse Psalms. (Default value = None)
+      martyrologies: Optional[bool]:  Parse Martyrologies. (Default value = None)
+      psalms: Optional[bool]:  Parse Psalms. (Default value = None)
+      temporal: Optional[bool]:  Parse Temporal. (Default value = None)
+      sanctoral: Optional[bool]:  Parse Sanctoral. (Default value = None)
+      hymns: Optional[bool]:  Parse Hymns. (Default value = None)
+      verbosity: int:  How much to print out.
+      test: Optional[bool]: Testing mode (skips login and upload).
+
 
     Returns:
     """
@@ -176,8 +183,10 @@ def parse_upload(
         logger.info("No output requested")
         return
 
-    # client = crud_login(host=host, user=user)
-    client = None
+    if not test:
+        client = crud_login(host=host, user=user)
+    else:
+        client = None
 
     if martyrologies:
         parse_upload_martyrologies(root, lang, version, client, host)
@@ -313,13 +322,13 @@ def parse_upload_hymns(root: Path, lang: str, client: OAuth2Session, host: str):
         for fn in fns:
             resp = H2obj.parse_file(fn, lang)
             if resp:
-                hymns.append(resp)
-    debug(hymns)
+                hymns += resp
+    # debug(hymns)
 
-    # logger.info("Uploading Hymns to server.")
+    logger.info("Uploading Hymns to server.")
 
-    # endpoint = f"{host}/api/v1/hymn/"
-    # upload(hymns, endpoint, client)
+    endpoint = f"{host}/api/v1/hymn/"
+    upload(hymns, endpoint, client)
 
 
 if __name__ == "__main__":
