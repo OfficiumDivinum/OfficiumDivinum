@@ -127,6 +127,6 @@ def create_item_crud(
             ):
                 raise HTTPException(status_code=400, detail="Not enough permissions")
             item = item_crud.remove(db=self.db, id=id)
-            return jsonable_encoder(item)
+            return item  # encoded far end
 
     return router

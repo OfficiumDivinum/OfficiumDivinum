@@ -18,16 +18,6 @@ UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 SchemaType = TypeVar("SchemaType", bound=BaseModel)
 
 
-def clear_debug(*args):
-    print("\n\n\n")
-    debug(*args)
-    print("\n\n\n")
-
-
-# def clear_debug(*args):
-#     pass
-
-
 class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def __init__(self, model: Type[ModelType]):
         """
@@ -51,14 +41,11 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         limit: int = 100,
         filters: Optional[List[Dict]] = None,
     ) -> List[ModelType]:
-        debug("Calling get multi")
         if not filters:
             obj = db.query(self.model).offset(skip).limit(limit).all()
-            debug(jsonable_encoder(obj))
             return obj
 
         else:
-            debug(filters)
             filters = ChainMap(*filters)
             return (
                 db.query(self.model)
@@ -75,9 +62,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db.add(obj)
         db.commit()
         # # get the object anew so we have all the content
-        # debug(model)
-        # obj = db.query(self.model).filter(self.model.id == obj.id).one()
-        debug(jsonable_encoder(obj))
+        obj = db.query(self.model).filter(self.model.id == obj.id).one()
         return jsonable_encoder(obj)
 
     def create_loopfn(self, db: Session, *, obj_in: Any, owner_id: int, model=None):
@@ -111,10 +96,10 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             try:
                 target_data = getattr(obj_in, name)
             except AttributeError:
-                debug(f"Input not supplied for {name}, skipping")
+                # debug(f"Input not supplied for {name}, skipping")
                 continue
             if not target_data:
-                debug(f"Input value for {name} is empty, skipping")
+                # debug(f"Input value for {name} is empty, skipping")
                 continue
 
             if target.secondary is not None:
@@ -133,10 +118,10 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                 delattr(obj_in, name)
 
             else:
-                debug(
-                    "Making or getting non many-to-many object"
-                    f"{name} of type {target}"
-                )
+                # debug(
+                #     "Making or getting non many-to-many object"
+                #     f"{name} of type {target}"
+                # )
 
                 new = self.create_loopfn(
                     db, obj_in=target_data, owner_id=owner_id, model=target_model
@@ -184,9 +169,10 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 
     def remove(self, db: Session, *, id: int) -> ModelType:
         obj = db.query(self.model).get(id)
+        obj_copy = jsonable_encoder(obj)
         db.delete(obj)
         db.commit()
-        return obj
+        return obj_copy
 
 
 CRUDType = TypeVar("CRUDType", bound=CRUDBase)
