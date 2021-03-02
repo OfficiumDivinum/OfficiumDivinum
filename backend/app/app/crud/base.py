@@ -1,5 +1,5 @@
 import logging
-from collections import ChainMap
+from collections import ChainMap, Iterable
 from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union
 
 from devtools import debug
@@ -85,6 +85,88 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         # debug(obj.parts)
         return jsonable_encoder(obj)
 
+    def _relationship_test(self, db: Session, db_obj, obj_in):
+        """
+        Test whether or no all the relationships of db_obj map correctly onto objects of
+        obj_in.
+
+        This function is recursive. Hopefully sqlalchemy caches the
+        query in the session...
+        """
+        debug("Called with", db_obj, obj_in)
+        mapper = get_mapper(db_obj)
+        skip_keys = ["owner", "owner_id"]
+        for name, target in mapper.relationships.items():
+            if name in skip_keys:
+                continue
+            try:
+                target_data = getattr(obj_in, name)
+            except AttributeError:
+                debug(f"Could not find {name} in obj_in")
+                continue  # for now
+
+            if not target_data:
+                debug(f"Input was blank for entry {name}, but db_obj has {target}")
+                continue  # for now
+
+            # get target obj from db
+            if not isinstance(target_data, Iterable):
+                target_data = [target_data]
+
+            model = get_class_by_table(Base, target.target)
+
+            for entry in target_data:
+                debug(entry, name)
+                safe_filter = self._safe_filter(entry)
+                db_obj = db.query(model).filter_by(**safe_filter).one()
+
+                debug("Calling self with", db_obj, target_data)
+                if not self._relationship_test(db, db_obj, entry):
+                    debug("Returning False")
+                    return False
+
+        for key, val in mapper.attrs.items():
+            debug(key, val)
+            if key in skip_keys:
+                continue
+            if getattr(obj_in, key) != val:
+                debug("Returning False")
+                return False
+
+            # # for entry in target_data:
+            # for attr in getattr(db_obj, name):
+            #     m = get_mapper(attr)
+            #     debug(m.relationships)
+
+        debug("Returning True")
+        return True
+
+    @staticmethod
+    def _safe_filter(obj_in: Any):
+        """
+        Generates a filter consisting only of properties which we can actually filter
+        with.
+
+        Args:
+          obj_in: Any: The obj containing the properties to filter.
+
+        Returns:
+          A filter dict, all ready for filter_by()
+        """
+        safe_filter = {
+            k: v
+            for k, v in dict(obj_in).items()
+            if any(
+                (
+                    isinstance(v, str),
+                    isinstance(v, int),
+                    isinstance(v, float),
+                    isinstance(v, bool),
+                ),
+            )
+        }
+        return safe_filter
+
     def create_or_match_loopfn(
         self, db: Session, *, obj_in: Any, owner_id: int, model=None
     ):
@@ -109,11 +191,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             model = self.model
 
         debug(obj_in)
-        safe_filter = {
-            k: v
-            for k, v in dict(obj_in).items()
-            if any((isinstance(v, str), isinstance(v, int), isinstance(v, float)))
-        }
+        safe_filter = self._safe_filter(obj_in)
         db_obj = model(owner_id=owner_id)
 
         debug("Querying", safe_filter)
@@ -121,7 +199,13 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         try:
             d = query.one()
             mapper = get_mapper(d)
-            debug("Found exact match", mapper.attrs)
+            # does the model have relationships?
+            # we don't use a joined query as we don't know how deep the relationships go, and we want to handle any depth.
+            # if mapper.relationships:
+            #     # check *every single relationship* and make a whole new object if not.
+            #     if self._relationship_test(db, d, obj_in):
+            #         debug("Found exact match", mapper.attrs)
+            #         return d
             return d
         except MultipleResultsFound:
             logger.info("Multiple matches found, using first", safe_filter)
@@ -150,7 +234,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                         debug("Getting current data")
                         current = getattr(db_obj, name)
 
-                        debug("Looping")
+                        debug("Looping to create or match entry", entry)
                         new = self.create_or_match_loopfn(
                             db, obj_in=entry, owner_id=owner_id, model=target_model
                         )
@@ -159,7 +243,8 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
                             new = target_model(**jsonable_encoder(entry))
                         current.append(new)
 
-                        setattr(db_obj, name, current)
+                    setattr(db_obj, name, current)
+
                     delattr(obj_in, name)
 
                 else:
