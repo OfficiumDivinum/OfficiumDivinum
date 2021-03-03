@@ -13,3 +13,8 @@ class LineMixin:
     prefix = Column(String, index=True)
     suffix = Column(String, index=True)
     content = Column(String, index=True)
+
+
+class FromDOMixin:
+    sourcefile = Column(String, index=True)
+    at = Column(String, index=True)

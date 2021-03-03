@@ -4,6 +4,8 @@ from typing import List, Optional, Union
 
 from pydantic import BaseModel, Field
 
+from app.schemas.custom_types import OfficeLiteral
+
 
 # Shared properties
 class LineBase(BaseModel):
@@ -75,3 +77,8 @@ class LineInDB(LineInDBBase):
 
 class BlockInDB(BlockInDBBase):
     pass
+
+
+class FromDOMixin:
+    sourcefile: str = Field(None, nullable=True)
+    at: OfficeLiteral = Field(None, nullable=True)

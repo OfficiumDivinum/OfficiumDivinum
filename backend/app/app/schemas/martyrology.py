@@ -3,6 +3,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+from app.schemas.office_parts import FromDOMixin
+
 from .custom_types import Datestr
 from .office_parts import BlockBase, LineBase
 
@@ -11,7 +13,7 @@ class Datelist(BaseModel):
     date: date
 
 
-class MartyrologyBase(BlockBase):
+class MartyrologyBase(BlockBase, FromDOMixin):
     datestr: str
     title: str
     language: str

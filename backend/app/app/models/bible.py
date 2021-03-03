@@ -2,10 +2,10 @@ from sqlalchemy import Column, ForeignKey, Integer, PickleType, String, Table
 from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
-from app.models.office_parts import LineMixin
+from app.models.office_parts import FromDOMixin, LineMixin
 
 
-class Verse(Base, LineMixin):
+class Verse(Base, LineMixin, FromDOMixin):
     """A verse of the bible in some version and language."""
 
     language = Column(String, index=True)

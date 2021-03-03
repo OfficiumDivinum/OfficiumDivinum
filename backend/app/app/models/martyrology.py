@@ -12,7 +12,7 @@ from app.db.base_class import Base
 
 from ..DSL import dsl_parser
 from .calendar import calendar_date_association_table
-from .office_parts import BlockMixin, LineMixin
+from .office_parts import BlockMixin, FromDOMixin, LineMixin
 
 if TYPE_CHECKING:
     from .user import User  # noqa: F401
@@ -51,7 +51,7 @@ line_association_table = Table(
 
 
 @total_ordering
-class Martyrology(Base, BlockMixin):
+class Martyrology(Base, BlockMixin, FromDOMixin):
     """Martyrology object in database."""
 
     language = Column(String)

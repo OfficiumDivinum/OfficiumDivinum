@@ -11,6 +11,8 @@ from app.parsers.divinumofficium_structures import (
     traditional_rank_lookup_table,
 )
 
+from .office_parts import FromDOMixin
+
 if TYPE_CHECKING:
     from .user import User  # noqa: F401
 
@@ -57,7 +59,7 @@ class RankMixin:
         return self._rank_to_int() < other._rank_to_int()
 
 
-class Commemoration(Base, RankMixin):
+class Commemoration(Base, RankMixin, FromDOMixin):
     """"""
 
     id = Column(Integer, primary_key=True, index=True)
@@ -73,7 +75,7 @@ class Commemoration(Base, RankMixin):
     owner = relationship("User", back_populates="commemorations")
 
 
-class Feast(Base, RankMixin):
+class Feast(Base, RankMixin, FromDOMixin):
     """A Feast, occuring for whatever reason."""
 
     id = Column(Integer, primary_key=True, index=True)

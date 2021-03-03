@@ -31,6 +31,17 @@ RankLiteral = Literal[
     "feria iv classis",
 ]
 
+OfficeLiteral = Literal[
+    "laudes",
+    "matutinum",
+    "prima",
+    "tertia",
+    "sexta",
+    "nona",
+    "versperas",
+    "completorium",
+]
+
 
 class Datestr(BaseModel):
     """Class to represent datestr."""

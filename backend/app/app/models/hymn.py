@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
 
-from .office_parts import BlockMixin, LineMixin
+from .office_parts import BlockMixin, FromDOMixin, LineMixin
 
 hymn_line_association_table = Table(
     "hymn_line_association_table",
@@ -60,7 +60,7 @@ class HymnVerse(Base, BlockMixin):
     )
 
 
-class Hymn(Base, BlockMixin):
+class Hymn(Base, BlockMixin, FromDOMixin):
     """Hymns themselves."""
 
     owner_id = Column(Integer, ForeignKey("user.id"))
