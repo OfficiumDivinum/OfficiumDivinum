@@ -5,6 +5,7 @@ from pathlib import Path
 from devtools import debug
 
 from app.DSL import days, months, ordinals, specials
+from app.parsers.divinumofficium_structures import typo_translations
 from app.schemas.calendar import FeastCreate
 
 from .util import parse_DO_sections
@@ -55,9 +56,9 @@ def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
 
     lines = fn.open().readlines()
     sections = parse_DO_sections(lines)
-    rank = "Feria"
+    rank_name = "Feria"
     try:
-        name, rank, rankno, source = [
+        name, rank_name, rankno, source = [
             *sections["Rank1960"][0].split(";;"),
             None,
             None,
@@ -67,7 +68,7 @@ def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
 
     except KeyError:
         try:
-            name, rank, rankno, source = [
+            name, rank_name, rankno, source = [
                 *sections["Rank"][0].split(";;"),
                 None,
                 None,
@@ -77,7 +78,7 @@ def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
         except KeyError:
             pass
     try:
-        rank, octave = rank.split("cum")
+        rank_name, octave = rank_name.split("cum")
         # privileged = True if "privilegiata" in octave else False
         # octave_ = re.findall(r"Octava ([Pp]rivilegiata)* (.*)", octave)[0][1]
 
@@ -93,11 +94,18 @@ def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
             debug(content)
         # pass  # later implement handling here
 
+    try:
+        rank_name = typo_translations[rank_name]
+    except KeyError:
+        pass
+
+    debug(rank_name)
+
     return FeastCreate(
         name=name,
         type_="de Tempore",
         datestr=datestr,
-        rank_name=rank,
+        rank_name=rank_name.lower(),
         commemorations=commemorations,
         language=language,
         version=version,
