@@ -42,6 +42,19 @@ OfficeLiteral = Literal[
     "completorium",
 ]
 
+HymnTypeLiteral = Literal[
+    "hymnus minor",
+    "hymnus vespera",
+    "hymnus matutinum",
+    "hymnus matutinum 1",
+    "hymnus laudes",
+    "hymnus prima",
+    "hymnus tertia",
+    "hymnus sexta",
+    "hymnus nona",
+    "hymnus vespera 3",
+]
+
 
 class Datestr(BaseModel):
     """Class to represent datestr."""

@@ -2,7 +2,7 @@
 import re
 import unicodedata
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Union
 
 from devtools import debug
 
@@ -39,12 +39,12 @@ def unicode_to_ascii(data, cleanup: bool = True):
     return val
 
 
-def guess_version(fn: Path):
+def guess_version(thing: Union[Path, str]):
     """
     Guess the version of a hymn from the path and filename.
 
     Args:
-      fn: Path: The the filename/path.
+      fn: Union[Path, str]: The the filename/path or str to guess.
 
     Returns:
       A version str.
@@ -66,16 +66,26 @@ def guess_version(fn: Path):
         "M": versions["m"],
         "r": versions["no"],
     }
-    for key, val in stems.items():
-        if fn.stem.endswith(key):
-            return val
 
-    # sometimes, likewise, it's in the dirname  (only monastic atm.)
-    for key, val in stems.items():
-        if fn.parent.stem.endswith(key):
-            return val
+    if isinstance(thing, str):
 
-    return version
+        for key, val in stems.items():
+            if thing.split(" ")[0].endswith(key):
+                return val, True
+
+        return version, False
+
+    else:
+        for key, val in stems.items():
+            if thing.stem.endswith(key):
+                return val, True
+
+        # sometimes, likewise, it's in the dirname  (only monastic atm.)
+        for key, val in stems.items():
+            if thing.parent.stem.endswith(key):
+                return val, True
+
+        return version, False
 
 
 def substitute_linked_content(linked_content: List, line: str):
@@ -254,7 +264,7 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
       A list of hymn objects.  Where DO crossrefs are in the sources,
       they are stored for later use.
     """
-    version = guess_version(fn)
+    version, matched = guess_version(fn)
 
     hymn_dict = parse_file_as_dict(fn)
     hymns = []
@@ -284,6 +294,11 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
         # we use a regex here to strip final punctuation.
         title = re.search(r"(.*)[\.,;:]*", verses[0].parts[0].content).groups()[0]
         title = unicode_to_ascii(title).strip()
+
+        if not matched:
+            version, matched = guess_version(key)
+
+        key = " ".join(re.search("(Hymnus).*? ( *.*)", key).groups())
         hymns.append(
             HymnCreate(
                 title=title,
@@ -292,7 +307,7 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
                 version=version,
                 crossref=crossref,
                 sourcefile=fn.name,
-                at=key,
+                type_=key.lower(),
             )
         )
 
