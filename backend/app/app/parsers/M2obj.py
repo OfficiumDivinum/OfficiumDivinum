@@ -47,6 +47,7 @@ def parse_file(fn: Path, lang: str, title: str):
         julian_date=julian_date,
         language=lang,
         title=title,
+        sourcefile=fn.name,
     )
 
 
@@ -87,7 +88,10 @@ def parse_mobile_file(fn: Path, lang: str, title: str):
             parts.append(LineBase(content=line))
         mobile.append(
             MartyrologyCreate(
-                datestr=datestr, content=parts, title=title, language=lang,
+                datestr=datestr,
+                content=parts,
+                title=title,
+                language=lang,
             )
         )
 

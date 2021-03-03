@@ -17,4 +17,3 @@ class LineMixin:
 
 class FromDOMixin:
     sourcefile = Column(String, index=True)
-    at = Column(String, index=True)

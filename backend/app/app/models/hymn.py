@@ -77,3 +77,4 @@ class Hymn(Base, BlockMixin, FromDOMixin):
     language = Column(String, index=True)
     crossref = Column(String, index=True)
     version = Column(String, index=True)
+    at = Column(String, index=True)

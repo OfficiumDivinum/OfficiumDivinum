@@ -8,7 +8,7 @@ from app.parsers.divinumofficium_structures import rank_table_by_calendar
 from app.schemas import CommemorationCreate, FeastCreate
 
 
-def parse_line(line: str, language: str, version: str) -> FeastCreate:
+def parse_line(line: str, language: str, version: str, fn: Path) -> FeastCreate:
     """Parse a line of a divinumofficium calendar file."""
 
     line = line.strip()
@@ -59,6 +59,7 @@ def parse_line(line: str, language: str, version: str) -> FeastCreate:
                 language=language,
                 version=version,
                 datestr=datestr,
+                sourcefile=fn.name,
             )
             for x in commemorations
         ]
@@ -78,6 +79,7 @@ def parse_line(line: str, language: str, version: str) -> FeastCreate:
         commemorations=commemorations,
         rank_defeatable=defeatable,
         language=language,
+        sourcefile=fn.name,
     )
     return a
 
@@ -100,7 +102,7 @@ def parse_file(fn: Path, language: str, version: str):
     year = []
     with fn.open() as f:
         for line in f.readlines():
-            parsed = parse_line(line, language, version)
+            parsed = parse_line(line, language, version, fn)
             if parsed:
                 year.append(parsed)
 

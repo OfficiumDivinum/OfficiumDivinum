@@ -109,4 +109,5 @@ def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
         version=version,
         rank_defeatable=False,  # pending further information
         octave=octave,
+        sourcefile=fn.name,
     )

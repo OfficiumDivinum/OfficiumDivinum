@@ -291,6 +291,8 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
                 language=lang,
                 version=version,
                 crossref=crossref,
+                sourcefile=fn.name,
+                at=key,
             )
         )
 

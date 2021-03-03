@@ -63,7 +63,6 @@ def create_item_crud(
                     filters=filters,
                 )
 
-            print(items, jsonable_encoder(items))
             return jsonable_encoder(items)
 
         @router.post(

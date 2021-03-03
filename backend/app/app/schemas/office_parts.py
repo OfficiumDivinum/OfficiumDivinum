@@ -81,4 +81,3 @@ class BlockInDB(BlockInDBBase):
 
 class FromDOMixin:
     sourcefile: str = Field(None, nullable=True)
-    at: OfficeLiteral = Field(None, nullable=True)

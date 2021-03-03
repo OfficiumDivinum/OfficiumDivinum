@@ -30,6 +30,7 @@ class HymnBase(BlockBase, FromDOMixin):
     parts: Optional[List[Verse]] = Field(None, nullable=True)
     version: str
     language: str
+    at: OfficeLiteral = Field(None, nullable=True)
 
 
 class HymnInDB(HymnBase):
