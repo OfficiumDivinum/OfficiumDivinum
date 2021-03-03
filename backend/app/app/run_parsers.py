@@ -314,7 +314,7 @@ def parse_upload_temporal(
 
     logger.info("Uploading Feasts to server.")
 
-    endpoint = f"{host}/api/v1/calendar/feast"
+    endpoint = f"{host}/api/v1/calendar/feast/"
     upload(feasts, endpoint, client, test_token_headers)
 
 
@@ -346,7 +346,7 @@ def parse_upload_sanctoral(
 
     logger.info("Uploading Feasts to server.")
 
-    endpoint = f"{host}/api/v1/calendar/feast"
+    endpoint = f"{host}/api/v1/calendar/feast/"
     upload(feasts, endpoint, client, test_token_headers)
 
 
