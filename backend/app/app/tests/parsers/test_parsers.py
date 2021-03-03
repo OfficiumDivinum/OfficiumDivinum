@@ -1,32 +1,48 @@
+from itertools import product
 from pathlib import Path
 from typing import Dict
 
+import pytest
 from fastapi.testclient import TestClient
 
 from app import run_parsers
 
+things = ["martyrologies", "psalms", "temporal", "sanctoral", "hymns"]
+versions = ["1960"]
 
-def test_parsers(client: TestClient, superuser_token_headers: Dict[str, str]):
+
+@pytest.mark.parametrize("version", versions)
+def test_pokemon(
+    version: str,
+    client: TestClient,
+    superuser_token_headers: Dict[str, str],
+):
     """Test all the parsers."""
     root = Path("./test-DO-data")
     lang = "Latin"
-    versions = ["1960"]
 
     # test without upload
-    for version in versions:
-        run_parsers.parse_upload(root, lang, version, pokemon=True, test=True)
+    run_parsers.parse_upload(root, lang, version, pokemon=True, test=True)
 
-        args = {
-            "root": root,
-            "lang": lang,
-            "version": version,
-            "client": client,
-            "host": "",
-            "test_token_headers": superuser_token_headers,
-        }
 
-        run_parsers.parse_upload_martyrologies(**args)
-        run_parsers.parse_upload_psalms(**args)
-        run_parsers.parse_upload_temporal(**args)
-        run_parsers.parse_upload_sanctoral(**args)
-        run_parsers.parse_upload_hymns(**args)
+@pytest.mark.parametrize("version,thing", product(versions, things))
+def test_upload_parsers(
+    version: str,
+    thing: str,
+    client: TestClient,
+    superuser_token_headers: Dict[str, str],
+):
+    """Test all the parsers."""
+    root = Path("./test-DO-data")
+    lang = "Latin"
+
+    args = {
+        "root": root,
+        "lang": lang,
+        "version": version,
+        "client": client,
+        "host": "",
+        "test_token_headers": superuser_token_headers,
+    }
+    fn = getattr(run_parsers, f"parse_upload_{thing}")
+    fn(**args)
