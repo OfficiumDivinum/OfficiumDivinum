@@ -1,7 +1,7 @@
 import logging
 import os
 from getpass import getpass
-from json import dumps
+from json import JSONDecodeError, dumps
 from pathlib import Path
 from typing import Optional
 
@@ -77,7 +77,6 @@ def upload(things, endpoint: str, client, test_token_headers=None):
             if not client:  # we are testing
                 continue
             if test_token_headers:
-                debug(endpoint)
                 resp = client.post(
                     endpoint, json=jsonable_encoder(entry), headers=test_token_headers
                 )
@@ -85,9 +84,11 @@ def upload(things, endpoint: str, client, test_token_headers=None):
 
                 resp = client.post(endpoint, json=jsonable_encoder(entry))
             if resp.status_code != 200:
-                raise Exception(
-                    f"Failed to upload, response was {dumps(resp.json(), indent=2)}"
-                )
+                try:
+                    msg = dumps(resp.json(), indent=2)
+                except JSONDecodeError:
+                    msg = f"{resp.content} + {resp.status_code}"
+                raise Exception(f"Failed to upload, response was {msg}")
 
 
 @app.command()
