@@ -1,0 +1,55 @@
+@Tempora/Pasc5-5
+
+[Rank]
+Feria VI post Ascensionem;;Feria;;1;;vide TemporaM/Pasc5-4
+
+[Rule]
+9 Lectiones
+
+[Capitulum Tertia]
+!Eph 2:6-7
+v. Conresuscitávit, et consedére fecit in cæléstibus in Christo Jesu, ut osténderet in sǽculis superveniéntibus abundántes divítias grátiæ suæ, in bonitáte super nos in Christo Jesu.
+$Deo gratias
+
+[Capitulum Vespera]
+@:Capitulu Tertiam
+_
+@Tempora/Pasc5-4:Responsory Sexta:1-6
+
+[Capitulum Laudes]
+@:Capitulu Tertiam
+_
+@Tempora/Pasc5-4:Responsory Tertia:1-6
+
+[Capitulum Sexta]
+!Eph 1:20-21
+v. Deus Christum constítuit ad déxteram suam in cæléstibus: supra omnem principátum, et potestátem, et virtútem, et dominatiónem, et omne nomen, quod nominátur non solum in hoc sǽculo, sed étiam in futúro.
+$Deo gratias
+
+[Capitulum Nona]
+!Eph 1:22-23
+v. Ómnia subiécit sub pédibus eius: et ipsum dedit caput supra omnem Ecclésiam, quæ est corpus ipsíus, et plenitúdo eius, qui ómnia in ómnibus adimplétur.
+$Deo gratias
+
+[LectioE]
+v. Sequentia Sancti Evangelii secundum Marcum
+!Marc 16:14-20
+16:14 Novissime recumbentibus illis undecim apparuit: et exprobravit incredulitatem eorum et duritiam cordis: quia iis, qui viderant eum resurrexisse, non crediderunt.
+16:15 Et dixit eis: Euntes in mundum universum praedicate Evangelium omni creaturae.
+16:16 Qui crediderit, et baptizatus fuerit, salvus erit: qui vero non crediderit, condemnabitur.
+16:17 Signa autem eos qui crediderint, haec sequentur: in nomine meo daemonia ejicient: linguis loquentur novis:
+16:18 serpentes tollent: et si mortiferum quid biberint, non eis nocebit: super aegros manus imponent, et bene habebunt.
+16:19 Et Dominus quidem Jesus postquam locutus est eis, assumptus est in caelum, et sedet a dextris Dei.
+16:20 Illi autem profecti praedicaverunt ubique, Domino cooperante, et sermonem confirmante, sequentibus signis.
+$Te decet
+[LectioE]
+v. Sequentia Sancti Evangelii secundum Marcum
+!Marc 16:14-20
+16:14 Novissime recumbentibus illis undecim apparuit: et exprobravit incredulitatem eorum et duritiam cordis: quia iis, qui viderant eum resurrexisse, non crediderunt.
+16:15 Et dixit eis: Euntes in mundum universum praedicate Evangelium omni creaturae.
+16:16 Qui crediderit, et baptizatus fuerit, salvus erit: qui vero non crediderit, condemnabitur.
+16:17 Signa autem eos qui crediderint, haec sequentur: in nomine meo daemonia ejicient: linguis loquentur novis:
+16:18 serpentes tollent: et si mortiferum quid biberint, non eis nocebit: super aegros manus imponent, et bene habebunt.
+16:19 Et Dominus quidem Jesus postquam locutus est eis, assumptus est in caelum, et sedet a dextris Dei.
+16:20 Illi autem profecti praedicaverunt ubique, Domino cooperante, et sermonem confirmante, sequentibus signis.
+$Te decet

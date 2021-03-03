@@ -1,0 +1,65 @@
+@Commune/C2
+
+[Capitulum Vespera]
+@Commune/C2
+_
+@Commune/C2:Responsory Sexta:1-6
+
+[Ant Matutinum]
+In lege Dómini * fuit volúntas ejus die ac nocte.;;1
+Prǽdicans * præcéptum Dómini constitútus est in monte sancto ejus.;;2
+Fílii hóminum * scitóte quia Dóminus sanctum suum mirificávit.;;4
+Scuto bonæ voluntátis * tuæ coronásti eum Dómine.;;5
+In univérsa terra * glória et honóre coronásti eum.;;8
+Justus Dóminus, * et justítiam diléxit: æquitátem vidit vultus ejus.;;10
+V. Glória et honóre coronásti eum, Dómine.
+R. Et constituísti eum super ópera mánuum tuárum.
+Habitábit * in tabernáculo tuo: requiéscet in monte sancto tuo.;;14
+Posuísti, Dómine, * super caput ejus corónam de lápide pretióso.;;20
+Hic accipiet * benedictionem a Domino, et misericordiam a Deo salutari suo; qui haec est generatio quaerentium Dominum;;23
+Laetabitur iustus * in Domino et sperabit in eo, et laudabuntur omnes recti corde;;63
+Beatus * quem elegisti Domine, habitabit in atriis tuis;;64
+Justus ut palma florebit: sicut cedrus Libani multiplicabitur;;91
+V. Posuísti, Dómine, super caput ejus.
+R. Corónam de lápide pretióso.
+Qui vult venire post me, * abnegat semetipsum, et tollet crucem suam, et sequatur me;;256;257;258
+V. Magna est glória ejus in salutári tuo.
+R. Glóriam et magnum decórem impónes super eum.
+
+[Responsory9]
+R.br. Beatus vir qui suffert tentationem: quoniam cum probatus fuerit, accipiet coronam vitae, 
+* Quam repromisit Deus diligentibus se.
+V. Hic accipiet benedictionem a Domino, et misericordiam a Deo salutari suo
+R. Quam repromisit Deus diligentibus se.
+&Gloria
+R. Quam repromisit Deus diligentibus se.
+
+[Capitulum Laudes]
+@Commune/C2
+_
+@Commune/C2:Responsory Tertia:1-6
+
+[Capitulum Tertia]
+@Commune/C2
+
+[Responsory Tertia]
+@Commune/C2:Versum 1
+
+[Responsory Sexta]
+@Commune/C2:Responsory Tertia:8-9
+
+[Responsory Nona]
+@Commune/C2:Responsory Sexta:8-9
+
+[LectioE]
+v. Sequéntia sancti Evangélii secúndum Lucam
+!Luc 14:26-33
+14:26 Si quis venit ad me, et non odit patrem suum, et matrem, et uxórem, et fílios, et fratres, et soróres, adhuc autem et ánimam suam, non potest meus esse discípulus.
+14:27 Et qui non báiulat crucem suam, et venit post me, non potest meus esse discípulus.
+14:28 Quis enim ex vobis volens turrim ædificáre, non prius sedens cómputat sumptus, qui necessárii sunt, si hábeat ad perficiéndum,
+14:29 ne, posteáquam posúerit fundaméntum, et non potúerit perfícere, omnes qui vident, incípiant illúdere ei,
+14:30 dicéntes: Quia hic homo cœpit ædificáre, et non pótuit consummáre?
+14:31 Aut quis rex itúrus commíttere bellum advérsus álium regem, non sedens prius cógitat, si possit cum decem míllibus occúrrere ei, qui cum vigínti míllibus venit ad se?
+14:32 Alióquin adhuc illo longe agénte, legatiónem mittens rogat ea quæ pacis sunt.
+14:33 Sic ergo omnis ex vobis, qui non renúntiat ómnibus quæ póssidet, non potest meus esse discípulus.
+$Te decet

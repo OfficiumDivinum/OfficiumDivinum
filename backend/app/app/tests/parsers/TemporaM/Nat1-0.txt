@@ -1,0 +1,125 @@
+@Tempora/Nat1-0
+
+[Rank]
+Dominica Infra Octavam Nativitatis;;Semiduplex;;5.9;;ex SanctiM/12-25
+
+[Rule]
+12 lectiones
+Psalmi Dominica
+no Commemoratio
+Antiphonas horas
+
+[Ant Matutinum]
+@SanctiM/12-25::s/V\. Ipse.*/V. Notum fecit Dóminus, allelúja.\nR. Salutáre suum, allelúja./s
+
+[Lectio1]
+@Sancti/12-29
+
+[Responsory1]
+@Sancti/12-25:Responsory2
+
+[Lectio2]
+@Sancti/12-29::s/-12/-10/ s/11 .*//s
+
+[Responsory2]
+@Sancti/12-25:Responsory3
+
+[Lectio3]
+@Sancti/12-29:Lectio2:s/8-12/11-13/ s/8 .*11 /11 /s
+@Sancti/12-29:Lectio3:s/.*13 /13 /s s/14 .*//s
+
+[Responsory3]
+@SanctiM/12-25:Responsory4
+
+[Lectio4]
+@Sancti/12-29:Lectio3:s/13-/14-/ s/13 .*14 /14 /s
+
+[Responsory4]
+@Sancti/12-25
+
+[Lectio5]
+@Tempora/Nat1-0:Lectio4:s/Utrámque .*//s
+
+[Responsory5]
+@Sancti/12-25
+
+[Lectio6]
+@Tempora/Nat1-0:Lectio4:s/.* Utrámque /Utrámque /s s/$/~/
+@Tempora/Nat1-0:Lectio5:s/Nemo .*//s
+
+[Responsory6]
+@Sancti/12-25
+
+[Lectio7]
+@Tempora/Nat1-0:Lectio5:s/.* Nemo /Nemo /s s/$/~/
+@Tempora/Nat1-0:Lectio6:s/Quod .*//s
+
+[Responsory7]
+@SanctiM/12-25:Responsory8
+
+[Lectio8]
+@Tempora/Nat1-0:Lectio6:s/.* Quod /Quod /s
+
+[Responsory8]
+@Sancti/01-01:Responsory1
+
+[Lectio9]
+@Tempora/Nat1-0:Lectio7
+
+[Responsory9]
+@Sancti/12-25:Responsory7
+
+[Lectio10]
+@Tempora/Nat1-0:Lectio8:s/Vivum .*//s
+
+[Responsory10]
+@SanctiM/12-25:Responsory11
+
+[Lectio11]
+@Tempora/Nat1-0:Lectio8:s/.* Vivum /Vivum /s
+
+[Responsory11]
+@Sancti/12-25:Responsory8
+
+[Lectio12]
+@Tempora/Nat1-0:Lectio9
+
+[Responsory12]
+@Tempora/Nat1-0:Responsory8
+
+[LectioE]
+Sequéntia ++ sancti Evangélii secundum Lucam.
+!Luc 2:33-40
+In illo témpore: Erat Joseph et María Mater Jesu, mirántes super his quæ~
+dicebántur de illo. Et benedíxit illis Símeon, et dixit ad Maríam Matrem ejus:~
+Ecce, pósitus est hic in ruínam et in resurrectiónem multórum in Israël: et in~
+signum, cui contradicétur: et tuam ipsíus ánimam pertransíbit gládius, ut~
+reveléntur ex multis córdibus cogitatiónes. Et erat Anna prophetíssa, fília~
+Phánuel, de tribu Aser: hæc procésserat in diébus multis, et víxerat cum viro~
+suo annis septem a virginitáte sua. Et hæc vídua usque ad annos octogínta~
+quátuor: quæ non discedébat de templo, jejúniis et obsecratiónibus sérviens~
+nocte ac die. Et hæc, ipsa hora supervéniens, confitebátur Dómino, et loquebátur~
+de illo ómnibus, qui exspectábant redemptiónem Israël. Et ut perfecérunt ómnia~
+secúndum legem Dómini, revérsi sunt in Galilǽam in civitátem suam Názareth. Puer autem crescébat, et confortabátur, plenus~
+sapiéntia: et grátia Dei erat in illo.
+
+[Versum 2]
+@Sancti/12-25:Responsory Sexta:s/.*_.//s
+
+[Capitulum Laudes]
+@:Capitulum Tertia
+_
+@Sancti/12-25:Responsory Tertia:s/._.*//s
+
+[Capitulum Vespera]
+@:Capitulum Laudes
+
+[Capitulum Tertia]
+@Tempora/Nat1-0:Capitulum Vespera
+
+[Versum 1]
+V. Vidérunt omnes fines terræ, allelúja.
+R. Salutáre Dei nostri, allelúja.
+
+[Versum 3]
+@:Versum 1

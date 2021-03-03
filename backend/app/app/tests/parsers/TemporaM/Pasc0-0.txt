@@ -1,0 +1,65 @@
+@Tempora/Pasc0-0
+
+[Rule]
+1 nocturn;
+Psalmi Dominica
+Doxology=PascM
+Antiphonas horas
+
+[Capitulum Laudes]
+@:Capitulum Tertia
+_
+@Psalterium/Major Special:PaschM Laudes:3-8
+
+[Versum 2]
+V. Hæc dies, quam fécit Dominus. 
+R. Exsultémus et lætémur in ea.
+
+[Capitulum Tertia]
+!1 Cor 5:7
+v. Fratres: Expurgáte vetus ferméntum, ut sitis nova conspérsio, sicut estis ázymi. Etenim Pascha nostrum immolátus est Christus.
+$Deo gratias
+
+[Responsory Tertia]
+V. Hæc dies quam fecit Dóminus. 
+R. Exsultémus et lætémur in ea.
+
+[Capitulum Sexta]
+!1 Cor 5:8
+v. Itaque epulémur: non in ferménto véteri, neque in ferménto malítiæ et nequítiæ: sed in ázymis sinceritátis et veritátis.
+$Deo gratias
+
+[Responsory Sexta]
+@:Responsory Tertia
+
+[Capitulum Nona]
+!Col 3:1-2
+v. Si consurrexístis cum Christo, quæ sursum sunt quǽrite, ubi Christus est in déxtera Dei sedens: quæ sursum sunt sápite, non quæ super terram.
+$Deo gratias
+
+[Responsory Nona]
+@:Responsory Tertia
+
+[Capitulum Vespera]
+@:Capitulum Tertia
+_
+@Psalterium/Major Special:PaschM Laudes:3-8
+
+[Versum 3]
+@:Versum 2
+
+[LectioE]
+v. Sequentia Sancti Evangelii secundum Marcum
+!Marc 16:1-7
+16:1 Et cum transisset sabbatum, Maria Magdalene, et Maria Jacobi, et Salome~
+emerunt aromata ut venientes ungerent Jesum.
+16:2 Et valde mane una sabbatorum, veniunt ad monumentum, orto jam sole.
+16:3 Et dicebant ad invicem: Quis revolvet nobis lapidem ab ostio monumenti?
+16:4 Et respicientes viderunt revolutum lapidem. Erat quippe magnus valde.
+16:5 Et introëuntes in monumentum viderunt juvenem sedentem in dextris,~
+coopertum stola candida, et obstupuerunt.
+16:6 Qui dicit illis: Nolite expavescere: Jesum quaeritis Nazarenum, crucifixum:~
+surrexit, non est hic, ecce locus ubi posuerunt eum.
+16:7 Sed ite, dicite discipulis ejus, et Petro, quia praecedit vos in Galilaeam:~
+ibi eum videbitis, sicut dixit vobis.
+$Te decet

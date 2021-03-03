@@ -1,0 +1,19 @@
+@Tempora/Quad6-5
+
+[Ant Laudes]
+@Tempora/Quad6-5::s/\n/_/smg s/_/;;50\n/ s/_/;;142\n/ s/_/;;84\n/ s/_/;;225\n/ s/$/;;147\n/s
+
+[Oratio]
+@Tempora/Quad6-5
+
+[Special Prima]
+@TemporaM/Quad6-4::s/6-4/6-5/
+
+[Special Tertia]
+@TemporaM/Quad6-4::s/6-4/6-5/
+
+[Special Sexta]
+@TemporaM/Quad6-4::s/6-4/6-5/
+
+[Special Nona]
+@TemporaM/Quad6-4::s/6-4/6-5/

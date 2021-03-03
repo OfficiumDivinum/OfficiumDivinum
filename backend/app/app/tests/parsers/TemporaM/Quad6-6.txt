@@ -1,0 +1,28 @@
+@Tempora/Quad6-6
+
+[Rank]
+Sabbato Sancto;;Feria privilegiata Duplex I classis;;7.1
+
+[Ant Laudes]
+@Tempora/Quad6-6::s/\n/_/smg s/_/;;50\n/ s/_/;;91\n/ s/_/;;63\n/ s/_/;;226\n/ s/$/;;150\n/s
+
+[Oratio]
+@Tempora/Quad6-6r:Oratio 2
+
+[Special Prima]
+@TemporaM/Quad6-4::s/6-4/6-6r/ s/Oratio/Oratio 2/
+
+[Special Tertia]
+@TemporaM/Quad6-4::s/6-4/6-6r/ s/Oratio/Oratio 2/
+
+[Special Sexta]
+@TemporaM/Quad6-4::s/6-4/6-6r/ s/Oratio/Oratio 2/
+
+[Special Nona]
+@TemporaM/Quad6-4::s/6-4/6-6r/ s/Oratio/Oratio 2/
+
+[Ant Vespera]
+@Tempora/Quad6-6r
+
+[Ant 3]
+@Tempora/Quad6-6r

@@ -1,0 +1,48 @@
+@Tempora/Quad6-4
+
+[Ant Laudes]
+@Tempora/Quad6-4::s/\n/_/smg s/_/;;50\n/ s/_/;;89\n/ s/_/;;35\n/ s/_/;;224\n/ s/$/;;146\n/s
+
+[Special Prima]
+&psalm(53)
+
+&psalm(118,1,16,'Latin','')
+
+&psalm(118,17,32,'Latin','')
+_
+
+_
+@Tempora/Quad6-4:Oratio
+
+[Special Tertia]
+&psalm(118,33,48,'Latin','')
+
+&psalm(118,49,64,'Latin','')
+
+&psalm(118,65,80,'Latin','')
+_
+
+_
+@Tempora/Quad6-4:Oratio
+
+[Special Sexta]
+&psalm(118,81,96,'Latin','')
+
+&psalm(118,97,112,'Latin','')
+
+&psalm(118,113,128,'Latin','')
+_
+
+_
+@Tempora/Quad6-4:Oratio
+
+[Special Nona]
+&psalm(118,129,144,'Latin','')
+
+&psalm(118,145,160,'Latin','')
+
+&psalm(118,161,176,'Latin','')
+_
+
+_
+@Tempora/Quad6-4:Oratio

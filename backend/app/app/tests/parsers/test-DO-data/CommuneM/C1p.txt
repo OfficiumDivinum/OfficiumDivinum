@@ -1,0 +1,59 @@
+@Commune/C1p
+
+[Capitulum Vespera]
+@Commune/C1p
+_
+@Commune/C1p:Responsory Sexta:1-6
+
+[Ant Matutinum]
+Stabunt justi * in magna constántia advérsus eos, qui se angustiavérunt, allelúja.;;18
+;;33
+;;44
+;;46
+;;60
+;;63
+V. Sancti et justi in Dómino gaudéte, allelúja.
+R. Vos elegit Deus in hereditátem sibi, allelúja.
+Fulgébunt justi * sicut sol in conspéctu Dei, allelúja.;;74
+;;95
+;;96
+;;97
+;;98
+;;100
+V. Lux perpétua lucébit Sanctis tuis, Dómine, allelúja.
+R. Et ætérnitas tempórum, allelúja.
+Lux perpétua * lucébit Sanctis tuis, Dómine, et ætérnitas tempórum, allelúja.;;253;254;255
+V. Lætítia sempitérna super cápita eórum, allelúja.
+R. Gáudium et exsultatiónem obtinébunt, allelúja.
+
+[Responsory9]
+R. Non vos me elegistis, sed ego elegi vos, et posui vos:
+* Ut eatis, et fructum afferatis, et fructus vester maneat, alleluia,~
+alleluia.
+V. Sicut misit me Pater, et ego mitto vos.
+R. Ut eatis, et fructum afferatis, et fructus vester maneat, alleluia,~
+alleluia.
+&Gloria
+R. Ut eatis, et fructum afferatis, et fructus vester maneat, alleluia,~
+alleluia.
+
+[Capitulum Laudes]
+@Commune/C1p
+_
+@Commune/C1p:Responsory Tertia:1-6
+
+[Responsory Tertia]
+@Commune/C1p:Versum 1
+
+[Responsory Sexta]
+@Commune/C1p:Responsory Tertia:8-9
+
+[Responsory Nona]
+@Commune/C1p:Responsory Sexta:8-9
+
+
+[Ant Vespera 3]
+@Commune/C1p::s/125/138/
+
+[LectioE]
+@CommuneM/C1

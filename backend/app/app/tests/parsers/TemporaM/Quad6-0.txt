@@ -1,0 +1,39 @@
+@Tempora/Quad6-0
+
+[Capitulum Vespera]
+@Tempora/Quad6-0
+_
+@Psalterium/Major Special:Quad5M Vespera:3-8
+
+[Capitulum Laudes]
+@Tempora/Quad6-0
+_
+@Psalterium/Major Special:Quad5M Laudes:3-8
+
+[Capitulum Vespera 3]
+@Tempora/Quad6-0:Capitulum Vespera
+_
+@Psalterium/Major Special:Quad5M Vespera:3-8
+
+[LectioE]
+v. Sequentia Sancti Evangelii secundum Matthaeum
+!Matt 21:1-9
+21:1 Et cum appropinquassent Jerosolymis, et venissent Bethphage ad montem~
+Oliveti: tunc Jesus misit duos discipulos,
+21:2 dicens eis: Ite in castellum, quod contra vos est, et statim invenietis~
+asinam alligatam, et pullum cum ea: solvite, et adducite mihi:
+21:3 et si quis vobis aliquid dixerit, dicite quia Dominus his opus habet: et~
+confestim dimittet eos.
+21:4 Hoc autem totum factum est, ut adimpleretur quod dictum est per prophetam~
+dicentem:
+21:5 Dicite filiae Sion: Ecce rex tuus venit tibi mansuetus, sedens super asinam,~
+et pullum filium subjugalis.
+21:6 Euntes autem discipuli fecerunt sicut praecepit illis Jesus.
+21:7 Et adduxerunt asinam, et pullum: et imposuerunt super eos vestimenta sua,~
+et eum desuper sedere fecerunt.
+21:8 Plurima autem turba straverunt vestimenta sua in via: alii autem caedebant~
+ramos de arboribus, et sternebant in via:
+21:9 turbae autem, quae praecedebant, et quae sequebantur, clamabant, dicentes:~
+Hosanna filio David: benedictus, qui venit in nomine Domini: hosanna in~
+altissimis.
+$Te decet

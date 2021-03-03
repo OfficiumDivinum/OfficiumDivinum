@@ -1,0 +1,48 @@
+@Tempora/Quad5-0
+
+[Capitulum Vespera]
+@Tempora/Quad5-0
+_
+@Psalterium/Major Special:Quad5M Vespera:3-7
+
+[Capitulum Laudes]
+@Tempora/Quad5-0
+_
+@Psalterium/Major Special:Quad5M Laudes:3-7
+
+[Capitulum Vespera 3]
+@Tempora/Quad5-0:Capitulum Vespera
+_
+@Psalterium/Major Special:Quad5M Vespera:3-7
+
+[LectioE]
+v. Sequentia Sancti Evangelii secundum Joannem
+!Joannes 8:46-59
+8:46 Quis ex vobis arguet me de peccato? si veritatem dico vobis, quare non~
+creditis mihi?
+8:47 Qui ex Deo est, verba Dei audit. Propterea vos non auditis, quia ex Deo non~
+estis.
+8:48 Responderunt ergo Judaei, et dixerunt ei: Nonne bene dicimus nos quia~
+Samaritanus es tu, et daemonium habes?
+8:49 Respondit Jesus: Ego daemonium non habeo: sed honorifico Patrem meum, et~
+vos inhonorastis me.
+8:50 Ego autem non quaero gloriam meam: est qui quaerat, et judicet.
+8:51 Amen, amen dico vobis: si quis sermonem meum servaverit, mortem non videbit~
+in aeternum.
+8:52 Dixerunt ergo Judaei: Nunc cognovimus quia daemonium habes. Abraham mortuus~
+est, et prophetae; et tu dicis: Si quis sermonem meum servaverit, non gustabit~
+mortem in aeternum.
+8:53 Numquid tu major es patre nostro Abraham, qui mortuus est? et prophetae~
+mortui sunt. Quem teipsum facis?
+8:54 Respondit Jesus: Si ego glorifico meipsum, gloria mea nihil est: est Pater~
+meus, qui glorificat me, quem vos dicitis quia Deus vester est,
+8:55 et non cognovistis eum: ego autem novi eum. Et si dixero quia non scio eum,~
+ero similis vobis, mendax. Sed scio eum, et sermonem ejus servo.
+8:56 Abraham pater vester exsultavit ut videret diem meum: vidit, et gavisus~
+est.
+8:57 Dixerunt ergo Judaei ad eum: Quinquaginta annos nondum habes, et Abraham~
+vidisti?
+8:58 Dixit eis Jesus: Amen, amen dico vobis, antequam Abraham fieret, ego sum.
+8:59 Tulerunt ergo lapides, ut jacerent in eum: Jesus autem abscondit se, et~
+exivit de templo.
+$Te decet

@@ -1,0 +1,115 @@
+@Tempora/Quadp2-0
+
+[Rule]
+12 lectiones
+Invit2
+
+[Capitulum Vespera]
+@Tempora/Quadp2-0
+_
+@Psalterium/Major Special:Day6M Vespera:3-8
+
+[Capitulum Laudes]
+@Tempora/Quadp2-0
+_
+@Psalterium/Major Special:Day0M Laudes:3-8
+
+[Responsory Tertia]
+@Psalterium/Minor Special:Dominica Tertia:s/.*_.//s
+
+[Responsory Sexta]
+@Psalterium/Minor Special:Dominica Sexta:s/.*_.//s
+
+[Responsory Nona]
+@Psalterium/Minor Special:Dominica Nona:s/.*_.//s
+
+[Capitulum Vespera 3]
+@Tempora/Quadp2-0:Capitulum Vespera
+_
+@Psalterium/Major Special:Day0M Vespera:3-8
+
+[Lectio1]
+@Tempora/Quadp2-0:Lectio1:s/-4/-3/ s/4 .*//s 
+
+[Lectio2]
+@Tempora/Quadp2-0:Lectio1:s/5:31; // s/1-4/4-6/ s/31 .*4 /4 /s 
+@Tempora/Quadp2-0:Lectio2:s/!.*// s/ Et tactus.*//s
+
+[Lectio3]
+@Tempora/Quadp2-0:Lectio2:s/5-8/6-10/ s/5.*(Et tactus)/6 $1/s
+@Tempora/Quadp2-0:Lectio3:s/!.*// s/11 .*//s
+
+[Lectio4]
+@Tempora/Quadp2-0:Lectio3:s/9-/11-/ s/9.*11/11/s
+
+[Responsory4]
+R. In artículo diéi illíus ingréssus est Noë in arcam et fílii ejus,
+* Uxor illíus et uxóres filiórum ejus.
+V. Deléta sunt univérsa de terra, † remánsit autem solus Noë, et qui cum eo erant in arca.
+R. Uxor illíus et uxóres filiórum ejus.
+
+[Lectio5]
+@Tempora/Quadp2-0:Lectio4:s/Neque .*//s
+
+[Responsory5]
+@Tempora/Quadp2-0:Responsory4
+
+[Lectio6]
+@Tempora/Quadp2-0:Lectio4:s/.* Neque /Neque /s
+
+[Responsory6]
+@Tempora/Quadp2-0:Responsory5
+
+[Lectio7]
+@Tempora/Quadp2-0:Lectio5
+
+[Responsory7]
+@Tempora/Quadp2-0:Responsory6
+
+[Lectio8]
+@Tempora/Quadp2-0:Lectio6
+
+[Responsory8]
+R. Recordátus Dóminus Noë, adduxit spíritum super terram, † et imminútæ sunt aquæ:
+* Et prohíbitæ sunt pluviæ de cælis.
+V. Reversæque sunt aquæ de terra euntes et redeuntes, † et cœpérunt mínui post centum quinquagínta dies.
+R. Et prohíbitæ sunt pluviæ de cælis.
+
+[Ant Matutinum 3N]
+Semen cécidit in terram bonam, † et ortem fecit fructum céntuplum.
+V. Exaltáre Dómine in virtúte tua.
+R. Cantábimus et psallémus virtútes tuas.
+
+[Lectio9]
+@Tempora/Quadp2-0:Lectio7:s/Unde .*//s
+
+[Responsory9]
+@Tempora/Quadp2-0:Responsory7
+
+[Lectio10]
+@Tempora/Quadp2-0:Lectio7:s/.* Unde /Unde /s s/$/~/
+@Tempora/Quadp2-0:Lectio8:s/Quis .*//s
+
+[Responsory10]
+@Tempora/Quadp2-0:Responsory8
+
+[Lectio11]
+@Tempora/Quadp2-0:Lectio8:s/.* Quis /Quis /s
+
+[Responsory11]
+R. Requiévit arca mense séptimo super montes Arméniæ:
+* Et aquæ ibant et decrescébant usque ad décimum mensem.
+V. Décimo enim mense primo die mensis cacúmina móntium apparuérunt.
+R. Et aquæ ibant et decrescébant usque ad décimum mensem.
+
+[Lectio12]
+@Tempora/Quadp2-0:Lectio9
+
+[Responsory12]
+@Tempora/Quadp2-0:Responsory9
+
+[LectioE]
+Sequéntia ++ sancti Evangélii secúndum Lucam
+!Luc 8:4-15
+In illo témpore: Cum turba plúrima convenírent, et de civitátibus properárent ad Jesum, dixit per similitúdinem: Exiit, qui séminat, semináre semen suum: et dum séminat, áliud cécidit secus viam, et conculcátum est, et vólucres cæli comedérunt illud. Et áliud cécidit supra petram: et natum áruit, quia non habébat humórem. Et áliud cécidit inter spinas, et simul exórtæ spinæ suffocavérunt illud. Et áliud cécidit in terram bonam: et ortum fecit fructum céntuplum. Hæc dicens, clamábat: Qui habet aures audiéndi, áudiat. Interrogábant autem eum discípuli ejus, quæ esset hæc parábola. Quibus ipse dixit: Vobis datum est nosse mystérium regni Dei, céteris autem in parábolis: ut vidéntes non vídeant, et audiéntes non intéllegant. Est autem hæc parábola: Semen est verbum Dei. Qui autem secus viam, hi sunt qui áudiunt: déinde venit diábolus, et tollit verbum de corde eórum, ne credéntes salvi fiant. Nam qui supra petram: qui cum audíerint, cum gáudio suscípiunt verbum: et hi radíces non habent: qui ad tempus credunt, et in témpore tentatiónis recédunt. Quod autem in spinas cécidit: hi sunt, qui audiérunt, et a sollicitudínibus et divítiis et voluptátibus vitæ eúntes, suffocántur, et non réferunt fructum. Quod autem in bonam terram: hi sunt, qui in corde bono et óptimo audiéntes verbum rétinent, et fructum áfferunt in patiéntia.
+
