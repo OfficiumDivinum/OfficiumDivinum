@@ -78,4 +78,4 @@ class BlockInDB(BlockInDBBase):
 
 
 class FromDOMixin:
-    sourcefile: str = Field(None, nullable=True)
+    sourcefile: Optional[str] = Field(None, nullable=True)
