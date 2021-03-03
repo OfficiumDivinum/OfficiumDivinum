@@ -55,6 +55,8 @@ HymnTypeLiteral = Literal[
     "hymnus vespera 3",
 ]
 
+PrayerTypeLiteral = Literal["Oratio"]
+
 
 class Datestr(BaseModel):
     """Class to represent datestr."""

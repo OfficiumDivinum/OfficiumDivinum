@@ -14,5 +14,6 @@ from .martyrology import (  # noqa
 )
 from .msg import ErrorMsg, Msg, TaskIDMsg  # noqa
 from .office_parts import Block, BlockCreate, BlockInDB, BlockUpdate  # noqa
+from .prayer import Prayer, PrayerCreate, PrayerInDB, PrayerUpdate  # noqa
 from .token import Token, TokenPayload  # noqa
 from .user import User, UserCreate, UserInDB, UserUpdate  # noqa
