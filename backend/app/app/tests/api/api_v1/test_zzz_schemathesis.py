@@ -28,7 +28,7 @@ schema.add_link(
 
 @schema.parametrize()
 @pytest.mark.xfail(
-    reason="Some operations not yet working with schemathesis", strict=True
+    reason="Some operations not yet working with schemathesis", strict=False
 )
 @settings(max_examples=10)
 def test_api(case, superuser_token_headers):
