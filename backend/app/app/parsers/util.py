@@ -1,5 +1,6 @@
 """Utilities to handle DO's files."""
 import re
+import unicodedata
 
 
 def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> list:
@@ -44,3 +45,31 @@ def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> list:
         else:
             subcontent.append(line)
     return sections
+
+
+def unicode_to_ascii(data, cleanup: bool = True):
+    """
+    Cleanup a unicode str.
+
+    Modified from https://towardsdatascience.com/python-tutorial-fuzzy-name-matching-
+    algorithms-7a6f43322cc5.
+
+    Args:
+      data:
+      cleanup: bool:  (Default value = True)
+
+    Returns:
+    """
+    if not data:
+        return None
+    normal = unicodedata.normalize("NFKD", data).encode("ASCII", "ignore")
+    val = normal.decode("utf-8")
+    if len(val.strip()) == 0:
+        return data  # handle cyrillic
+    if cleanup:
+        val = val.lower()
+        # remove special characters
+        val = re.sub("[^A-Za-z0-9 ]+", " ", val)
+        # remove multiple spaces
+        val = re.sub(" +", " ", val)
+    return val

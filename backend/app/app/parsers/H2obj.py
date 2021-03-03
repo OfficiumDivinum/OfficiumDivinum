@@ -1,42 +1,13 @@
 """Get all Hymns from Divinumofficium's source files."""
 import re
-import unicodedata
 from pathlib import Path
 from typing import Dict, List, Union
 
 from devtools import debug
 
 from app.parsers.deref import deref
-from app.parsers.util import parse_DO_sections
+from app.parsers.util import parse_DO_sections, unicode_to_ascii
 from app.schemas.hymn import HymnCreate, LineBase, VerseCreate
-
-
-def unicode_to_ascii(data, cleanup: bool = True):
-    """
-    Cleanup a unicode str.
-
-    Modified from https://towardsdatascience.com/python-tutorial-fuzzy-name-matching-
-    algorithms-7a6f43322cc5.
-
-    Args:
-      data:
-      cleanup: bool:  (Default value = True)
-
-    Returns:
-    """
-    if not data:
-        return None
-    normal = unicodedata.normalize("NFKD", data).encode("ASCII", "ignore")
-    val = normal.decode("utf-8")
-    if len(val.strip()) == 0:
-        return data  # handle cyrillic
-    if cleanup:
-        val = val.lower()
-        # remove special characters
-        val = re.sub("[^A-Za-z0-9 ]+", " ", val)
-        # remove multiple spaces
-        val = re.sub(" +", " ", val)
-    return val
 
 
 def guess_version(thing: Union[Path, str]):
