@@ -50,12 +50,6 @@ jobs:
           -f docker-compose.yml \
           config > docker-stack.yml
 
-      - name: save yml
-        uses: actions/upload-artifact@v1.0.0
-        with:
-          name: docker-stack.yml
-          path: docker-stack.yml
-          
       - name: build
         run: docker-compose -f docker-stack.yml build
       - name: down
