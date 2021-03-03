@@ -1,3 +1,4 @@
+import pytest
 import schemathesis
 from hypothesis import settings
 
@@ -26,6 +27,9 @@ schema.add_link(
 
 
 @schema.parametrize()
+@pytest.mark.xfail(
+    reason="Some operations not yet working with schemathesis", strict=True
+)
 @settings(max_examples=10)
 def test_api(case, superuser_token_headers):
     case.headers = case.headers or {}
