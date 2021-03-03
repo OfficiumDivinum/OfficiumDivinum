@@ -25,6 +25,14 @@ def parse_line(line: str, language: str, version: str) -> FeastCreate:
         rank_name = rank_table[int(float(rank) + 0.5)]
         defeatable = True
 
+    month, day = (int(x) for x in date.split("-"))
+    if day == 0:
+        Type = "de Tempore"
+        datestr = "Sun between 2 Jan 5 Jan OR 2 Jan"
+    else:
+        Type = "Sanctorum"
+        datestr = f"{day} {months[month - 1]}"
+
     commemorations = None
 
     if len(parts) > 5 and parts[4]:
@@ -50,6 +58,7 @@ def parse_line(line: str, language: str, version: str) -> FeastCreate:
                 rank_defeatable=commemoration_defeatable,
                 language=language,
                 version=version,
+                datestr=datestr,
             )
             for x in commemorations
         ]
@@ -61,14 +70,7 @@ def parse_line(line: str, language: str, version: str) -> FeastCreate:
     if qualifiers:
         print(qualifiers)
 
-    month, day = (int(x) for x in date.split("-"))
-    if day == 0:
-        Type = "de Tempore"
-        datestr = "Sun between 2 Jan 5 Jan OR 2 Jan"
-    else:
-        Type = "Sanctorum"
-        datestr = f"{day} {months[month - 1]}"
-    return FeastCreate(
+    a = FeastCreate(
         rank_name=rank_name,
         datestr=datestr,
         version=version,
@@ -77,6 +79,7 @@ def parse_line(line: str, language: str, version: str) -> FeastCreate:
         rank_defeatable=defeatable,
         language=language,
     )
+    return a
 
 
 def parse_file(fn: Path, language: str, version: str):
@@ -95,7 +98,6 @@ def parse_file(fn: Path, language: str, version: str):
     A list of FeastCreate objects.
     """
     year = []
-
     with fn.open() as f:
         for line in f.readlines():
             parsed = parse_line(line, language, version)
