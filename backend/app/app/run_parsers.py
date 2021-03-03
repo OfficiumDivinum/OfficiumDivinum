@@ -152,6 +152,7 @@ def parse_upload(
     temporal: Optional[bool] = None,
     sanctoral: Optional[bool] = None,
     hymns: Optional[bool] = None,
+    pokemon: Optional[bool] = None,
     verbosity: int = 0,
     test: Optional[bool] = None,
 ):
@@ -169,6 +170,7 @@ def parse_upload(
       temporal: Optional[bool]:  Parse Temporal. (Default value = None)
       sanctoral: Optional[bool]:  Parse Sanctoral. (Default value = None)
       hymns: Optional[bool]:  Parse Hymns. (Default value = None)
+      pokemon: Optional[bool]:  Parse everything, unless explicitly disabled.  (Default value=None)
       verbosity: int:  How much to print out.
       test: Optional[bool]: Testing mode (skips login and upload).
 
@@ -187,6 +189,12 @@ def parse_upload(
         client = crud_login(host=host, user=user)
     else:
         client = None
+
+    functionality = [martyrologies, psalms, temporal, sanctoral, hymns]
+
+    if pokemon:
+        for i in functionality:
+            i = True if i is not False else False
 
     if martyrologies:
         parse_upload_martyrologies(root, lang, version, client, host)
