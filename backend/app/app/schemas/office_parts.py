@@ -4,8 +4,6 @@ from typing import List, Optional, Union
 
 from pydantic import BaseModel, Field
 
-from app.schemas.custom_types import OfficeLiteral
-
 
 # Shared properties
 class LineBase(BaseModel):

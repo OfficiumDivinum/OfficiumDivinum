@@ -2,6 +2,7 @@ from typing import List, Optional
 
 from pydantic import Field
 
+from app.schemas.custom_types import OfficeLiteral
 from app.schemas.office_parts import BlockBase, FromDOMixin, LineBase
 
 
