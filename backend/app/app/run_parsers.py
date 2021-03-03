@@ -16,6 +16,7 @@ from app.schemas import OldDateTemplateCreate, OrdinalsCreate
 
 logger = logging.getLogger(__name__)
 verbose = 0
+testing = None
 
 app = typer.Typer()
 
@@ -57,7 +58,7 @@ def crud_login(host="localhost", user="admin@2e0byo.co.uk"):
     return OAuth2Session(token=token)
 
 
-def upload(things, endpoint: str, client):
+def upload(things, endpoint: str, client, test_token_headers=None):
     """
     Upload to server.
 
@@ -75,71 +76,18 @@ def upload(things, endpoint: str, client):
                 debug(jsonable_encoder(entry))
             if not client:  # we are testing
                 continue
-            resp = client.post(endpoint, json=jsonable_encoder(entry))
+            if test_token_headers:
+                debug(endpoint)
+                resp = client.post(
+                    endpoint, json=jsonable_encoder(entry), headers=test_token_headers
+                )
+            else:
+
+                resp = client.post(endpoint, json=jsonable_encoder(entry))
             if resp.status_code != 200:
                 raise Exception(
                     f"Failed to upload, response was {dumps(resp.json(), indent=2)}"
                 )
-
-
-def parse_upload_martyrologies(
-    root: Path, lang: str, version: str, client: OAuth2Session, host: str
-):
-    """
-    Parse and upload Martyrologies.
-
-    Args:
-      root: Path: Root path.
-      lang: str: Language.
-      version: str: Version.
-      client: OAuth2Session:  Client for server.
-      host: str: Server url.
-      root: Path:
-      lang: str:
-      version: str:
-      client: OAuth2Session:
-      host: str:
-
-    Returns:
-    """
-    logger.info("Parsing source files.")
-
-    title = translations[lang.lower()]["martyrology_title"]
-
-    root = root / lang
-    with_cal = root / f"Martyrologium{version}"
-    files = list(with_cal.glob("*.txt"))
-    if not files:
-        files = (root / "Martyrologium").glob("*.txt")
-    martyrology = []
-    for f in files:
-        if f.name == "Mobile.txt":
-            martyrology += M2obj.parse_mobile_file(f, lang.lower(), title)
-        else:
-            martyrology.append(M2obj.parse_file(f, lang.lower(), title))
-
-    # get correct template str
-    # endpoint = f"{host}/api/v1/martyrology/old-date-template/"
-    # try:
-    #     resp = client.get(endpoint, params={"skip": 0, "limit": 100})
-    #     templates = resp.json()
-    # except JSONDecodeError:
-    #     print(resp.raw)
-    #     templates = []
-    # template_id = None
-    # for i in templates:
-    #     if i["language"] == lang.lower():
-    #         template_id = i["id"]
-    # if not template_id:
-    template_id = None
-    template = translations[lang.lower()]["old_date_template"]
-
-    # martyrology = martyrology[:1]
-
-    logger.info("Uploading Martyrologies to server.")
-
-    endpoint = f"{host}/api/v1/martyrology/"
-    upload(martyrology, endpoint, client)
 
 
 @app.command()
@@ -179,7 +127,7 @@ def parse_upload(
 
     Returns:
     """
-    global verbose
+    global verbose, testing
     verbose = verbosity
 
     things = [martyrologies, psalms]
@@ -190,6 +138,7 @@ def parse_upload(
     if not test:
         client = crud_login(host=host, user=user)
     else:
+        testing = True
         client = None
 
     functionality = {
@@ -220,8 +169,89 @@ def parse_upload(
         parse_upload_hymns(root, lang, client, host)
 
 
+def parse_upload_martyrologies(
+    root: Path,
+    lang: str,
+    version: str,
+    client: OAuth2Session,
+    host: str,
+    test_token_headers=None,
+    **kwargs,
+):
+    """
+    Parse and upload Martyrologies.
+
+    Args:
+      root: Path: Root path.
+      lang: str: Language.
+      version: str: Version.
+      client: OAuth2Session:  Client for server.
+      host: str: Server url.
+      root: Path:
+      lang: str:
+      version: str:
+      client: OAuth2Session:
+      host: str:
+
+    Returns:
+    """
+    logger.info("Parsing source files.")
+
+    title = translations[lang.lower()]["martyrology_title"]
+
+    root = root / lang
+    with_cal = root / f"Martyrologium{version}"
+    files = list(with_cal.glob("*.txt"))
+    if not files:
+        files = (root / "Martyrologium").glob("*.txt")
+    martyrologies = []
+    for f in files:
+        if f.name == "Mobile.txt":
+            martyrologies += M2obj.parse_mobile_file(f, lang.lower(), title)
+        else:
+            martyrologies.append(M2obj.parse_file(f, lang.lower(), title))
+
+    # get correct template str
+    if not testing:
+        endpoint = f"{host}/api/v1/martyrology/old-date-template/"
+        template_id = None
+        while not template_id:
+            logger.info("getting templates")
+            resp = client.get(endpoint, params={"skip": 0, "limit": 100})
+            templates = resp.json()
+            for i in templates:
+                if i["language"] == lang.lower():
+                    template_id = i["id"]
+            if not template_id:
+                template = translations[lang.lower()]["old_date_template"]
+                logger.info("Pushing template")
+                upload([template], endpoint, client, test_token_headers)
+    else:
+        template = translations[lang.lower()]["old_date_template"]
+        template_id = None
+
+    for i in range(len(martyrologies)):
+        if template_id:
+            martyrologies[i].old_date_template_id = template_id
+        else:
+            martyrologies[i].old_date_template = template
+
+    # martyrology = martyrology[:1]
+
+    logger.info("Uploading Martyrologies to server.")
+
+    endpoint = f"{host}/api/v1/martyrology/"
+    upload(martyrologies, endpoint, client, test_token_headers)
+
+
 def parse_upload_psalms(
-    root: Path, lang: str, version: str, client: OAuth2Session, host: str
+    root: Path,
+    lang: str,
+    version: str,
+    client: OAuth2Session,
+    host: str,
+    test_token_headers=None,
+    **kwargs,
 ):
     """
     Parse and upload psalms.
@@ -247,11 +277,17 @@ def parse_upload_psalms(
     for psalm in psalms:
         verses += psalm
     endpoint = f"{host}/api/v1/bible/"
-    upload(verses, endpoint, client)
+    upload(verses, endpoint, client, test_token_headers)
 
 
 def parse_upload_temporal(
-    root: Path, lang: str, version: str, client: OAuth2Session, host: str
+    root: Path,
+    lang: str,
+    version: str,
+    client: OAuth2Session,
+    host: str,
+    test_token_headers=None,
+    **kwargs,
 ):
     """
     Parse and upload Temporal.
@@ -278,11 +314,17 @@ def parse_upload_temporal(
     logger.info("Uploading Feasts to server.")
 
     endpoint = f"{host}/api/v1/calendar/feast"
-    upload(feasts, endpoint, client)
+    upload(feasts, endpoint, client, test_token_headers)
 
 
 def parse_upload_sanctoral(
-    root: Path, lang: str, version: str, client: OAuth2Session, host: str
+    root: Path,
+    lang: str,
+    version: str,
+    client: OAuth2Session,
+    host: str,
+    test_token_headers=None,
+    **kwargs,
 ):
     """
     Parse and upload Sanctoral.
@@ -304,10 +346,17 @@ def parse_upload_sanctoral(
     logger.info("Uploading Feasts to server.")
 
     endpoint = f"{host}/api/v1/calendar/feast"
-    upload(feasts, endpoint, client)
+    upload(feasts, endpoint, client, test_token_headers)
 
 
-def parse_upload_hymns(root: Path, lang: str, client: OAuth2Session, host: str):
+def parse_upload_hymns(
+    root: Path,
+    lang: str,
+    client: OAuth2Session,
+    host: str,
+    test_token_headers=None,
+    **kwargs,
+):
     """
     Parse and upload Hymns.
 
@@ -344,7 +393,7 @@ def parse_upload_hymns(root: Path, lang: str, client: OAuth2Session, host: str):
     logger.info("Uploading Hymns to server.")
 
     endpoint = f"{host}/api/v1/hymn/"
-    upload(hymns, endpoint, client)
+    upload(hymns, endpoint, client, test_token_headers)
 
 
 if __name__ == "__main__":
