@@ -16,6 +16,7 @@ RankLiteral = Literal[
     "feria",
     "simplex",
     "semiduplex",
+    "semiduplex i classis",
     "duplex",
     "duplex majus",
     "duplex ii classis",

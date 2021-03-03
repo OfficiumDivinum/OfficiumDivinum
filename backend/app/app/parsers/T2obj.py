@@ -99,13 +99,11 @@ def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
     except KeyError:
         pass
 
-    debug(rank_name)
-
     return FeastCreate(
         name=name,
         type_="de Tempore",
         datestr=datestr,
-        rank_name=rank_name.lower(),
+        rank_name=rank_name.lower().strip(),
         commemorations=commemorations,
         language=language,
         version=version,
