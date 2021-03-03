@@ -18,7 +18,7 @@ def test_pokemon(
     superuser_token_headers: Dict[str, str],
 ):
     """Test all the parsers."""
-    root = Path("./test-DO-data")
+    root = Path("app/tests/parsers/test-DO-data")
     lang = "Latin"
 
     # test without upload
@@ -33,7 +33,7 @@ def test_upload_parsers(
     superuser_token_headers: Dict[str, str],
 ):
     """Test all the parsers."""
-    root = Path("./test-DO-data")
+    root = Path("app/tests/parsers/test-DO-data")
     lang = "Latin"
 
     args = {
