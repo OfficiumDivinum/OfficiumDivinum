@@ -73,6 +73,8 @@ def upload(things, endpoint: str, client):
         for entry in progress:
             if verbose > 1:
                 debug(jsonable_encoder(entry))
+            if not client:  # we are testing
+                continue
             resp = client.post(endpoint, json=jsonable_encoder(entry))
             if resp.status_code != 200:
                 raise Exception(
@@ -190,25 +192,31 @@ def parse_upload(
     else:
         client = None
 
-    functionality = [martyrologies, psalms, temporal, sanctoral, hymns]
+    functionality = {
+        "martyrologies": martyrologies,
+        "psalms": psalms,
+        "temporal": temporal,
+        "sanctoral": sanctoral,
+        "hymns": hymns,
+    }
 
     if pokemon:
-        for i in functionality:
-            i = True if i is not False else False
+        for k in functionality.keys():
+            functionality[k] = True if functionality[k] is not False else False
 
-    if martyrologies:
+    if functionality["martyrologies"]:
         parse_upload_martyrologies(root, lang, version, client, host)
 
-    if psalms:
+    if functionality["psalms"]:
         parse_upload_psalms(root, lang, version, client, host)
 
-    if temporal:
+    if functionality["temporal"]:
         parse_upload_temporal(root, lang, version, client, host)
 
-    if sanctoral:
+    if functionality["sanctoral"]:
         parse_upload_sanctoral(root, lang, version, client, host)
 
-    if hymns:
+    if functionality["hymns"]:
         parse_upload_hymns(root, lang, client, host)
 
 
