@@ -55,7 +55,7 @@ def test_delete_item(db: Session) -> None:
     item2 = crud.item.remove(db=db, id=item.id)
     item3 = crud.item.get(db=db, id=item.id)
     assert item3 is None
-    assert item2.id == item.id
-    assert item2.title == title
-    assert item2.description == description
-    assert item2.owner_id == user.id
+    assert item2["id"] == item.id
+    assert item2["title"] == title
+    assert item2["description"] == description
+    assert item2["owner_id"] == user.id
