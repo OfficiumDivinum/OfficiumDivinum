@@ -6,7 +6,7 @@ from typing import Dict, List, Union
 from devtools import debug
 
 from app.parsers.deref import deref
-from app.parsers.util import parse_DO_sections, unicode_to_ascii
+from app.parsers.util import guess_section_header, parse_DO_sections, unicode_to_ascii
 from app.schemas.hymn import HymnCreate, LineBase, VerseCreate
 
 
@@ -117,11 +117,7 @@ def parse_file_as_dict(fn: Path, follow_links: bool = True) -> Dict:
     """
 
     lines = fn.open().readlines()
-
-    if "Ordinarium" in str(fn):
-        section_header_regex = r"#(.*)"
-    else:
-        section_header_regex = r"\[(.*)\]"
+    section_header_regex = guess_section_header(fn)
 
     sections = parse_DO_sections(lines, section_header_regex)
     hymns = {}

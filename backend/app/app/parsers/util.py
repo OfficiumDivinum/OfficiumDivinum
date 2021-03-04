@@ -1,6 +1,7 @@
 """Utilities to handle DO's files."""
 import re
 import unicodedata
+from pathlib import Path
 
 
 def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> list:
@@ -73,3 +74,10 @@ def unicode_to_ascii(data, cleanup: bool = True):
         # remove multiple spaces
         val = re.sub(" +", " ", val)
     return val
+
+
+def guess_section_header(fn: Path):
+    if "Ordinarium" in fn.name:
+        return r"#(.*)"
+    else:
+        return r"\[(.*)\]"
