@@ -234,7 +234,8 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
     """
     version, matched = guess_version(fn)
 
-    hymn_dict = util.parse_file_as_dict(fn, "Hymnus")
+    nasty_stuff = [r".*v\. ", r".*\* *"]
+    hymn_dict = util.parse_file_as_dict(fn, "Hymnus", nasty_stuff=nasty_stuff)
     hymns = []
     for key, section in hymn_dict.items():
         content = section["content"]

@@ -93,6 +93,7 @@ def parse_file_as_dict(
     section_key: str,
     follow_links: bool = True,
     follow_only_interesting_links: bool = True,
+    nasty_stuff: list = [],
 ) -> Dict:
     """
     Parses a file in DO section format and returns all sections of one kind as a dict.
@@ -104,7 +105,8 @@ def parse_file_as_dict(
       section_key: str: The section to extract.
       follow_links: bool: Whether or not to follow links.  (Default value = True)
       follow_only_interesting_links: bool: Skip links which don't change their target.
-                                           (Default value = True)
+    (Default value = True)
+      nasty_stuff: list:  List of regexs to squash for cleanup. (Default value = [])
 
     Returns:
       : A dict of sections as they are in the file, with no further processing.
@@ -182,18 +184,6 @@ def parse_file_as_dict(
                 linked_content = parse_file_as_dict(targetf, target_key, sublinks)[part]
                 linked_content = linked_content["content"]
 
-                # if "Doxolog" in line:
-                #     linked_lines = targetf.open().readlines()
-                #     linked_content = parse_DO_sections(linked_lines)[part]
-                # elif "Hymnus" not in line:
-                #     linked_content = parse_file_as_dict(targetf, sublinks)[key][
-                #         "content"
-                #     ]
-                # else:
-                #     linked_content = parse_file_as_dict(targetf, sublinks)[part][
-                #         "content"
-                #     ]
-
                 # make sure it's a list of verses, even if only one verse
                 if not isinstance(linked_content[0], list):
                     linked_content = [linked_content]
@@ -218,12 +208,8 @@ def parse_file_as_dict(
 
         for i in range(len(section)):
             for j in range(len(section[i])):
-                # remove rubbish at beginning of line
-                nasty_stuff = r".*v\. "
-                section[i][j] = re.sub(nasty_stuff, "", section[i][j])
-
-                nasty_stuff = r".*\* *"
-                section[i][j] = re.sub(nasty_stuff, "", section[i][j])
+                for regex in nasty_stuff:
+                    section[i][j] = re.sub(regex, "", section[i][j])
 
         hymns[key] = {"content": section, "crossref": crossref}
 
