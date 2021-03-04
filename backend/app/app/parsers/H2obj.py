@@ -5,6 +5,7 @@ from typing import Dict, List, Union
 
 from devtools import debug
 
+from app.parsers import util
 from app.parsers.deref import deref
 from app.parsers.util import guess_section_header, parse_DO_sections, unicode_to_ascii
 from app.schemas.hymn import HymnCreate, LineBase, VerseCreate
@@ -233,7 +234,7 @@ def parse_file(fn: Path, lang: str) -> List[HymnCreate]:
     """
     version, matched = guess_version(fn)
 
-    hymn_dict = parse_file_as_dict(fn)
+    hymn_dict = util.parse_file_as_dict(fn, "Hymnus")
     hymns = []
     for key, section in hymn_dict.items():
         content = section["content"]
