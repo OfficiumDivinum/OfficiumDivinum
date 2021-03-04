@@ -123,11 +123,10 @@ def parse_file_as_dict(
         if not section:
             continue
 
-        try:
-            just_links = all(("@" in line or not line.strip() for line in section))
-        except AttributeError:
-            debug(section)
-            just_links = False
+        flat_section = []
+        for thing in section:
+            flat_section += thing
+        just_links = all(("@" in line or not line.strip() for line in flat_section))
 
         if just_links and follow_only_interesting_links:
             continue
