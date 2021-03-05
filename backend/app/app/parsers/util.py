@@ -73,9 +73,6 @@ def parse_DO_sections(
                 subcontent = [x for x in subcontent if x.content.strip()]
 
                 content.append(subcontent)
-                if len(content) == 1:
-                    content = content[0]
-
                 sections[current_section] = content
 
             current_section = header.groups()[0]
@@ -168,13 +165,9 @@ def parse_file_as_dict(
         if not section:
             continue
 
-        if isinstance(section[0], list):
-
-            flat_section = []
-            for thing in section:
-                flat_section += thing
-        else:
-            flat_section = section
+        flat_section = []
+        for thing in section:
+            flat_section += thing
         just_links = all(
             ("@" in line.content or not line.content.strip() for line in flat_section)
         )
@@ -183,19 +176,15 @@ def parse_file_as_dict(
             continue
 
         # get DO key if it's there
-        for candidate in key, section[0][0]:
+        for candidate in key, section[0][0].content:
             crossref = re.search(r".*{:.-(.*):}.*", candidate)
             if crossref:
                 crossref = crossref.groups()[0]
                 break
 
         # remove odd line telling DO the section is a section (seems to happen once)
-        if re.search(f".{key}.*", section[0][0]):
+        if re.search(f".{key}.*", section[0][0].content):
             section[0] = section[0][1:]
-
-        # make everything a list of lists to cope with multiline entries.
-        if not isinstance(section[0], list):
-            section = [section]
 
         for verse_index, verse in enumerate(section):
             for line_index, line in enumerate(verse):
@@ -224,10 +213,6 @@ def parse_file_as_dict(
                 linked_content = parse_file_as_dict(targetf, part, sublinks)[part]
                 linked_content = linked_content["content"]
 
-                # make sure it's a list of verses, even if only one verse
-                if not isinstance(linked_content[0], list):
-                    linked_content = [linked_content]
-
                 if "s/" in line.content and follow_links:
                     linked_content = substitute_linked_content(
                         linked_content, line.content
@@ -249,7 +234,7 @@ def parse_file_as_dict(
         for i in range(len(section)):
             for j in range(len(section[i])):
                 for regex in nasty_stuff:
-                    section[i][j] = re.sub(regex, "", section[i][j])
+                    section[i][j].content = re.sub(regex, "", section[i][j].content)
 
         things[key] = Thing(section, crossref)
     return things
