@@ -9,6 +9,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 import app.parsers.util
+from app.parsers.util import Line
 
 
 def make_linkstr(target, part, replacement, squash=True):
@@ -27,7 +28,7 @@ def make_both(target, part, replacement, squash=True):
     if squash and replacement:
         replacement += "s"
     linkstr = f"@{target}:{part}:{replacement}"
-    return linkstr, [[content]]
+    return linkstr, [[Line(0, content)]]
 
 
 def sane_text(**kwargs):
@@ -57,7 +58,10 @@ def test_fuzz_guess_section_header(fn):
 
 
 @given(
-    lines=st.lists(st.text(), min_size=1), section_header_regex=st.just("\\[(.*)\\]")
+    lines=st.lists(
+        st.text().filter(lambda x: x.startswith("@") or "@" not in x), min_size=1
+    ),
+    section_header_regex=st.just("\\[(.*)\\]"),
 )
 def test_fuzz_parse_DO_sections(lines, section_header_regex):
     fn = Mock()
