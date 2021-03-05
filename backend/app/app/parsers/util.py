@@ -168,10 +168,16 @@ def parse_file_as_dict(
         if not section:
             continue
 
-        flat_section = []
-        for thing in section:
-            flat_section += thing
-        just_links = all(("@" in line or not line.strip() for line in flat_section))
+        if isinstance(section[0], list):
+
+            flat_section = []
+            for thing in section:
+                flat_section += thing
+        else:
+            flat_section = section
+        just_links = all(
+            ("@" in line.content or not line.content.strip() for line in flat_section)
+        )
 
         if just_links and follow_only_interesting_links:
             continue
