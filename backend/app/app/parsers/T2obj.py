@@ -54,8 +54,7 @@ def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
     if day != 0:
         datestr = f"{days[day]} after {datestr}"
 
-    lines = fn.open().readlines()
-    sections = parse_DO_sections(lines)
+    sections = parse_DO_sections(fn)
     rank_name = "Feria"
     try:
         name, rank_name, rankno, source = [
