@@ -218,7 +218,14 @@ def parse_upload_martyrologies(
         template_id = None
         while not template_id:
             logger.info("getting templates")
-            resp = client.get(endpoint, params={"skip": 0, "limit": 100})
+            if not test_token_headers:
+                resp = client.get(endpoint, params={"skip": 0, "limit": 100})
+            else:
+                resp = client.get(
+                    endpoint,
+                    params={"skip": 0, "limit": 100},
+                    headers=test_token_headers,
+                )
             templates = resp.json()
             print(templates)
             for i in templates:
