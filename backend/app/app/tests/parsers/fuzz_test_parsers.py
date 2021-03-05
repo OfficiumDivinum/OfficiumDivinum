@@ -3,6 +3,7 @@
 import string
 from pathlib import Path
 from random import randint
+from unittest.mock import Mock
 
 from hypothesis import given
 from hypothesis import strategies as st
@@ -35,9 +36,7 @@ def sane_text(**kwargs):
 
 
 @st.composite
-def make_linkstr_content(
-    draw,
-):
+def make_linkstr_content(draw,):
     linkstr, content = draw(
         st.builds(make_both, sane_text(), sane_text(), sane_text(min_size=4))
     )
@@ -57,11 +56,16 @@ def test_fuzz_guess_section_header(fn):
     app.parsers.util.guess_section_header(fn=fn)
 
 
-@given(lines=st.builds(list), section_header_regex=st.just("\\[(.*)\\]"))
+@given(
+    lines=st.lists(st.text(), min_size=1), section_header_regex=st.just("\\[(.*)\\]")
+)
 def test_fuzz_parse_DO_sections(lines, section_header_regex):
-    app.parsers.util.parse_DO_sections(
-        lines=lines, section_header_regex=section_header_regex
-    )
+    fn = Mock()
+    o = Mock()
+    o.readlines.return_value = lines
+    fn.open.return_value = o
+    print(fn.open().readlines())
+    app.parsers.util.parse_DO_sections(fn=fn, section_header_regex=section_header_regex)
 
 
 def version(v):
