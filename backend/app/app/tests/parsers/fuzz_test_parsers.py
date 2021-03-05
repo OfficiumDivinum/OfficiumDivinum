@@ -36,6 +36,26 @@ def sane_text(**kwargs):
     return st.text(**kwargs)
 
 
+def file_filter(x):
+    if "@" in x and not x.startswith("@"):
+        return False
+    if "[" in x and not x.startswith("[") and x.endswith("]"):
+        return False
+    return True
+
+
+@st.composite
+def mock_file(draw):
+    lines = (draw(st.lists(st.text().filter(file_filter), min_size=20)),)
+    print(lines)
+    fn = Mock()
+    o = Mock()
+    o.readlines.return_value = lines
+    fn.name = ""
+    fn.open.return_value = o
+    return fn
+
+
 @st.composite
 def make_linkstr_content(draw,):
     linkstr, content = draw(
