@@ -2,11 +2,15 @@
 import re
 import unicodedata
 from pathlib import Path
-from typing import AnyStr, Dict, List
+from typing import Dict, List
 
 from devtools import debug
 
 from app.parsers.deref import deref
+
+
+class ParsingError(Exception):
+    pass
 
 
 def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> Dict:
@@ -55,7 +59,7 @@ def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> Dict:
     return sections
 
 
-def unicode_to_ascii(data: AnyStr, cleanup: bool = True):
+def unicode_to_ascii(data: str, cleanup: bool = True):
     """
     Cleanup a unicode str.
 
@@ -63,10 +67,8 @@ def unicode_to_ascii(data: AnyStr, cleanup: bool = True):
     algorithms-7a6f43322cc5.
 
     Args:
-      data:
-      cleanup: bool:  (Default value = True)
-      data: AnyStr:
-      cleanup: bool:  (Default value = True)
+      data: str: Data to asciify.
+      cleanup: bool:  Whether to clean it up. (Default value = True)
 
     Returns:
     """
@@ -246,9 +248,14 @@ def substitute_linked_content(linked_content: List, line: str) -> List:
 
     Returns:
       : linked content (a list).
+
+    Raises:
+      : ParsingError: if no substitution found.
     """
 
     match = re.search(r".*s/(.*?)/(.*)/(s*)", line)
+    if not match:
+        raise ParsingError(f"No substitution found in {line}")
     pattern, sub, multiline = match.groups()
 
     # Sometimes DO wants to strip vs.  But we already do that.
