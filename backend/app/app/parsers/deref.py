@@ -7,9 +7,13 @@ from devtools import debug
 
 def deref(linkstr: str, originf: Path):
     assert linkstr.startswith("@")
-    linkstr, part = re.search(r"@(.*?):(.*):*", linkstr).groups()
-    if "s/" in part:
-        part = re.search(r"(.*):s/.*", part).groups()[0]
+    try:
+        linkstr, part = re.search(r"@(.*?):(.*):*", linkstr).groups()
+        if "s/" in part:
+            part = re.search(r"(.*):s/.*", part).groups()[0]
+    except AttributeError:
+        linkstr = linkstr.replace("@", "").strip()
+        part = None
     if not linkstr:
         targetf = originf
     if "/" in linkstr:
