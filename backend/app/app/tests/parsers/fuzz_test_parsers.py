@@ -88,7 +88,6 @@ def test_fuzz_parse_DO_sections(lines, section_header_regex):
     o = Mock()
     o.readlines.return_value = lines
     fn.open.return_value = o
-    print(fn.open().readlines())
     app.parsers.util.parse_DO_sections(fn=fn, section_header_regex=section_header_regex)
 
 
@@ -99,24 +98,21 @@ def version(v):
 
 def getf():
     files = list(Path("app/tests/parsers/test-DO-data/").glob("**/*.txt"))
-    print(files)
     return files[randint(0, len(files))]
 
 
 @given(
     fn=st.builds(getf),
-    section_key=sane_text(),
     version=st.builds(version, st.integers(0, 0)),
     follow_links=st.booleans(),
     follow_only_interesting_links=st.booleans(),
     nasty_stuff=st.builds(list),
 )
 def test_fuzz_parse_file_as_dict(
-    fn, section_key, version, follow_links, follow_only_interesting_links, nasty_stuff
+    fn, version, follow_links, follow_only_interesting_links, nasty_stuff
 ):
     app.parsers.util.parse_file_as_dict(
         fn=fn,
-        section_key=section_key,
         version=version,
         follow_links=follow_links,
         follow_only_interesting_links=follow_only_interesting_links,
@@ -127,7 +123,6 @@ def test_fuzz_parse_file_as_dict(
 @given(params=make_linkstr_content())
 def test_fuzz_substitute_linked_content(params):
     line, linked_content = params
-    print(params)
     app.parsers.util.substitute_linked_content(linked_content=linked_content, line=line)
 
 
