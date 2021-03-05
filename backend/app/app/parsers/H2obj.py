@@ -74,9 +74,7 @@ def parse_file(fn: Path, lang: str, calendar_version: str) -> List[HymnCreate]:
     version, matched = guess_version(fn)
 
     nasty_stuff = [r".*v\. ", r".*\* *"]
-    hymn_dict = util.parse_file_as_dict(
-        fn, "Hymnus", calendar_version, nasty_stuff=nasty_stuff
-    )
+    hymn_dict = util.parse_file_as_dict(fn, calendar_version, nasty_stuff=nasty_stuff)
     hymns = []
     for key, section in hymn_dict.items():
         content = section["content"]
@@ -98,7 +96,7 @@ def parse_file(fn: Path, lang: str, calendar_version: str) -> List[HymnCreate]:
                 debug(content)
                 raise Exception
             else:
-                verse = [LineBase(content=i) for i in thing]
+                verse = [LineBase(content=i.content) for i in thing]
         verses.append(VerseCreate(parts=verse, rubrics=rubrics))
 
         # we use a regex here to strip final punctuation.

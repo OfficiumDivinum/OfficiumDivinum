@@ -62,7 +62,6 @@ def parse_DO_sections(
         line = re.sub(r"\[([a-z])\]", "_\1_", line)
         line = line.strip()
         if line == "_":
-            tmp_content = []
             subcontent = [x for x in subcontent if x.content.strip()]
             content.append(subcontent)
             subcontent = []
@@ -71,7 +70,7 @@ def parse_DO_sections(
         if header:
             if current_section:
 
-                subcontent = [x.strip() for x in subcontent if x.strip() != ""]
+                subcontent = [x for x in subcontent if x.content.strip()]
 
                 content.append(subcontent)
                 if len(content) == 1:
