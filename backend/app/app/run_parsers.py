@@ -167,7 +167,7 @@ def parse_upload(
         parse_upload_sanctoral(root, lang, version, client, host)
 
     if functionality["hymns"]:
-        parse_upload_hymns(root, lang, client, host)
+        parse_upload_hymns(root, lang, version, client, host)
 
 
 def parse_upload_martyrologies(
@@ -361,6 +361,7 @@ def parse_upload_sanctoral(
 def parse_upload_hymns(
     root: Path,
     lang: str,
+    version: str,
     client: OAuth2Session,
     host: str,
     test_token_headers=None,
@@ -394,7 +395,7 @@ def parse_upload_hymns(
     hymns = []
     for fns in generators:
         for fn in fns:
-            resp = H2obj.parse_file(fn, lang)
+            resp = H2obj.parse_file(fn, lang, version)
             if resp:
                 hymns += resp
     # debug(hymns)
