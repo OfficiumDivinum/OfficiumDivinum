@@ -58,7 +58,7 @@ def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
     rank_name = "Feria"
     try:
         name, rank_name, rankno, source = [
-            *sections["Rank1960"][0].content.split(";;"),
+            *sections["Rank1960"][0][0].content.split(";;"),
             None,
             None,
             None,
@@ -68,7 +68,7 @@ def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
     except KeyError:
         try:
             name, rank_name, rankno, source = [
-                *sections["Rank"][0].content.split(";;"),
+                *sections["Rank"][0][0].content.split(";;"),
                 None,
                 None,
                 None,
