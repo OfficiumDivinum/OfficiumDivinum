@@ -133,7 +133,6 @@ def guess_section_header(fn: Path) -> str:
 
 def parse_file_as_dict(
     fn: Path,
-    section_key: str,
     version: str,
     follow_links: bool = True,
     follow_only_interesting_links: bool = True,
@@ -161,9 +160,6 @@ def parse_file_as_dict(
     sections = parse_DO_sections(fn, section_header_regex)
     things = {}
     for key, section in sections.items():
-        if section_key not in key:
-            continue
-
         if "rubrica" in key:
             if version not in key:
                 debug("Skipping as not for current version")
@@ -252,7 +248,7 @@ def parse_file_as_dict(
                 for regex in nasty_stuff:
                     section[i][j] = re.sub(regex, "", section[i][j])
 
-        things[key] = {"content": section, "crossref": crossref}
+        things[key] = Thing(content, crossref)
     return things
 
 
