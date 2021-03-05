@@ -64,12 +64,12 @@ def parse_line(line: str, language: str, version: str, fn: Path) -> FeastCreate:
             for x in commemorations
         ]
 
-    qualifiers = None
-    if date != duplicate_date:
-        qualifiers = duplicate_date[:-1]
+    # qualifiers = None
+    # if date != duplicate_date:
+    #     qualifiers = duplicate_date[:-1]
 
-    if qualifiers:
-        print(qualifiers)
+    # if qualifiers:
+    #     print(qualifiers)
 
     a = FeastCreate(
         rank_name=rank_name,
