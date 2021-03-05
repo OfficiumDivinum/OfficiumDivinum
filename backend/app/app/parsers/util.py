@@ -91,6 +91,7 @@ def guess_section_header(fn: Path):
 def parse_file_as_dict(
     fn: Path,
     section_key: str,
+    version: str,
     follow_links: bool = True,
     follow_only_interesting_links: bool = True,
     nasty_stuff: list = [],
@@ -120,6 +121,11 @@ def parse_file_as_dict(
     for key, section in sections.items():
         if section_key not in key:
             continue
+
+        if "rubrica" in key:
+            if version not in key:
+                debug("Skipping as not for current version")
+                continue
 
         # skip empty sections
         if not section:
