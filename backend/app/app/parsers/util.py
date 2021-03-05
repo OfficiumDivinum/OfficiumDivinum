@@ -3,7 +3,7 @@ import re
 import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from devtools import debug
 
@@ -28,7 +28,7 @@ class Thing:
 
 def parse_DO_sections(
     fn: Path, section_header_regex=r"\[(.*)\]"
-) -> Dict[str, List[Line]]:
+) -> Dict[str, List[Union[Line, List[Line]]]]:
     """
     Parses DO files into lists per section.
 
