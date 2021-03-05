@@ -220,6 +220,7 @@ def parse_upload_martyrologies(
             logger.info("getting templates")
             resp = client.get(endpoint, params={"skip": 0, "limit": 100})
             templates = resp.json()
+            print(templates)
             for i in templates:
                 if i["language"] == lang.lower():
                     template_id = i["id"]
