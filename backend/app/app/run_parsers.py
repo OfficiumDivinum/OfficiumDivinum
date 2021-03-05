@@ -244,6 +244,8 @@ def parse_upload_martyrologies(
     endpoint = f"{host}/api/v1/martyrology/"
     upload(martyrologies, endpoint, client, test_token_headers)
 
+    return martyrologies
+
 
 def parse_upload_psalms(
     root: Path,
@@ -279,6 +281,8 @@ def parse_upload_psalms(
         verses += psalm
     endpoint = f"{host}/api/v1/bible/"
     upload(verses, endpoint, client, test_token_headers)
+
+    return psalms
 
 
 def parse_upload_temporal(
@@ -317,6 +321,8 @@ def parse_upload_temporal(
     endpoint = f"{host}/api/v1/calendar/feast/"
     upload(feasts, endpoint, client, test_token_headers)
 
+    return feasts
+
 
 def parse_upload_sanctoral(
     root: Path,
@@ -348,6 +354,8 @@ def parse_upload_sanctoral(
 
     endpoint = f"{host}/api/v1/calendar/feast/"
     upload(feasts, endpoint, client, test_token_headers)
+
+    return feasts
 
 
 def parse_upload_hymns(
@@ -395,6 +403,8 @@ def parse_upload_hymns(
 
     endpoint = f"{host}/api/v1/hymn/"
     upload(hymns, endpoint, client, test_token_headers)
+
+    return hymns
 
 
 if __name__ == "__main__":
