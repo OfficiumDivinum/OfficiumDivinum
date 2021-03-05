@@ -2,22 +2,24 @@
 import re
 import unicodedata
 from pathlib import Path
-from typing import Dict, List
+from typing import AnyStr, Dict, List
 
 from devtools import debug
 
 from app.parsers.deref import deref
 
 
-def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> list:
+def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> Dict:
     """
     Parses DO files into lists per section.
 
     Args:
       lines: list : lines to break into sections.
+      section_header_regex:  regex to match section headers
+    (Default value = r"\\[(.*)\\]")
 
     Returns:
-      A dict of the file, where the keys are the section headers,
+      : A dict of the file, where the keys are the section headers,
       and the contents are lists.
     """
 
@@ -53,7 +55,7 @@ def parse_DO_sections(lines: list, section_header_regex=r"\[(.*)\]") -> list:
     return sections
 
 
-def unicode_to_ascii(data, cleanup: bool = True):
+def unicode_to_ascii(data: AnyStr, cleanup: bool = True):
     """
     Cleanup a unicode str.
 
@@ -62,6 +64,8 @@ def unicode_to_ascii(data, cleanup: bool = True):
 
     Args:
       data:
+      cleanup: bool:  (Default value = True)
+      data: AnyStr:
       cleanup: bool:  (Default value = True)
 
     Returns:
@@ -81,7 +85,16 @@ def unicode_to_ascii(data, cleanup: bool = True):
     return val
 
 
-def guess_section_header(fn: Path):
+def guess_section_header(fn: Path) -> str:
+    """
+    Guess the section header encoding for a given file.
+
+    Args:
+      fn: Path: The file to guess.
+
+    Returns:
+      : A regex matching the section header.
+    """
     if "Ordinarium" in fn.name:
         return r"#(.*)"
     else:
@@ -104,6 +117,7 @@ def parse_file_as_dict(
     Args:
       fn: Path: The complete file path.
       section_key: str: The section to extract.
+      version: str: The version in question (e.g. 1960).
       follow_links: bool: Whether or not to follow links.  (Default value = True)
       follow_only_interesting_links: bool: Skip links which don't change their target.
     (Default value = True)
@@ -222,7 +236,7 @@ def parse_file_as_dict(
     return hymns
 
 
-def substitute_linked_content(linked_content: List, line: str):
+def substitute_linked_content(linked_content: List, line: str) -> List:
     """
     Substitutes linked content as requested.
 
@@ -231,7 +245,7 @@ def substitute_linked_content(linked_content: List, line: str):
       line: str: line containing substiution instructions
 
     Returns:
-      linked content (a list).
+      : linked content (a list).
     """
 
     match = re.search(r".*s/(.*?)/(.*)/(s*)", line)
