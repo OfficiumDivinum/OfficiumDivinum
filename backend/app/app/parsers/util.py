@@ -1,8 +1,9 @@
 """Utilities to handle DO's files."""
 import re
 import unicodedata
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List
+from typing import Any, Dict, List, Optional
 
 from devtools import debug
 
@@ -13,7 +14,21 @@ class ParsingError(Exception):
     pass
 
 
-def parse_DO_sections(fn: Path, section_header_regex=r"\[(.*)\]") -> Dict:
+@dataclass
+class Line:
+    lineno: int
+    content: str
+
+
+@dataclass
+class Thing:
+    content: Any
+    crossref: Optional[str] = None
+
+
+def parse_DO_sections(
+    fn: Path, section_header_regex=r"\[(.*)\]"
+) -> Dict[str, List[Line]]:
     """
     Parses DO files into lists per section.
 
@@ -47,7 +62,8 @@ def parse_DO_sections(fn: Path, section_header_regex=r"\[(.*)\]") -> Dict:
         line = re.sub(r"\[([a-z])\]", "_\1_", line)
         line = line.strip()
         if line == "_":
-            subcontent = [x.strip() for x in subcontent if x.strip() != ""]
+            tmp_content = []
+            subcontent = [x for x in subcontent if x.content.strip()]
             content.append(subcontent)
             subcontent = []
             continue
@@ -67,7 +83,7 @@ def parse_DO_sections(fn: Path, section_header_regex=r"\[(.*)\]") -> Dict:
             content = []
             subcontent = []
         else:
-            subcontent.append(line)
+            subcontent.append(Line(lineno, line))
     return sections
 
 
@@ -143,7 +159,7 @@ def parse_file_as_dict(
     section_header_regex = guess_section_header(fn)
 
     sections = parse_DO_sections(fn, section_header_regex)
-    hymns = {}
+    things = {}
     for key, section in sections.items():
         if section_key not in key:
             continue
@@ -186,16 +202,16 @@ def parse_file_as_dict(
                 if not follow_links:
                     break
 
-                if "@" not in line:
+                if "@" not in line.content:
                     continue
 
-                targetf, part = deref(line, fn)
+                targetf, part = deref(line.content, fn)
                 if not part:
                     part = key
 
                 linked_content = None
 
-                match = re.search(r".*s/(.*?)/(.*)/(s*)", line)
+                match = re.search(r".*s/(.*?)/(.*)/(s*)", line.content)
 
                 if match:
                     pattern, sub, multiline = match.groups()
@@ -211,10 +227,12 @@ def parse_file_as_dict(
                 if not isinstance(linked_content[0], list):
                     linked_content = [linked_content]
 
-                assert linked_content
+                # assert isinstance(linked_content[0][0], Line)
 
-                if "s/" in line and follow_links:
-                    linked_content = substitute_linked_content(linked_content, line)
+                if "s/" in line.content and follow_links:
+                    linked_content = substitute_linked_content(
+                        linked_content, line.content
+                    )
 
                 for extra_line in verse[line_index + 1 :]:
                     linked_content[-1].append(extra_line)
@@ -234,11 +252,11 @@ def parse_file_as_dict(
                 for regex in nasty_stuff:
                     section[i][j] = re.sub(regex, "", section[i][j])
 
-        hymns[key] = {"content": section, "crossref": crossref}
-    return hymns
+        things[key] = {"content": section, "crossref": crossref}
+    return things
 
 
-def substitute_linked_content(linked_content: List, line: str) -> List:
+def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
     """
     Substitutes linked content as requested.
 
@@ -266,11 +284,16 @@ def substitute_linked_content(linked_content: List, line: str) -> List:
 
         for linked_verse_index, linked_verse in enumerate(linked_content):
             for linked_line_index, linked_line in enumerate(linked_verse):
-                match = re.search(pattern, linked_line)
+                match = re.search(pattern, linked_line.content)
                 if match:
-                    linked_content[linked_verse_index][linked_line_index] = re.sub(
-                        pattern, sub, linked_line
-                    )
+                    content = re.sub(pattern, sub, linked_line.content).strip()
+                    if not content:
+                        del linked_content[linked_verse_index][linked_line_index]
+                        continue
+
+                    lineno = linked_line.lineno
+                    sub_line = Line(lineno, content)
+                    linked_content[linked_verse_index][linked_line_index] = sub_line
 
                     if multiline:
                         # trash everything after the match
@@ -281,6 +304,4 @@ def substitute_linked_content(linked_content: List, line: str) -> List:
                             linked_content.pop()
                         break
 
-    return [
-        [line.strip() for line in verse if line.strip()] for verse in linked_content
-    ]
+    return linked_content
