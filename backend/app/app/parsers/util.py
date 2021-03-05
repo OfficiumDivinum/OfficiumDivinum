@@ -184,7 +184,7 @@ def parse_file_as_dict(
                 break
 
         # remove odd line telling DO the section is a section (seems to happen once)
-        if re.search(f".{section_key}.*", section[0][0]):
+        if re.search(f".{key}.*", section[0][0]):
             section[0] = section[0][1:]
 
         # make everything a list of lists to cope with multiline entries.
@@ -222,8 +222,6 @@ def parse_file_as_dict(
                 if not isinstance(linked_content[0], list):
                     linked_content = [linked_content]
 
-                # assert isinstance(linked_content[0][0], Line)
-
                 if "s/" in line.content and follow_links:
                     linked_content = substitute_linked_content(
                         linked_content, line.content
@@ -247,7 +245,7 @@ def parse_file_as_dict(
                 for regex in nasty_stuff:
                     section[i][j] = re.sub(regex, "", section[i][j])
 
-        things[key] = Thing(content, crossref)
+        things[key] = Thing(section, crossref)
     return things
 
 
