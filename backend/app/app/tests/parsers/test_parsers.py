@@ -8,6 +8,7 @@ from fastapi.testclient import TestClient
 from app import run_parsers
 
 things = ["martyrologies", "psalms", "temporal", "sanctoral", "hymns"]
+things = ["hymns"]
 versions = ["1960"]
 
 

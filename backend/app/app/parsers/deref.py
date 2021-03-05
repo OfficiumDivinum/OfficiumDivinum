@@ -6,7 +6,6 @@ from devtools import debug
 
 
 def deref(linkstr: str, originf: Path):
-    assert linkstr.startswith("@")
     try:
         linkstr, part = re.search(r"@(.*?):(.*):*", linkstr).groups()
         if "s/" in part:

@@ -133,6 +133,8 @@ def parse_file_as_dict(
     follow_links: bool = True,
     follow_only_interesting_links: bool = True,
     nasty_stuff: list = [],
+    strip_keys: list = [],
+    section_key: str = None,
 ) -> Dict:
     """
     Parses a file in DO section format and returns all sections of one kind as a dict.
@@ -158,8 +160,14 @@ def parse_file_as_dict(
     for key, section in sections.items():
         if "rubrica" in key:
             if version not in key:
-                debug("Skipping as not for current version")
                 continue
+
+        schemas = [r".*Special.*", r"^Minor.*"]
+        if any((re.search(schema, key) for schema in schemas)):
+            continue
+
+        if section_key and not re.search(section_key, key):
+            continue
 
         # skip empty sections
         if not section:
@@ -182,9 +190,10 @@ def parse_file_as_dict(
                 crossref = crossref.groups()[0]
                 break
 
-        # remove odd line telling DO the section is a section (seems to happen once)
-        if re.search(f".{key}.*", section[0][0].content):
-            section[0] = section[0][1:]
+        # if told to, remove DO's type assertions
+        for k in strip_keys:
+            if k in section[0][0].content:
+                section[0] = section[0][1:]
 
         for verse_index, verse in enumerate(section):
             for line_index, line in enumerate(verse):
@@ -210,8 +219,14 @@ def parse_file_as_dict(
 
                 sublinks = False if pattern == ".@.*" else True
 
-                linked_content = parse_file_as_dict(targetf, part, sublinks)[part]
-                linked_content = linked_content["content"]
+                linked_content = parse_file_as_dict(
+                    targetf,
+                    part,
+                    sublinks,
+                    section_key=part,
+                    follow_only_interesting_links=False,
+                )[part]
+                linked_content = linked_content.content
 
                 if "s/" in line.content and follow_links:
                     linked_content = substitute_linked_content(
@@ -237,6 +252,7 @@ def parse_file_as_dict(
                     section[i][j].content = re.sub(regex, "", section[i][j].content)
 
         things[key] = Thing(section, crossref)
+
     return things
 
 

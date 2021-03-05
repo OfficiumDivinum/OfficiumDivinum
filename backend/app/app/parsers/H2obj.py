@@ -74,11 +74,17 @@ def parse_file(fn: Path, lang: str, calendar_version: str) -> List[HymnCreate]:
     version, matched = guess_version(fn)
 
     nasty_stuff = [r".*v\. ", r".*\* *"]
-    hymn_dict = util.parse_file_as_dict(fn, calendar_version, nasty_stuff=nasty_stuff)
+    hymn_dict = util.parse_file_as_dict(
+        fn,
+        calendar_version,
+        nasty_stuff=nasty_stuff,
+        strip_keys=["#Hymnus"],
+        section_key=r".*Hymnus.*",
+    )
     hymns = []
     for key, section in hymn_dict.items():
-        content = section["content"]
-        crossref = section["crossref"]
+        content = section.content
+        crossref = section.crossref
 
         # create verse objects
         verses = []
@@ -90,7 +96,7 @@ def parse_file(fn: Path, lang: str, calendar_version: str) -> List[HymnCreate]:
                 verse = []
                 rubrics = None
             try:
-                if thing[0].startswith("!"):
+                if thing[0].content.startswith("!"):
                     rubrics = thing[0][1:]
             except TypeError:
                 debug(content)
