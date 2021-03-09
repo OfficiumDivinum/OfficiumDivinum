@@ -124,9 +124,17 @@ def parse_section(fn: Path, section_name: str, section: List, language: str):
 
         verse_obj = guess_verse_obj(verse)
         data = {"title": section_name, "language": language, "parts": []}
+        join = False
 
         for line in verse:
             linenos.append(line.lineno)
+
+            if join:
+                data["parts"][-1].content += markup(line.content)
+                continue
+
+            if line.content.endswith("~"):
+                join = True
 
             if " * " in line.content:
                 lineobj = parse_antiphon(line)
