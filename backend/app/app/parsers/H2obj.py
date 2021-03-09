@@ -1,7 +1,7 @@
 """Get all Hymns from Divinumofficium's source files."""
 import re
 from pathlib import Path
-from typing import List, Union
+from typing import Dict, List, Union
 
 from devtools import debug
 
@@ -81,6 +81,12 @@ def parse_file(fn: Path, lang: str, calendar_version: str) -> List[HymnCreate]:
         strip_keys=["#Hymnus"],
         section_key=r".*Hymnus.*",
     )
+    return parse_hymns(fn, hymn_dict, lang, version, matched)
+
+
+def parse_hymns(
+    fn: Path, hymn_dict: Dict, lang: str, version: str, matched: bool
+) -> List[HymnCreate]:
     hymns = []
     for key, section in hymn_dict.items():
         content = section.content
