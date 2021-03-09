@@ -46,13 +46,16 @@ def test_guess_section_obj():
     for candidate, correct_obj in candidates.items():
         resp = parsers.guess_section_obj(candidate)
 
-        if correct_obj.__origin__ in (list, Union):
-            assert isinstance(resp, correct_obj.__origin__)
-            try:
-                possible_types = correct_obj.__args__
-                for i in resp:
-                    assert any((isinstance(i, t) for t in possible_types))
-            except AttributeError:
-                pass
-    else:
-        assert isinstance(resp, correct_obj)
+        try:
+            if correct_obj.__origin__ in (list, Union):
+                assert isinstance(resp, correct_obj.__origin__)
+                try:
+                    possible_types = correct_obj.__args__
+                    for i in resp:
+                        assert any((isinstance(i, t) for t in possible_types))
+                except AttributeError:
+                    pass
+            else:
+                raise NotImplementedError("Shouldn't be testing any other funny type")
+        except AttributeError:
+            assert type(resp) is type(correct_obj)
