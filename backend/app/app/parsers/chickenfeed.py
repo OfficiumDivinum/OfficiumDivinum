@@ -106,6 +106,18 @@ def guess_verse_obj(verse: List):
 
 
 def parse_section(fn: Path, section_name: str, section: List, language: str):
+def replace(verse: List[Line], replacements: Dict) -> List:
+    new_verse = []
+    for line in verse:
+        if (match := re.search(r"&(.*)", line.content)) is not None:
+            r = replacements[match.groups()[0]]
+            new_verse.append(r)
+        else:
+            new_verse.append(line)
+
+    return new_verse
+
+
     """Parse a section, returning the right kind of object."""
 
     section_obj = guess_section_obj(section_name, section)

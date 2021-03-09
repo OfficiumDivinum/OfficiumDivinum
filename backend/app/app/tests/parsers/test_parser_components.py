@@ -193,3 +193,19 @@ def test_parse_section():
             Path("Prayers.txt"), section_name, [section], "latin"
         )
         assert resp == correct_obj
+
+
+def test_replace():
+    replacements = {
+        "thing": VersicleCreate(
+            language="latin",
+            parts=[
+                LineBase(content="Benedicámus Dómino.", prefix="V.", lineno=1),
+                LineBase(content="Deo grátias.", prefix="R.", lineno=2),
+            ],
+            title="Benedicamus Domino",
+        )
+    }
+    verse = [Line(content="&thing", lineno=3)]
+    resp = parsers.replace(verse, replacements)
+    assert resp == [replacements["thing"]]
