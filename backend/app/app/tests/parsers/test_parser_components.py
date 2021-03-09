@@ -18,9 +18,9 @@ from app.schemas import (
 
 
 def test_markup_line():
-    content = Line(lineno=1, content="r. Thing and some things")
+    content = "r. Thing and some things"
     resp = parsers.markup(content)
-    assert resp == LineBase(lineno=1, content="***T***hing and some things")
+    assert resp == "::T::hing and some things"
 
 
 def test_parse_versicle():
@@ -92,7 +92,7 @@ candidates = (
             language="latin",
             parts=[
                 LineBase(
-                    content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui "
+                    content="::P::er Dóminum nostrum Jesum Christum, Fílium tuum: qui "
                     "tecum vivit et regnat in unitáte Spíritus Sancti, Deus, "
                     "per ómnia sǽcula sæculórum.",
                     lineno=1,

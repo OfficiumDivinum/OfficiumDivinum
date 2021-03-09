@@ -84,9 +84,8 @@ def strip_content(line):
         return content
 
 
-def markup(line: Line) -> LineBase:
-    content = re.sub(r"r\. (.)", r"***\1***", line.content)
-    return LineBase(content=content, lineno=line.lineno)
+def markup(content: str) -> LineBase:
+    return re.sub(r"r\. (.)", r"::\1::", content)
 
 
 def guess_verse_obj(verse: List):
@@ -119,6 +118,10 @@ def parse_section(fn: Path, section_name: str, section: List, language: str):
     section_content = []
 
     for verse in section:
+
+        if all((line.content.startswith("r. ") for line in verse)):
+            verse = " ".join(verse)
+
         verse_obj = guess_verse_obj(verse)
         data = {"title": section_name, "language": language, "parts": []}
 
@@ -134,7 +137,7 @@ def parse_section(fn: Path, section_name: str, section: List, language: str):
                 lineobj = parse_versicle(line, rubrics)
                 rubrics = None
             else:
-                content = strip_content(line)
+                content = markup(strip_content(line))
                 lineobj = LineBase(content=content, rubrics=rubrics, lineno=line.lineno)
                 rubrics = None
 
@@ -170,12 +173,12 @@ def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
 
 
 def parse_versicle(line, rubrics):
-    prefix, content = re.search(r"([V|R]\.) (.*)", line.content).groups()
+    prefix, content = re.search(r"([V|R]\.) (.*)", markup(line.content)).groups()
     return LineBase(content=content, prefix=prefix, lineno=line.lineno, rubrics=rubrics)
 
 
 def parse_antiphon(line):
-    a = AntiphonCreate(lineno=line.lineno, content=line.content)
+    a = AntiphonCreate(lineno=line.lineno, content=markup(line.content))
     return a
 
 
