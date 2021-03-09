@@ -11,6 +11,8 @@ class LineBase(BaseModel):
     suffix: Optional[str] = Field(None, nullable=True)
     rubrics: Optional[str] = Field(None, nullable=True)
     content: Optional[str] = Field(None, nullable=True)
+    lineno: int = Field(None, nullable=True)
+    crossref: str = Field(None, nullable=True)
 
 
 class BlockBase(BaseModel):
