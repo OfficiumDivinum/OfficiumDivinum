@@ -23,3 +23,11 @@ class VersicleBase(BlockBase):
 
 class VersicleCreate(VersicleBase):
     pass
+
+
+class ReadingBase(BlockBase):
+    parts: List[LineBase]
+
+
+class ReadingCreate(ReadingBase):
+    pass
