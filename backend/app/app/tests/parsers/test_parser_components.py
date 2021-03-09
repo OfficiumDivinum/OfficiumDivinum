@@ -16,3 +16,10 @@ def test_parse_antiphon():
     content = "Antiphon * test content."
     resp = parsers.parse_antiphon(Line(lineno, content))
     assert resp == AntiphonCreate(lineno=lineno, content=content)
+
+
+def test_parse_rubric():
+    content = "! Say this whilst jumping up and down."
+    line = Line(content=content, lineno=143)
+    resp = parsers.parse_rubric(line)
+    assert resp == content[2:]
