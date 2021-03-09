@@ -79,7 +79,7 @@ def parse_versicle(line):
 
 
 def parse_rubric(line):
-    return line.content.replace("!", "")
+    return line.content.replace("!", "").strip()
 
 
 def parse_antiphon(line):
