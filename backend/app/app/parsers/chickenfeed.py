@@ -1,12 +1,12 @@
 """Parsers for all the other little bits."""
 import re
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from devtools import debug
 
 from app.parsers.H2obj import parse_hymns
-from app.parsers.util import parse_file_as_dict
+from app.parsers.util import Line, parse_file_as_dict
 from app.schemas import (
     AntiphonCreate,
     BlockCreate,
@@ -21,6 +21,14 @@ from app.schemas import (
 
 class UnmatchedError(Exception):
     pass
+
+
+def is_rubric(line: Line) -> Optional[str]:
+    regexs = (r"^!(.*)", r"^/:(.*):/")
+    for candidate in regexs:
+        if (match := re.search(candidate, line.content)) is not None:
+            return match.groups()[0].strip()
+    return None
 
 
 def get_prayers(root: Path, version: str, language: str):
@@ -106,8 +114,8 @@ def parse_section(fn: Path, section_name: str, section: List, language: str):
 
             if " * " in line.content:
                 lineobj = parse_antiphon(line)
-            elif line.content.startswith("!"):
-                rubrics = parse_rubric(line)
+            elif (rubric := is_rubric(line)) is not None:
+                rubrics = rubric
                 continue
             elif re.search(r"^[V|R]\.", line.content):
                 lineobj = parse_versicle(line, rubrics)
@@ -153,10 +161,6 @@ def parse_versicle(line, rubrics):
     debug(line)
     prefix, content = re.search(r"([V|R]\.) (.*)", line.content).groups()
     return LineBase(content=content, prefix=prefix, lineno=line.lineno, rubrics=rubrics)
-
-
-def parse_rubric(line):
-    return line.content.replace("!", "").strip()
 
 
 def parse_antiphon(line):

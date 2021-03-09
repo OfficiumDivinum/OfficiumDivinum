@@ -30,7 +30,7 @@ def test_parse_versicle():
 def test_parse_rubric():
     content = "! Say this whilst jumping up and down."
     line = Line(content=content, lineno=143)
-    resp = parsers.parse_rubric(line)
+    resp = parsers.is_rubric(line)
     assert resp == content[2:]
 
 
