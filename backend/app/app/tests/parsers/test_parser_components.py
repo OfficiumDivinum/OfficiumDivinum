@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import List, Union
 
 from devtools import debug
@@ -165,5 +166,7 @@ def test_guess_verse_obj():
 def test_parse_section():
     for section, correct_obj in candidates:
         section_name = correct_obj.title
-        resp = parsers.parse_section(section_name, [section], "latin")
+        resp = parsers.parse_section(
+            Path("Prayers.txt"), section_name, [section], "latin"
+        )
         assert resp == correct_obj
