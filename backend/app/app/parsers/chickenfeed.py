@@ -6,7 +6,13 @@ from typing import Dict
 from devtools import debug
 
 from app.parsers.util import parse_file_as_dict
-from app.schemas import AntiphonCreate, LineBase
+from app.schemas import (
+    AntiphonCreate,
+    HymnCreate,
+    LineBase,
+    ReadingCreate,
+    VersicleCreate,
+)
 
 
 def get_prayers(root, version):
@@ -33,22 +39,42 @@ def resolve_shorthands(thing, database):
     return thing
 
 
+def guess_section_obj(section_name):
+    guesses = {
+        "Invit": AntiphonCreate,
+        "Ant Matutinum": [],
+        "Lectio": ReadingCreate,
+        "Responsory": VersicleCreate,
+        "Hymnus": HymnCreate,
+        "Capitulum": ReadingCreate,
+        "Ant": AntiphonCreate,
+    }
+    for key, guess in guesses.items():
+        if key in section_name:
+            return guess
+
+
 def magic_parser(things: Dict):
     """Magically return things as the right kind of objects."""
     parsed_linenos = []
     linenos = []
+    thing = None
+    things = []
 
     parsed_things = {}
-    for key, thing in things.items():
+    for section_name, section in things.items():
+        section_obj = guess_section_obj(section_name)
+
         parsed_thing = []
         rubrics = None
-        for verse in thing.content:
+        last_obj = None
+        for verse in section.content:
             for line in verse:
                 linenos.append(line.lineno)
                 debug(line)
                 parsed_lines = []
                 if " * " in line.content:
-                    parsed_lines.append(parse_antiphon(line))
+                    thing = parse_antiphon(line)
                     parsed_linenos.append(line.lineno)
 
                 if line.content.startswith("!"):
@@ -62,6 +88,12 @@ def magic_parser(things: Dict):
                     line.rubrics = rubrics
                     rubrics = None
                     parsed_lines.append(line)
+            if thing:
+                things.append(thing)
+
+                if type(thing) is type(last_obj):
+                    things.append(last_obj)
+                    last_obj = thing
 
             # wrap it all up in the right kind of object
             parsed_thing.append(parsed_lines)

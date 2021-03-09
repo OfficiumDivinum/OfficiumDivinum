@@ -1,6 +1,14 @@
+from typing import List, Union
+
 from app import parsers
 from app.parsers import Line
-from app.schemas import AntiphonCreate, LineBase
+from app.schemas import (
+    AntiphonCreate,
+    HymnCreate,
+    LineBase,
+    ReadingCreate,
+    VersicleCreate,
+)
 
 
 def test_parse_versicle():
@@ -23,3 +31,28 @@ def test_parse_rubric():
     line = Line(content=content, lineno=143)
     resp = parsers.parse_rubric(line)
     assert resp == content[2:]
+
+
+def test_guess_section_obj():
+    candidates = {
+        "Invit": AntiphonCreate,
+        "Ant Matutinum": List,
+        "Lectio1": ReadingCreate,
+        "Responsory2": VersicleCreate,
+        "HymnusM Laudes": HymnCreate,
+        "Capitulum Laudes": ReadingCreate,
+        "Ant 1": AntiphonCreate,
+    }
+    for candidate, correct_obj in candidates.items():
+        resp = parsers.guess_section_obj(candidate)
+
+        if correct_obj.__origin__ in (list, Union):
+            assert isinstance(resp, correct_obj.__origin__)
+            try:
+                possible_types = correct_obj.__args__
+                for i in resp:
+                    assert any((isinstance(i, t) for t in possible_types))
+            except AttributeError:
+                pass
+    else:
+        assert isinstance(resp, correct_obj)
