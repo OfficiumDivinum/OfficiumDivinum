@@ -78,7 +78,7 @@ candidates = (
                 "per ómnia sǽcula sæculórum.",
                 lineno=1,
             ),
-            LineBase(content="R. Amen.", lineno=2),
+            Line(content="R. Amen.", lineno=2),
         ),
         PrayerCreate(
             language="latin",
@@ -92,6 +92,23 @@ candidates = (
                 LineBase(content="Amen.", prefix="R.", lineno=2),
             ],
             title="Per Dominum",
+            version=None,
+        ),
+    ),
+    (
+        (
+            (
+                Line(content="Most of Our Father", lineno=1),
+                Line(content="R. Sed libera.", lineno=2),
+            )
+        ),
+        PrayerCreate(
+            language="latin",
+            parts=[
+                LineBase(content="Most of Our Father", lineno=1),
+                LineBase(content="Sed libera.", prefix="R.", lineno=2),
+            ],
+            title="Pater Noster",
             version=None,
         ),
     ),
