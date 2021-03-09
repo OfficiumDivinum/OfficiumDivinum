@@ -137,7 +137,7 @@ candidates = (
             language="latin",
             title="credo",
             parts=[
-                LineBase(content="v. Credo in Deum.", lineno=1),
+                LineBase(content="Credo in Deum.", lineno=1),
                 LineBase(content="and other things.", lineno=2),
             ],
         ),
@@ -156,7 +156,6 @@ candidates = (
     ),
     (
         (
-            Line(content="[Ante]", lineno=0),
             Line(content="/:flexis genibus:/", lineno=1),
             Line(content="v. Apéri Dómine", lineno=2),
             Line(content="R. Amen.", lineno=3),

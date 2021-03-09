@@ -63,7 +63,7 @@ def guess_section_obj(section_name: str, section: List):
         "Responsory": VersicleCreate,
         "Hymnus": HymnCreate,
         "Capitulum": ReadingCreate,
-        "Ant": AntiphonCreate,
+        "Ant ": AntiphonCreate,
         "Te Deum": HymnCreate,
     }
     for key, guess in guesses.items():
@@ -76,12 +76,20 @@ def guess_section_obj(section_name: str, section: List):
     return None
 
 
+def strip_content(line):
+    content = line.content.strip()
+    if content.startswith("v. "):
+        return content[3:].strip()
+    else:
+        return content
+
+
 def guess_verse_obj(verse: List):
 
     if re.search(r"^[V|R]\.", verse[0].content):
         return VersicleCreate
 
-    if re.search(r"^[V|R]\.", verse[-1].content):
+    if any((re.search(r"^[V|R]\.", i.content) for i in verse)):
         return PrayerCreate
 
     if len(verse) == 1:
@@ -121,9 +129,8 @@ def parse_section(fn: Path, section_name: str, section: List, language: str):
                 lineobj = parse_versicle(line, rubrics)
                 rubrics = None
             else:
-                lineobj = LineBase(
-                    content=line.content, rubrics=rubrics, lineno=line.lineno
-                )
+                content = strip_content(line)
+                lineobj = LineBase(content=content, rubrics=rubrics, lineno=line.lineno)
                 rubrics = None
 
             data["parts"].append(lineobj)
@@ -158,7 +165,6 @@ def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
 
 
 def parse_versicle(line, rubrics):
-    debug(line)
     prefix, content = re.search(r"([V|R]\.) (.*)", line.content).groups()
     return LineBase(content=content, prefix=prefix, lineno=line.lineno, rubrics=rubrics)
 
