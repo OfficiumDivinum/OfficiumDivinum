@@ -6,6 +6,7 @@ from app import parsers
 from app.parsers import Line
 from app.schemas import (
     AntiphonCreate,
+    BlockCreate,
     HymnCreate,
     LineBase,
     PrayerCreate,
@@ -124,6 +125,20 @@ candidates = (
                 LineBase(content="Deo grátias.", prefix="R.", lineno=2),
             ],
             title="Benedicamus Domino",
+        ),
+    ),
+    (
+        (
+            Line(content="v. Credo in Deum.", lineno=1),
+            Line(content="and other things.", lineno=2),
+        ),
+        BlockCreate(
+            language="latin",
+            title="credo",
+            parts=[
+                LineBase(content="v. Credo in Deum.", lineno=1),
+                LineBase(content="and other things.", lineno=2),
+            ],
         ),
     ),
     (

@@ -8,6 +8,7 @@ from devtools import debug
 from app.parsers.util import parse_file_as_dict
 from app.schemas import (
     AntiphonCreate,
+    BlockCreate,
     HymnCreate,
     LineBase,
     PrayerCreate,
@@ -76,6 +77,9 @@ def guess_verse_obj(verse: List):
 
     if len(verse) == 1:
         return LineBase
+
+    if re.search(r"^v\.", verse[0].content):
+        return BlockCreate
 
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
 
