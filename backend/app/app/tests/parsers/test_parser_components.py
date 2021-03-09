@@ -7,6 +7,7 @@ from app.schemas import (
     HymnCreate,
     LineBase,
     ReadingCreate,
+    VerseCreate,
     VersicleCreate,
 )
 
@@ -59,3 +60,13 @@ def test_guess_section_obj():
                 raise NotImplementedError("Shouldn't be testing any other funny type")
         except AttributeError:
             assert type(resp) is type(correct_obj)
+
+
+def test_guess_verse_obj():
+    candidates = ([[Line(), Line()]], None)(
+        [[Line(), Line()], [Line(), Line()]], VerseCreate
+    )
+
+    for candidate, correct_obj in candidates:
+        resp = parsers.guess_verse_obj(candidate)
+        assert type(resp) is type(correct_obj)
