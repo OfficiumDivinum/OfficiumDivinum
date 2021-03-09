@@ -1,7 +1,7 @@
 """Parsers for all the other little bits."""
 import re
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List
 
 from devtools import debug
 
@@ -45,7 +45,7 @@ def resolve_shorthands(thing, database):
     return thing
 
 
-def guess_section_obj(section_name, section):
+def guess_section_obj(section_name: str, section: List):
     guesses = {
         "Invit": AntiphonCreate,
         "Ant Matutinum": [],
@@ -63,25 +63,21 @@ def guess_section_obj(section_name, section):
     if len(section) > 1:  # set of things. Can't be hymn as we've tested.
         return []
 
-    section = section[0]
+    return None
 
-    if section[-1].content == "R. Amen.":
+
+def guess_verse_obj(verse: List):
+
+    if verse[-1].content == "R. Amen.":
         return PrayerCreate
 
-    if re.search(r"^[V|R]\.", section[0].content):
+    if re.search(r"^[V|R]\.", verse[0].content):
         return VersicleCreate
 
-    if len(section) == 1:
+    if len(verse) == 1:
         return LineBase
 
-    raise UnmatchedError(f"Unable to guess type of section {section}")
-
-
-def guess_verse_obj(section):
-    if len(section) == 1:
-        return None
-    else:
-        return VerseCreate
+    raise UnmatchedError(f"Unable to guess type of verse {verse}")
 
 
 def magic_parser(things: Dict):
@@ -100,31 +96,33 @@ def magic_parser(things: Dict):
         rubrics = None
         section_content = []
 
-        for line in section.content[0]:
-            linenos.append(line.lineno)
-            debug(line)
-            parsed_lines = []
-            if " * " in line.content:
-                thing = parse_antiphon(line)
-                parsed_linenos.append(line.lineno)
+        for verse in section:
+            for line in verse:
 
-            if line.content.startswith("!"):
-                rubrics = parse_rubric(line)
+                linenos.append(line.lineno)
+                debug(line)
+                parsed_lines = []
+                if " * " in line.content:
+                    thing = parse_antiphon(line)
+                    parsed_linenos.append(line.lineno)
 
-            if "V." in line.content or "R." in line.content:
-                parsed_lines.append(parse_versicle, rubrics)
-                rubrics = None
+                if line.content.startswith("!"):
+                    rubrics = parse_rubric(line)
 
-            else:
-                line.rubrics = rubrics
-                rubrics = None
-                parsed_lines.append(line)
-        if thing:
-            things.append(thing)
+                if "V." in line.content or "R." in line.content:
+                    parsed_lines.append(parse_versicle, rubrics)
+                    rubrics = None
 
-            if type(thing) is type(last_obj):
-                things.append(last_obj)
-                last_obj = thing
+                else:
+                    line.rubrics = rubrics
+                    rubrics = None
+                    parsed_lines.append(line)
+            if thing:
+                things.append(thing)
+
+                if type(thing) is type(last_obj):
+                    things.append(last_obj)
+                    last_obj = thing
 
         # wrap it all up in the right kind of object
         parsed_thing.append(parsed_lines)

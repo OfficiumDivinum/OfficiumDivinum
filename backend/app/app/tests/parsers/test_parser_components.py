@@ -37,48 +37,17 @@ def test_parse_rubric():
 
 def test_guess_section_obj():
     candidates = (
-        ("Invit", [], AntiphonCreate),
-        ("Ant Matutinum", [], List),
-        ("Lectio1", [], ReadingCreate),
-        ("Responsory2", [], VersicleCreate),
-        ("HymnusM Laudes", [], HymnCreate),
-        ("Capitulum Laudes", [], ReadingCreate),
-        ("Ant 1", [], AntiphonCreate),
-        (
-            "Per Dominum",
-            (
-                (
-                    Line(
-                        content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.",
-                        lineno=1,
-                    ),
-                    Line(content="R. Amen.", lineno=2),
-                ),
-            ),
-            PrayerCreate,
-        ),
-        (
-            "Benedicamus Domino",
-            (
-                (
-                    Line(content="V. Benedicámus Dómino.", lineno=1),
-                    Line(content="R. Deo grátias.", lineno=2),
-                ),
-            ),
-            VersicleCreate,
-        ),
-        (
-            "Deo Gratias",
-            ((Line(content="R. Deo grátias.", lineno=1),),),
-            VersicleCreate,
-        ),
-        (
-            "Alleluia Duplex",
-            ((Line(lineno=1, content="Allelúja, allelúja."),),),
-            LineBase,
-        ),
+        ("Invit", [], AntiphonCreate, None),
+        ("Ant Matutinum", [], List, None),
+        ("Lectio1", [], ReadingCreate, None),
+        ("Responsory2", [], VersicleCreate, None),
+        ("HymnusM Laudes", [], HymnCreate, None),
+        ("Te Deum", [], HymnCreate, None),
+        ("Capitulum Laudes", [], ReadingCreate, None),
+        ("Ant 1", [], AntiphonCreate, None),
     )
-    for section_name, section, correct_obj in candidates:
+
+    for section_name, section, correct_obj, _ in candidates:
         resp = parsers.guess_section_obj(section_name, section)
 
         try:
@@ -94,3 +63,31 @@ def test_guess_section_obj():
                 raise NotImplementedError("Shouldn't be testing any other funny type")
         except AttributeError:
             assert type(resp) is type(correct_obj)
+
+
+def test_guess_verse_obj():
+
+    candidates = (
+        (
+            (
+                Line(
+                    content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.",
+                    lineno=1,
+                ),
+                Line(content="R. Amen.", lineno=2),
+            ),
+            PrayerCreate,
+        ),
+        (
+            (
+                Line(content="V. Benedicámus Dómino.", lineno=1),
+                Line(content="R. Deo grátias.", lineno=2),
+            ),
+            VersicleCreate,
+        ),
+        ((Line(content="R. Deo grátias.", lineno=1),), VersicleCreate),
+        ((Line(lineno=1, content="Allelúja, allelúja."),), LineBase),
+    )
+    for verses, correct_obj in candidates:
+        resp = parsers.guess_verse_obj(verses)
+        assert type(resp) is type(correct_obj)
