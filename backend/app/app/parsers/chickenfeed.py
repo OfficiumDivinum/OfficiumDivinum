@@ -80,6 +80,60 @@ def guess_verse_obj(verse: List):
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
 
 
+def parse_section(section_name, section, language):
+    section_obj = guess_section_obj(section_name, section)
+    if type(section_obj) is type(HymnCreate):
+        raise NotImplementedError("Reuse hymn parsing here.")
+    linenos = []
+
+    rubrics = None
+    section_content = []
+
+    for verse in section:
+        verse_obj = guess_verse_obj(verse)
+        debug(verse_obj)
+        data = {"title": section_name, "language": language, "parts": []}
+        for line in verse:
+            linenos.append(line.lineno)
+
+            debug(line)
+            if " * " in line.content:
+                lineobj = parse_antiphon(line)
+
+            if line.content.startswith("!"):
+                rubrics = parse_rubric(line)
+                continue
+
+            if re.search(r"^[V|R]\.", line.content):
+                lineobj = parse_versicle(line, rubrics)
+                rubrics = None
+
+            else:
+                lineobj = LineBase(
+                    content=line.content, rubrics=rubrics, lineno=line.lineno
+                )
+                rubrics = None
+
+            data["parts"].append(lineobj)
+
+        if verse_obj is not LineBase:
+            section_content.append(verse_obj(**data))
+        else:
+            section_content = lineobj
+            section_content.title = section_name
+
+    if not section_obj:
+        if not isinstance(section_content, list):
+            return section_content
+        if len(section_content) == 1:
+            section_content = section_content[0]
+        return section_content
+
+    else:
+        data = {"title": section_name, "language": language, "parts": section_content}
+        return section_obj(**data)
+
+
 def magic_parser(things: Dict):
     """Magically return things as the right kind of objects."""
     parsed_linenos = []
@@ -89,40 +143,6 @@ def magic_parser(things: Dict):
 
     parsed_things = {}
     for section_name, section in things.items():
-        section_obj = guess_section_obj(section_name)
-        if type(section_obj) is type(HymnCreate):
-            continue  # call hymn parser here
-
-        rubrics = None
-        section_content = []
-
-        for verse in section:
-            for line in verse:
-
-                linenos.append(line.lineno)
-                debug(line)
-                parsed_lines = []
-                if " * " in line.content:
-                    thing = parse_antiphon(line)
-                    parsed_linenos.append(line.lineno)
-
-                if line.content.startswith("!"):
-                    rubrics = parse_rubric(line)
-
-                if "V." in line.content or "R." in line.content:
-                    parsed_lines.append(parse_versicle, rubrics)
-                    rubrics = None
-
-                else:
-                    line.rubrics = rubrics
-                    rubrics = None
-                    parsed_lines.append(line)
-            if thing:
-                things.append(thing)
-
-                if type(thing) is type(last_obj):
-                    things.append(last_obj)
-                    last_obj = thing
 
         # wrap it all up in the right kind of object
         parsed_thing.append(parsed_lines)
@@ -133,10 +153,10 @@ def magic_parser(things: Dict):
     return parsed_things
 
 
-def parse_versicle(line):
+def parse_versicle(line, rubrics):
     debug(line)
     prefix, content = re.search(r"([V|R]\.) (.*)", line.content).groups()
-    return LineBase(content=content, prefix=prefix, lineno=line.lineno)
+    return LineBase(content=content, prefix=prefix, lineno=line.lineno, rubrics=rubrics)
 
 
 def parse_rubric(line):

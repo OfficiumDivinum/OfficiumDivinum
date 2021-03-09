@@ -13,6 +13,7 @@ class LineBase(BaseModel):
     content: Optional[str] = Field(None, nullable=True)
     lineno: int = Field(None, nullable=True)
     crossref: str = Field(None, nullable=True)
+    title: Optional[str] = Field(None, nullable=True)
 
 
 class BlockBase(BaseModel):

@@ -19,15 +19,10 @@ def test_parse_versicle():
     prefix = "V."
     content = "Test verse content."
     line = Line(16, " ".join([prefix, content]))
-    resp = parsers.parse_versicle(line)
-    assert resp == LineBase(lineno=16, content=content, prefix=prefix)
-
-
-def test_parse_antiphon():
-    lineno = 16
-    content = "Antiphon * test content."
-    resp = parsers.parse_antiphon(Line(lineno, content))
-    assert resp == AntiphonCreate(lineno=lineno, content=content)
+    resp = parsers.parse_versicle(line, "stand on your head")
+    assert resp == LineBase(
+        lineno=16, content=content, prefix=prefix, rubrics="stand on your head"
+    )
 
 
 def test_parse_rubric():
@@ -35,6 +30,13 @@ def test_parse_rubric():
     line = Line(content=content, lineno=143)
     resp = parsers.parse_rubric(line)
     assert resp == content[2:]
+
+
+def test_parse_antiphon():
+    lineno = 16
+    content = "Antiphon * test content."
+    resp = parsers.parse_antiphon(Line(lineno, content))
+    assert resp == AntiphonCreate(lineno=lineno, content=content)
 
 
 def test_guess_section_obj():
@@ -71,8 +73,8 @@ candidates = (
     (
         (
             Line(
-                content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum"
-                "vivit et regnat in unitáte Spíritus Sancti, Deus,"
+                content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum "
+                "vivit et regnat in unitáte Spíritus Sancti, Deus, "
                 "per ómnia sǽcula sæculórum.",
                 lineno=1,
             ),
@@ -82,14 +84,14 @@ candidates = (
             language="latin",
             parts=[
                 LineBase(
-                    content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui"
-                    "tecum vivit et regnat in unitáte Spíritus Sancti, Deus,"
+                    content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui "
+                    "tecum vivit et regnat in unitáte Spíritus Sancti, Deus, "
                     "per ómnia sǽcula sæculórum.",
                     lineno=1,
                 ),
                 LineBase(content="Amen.", prefix="R.", lineno=2),
             ],
-            title="per dominum nostrum",
+            title="Per Dominum",
             version=None,
         ),
     ),
@@ -104,20 +106,20 @@ candidates = (
                 LineBase(content="Benedicámus Dómino.", prefix="V.", lineno=1),
                 LineBase(content="Deo grátias.", prefix="R.", lineno=2),
             ],
-            title="benedicamus domino",
+            title="Benedicamus Domino",
         ),
     ),
     (
         (Line(content="R. Deo grátias.", lineno=1),),
         VersicleCreate(
             language="latin",
-            parts=[LineBase(content="Deo grátias.", prefix="R.", lineno=2)],
-            title="deo gratias",
+            parts=[LineBase(content="Deo grátias.", prefix="R.", lineno=1)],
+            title="Deo Gratias",
         ),
     ),
     (
         (Line(lineno=1, content="Allelúja, allelúja."),),
-        LineBase(lineno=1, content="Allelúja, allelúja."),
+        LineBase(lineno=1, content="Allelúja, allelúja.", title="Alleluia Duplex"),
     ),
 )
 
@@ -128,5 +130,8 @@ def test_guess_verse_obj():
         assert resp is type(correct_obj)
 
 
-# def test_parse_section():
-#     for verses, correct_obj in candidates:
+def test_parse_section():
+    for section, correct_obj in candidates:
+        section_name = correct_obj.title
+        resp = parsers.parse_section(section_name, [section], "latin")
+        assert resp == correct_obj

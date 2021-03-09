@@ -22,7 +22,7 @@ class VersicleBase(BlockBase):
 
 
 class VersicleCreate(VersicleBase):
-    pass
+    title: str
 
 
 class ReadingBase(BlockBase):
