@@ -17,6 +17,12 @@ from app.schemas import (
 )
 
 
+def test_markup_line():
+    content = Line(lineno=1, content="r. Thing and some things")
+    resp = parsers.markup(content)
+    assert resp == LineBase(lineno=1, content="***T***hing and some things")
+
+
 def test_parse_versicle():
     prefix = "V."
     content = "Test verse content."

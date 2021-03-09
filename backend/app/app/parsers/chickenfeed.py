@@ -84,6 +84,11 @@ def strip_content(line):
         return content
 
 
+def markup(line: Line) -> LineBase:
+    content = re.sub(r"r\. (.)", r"***\1***", line.content)
+    return LineBase(content=content, lineno=line.lineno)
+
+
 def guess_verse_obj(verse: List):
 
     if re.search(r"^[V|R]\.", verse[0].content):
