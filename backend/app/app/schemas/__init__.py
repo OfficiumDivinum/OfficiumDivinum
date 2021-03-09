@@ -1,5 +1,6 @@
 from .bible import *  # noqa
 from .calendar import Commemoration, CommemorationCreate, Feast, FeastCreate  # noqa
+from .chickenfeed import *  # noqa
 from .hymn import *  # noqa
 from .item import Item, ItemCreate, ItemInDB, ItemUpdate  # noqa
 from .martyrology import (  # noqa
