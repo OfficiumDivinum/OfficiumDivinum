@@ -6,6 +6,7 @@ from app.schemas import (
     AntiphonCreate,
     HymnCreate,
     LineBase,
+    PrayerCreate,
     ReadingCreate,
     VerseCreate,
     VersicleCreate,
@@ -35,17 +36,50 @@ def test_parse_rubric():
 
 
 def test_guess_section_obj():
-    candidates = {
-        "Invit": AntiphonCreate,
-        "Ant Matutinum": List,
-        "Lectio1": ReadingCreate,
-        "Responsory2": VersicleCreate,
-        "HymnusM Laudes": HymnCreate,
-        "Capitulum Laudes": ReadingCreate,
-        "Ant 1": AntiphonCreate,
-    }
-    for candidate, correct_obj in candidates.items():
-        resp = parsers.guess_section_obj(candidate)
+    candidates = (
+        ("Invit", [], AntiphonCreate),
+        ("Ant Matutinum", [], List),
+        ("Lectio1", [], ReadingCreate),
+        ("Responsory2", [], VersicleCreate),
+        ("HymnusM Laudes", [], HymnCreate),
+        ("Capitulum Laudes", [], ReadingCreate),
+        ("Ant 1", [], AntiphonCreate),
+        (
+            "Per Dominum",
+            (
+                (
+                    Line(
+                        content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.",
+                        lineno=1,
+                    ),
+                    Line(content="R. Amen.", lineno=2),
+                ),
+            ),
+            PrayerCreate,
+        ),
+        (
+            "Benedicamus Domino",
+            (
+                (
+                    Line(content="V. Benedicámus Dómino.", lineno=1),
+                    Line(content="R. Deo grátias.", lineno=2),
+                ),
+            ),
+            VersicleCreate,
+        ),
+        (
+            "Deo Gratias",
+            ((Line(content="R. Deo grátias.", lineno=1),),),
+            VersicleCreate,
+        ),
+        (
+            "Alleluia Duplex",
+            ((Line(lineno=1, content="Allelúja, allelúja."),),),
+            LineBase,
+        ),
+    )
+    for section_name, section, correct_obj in candidates:
+        resp = parsers.guess_section_obj(section_name, section)
 
         try:
             if correct_obj.__origin__ in (list, Union):
