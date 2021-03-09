@@ -215,10 +215,10 @@ def test_parse_section():
 def test_parse_replace_section():
     section_name = "DefunctM"
     verse = [
-        Line(verseno=1, content="&Dominus_vobiscum"),
-        Line(verseno=2, content="&Benedicamus_Domino"),
+        Line(lineno=1, content="&Dominus_vobiscum"),
+        Line(lineno=2, content="&Benedicamus_Domino"),
         Line(
-            verseno=3,
+            lineno=3,
             content="! Post Laudes diei dicuntur %Matutinum et Laudes Defunctorum%.",
         ),
     ]
