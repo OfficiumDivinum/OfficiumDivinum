@@ -154,6 +154,24 @@ candidates = (
         (Line(lineno=1, content="Allelúja, allelúja."),),
         LineBase(lineno=1, content="Allelúja, allelúja.", title="Alleluia Duplex"),
     ),
+    (
+        (
+            Line(content="[Ante]", lineno=0),
+            Line(content="/:flexis genibus:/", lineno=1),
+            Line(content="v. Apéri Dómine", lineno=2),
+            Line(content="R. Amen.", lineno=3),
+            Line(content="v. Dómine, in unióne", lineno=4),
+        ),
+        PrayerCreate(
+            title="Ante",
+            language="latin",
+            parts=[
+                LineBase(content="Apéri Dómine", rubrics="flexis genibus", lineno=2),
+                LineBase(prefix="R.", content="Amen.", lineno=3),
+                LineBase(content="Dómine, in unióne", lineno=4),
+            ],
+        ),
+    ),
 )
 
 
