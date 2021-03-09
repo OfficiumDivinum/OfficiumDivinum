@@ -12,6 +12,7 @@ from app.schemas import (
     LineBase,
     PrayerCreate,
     ReadingCreate,
+    RubricCreate,
     VerseCreate,
     VersicleCreate,
 )
@@ -209,3 +210,31 @@ def test_parse_section():
             Path("Prayers.txt"), section_name, [section], "latin"
         )
         assert resp == correct_obj
+
+
+def test_parse_replace_section():
+    section_name = "DefunctM"
+    verse = [
+        Line(verseno=1, content="&Dominus_vobiscum"),
+        Line(verseno=2, content="&Benedicamus_Domino"),
+        Line(
+            verseno=3,
+            content="! Post Laudes diei dicuntur %Matutinum et Laudes Defunctorum%.",
+        ),
+    ]
+    replacements = {
+        "Dominus_vobiscum": VersicleCreate(title="DV", parts=[]),
+        "Benedicamus_Domino": VersicleCreate(title="BD", parts=[]),
+    }
+    resp = parsers.parse_section(
+        Path("Prayers.txt"), section_name, [verse], "latin", replacements
+    )
+
+    expected = [
+        VersicleCreate(title="DV", parts=[]),
+        VersicleCreate(title="BD", parts=[]),
+        RubricCreate(
+            content="Post Laudes diei dicuntur %Matutinum et Laudes Defunctorum%."
+        ),
+    ]
+    assert resp == expected
