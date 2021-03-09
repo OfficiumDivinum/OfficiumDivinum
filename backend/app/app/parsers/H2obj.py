@@ -1,11 +1,12 @@
 """Get all Hymns from Divinumofficium's source files."""
 import re
 from pathlib import Path
-from typing import Dict, List, Union
+from typing import List, Union
 
 from devtools import debug
 
 from app.parsers import util
+from app.parsers.util import Thing
 from app.schemas.hymn import HymnCreate, LineBase, VerseCreate
 
 
@@ -81,54 +82,51 @@ def parse_file(fn: Path, lang: str, calendar_version: str) -> List[HymnCreate]:
         strip_keys=["#Hymnus"],
         section_key=r".*Hymnus.*",
     )
-    return parse_hymns(fn, hymn_dict, lang, version, matched)
+    hymns = []
+    for hymn_name, section in hymn_dict.items():
+        hymns.append(parse_hymns(fn, hymn_name, section, lang, version, matched))
+    return hymns
 
 
 def parse_hymns(
-    fn: Path, hymn_dict: Dict, lang: str, version: str, matched: bool
-) -> List[HymnCreate]:
-    hymns = []
-    for key, section in hymn_dict.items():
-        content = section.content
-        crossref = section.crossref
+    fn: Path, hymn_name: str, section: Thing, lang: str, version: str, matched: bool
+) -> HymnCreate:
+    content = section.content
+    crossref = section.crossref
 
-        # create verse objects
-        verses = []
-        verse = []
-        rubrics = None
-        for thing in content:
-            if verse:
-                verses.append(VerseCreate(parts=verse, rubrics=rubrics))
-                verse = []
-                rubrics = None
-            try:
-                if thing[0].content.startswith("!"):
-                    rubrics = thing[0][1:]
-            except TypeError:
-                debug(content)
-                raise Exception
-            else:
-                verse = [LineBase(content=i.content) for i in thing]
-        verses.append(VerseCreate(parts=verse, rubrics=rubrics))
+    # create verse objects
+    verses = []
+    verse = []
+    rubrics = None
+    for thing in content:
+        if verse:
+            verses.append(VerseCreate(parts=verse, rubrics=rubrics))
+            verse = []
+            rubrics = None
+        try:
+            if thing[0].content.startswith("!"):
+                rubrics = thing[0][1:]
+        except TypeError:
+            debug(content)
+            raise Exception
+        else:
+            verse = [LineBase(content=i.content) for i in thing]
+    verses.append(VerseCreate(parts=verse, rubrics=rubrics))
 
-        # we use a regex here to strip final punctuation.
-        title = re.search(r"(.*)[\.,;:]*", verses[0].parts[0].content).groups()[0]
-        title = util.unicode_to_ascii(title).strip()
+    # we use a regex here to strip final punctuation.
+    title = re.search(r"(.*)[\.,;:]*", verses[0].parts[0].content).groups()[0]
+    title = util.unicode_to_ascii(title).strip()
 
-        if not matched:
-            version, matched = guess_version(key)
+    if not matched:
+        version, matched = guess_version(hymn_name)
 
-        key = " ".join(re.search("(Hymnus).*? ( *.*)", key).groups())
-        hymns.append(
-            HymnCreate(
-                title=title,
-                parts=verses,
-                language=lang,
-                version=version,
-                crossref=crossref,
-                sourcefile=fn.name,
-                type_=key.lower(),
-            )
-        )
-
-    return hymns
+    hymn_name = " ".join(re.search("(Hymnus).*? ( *.*)", hymn_name).groups())
+    return HymnCreate(
+        title=title,
+        parts=verses,
+        language=lang,
+        version=version,
+        crossref=crossref,
+        sourcefile=fn.name,
+        type_=hymn_name.lower(),
+    )
