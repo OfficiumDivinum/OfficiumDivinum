@@ -5,6 +5,7 @@ from typing import Dict, List
 
 from devtools import debug
 
+from app.parsers.H2obj import parse_hymns
 from app.parsers.util import parse_file_as_dict
 from app.schemas import (
     AntiphonCreate,
@@ -22,7 +23,7 @@ class UnmatchedError(Exception):
     pass
 
 
-def get_prayers(root, version, language):
+def get_prayers(root: Path, version: str, language: str):
     fn = root / "Psalterium/Prayers.txt"
     prayers = parse_file_as_dict(fn, version)
 
@@ -30,7 +31,7 @@ def get_prayers(root, version, language):
     for prayer in prayers:
         prayers[prayer].crossref = prayer
 
-    prayers = magic_parser(prayers, language)
+    prayers = magic_parser(fn, prayers, language)
 
     # now go back and fill in internal references like $ and &
 
@@ -84,11 +85,12 @@ def guess_verse_obj(verse: List):
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
 
 
-def parse_section(section_name, section, language):
+def parse_section(fn: Path, section_name: str, section: List, language: str):
     """Parse a section, returning the right kind of object."""
 
     section_obj = guess_section_obj(section_name, section)
-    if type(section_obj) is type(HymnCreate):
+    if section_obj is HymnCreate:
+        return
         raise NotImplementedError("Reuse hymn parsing here.")
     linenos = []
 
@@ -136,12 +138,12 @@ def parse_section(section_name, section, language):
         return section_obj(**data)
 
 
-def magic_parser(sections: Dict, language: str) -> Dict:
+def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
     """Magically return things as the right kind of objects."""
     parsed_things = {}
     for section_name, thing in sections.items():
         parsed_things[section_name] = parse_section(
-            section_name, thing.content, language
+            fn, section_name, thing.content, language
         )
 
     return parsed_things
@@ -170,10 +172,12 @@ def parse_for_prayers(fn: Path):
     debug(prayers_dict)
 
 
-# root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
-# version = "1960"
-# get_prayers(root, version, "latin")
+if __name__ == "__main__":
 
-# fn = "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/10-02.txt"
+    root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
+    version = "1960"
+    get_prayers(root, version, "latin")
 
-# parse_for_prayers(Path(fn))
+    fn = "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/10-02.txt"
+
+    parse_for_prayers(Path(fn))
