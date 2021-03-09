@@ -1,5 +1,7 @@
 from typing import List, Union
 
+from devtools import debug
+
 from app import parsers
 from app.parsers import Line
 from app.schemas import (
@@ -65,29 +67,66 @@ def test_guess_section_obj():
             assert type(resp) is type(correct_obj)
 
 
-def test_guess_verse_obj():
-
-    candidates = (
+candidates = (
+    (
         (
-            (
-                Line(
-                    content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum.",
+            Line(
+                content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum"
+                "vivit et regnat in unitáte Spíritus Sancti, Deus,"
+                "per ómnia sǽcula sæculórum.",
+                lineno=1,
+            ),
+            LineBase(content="R. Amen.", lineno=2),
+        ),
+        PrayerCreate(
+            language="latin",
+            parts=[
+                LineBase(
+                    content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui"
+                    "tecum vivit et regnat in unitáte Spíritus Sancti, Deus,"
+                    "per ómnia sǽcula sæculórum.",
                     lineno=1,
                 ),
-                Line(content="R. Amen.", lineno=2),
-            ),
-            PrayerCreate,
+                LineBase(content="Amen.", prefix="R.", lineno=2),
+            ],
+            title="per dominum nostrum",
+            version=None,
         ),
+    ),
+    (
         (
-            (
-                Line(content="V. Benedicámus Dómino.", lineno=1),
-                Line(content="R. Deo grátias.", lineno=2),
-            ),
-            VersicleCreate,
+            Line(content="V. Benedicámus Dómino.", lineno=1),
+            Line(content="R. Deo grátias.", lineno=2),
         ),
-        ((Line(content="R. Deo grátias.", lineno=1),), VersicleCreate),
-        ((Line(lineno=1, content="Allelúja, allelúja."),), LineBase),
-    )
+        VersicleCreate(
+            language="latin",
+            parts=[
+                LineBase(content="Benedicámus Dómino.", prefix="V.", lineno=1),
+                LineBase(content="Deo grátias.", prefix="R.", lineno=2),
+            ],
+            title="benedicamus domino",
+        ),
+    ),
+    (
+        (Line(content="R. Deo grátias.", lineno=1),),
+        VersicleCreate(
+            language="latin",
+            parts=[LineBase(content="Deo grátias.", prefix="R.", lineno=2)],
+            title="deo gratias",
+        ),
+    ),
+    (
+        (Line(lineno=1, content="Allelúja, allelúja."),),
+        LineBase(lineno=1, content="Allelúja, allelúja."),
+    ),
+)
+
+
+def test_guess_verse_obj():
     for verses, correct_obj in candidates:
         resp = parsers.guess_verse_obj(verses)
-        assert type(resp) is type(correct_obj)
+        assert resp is type(correct_obj)
+
+
+# def test_parse_section():
+#     for verses, correct_obj in candidates:
