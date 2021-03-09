@@ -31,3 +31,11 @@ class ReadingBase(BlockBase):
 
 class ReadingCreate(ReadingBase):
     pass
+
+
+class RubricBase(LineBase):
+    rubrics: str
+
+
+class RubricCreate(RubricBase):
+    pass
