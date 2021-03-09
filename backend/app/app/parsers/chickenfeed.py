@@ -21,7 +21,7 @@ class UnmatchedError(Exception):
     pass
 
 
-def get_prayers(root, version):
+def get_prayers(root, version, language):
     fn = root / "Psalterium/Prayers.txt"
     prayers = parse_file_as_dict(fn, version)
 
@@ -29,7 +29,7 @@ def get_prayers(root, version):
     for prayer in prayers:
         prayers[prayer].crossref = prayer
 
-    prayers = magic_parser(prayers)
+    prayers = magic_parser(prayers, language)
 
     # now go back and fill in internal references like $ and &
 
@@ -68,11 +68,11 @@ def guess_section_obj(section_name: str, section: List):
 
 def guess_verse_obj(verse: List):
 
-    if verse[-1].content == "R. Amen.":
-        return PrayerCreate
-
     if re.search(r"^[V|R]\.", verse[0].content):
         return VersicleCreate
+
+    if re.search(r"^[V|R]\.", verse[-1].content):
+        return PrayerCreate
 
     if len(verse) == 1:
         return LineBase
@@ -81,6 +81,8 @@ def guess_verse_obj(verse: List):
 
 
 def parse_section(section_name, section, language):
+    """Parse a section, returning the right kind of object."""
+
     section_obj = guess_section_obj(section_name, section)
     if type(section_obj) is type(HymnCreate):
         raise NotImplementedError("Reuse hymn parsing here.")
@@ -91,23 +93,19 @@ def parse_section(section_name, section, language):
 
     for verse in section:
         verse_obj = guess_verse_obj(verse)
-        debug(verse_obj)
         data = {"title": section_name, "language": language, "parts": []}
+
         for line in verse:
             linenos.append(line.lineno)
 
-            debug(line)
             if " * " in line.content:
                 lineobj = parse_antiphon(line)
-
-            if line.content.startswith("!"):
+            elif line.content.startswith("!"):
                 rubrics = parse_rubric(line)
                 continue
-
-            if re.search(r"^[V|R]\.", line.content):
+            elif re.search(r"^[V|R]\.", line.content):
                 lineobj = parse_versicle(line, rubrics)
                 rubrics = None
-
             else:
                 lineobj = LineBase(
                     content=line.content, rubrics=rubrics, lineno=line.lineno
@@ -134,21 +132,13 @@ def parse_section(section_name, section, language):
         return section_obj(**data)
 
 
-def magic_parser(things: Dict):
+def magic_parser(sections: Dict, language: str) -> Dict:
     """Magically return things as the right kind of objects."""
-    parsed_linenos = []
-    linenos = []
-    thing = None
-    things = []
-
     parsed_things = {}
-    for section_name, section in things.items():
-
-        # wrap it all up in the right kind of object
-        parsed_thing.append(parsed_lines)
-        # wrap it all up again in the right kind of object
-
-        parsed_things[key] = parsed_thing
+    for section_name, thing in sections.items():
+        parsed_things[section_name] = parse_section(
+            section_name, thing.content, language
+        )
 
     return parsed_things
 
@@ -178,7 +168,7 @@ def parse_for_prayers(fn: Path):
 
 # root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
 # version = "1960"
-# get_prayers(root, version)
+# get_prayers(root, version, "latin")
 
 # fn = "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/10-02.txt"
 
