@@ -33,13 +33,16 @@ def is_rubric(line: Line) -> Optional[str]:
 
 def get_prayers(root: Path, version: str, language: str):
     fn = root / "Psalterium/Prayers.txt"
-    prayers = parse_file_as_dict(fn, version)
+    sections = parse_file_as_dict(fn, version)
 
-    # uniquely, this file defines crossrefs.
-    for prayer in prayers:
-        prayers[prayer].crossref = prayer
+    # uniquely, this file defines crossrefs, which are to itself.
+    # is there any point in this?!
+    for section in sections:
+        sections[section].crossref = section
 
-    prayers = magic_parser(fn, prayers, language)
+    matched, unmatched = magic_parser(fn, sections, language)
+
+    hopefully_matched, unmatched = magic_parser(fn, sections, language, matched)
 
     # now go back and fill in internal references like $ and &
 
@@ -105,7 +108,6 @@ def guess_verse_obj(verse: List):
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
 
 
-def parse_section(fn: Path, section_name: str, section: List, language: str):
 def replace(verse: List[Line], replacements: Dict) -> List:
     new_verse = []
     for line in verse:
@@ -118,6 +120,9 @@ def replace(verse: List[Line], replacements: Dict) -> List:
     return new_verse
 
 
+def parse_section(
+    fn: Path, section_name: str, section: List, language: str, replacements: Dict = None
+):
     """Parse a section, returning the right kind of object."""
 
     section_obj = guess_section_obj(section_name, section)
@@ -132,7 +137,14 @@ def replace(verse: List[Line], replacements: Dict) -> List:
     for verse in section:
 
         if all((line.content.startswith("r. ") for line in verse)):
-            verse = " ".join(verse)
+            verse[0].content = " ".join([i.content for i in verse])
+            verse = [verse[0]]
+
+        if any((line.content.startswith("&") for line in verse)):
+            if replacements:
+                verse = replace(verse, replacements)
+            else:
+                raise UnmatchedError("No replacements supplied.")
 
         verse_obj = guess_verse_obj(verse)
         data = {"title": section_name, "language": language, "parts": []}
@@ -181,15 +193,20 @@ def replace(verse: List[Line], replacements: Dict) -> List:
         return section_obj(**data)
 
 
-def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
+def magic_parser(
+    fn: Path, sections: Dict, language: str, replacements: Dict = None
+) -> Dict:
     """Magically return things as the right kind of objects."""
     parsed_things = {}
+    unparsed_things = {}
     for section_name, thing in sections.items():
-        parsed_things[section_name] = parse_section(
-            fn, section_name, thing.content, language
-        )
+        try:
+            r = parse_section(fn, section_name, thing.content, language)
+            parsed_things[section_name] = r
+        except UnmatchedError:
+            unparsed_things[section_name] = thing
 
-    return parsed_things
+    return parsed_things, unparsed_things
 
 
 def parse_versicle(line, rubrics):
@@ -200,14 +217,6 @@ def parse_versicle(line, rubrics):
 def parse_antiphon(line):
     a = AntiphonCreate(lineno=line.lineno, content=markup(line.content))
     return a
-
-
-def parse_for_prayers(fn: Path):
-    """Parse a given file and extract all prayers."""
-
-    debug(fn)
-    prayers_dict = parse_file_as_dict(fn, "Oratio")
-    debug(prayers_dict)
 
 
 if __name__ == "__main__":
