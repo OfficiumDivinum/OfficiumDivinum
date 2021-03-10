@@ -217,8 +217,10 @@ candidates = (
 
 def test_guess_verse_obj():
     for verses, correct_obj in candidates:
-        resp = parsers.guess_verse_obj(verses)
+        resp, data = parsers.guess_verse_obj(verses)
         assert resp is type(correct_obj)
+        if type(correct_obj) is type(ReadingCreate):
+            assert data["ref"]
 
 
 def test_parse_section():

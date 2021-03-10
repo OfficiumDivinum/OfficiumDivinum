@@ -106,16 +106,19 @@ def markup(content: str) -> LineBase:
 def guess_verse_obj(verse: List):
 
     if re.search(r"^[V|R]\.", verse[0].content):
-        return VersicleCreate
+        return VersicleCreate, {}
 
     if any((re.search(r"^[V|R]\.", i.content) for i in verse)):
-        return PrayerCreate
+        return PrayerCreate, {}
 
     if len(verse) == 1:
-        return LineBase
+        return LineBase, {}
 
     if re.search(r"^v\.", verse[0].content):
-        return BlockCreate
+        return BlockCreate, {}
+
+    if (match := re.search(r"!(.*? [0-9]+:[0-9]+-[0-9]+)", verse[0].content)) :
+        return ReadingCreate, {"ref": match.groups()[0]}
 
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
 
@@ -162,7 +165,7 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
     section_content = []
 
     for verse in section:
-
+        data = {}
         if all((line.content.startswith("r. ") for line in verse)):
             verse[0].content = " ".join([i.content for i in verse])
             verse = [verse[0]]
@@ -174,10 +177,12 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             else:
                 raise UnmatchedError("No replacements supplied.")
         else:
-            verse_obj = guess_verse_obj(
+            verse_obj, data = guess_verse_obj(
                 [x for x in verse if type(x) not in create_types]
             )
-        data = {"title": section_name, "language": language, "parts": []}
+
+        data.update({"title": section_name, "language": language, "parts": []})
+
         join = False
         for line in verse:
             try:
