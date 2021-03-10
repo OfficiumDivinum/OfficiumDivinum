@@ -117,7 +117,8 @@ def guess_verse_obj(verse: List):
     if re.search(r"^v\.", verse[0].content):
         return BlockCreate, {}
 
-    if (match := re.search(r"!(.*? [0-9]+:[0-9]+-[0-9]+)", verse[0].content)) :
+    match = re.search(r"!(.*? [0-9]+:[0-9]+-[0-9]+)", verse[0].content)
+    if match:
         return ReadingCreate, {"ref": match.groups()[0]}
 
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
