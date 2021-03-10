@@ -34,7 +34,7 @@ class ReadingCreate(ReadingBase):
 
 
 class RubricBase(LineBase):
-    rubrics: str
+    content: str
 
 
 class RubricCreate(RubricBase):
