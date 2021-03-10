@@ -38,6 +38,9 @@ class UnmatchedError(Exception):
 
 
 def is_rubric(line: Line) -> Optional[str]:
+    if is_reference(line):
+        return None
+
     regexs = (r"^!(.*)", r"^/:(.*):/")
     for candidate in regexs:
         if (match := re.search(candidate, line.content)) is not None:
@@ -103,6 +106,10 @@ def markup(content: str) -> LineBase:
     return re.sub(r"r\. (.)", r"::\1::", content)
 
 
+def is_reference(line: Line):
+    return re.search(r"!(.*? [0-9]+:[0-9]+-[0-9]+)", line.content)
+
+
 def guess_verse_obj(verse: List):
 
     if re.search(r"^[V|R]\.", verse[0].content):
@@ -117,8 +124,7 @@ def guess_verse_obj(verse: List):
     if re.search(r"^v\.", verse[0].content):
         return BlockCreate, {}
 
-    match = re.search(r"!(.*? [0-9]+:[0-9]+-[0-9]+)", verse[0].content)
-    if match:
+    if (match := is_reference(verse[0])) is not None:
         return ReadingCreate, {"ref": match.groups()[0]}
 
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
@@ -183,6 +189,8 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             )
 
         data.update({"title": section_name, "language": language, "parts": []})
+        if is_reference(verse[0]):
+            verse = verse[1:]
 
         join = False
         for line in verse:
