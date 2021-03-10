@@ -40,7 +40,7 @@ monthnames = [
     "October",
     "November",
     "December",
-]  # why do we give up on Latin half way through?!?!
+]
 
 
 traditional_rank_table = [
