@@ -5,9 +5,10 @@ from typing import Dict
 import pytest
 from fastapi.testclient import TestClient
 
-from app import run_parsers
+from app import parsers, run_parsers
 
 things = ["martyrologies", "psalms", "temporal", "sanctoral", "hymns"]
+languages = ["Latin"]
 versions = ["1960"]
 
 
@@ -22,6 +23,10 @@ def test_pokemon(
     # test without upload
     run_parsers.parse_upload(root, lang, version, pokemon=True, test=True)
 
+@pytest.mark.parametrize("lang,version", product(languages, versions))
+def test_parse_prayers_txt(lang: str, version: str):
+    """
+    Test parsing the prayers.txt file.
 
 @pytest.mark.parametrize("version,thing", product(versions, things))
 def test_upload_parsers(
@@ -31,6 +36,8 @@ def test_upload_parsers(
     superuser_token_headers: Dict[str, str],
 ):
     """Test all the parsers."""
+    The parser itself asserts complete coverage.
+    """
     root = Path("app/tests/parsers/test-DO-data")
     lang = "Latin"
 
@@ -44,3 +51,6 @@ def test_upload_parsers(
     }
     fn = getattr(run_parsers, f"parse_upload_{thing}")
     fn(**args)
+    parsers.parse_prayers_txt(root, version, lang)
+
+
