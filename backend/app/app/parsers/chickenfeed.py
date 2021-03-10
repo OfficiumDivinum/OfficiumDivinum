@@ -6,8 +6,8 @@ from typing import Dict, List, Optional
 from devtools import debug
 
 from app.parsers import parser_vars
-from app.parsers.H2obj import parse_hymns
-from app.parsers.util import Line, parse_file_as_dict
+from app.parsers.H2obj import guess_version, parse_hymn
+from app.parsers.util import Line, Thing, parse_file_as_dict
 from app.schemas import (
     AntiphonCreate,
     BlockCreate,
@@ -49,32 +49,33 @@ def parse_prayers_txt(root: Path, version: str, language: str):
     fn = root / f"{language}/Psalterium/Prayers.txt"
     sections = parse_file_as_dict(fn, version)
 
+    debug(sections["Te Deum"])
     matched, unmatched = magic_parser(fn, sections, language)
 
     parser_vars.replacements = matched.copy()
     matched, unmatched = magic_parser(fn, sections, language)
+    debug(matched["Te Deum"])
+    assert matched["Te Deum"]
 
     assert not unmatched
     return matched
 
 
-def resolve_shorthands(thing, database):
-    for line in thing:
-        if line.content.startswith("$"):
-            line.content = database[line.content.replace("$", "").strip()]
-        if (match := re.search("&(.+)", line.content)) is not None:
-            key = match.groups(0)
-            line.content = re.sub("&.+", database[key])
-
-    return thing
+def parse_file(fn: Path, version: str, language: str) -> Dict:
+    sections = parse_file_as_dict(fn, version)
+    matched, unmatched = magic_parser(fn, sections, language)
+    if unmatched:
+        debug(unmatched)
+    assert not unmatched
+    return matched
 
 
 def guess_section_obj(section_name: str, section: List):
     guesses = {
         "Invit": AntiphonCreate,
         "Ant Matutinum": [],
-        "Lectio": ReadingCreate,
-        "Responsory": VersicleCreate,
+        # "Lectio": ReadingCreate,
+        # "Responsory": VersicleCreate,
         "Hymnus": HymnCreate,
         "Capitulum": ReadingCreate,
         "Ant ": AntiphonCreate,
@@ -122,15 +123,23 @@ def guess_verse_obj(verse: List):
 def replace(verse: List[Line]) -> List:
 
     skip = ["Dominus_vobiscum", "Benedicamus_Domino"]
+    sub = {"pater_noster": "Pater_noster1", "teDeum": "Te Deum"}
 
     new_verse = []
     for line in verse:
-        if (match := re.search(r"&(.*)", line.content)) is not None:
-            key = match.groups()[0].replace("pater_noster", "Pater_noster1")
+        if (match := re.search(r"[&|$](.*)", line.content)) is not None:
+            key = match.groups()[0]
+            try:
+                key = sub[key]
+            except KeyError:
+                pass
             if key in skip:
                 new_verse.append(line)
                 continue
             r = parser_vars.replacements[key]
+            if not r:
+                debug(parser_vars.replacements, key)
+            assert r
             new_verse.append(r)
         else:
             new_verse.append(line)
@@ -138,13 +147,15 @@ def replace(verse: List[Line]) -> List:
     return new_verse
 
 
-def parse_section(fn: Path, section_name: str, section: List, language: str):
+def parse_section(fn: Path, section_name: str, section: list, language: str):
     """Parse a section, returning the right kind of object."""
 
     section_obj = guess_section_obj(section_name, section)
     if section_obj is HymnCreate:
-        return
-        raise NotImplementedError("Reuse hymn parsing here.")
+        version, matched = guess_version(fn)
+        return parse_hymn(
+            fn, section_name, Thing(content=section), language, version, matched
+        )
     linenos = []
 
     rubrics = None
@@ -168,7 +179,6 @@ def parse_section(fn: Path, section_name: str, section: List, language: str):
             )
         data = {"title": section_name, "language": language, "parts": []}
         join = False
-
         for line in verse:
             try:
                 linenos.append(line.lineno)
@@ -183,7 +193,6 @@ def parse_section(fn: Path, section_name: str, section: List, language: str):
             if join:
                 data["parts"][-1].content += markup(line.content)
                 continue
-
             if line.content.endswith("~"):
                 join = True
 
@@ -214,16 +223,28 @@ def parse_section(fn: Path, section_name: str, section: List, language: str):
             section_content = lineobj
             section_content.title = section_name
 
+    if isinstance(section_content, list) and len(section_content) == 1:
+        section_content = section_content[0]
+
     if not section_obj:
         if not isinstance(section_content, list):
+            assert section_content
             return section_content
         if len(section_content) == 1:
             section_content = section_content[0]
+        assert section_content
         return section_content
 
     else:
         data = {"title": section_name, "language": language, "parts": section_content}
-        return section_obj(**data)
+        debug(data, section_obj)
+        try:
+            obj = section_obj(**data)
+            assert obj
+            return obj
+        except Exception as e:
+            debug(section_obj, data)
+            raise Exception(e)
 
 
 def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
@@ -233,8 +254,12 @@ def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
     for section_name, thing in sections.items():
         try:
             r = parse_section(fn, section_name, thing.content, language)
+            if not r:
+                debug(thing, r)
+            assert r
             parsed_things[section_name] = r
         except UnmatchedError as e:
+            debug(e, thing)
             unparsed_things[section_name] = thing
 
     return parsed_things, unparsed_things
@@ -250,12 +275,16 @@ def parse_antiphon(line):
     return a
 
 
-if __name__ == "__main__":
-
+def main():
     root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/")
     version = "1960"
-    parse_prayers_txt(root, version, "latin")
+    parse_prayers_txt(root, version, "Latin")
 
-    # fn = "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/10-02.txt"
+    fn = "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/10-02.txt"
+    parse_file(Path(fn), version, "Latin")
 
     # parse_for_prayers(Path(fn))
+
+
+if __name__ == "__main__":
+    main()
