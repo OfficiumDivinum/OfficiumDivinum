@@ -27,6 +27,7 @@ class VersicleCreate(VersicleBase):
 
 class ReadingBase(BlockBase):
     parts: List[LineBase]
+    ref: str
 
 
 class ReadingCreate(ReadingBase):
