@@ -14,8 +14,21 @@ from app.schemas import (
     LineBase,
     PrayerCreate,
     ReadingCreate,
+    RubricCreate,
     VerseCreate,
     VersicleCreate,
+)
+
+create_types = (
+    AntiphonCreate,
+    BlockCreate,
+    HymnCreate,
+    LineBase,
+    PrayerCreate,
+    ReadingCreate,
+    VerseCreate,
+    VersicleCreate,
+    RubricCreate,
 )
 
 
@@ -38,11 +51,12 @@ def get_prayers(root: Path, version: str, language: str):
     # uniquely, this file defines crossrefs, which are to itself.
     # is there any point in this?!
     for section in sections:
-        sections[section].crossref = section
+        sections[section].crossref = section.replace(" ", "_")
 
     matched, unmatched = magic_parser(fn, sections, language)
 
-    hopefully_matched, unmatched = magic_parser(fn, sections, language, matched)
+    replacements = {i["crossref"]: i for i in matched}
+    hopefully_matched, unmatched = magic_parser(fn, sections, language, replacements)
 
     # now go back and fill in internal references like $ and &
 
@@ -143,15 +157,27 @@ def parse_section(
         if any((line.content.startswith("&") for line in verse)):
             if replacements:
                 verse = replace(verse, replacements)
+                verse_obj = []
             else:
                 raise UnmatchedError("No replacements supplied.")
-
-        verse_obj = guess_verse_obj(verse)
+        else:
+            verse_obj = guess_verse_obj(
+                [x for x in verse if type(x) not in create_types]
+            )
         data = {"title": section_name, "language": language, "parts": []}
         join = False
 
+        debug(verse_obj)
+
         for line in verse:
             linenos.append(line.lineno)
+
+            # don't parse twice
+            if type(line) in create_types:
+                data["parts"].append(line)
+                continue
+
+            debug(line, data)
 
             if join:
                 data["parts"][-1].content += markup(line.content)
@@ -175,8 +201,14 @@ def parse_section(
 
             data["parts"].append(lineobj)
 
+        if rubrics:
+            data["parts"].append(RubricCreate(content=rubrics))
+
         if verse_obj is not LineBase:
-            section_content.append(verse_obj(**data))
+            if isinstance(verse_obj, list):
+                section_content.append(data["parts"])
+            else:
+                section_content.append(verse_obj(**data))
         else:
             section_content = lineobj
             section_content.title = section_name
