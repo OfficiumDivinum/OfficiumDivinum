@@ -44,21 +44,21 @@ def is_rubric(line: Line) -> Optional[str]:
     return None
 
 
-def get_prayers(root: Path, version: str, language: str):
+def parse_prayers_txt(root: Path, version: str, language: str):
     fn = root / "Psalterium/Prayers.txt"
     sections = parse_file_as_dict(fn, version)
 
     # uniquely, this file defines crossrefs, which are to itself.
     # is there any point in this?!
-    for section in sections:
-        sections[section].crossref = section.replace(" ", "_")
+    # for section in sections:
+    #     sections[section].crossref = section.replace(" ", "_")
 
     matched, unmatched = magic_parser(fn, sections, language)
 
-    replacements = {i["crossref"]: i for i in matched}
+    replacements = {k.replace(" ", "_"): v for k, v in matched.items()}
     hopefully_matched, unmatched = magic_parser(fn, sections, language, replacements)
 
-    # now go back and fill in internal references like $ and &
+    debug(unmatched)
 
 
 def resolve_shorthands(thing, database):
@@ -167,8 +167,6 @@ def parse_section(
         data = {"title": section_name, "language": language, "parts": []}
         join = False
 
-        debug(verse_obj)
-
         for line in verse:
             linenos.append(line.lineno)
 
@@ -176,8 +174,6 @@ def parse_section(
             if type(line) in create_types:
                 data["parts"].append(line)
                 continue
-
-            debug(line, data)
 
             if join:
                 data["parts"][-1].content += markup(line.content)
@@ -255,8 +251,8 @@ if __name__ == "__main__":
 
     root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
     version = "1960"
-    get_prayers(root, version, "latin")
+    parse_prayers_txt(root, version, "latin")
 
-    fn = "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/10-02.txt"
+    # fn = "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/10-02.txt"
 
-    parse_for_prayers(Path(fn))
+    # parse_for_prayers(Path(fn))
