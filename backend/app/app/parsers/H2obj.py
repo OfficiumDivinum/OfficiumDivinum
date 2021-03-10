@@ -84,11 +84,11 @@ def parse_file(fn: Path, lang: str, calendar_version: str) -> List[HymnCreate]:
     )
     hymns = []
     for hymn_name, section in hymn_dict.items():
-        hymns.append(parse_hymns(fn, hymn_name, section, lang, version, matched))
+        hymns.append(parse_hymn(fn, hymn_name, section, lang, version, matched))
     return hymns
 
 
-def parse_hymns(
+def parse_hymn(
     fn: Path, hymn_name: str, section: Thing, lang: str, version: str, matched: bool
 ) -> HymnCreate:
     content = section.content
@@ -105,7 +105,7 @@ def parse_hymns(
             rubrics = None
         try:
             if thing[0].content.startswith("!"):
-                rubrics = thing[0][1:]
+                rubrics = thing[0].content[1:]
         except TypeError:
             debug(content)
             raise Exception
@@ -120,7 +120,8 @@ def parse_hymns(
     if not matched:
         version, matched = guess_version(hymn_name)
 
-    hymn_name = " ".join(re.search("(Hymnus).*? ( *.*)", hymn_name).groups())
+    if hymn_name != "Te Deum":
+        hymn_name = " ".join(re.search("(Hymnus).*? ( *.*)", hymn_name).groups())
     return HymnCreate(
         title=title,
         parts=verses,
