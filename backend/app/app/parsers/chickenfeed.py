@@ -143,8 +143,6 @@ def replace(verse: List[Line]) -> List:
                 new_verse.append(line)
                 continue
             r = parser_vars.replacements[key]
-            if not r:
-                debug(parser_vars.replacements, key)
             assert r
             new_verse.append(r)
         else:
@@ -267,8 +265,6 @@ def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
     for section_name, thing in sections.items():
         try:
             r = parse_section(fn, section_name, thing.content, language)
-            if not r:
-                debug(thing, r)
             assert r
             parsed_things[section_name] = r
         except UnmatchedError as e:
