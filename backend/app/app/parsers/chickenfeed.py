@@ -45,20 +45,16 @@ def is_rubric(line: Line) -> Optional[str]:
 
 
 def parse_prayers_txt(root: Path, version: str, language: str):
-    fn = root / "Psalterium/Prayers.txt"
+    fn = root / f"{language}/Psalterium/Prayers.txt"
     sections = parse_file_as_dict(fn, version)
-
-    # uniquely, this file defines crossrefs, which are to itself.
-    # is there any point in this?!
-    # for section in sections:
-    #     sections[section].crossref = section.replace(" ", "_")
 
     matched, unmatched = magic_parser(fn, sections, language)
 
-    replacements = {k.replace(" ", "_"): v for k, v in matched.items()}
-    hopefully_matched, unmatched = magic_parser(fn, sections, language, replacements)
+    replacements = matched.copy()
+    matched, unmatched = magic_parser(fn, sections, language, replacements)
 
-    debug(unmatched)
+    assert not unmatched
+    return matched
 
 
 def resolve_shorthands(thing, database):
@@ -123,10 +119,19 @@ def guess_verse_obj(verse: List):
 
 
 def replace(verse: List[Line], replacements: Dict) -> List:
+
+    skip = ["Dominus_vobiscum", "Benedicamus_Domino"]
+
     new_verse = []
+    debug(replacements.keys())
     for line in verse:
         if (match := re.search(r"&(.*)", line.content)) is not None:
-            r = replacements[match.groups()[0]]
+            key = match.groups()[0].replace("pater_noster", "Pater_noster1")
+            debug(key)
+            if key in skip:
+                new_verse.append(line)
+                continue
+            r = replacements[key]
             new_verse.append(r)
         else:
             new_verse.append(line)
@@ -168,7 +173,10 @@ def parse_section(
         join = False
 
         for line in verse:
-            linenos.append(line.lineno)
+            try:
+                linenos.append(line.lineno)
+            except AttributeError:  # already done.
+                pass
 
             # don't parse twice
             if type(line) in create_types:
@@ -229,9 +237,10 @@ def magic_parser(
     unparsed_things = {}
     for section_name, thing in sections.items():
         try:
-            r = parse_section(fn, section_name, thing.content, language)
+            r = parse_section(fn, section_name, thing.content, language, replacements)
             parsed_things[section_name] = r
-        except UnmatchedError:
+        except UnmatchedError as e:
+            debug(e)
             unparsed_things[section_name] = thing
 
     return parsed_things, unparsed_things
@@ -249,7 +258,7 @@ def parse_antiphon(line):
 
 if __name__ == "__main__":
 
-    root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
+    root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/")
     version = "1960"
     parse_prayers_txt(root, version, "latin")
 
