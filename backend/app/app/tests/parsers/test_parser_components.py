@@ -89,8 +89,10 @@ def test_replace():
             title="Benedicamus Domino",
         )
     }
+    parsers.parser_vars.replacements = replacements
     verse = [Line(content="&thing", lineno=3)]
-    resp = parsers.replace(verse, replacements)
+    resp = parsers.replace(verse)
+    parsers.parser_vars.replacements = None
     assert resp == [replacements["thing"]]
 
 
@@ -215,20 +217,20 @@ def test_parse_section():
 def test_parse_replace_section():
     section_name = "DefunctM"
     verse = [
-        Line(lineno=1, content="&Dominus_vobiscum"),
-        Line(lineno=2, content="&Benedicamus_Domino"),
+        Line(lineno=1, content="&DV"),
+        Line(lineno=2, content="&BD"),
         Line(
             lineno=3,
             content="! Post Laudes diei dicuntur %Matutinum et Laudes Defunctorum%.",
         ),
     ]
     replacements = {
-        "Dominus_vobiscum": VersicleCreate(title="DV", parts=[]),
-        "Benedicamus_Domino": VersicleCreate(title="BD", parts=[]),
+        "DV": VersicleCreate(title="DV", parts=[]),
+        "BD": VersicleCreate(title="BD", parts=[]),
     }
-    resp = parsers.parse_section(
-        Path("Prayers.txt"), section_name, [verse], "latin", replacements
-    )
+    parsers.parser_vars.replacements = replacements
+    resp = parsers.parse_section(Path("Prayers.txt"), section_name, [verse], "latin")
+    parsers.parser_vars.replacements = None
 
     expected = [
         VersicleCreate(title="DV", parts=[]),

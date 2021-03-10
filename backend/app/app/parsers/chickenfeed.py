@@ -5,6 +5,7 @@ from typing import Dict, List, Optional
 
 from devtools import debug
 
+from app.parsers import parser_vars
 from app.parsers.H2obj import parse_hymns
 from app.parsers.util import Line, parse_file_as_dict
 from app.schemas import (
@@ -50,8 +51,8 @@ def parse_prayers_txt(root: Path, version: str, language: str):
 
     matched, unmatched = magic_parser(fn, sections, language)
 
-    replacements = matched.copy()
-    matched, unmatched = magic_parser(fn, sections, language, replacements)
+    parser_vars.replacements = matched.copy()
+    matched, unmatched = magic_parser(fn, sections, language)
 
     assert not unmatched
     return matched
@@ -118,20 +119,18 @@ def guess_verse_obj(verse: List):
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
 
 
-def replace(verse: List[Line], replacements: Dict) -> List:
+def replace(verse: List[Line]) -> List:
 
     skip = ["Dominus_vobiscum", "Benedicamus_Domino"]
 
     new_verse = []
-    debug(replacements.keys())
     for line in verse:
         if (match := re.search(r"&(.*)", line.content)) is not None:
             key = match.groups()[0].replace("pater_noster", "Pater_noster1")
-            debug(key)
             if key in skip:
                 new_verse.append(line)
                 continue
-            r = replacements[key]
+            r = parser_vars.replacements[key]
             new_verse.append(r)
         else:
             new_verse.append(line)
@@ -139,9 +138,7 @@ def replace(verse: List[Line], replacements: Dict) -> List:
     return new_verse
 
 
-def parse_section(
-    fn: Path, section_name: str, section: List, language: str, replacements: Dict = None
-):
+def parse_section(fn: Path, section_name: str, section: List, language: str):
     """Parse a section, returning the right kind of object."""
 
     section_obj = guess_section_obj(section_name, section)
@@ -160,8 +157,8 @@ def parse_section(
             verse = [verse[0]]
 
         if any((line.content.startswith("&") for line in verse)):
-            if replacements:
-                verse = replace(verse, replacements)
+            if parser_vars.replacements:
+                verse = replace(verse)
                 verse_obj = []
             else:
                 raise UnmatchedError("No replacements supplied.")
@@ -229,18 +226,15 @@ def parse_section(
         return section_obj(**data)
 
 
-def magic_parser(
-    fn: Path, sections: Dict, language: str, replacements: Dict = None
-) -> Dict:
+def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
     """Magically return things as the right kind of objects."""
     parsed_things = {}
     unparsed_things = {}
     for section_name, thing in sections.items():
         try:
-            r = parse_section(fn, section_name, thing.content, language, replacements)
+            r = parse_section(fn, section_name, thing.content, language)
             parsed_things[section_name] = r
         except UnmatchedError as e:
-            debug(e)
             unparsed_things[section_name] = thing
 
     return parsed_things, unparsed_things
