@@ -189,8 +189,11 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             )
 
         data.update({"title": section_name, "language": language, "parts": []})
-        if is_reference(verse[0]):
-            verse = verse[1:]
+        try:
+            if is_reference(verse[0]):
+                verse = verse[1:]
+        except AttributeError:
+            pass
 
         join = False
         for line in verse:
