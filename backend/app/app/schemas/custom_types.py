@@ -53,6 +53,7 @@ HymnTypeLiteral = Literal[
     "hymnus sexta",
     "hymnus nona",
     "hymnus vespera 3",
+    "te deum",
 ]
 
 PrayerTypeLiteral = Literal["Oratio"]
