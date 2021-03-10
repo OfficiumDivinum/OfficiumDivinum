@@ -56,8 +56,9 @@ def test_guess_section_obj():
         # ("Responsory2", [], VersicleCreate, None),
         ("HymnusM Laudes", [], HymnCreate, None),
         ("Te Deum", [], HymnCreate, None),
-        ("Capitulum Laudes", [], ReadingCreate, None),
+        # ("Capitulum Laudes", [], ReadingCreate, None),
         ("Ant 1", [], AntiphonCreate, None),
+        ("Oratio", [], PrayerCreate, None),
     )
 
     for section_name, section, correct_obj, _ in candidates:
@@ -212,6 +213,24 @@ candidates = (
                 LineBase(content="21 line 2", lineno=4),
             ],
             ref="Exod 23:20-21",
+        ),
+    ),
+    (
+        (
+            Line(content="Lectio.", lineno=1),
+            Line(content="!In Psalmum quodlibet", lineno=2),
+            Line(content="20 line 1", lineno=3),
+            Line(content="21 line 2", lineno=4),
+        ),
+        ReadingCreate(
+            title="Lectio1",
+            language="latin",
+            parts=[
+                LineBase(content="Lectio.", lineno=1),
+                LineBase(content="20 line 1", lineno=3),
+                LineBase(content="21 line 2", lineno=4),
+            ],
+            ref="In Psalmum quodlibet",
         ),
     ),
 )

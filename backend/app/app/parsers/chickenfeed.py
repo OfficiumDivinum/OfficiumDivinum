@@ -38,9 +38,6 @@ class UnmatchedError(Exception):
 
 
 def is_rubric(line: Line) -> Optional[str]:
-    if is_reference(line):
-        return None
-
     regexs = (r"^!(.*)", r"^/:(.*):/")
     for candidate in regexs:
         if (match := re.search(candidate, line.content)) is not None:
@@ -72,10 +69,7 @@ def guess_section_obj(section_name: str, section: List):
     guesses = {
         "Invit": AntiphonCreate,
         "Ant Matutinum": [],
-        # "Lectio": ReadingCreate,
-        # "Responsory": VersicleCreate,
         "Hymnus": HymnCreate,
-        "Capitulum": ReadingCreate,
         "Ant ": AntiphonCreate,
         "Te Deum": HymnCreate,
     }
@@ -102,10 +96,11 @@ def markup(content: str) -> LineBase:
 
 
 def is_reference(line: Line):
-    return re.search(r"!(.*? [0-9]+:[0-9]+-[0-9]+)", line.content)
+    match = re.search(r"!(.*? [0-9]+:[0-9]+-[0-9]+)", line.content)
+    return match if match else (re.search(r"!(In .*)", line.content))
 
 
-def guess_verse_obj(verse: List):
+def guess_verse_obj(verse: List, section_name=None):
 
     if re.search(r"^[V|R]\.", verse[0].content):
         return VersicleCreate, {}
@@ -119,9 +114,12 @@ def guess_verse_obj(verse: List):
     if re.search(r"^v\.", verse[0].content):
         return BlockCreate, {}
 
-    for candidate in (verse[0], verse[1]):
-        if (match := is_reference(candidate)) is not None:
-            return ReadingCreate, {"ref": match.groups()[0]}
+    if any((x in section_name for x in ["Lectio", "Capitulum"])):
+        for candidate in (verse[0], verse[1]):
+            if (match := is_reference(candidate)) is not None:
+                return ReadingCreate, {"ref": match.groups()[0]}
+
+    return [], {}
 
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
 
@@ -179,7 +177,7 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
                 raise UnmatchedError("No replacements supplied.")
         else:
             verse_obj, data = guess_verse_obj(
-                [x for x in verse if type(x) not in create_types]
+                [x for x in verse if type(x) not in create_types], section_name
             )
 
         data.update({"title": section_name, "language": language, "parts": []})
@@ -207,14 +205,14 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             if line.content.endswith("~"):
                 join = True
 
-            if " * " in line.content:
-                lineobj = parse_antiphon(line)
+            if re.search(r"^[V|R]\.", line.content):
+                lineobj = parse_versicle(line, rubrics)
+                rubrics = None
             elif (rubric := is_rubric(line)) is not None:
                 rubrics = rubric
                 continue
-            elif re.search(r"^[V|R]\.", line.content):
-                lineobj = parse_versicle(line, rubrics)
-                rubrics = None
+            elif " * " in line.content:
+                lineobj = parse_antiphon(line)
             else:
                 content = markup(strip_content(line))
                 lineobj = LineBase(content=content, rubrics=rubrics, lineno=line.lineno)
@@ -248,7 +246,6 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
 
     else:
         data = {"title": section_name, "language": language, "parts": section_content}
-        debug(data, section_obj)
         try:
             obj = section_obj(**data)
             assert obj
