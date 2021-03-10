@@ -12,6 +12,17 @@ languages = ["Latin"]
 versions = ["1960"]
 
 
+@pytest.mark.parametrize("lang,version", product(languages, versions))
+def test_parse_prayers_txt(lang: str, version: str):
+    """
+    Test parsing the prayers.txt file.
+
+    The parser itself asserts complete coverage.
+    """
+    root = Path("app/tests/parsers/test-DO-data")
+    parsers.parse_prayers_txt(root, version, lang)
+
+
 @pytest.mark.parametrize("version", versions)
 def test_pokemon(
     version: str, client: TestClient, superuser_token_headers: Dict[str, str],
@@ -23,10 +34,6 @@ def test_pokemon(
     # test without upload
     run_parsers.parse_upload(root, lang, version, pokemon=True, test=True)
 
-@pytest.mark.parametrize("lang,version", product(languages, versions))
-def test_parse_prayers_txt(lang: str, version: str):
-    """
-    Test parsing the prayers.txt file.
 
 @pytest.mark.parametrize("version,thing", product(versions, things))
 def test_upload_parsers(
@@ -36,8 +43,6 @@ def test_upload_parsers(
     superuser_token_headers: Dict[str, str],
 ):
     """Test all the parsers."""
-    The parser itself asserts complete coverage.
-    """
     root = Path("app/tests/parsers/test-DO-data")
     lang = "Latin"
 
@@ -51,6 +56,3 @@ def test_upload_parsers(
     }
     fn = getattr(run_parsers, f"parse_upload_{thing}")
     fn(**args)
-    parsers.parse_prayers_txt(root, version, lang)
-
-
