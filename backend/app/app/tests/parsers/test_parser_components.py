@@ -198,16 +198,18 @@ candidates = (
     ),
     (
         (
-            Line(content="!Exod 23:20-21", lineno=1),
-            Line(content="20 line 1", lineno=2),
-            Line(content="21 line 2", lineno=3),
+            Line(content="Lectio.", lineno=1),
+            Line(content="!Exod 23:20-21", lineno=2),
+            Line(content="20 line 1", lineno=3),
+            Line(content="21 line 2", lineno=4),
         ),
         ReadingCreate(
             title="Lectio1",
             language="latin",
             parts=[
-                LineBase(content="20 line 1", lineno=2),
-                LineBase(content="21 line 2", lineno=3),
+                LineBase(content="Lectio.", lineno=1),
+                LineBase(content="20 line 1", lineno=3),
+                LineBase(content="21 line 2", lineno=4),
             ],
             ref="Exod 23:20-21",
         ),
