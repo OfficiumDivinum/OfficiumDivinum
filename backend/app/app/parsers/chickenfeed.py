@@ -124,8 +124,9 @@ def guess_verse_obj(verse: List):
     if re.search(r"^v\.", verse[0].content):
         return BlockCreate, {}
 
-    if (match := is_reference(verse[0])) is not None:
-        return ReadingCreate, {"ref": match.groups()[0]}
+    for candidate in (verse[0], verse[1]):
+        if (match := is_reference(candidate)) is not None:
+            return ReadingCreate, {"ref": match.groups()[0]}
 
     raise UnmatchedError(f"Unable to guess type of verse {verse}")
 
@@ -189,17 +190,17 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             )
 
         data.update({"title": section_name, "language": language, "parts": []})
-        try:
-            if is_reference(verse[0]):
-                verse = verse[1:]
-        except AttributeError:
-            pass
 
         join = False
         for line in verse:
             try:
                 linenos.append(line.lineno)
             except AttributeError:  # already done.
+                pass
+            try:
+                if is_reference(line):
+                    continue
+            except AttributeError:
                 pass
 
             # don't parse twice
