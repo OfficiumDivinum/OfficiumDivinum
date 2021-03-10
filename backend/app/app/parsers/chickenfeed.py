@@ -52,13 +52,10 @@ def parse_prayers_txt(root: Path, version: str, language: str):
     fn = root / f"{language}/Psalterium/Prayers.txt"
     sections = parse_file_as_dict(fn, version)
 
-    debug(sections["Te Deum"])
     matched, unmatched = magic_parser(fn, sections, language)
 
     parser_vars.replacements = matched.copy()
     matched, unmatched = magic_parser(fn, sections, language)
-    debug(matched["Te Deum"])
-    assert matched["Te Deum"]
 
     assert not unmatched
     return matched
@@ -67,8 +64,6 @@ def parse_prayers_txt(root: Path, version: str, language: str):
 def parse_file(fn: Path, version: str, language: str) -> Dict:
     sections = parse_file_as_dict(fn, version)
     matched, unmatched = magic_parser(fn, sections, language)
-    if unmatched:
-        debug(unmatched)
     assert not unmatched
     return matched
 
