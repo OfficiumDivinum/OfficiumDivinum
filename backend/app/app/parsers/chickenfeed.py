@@ -214,7 +214,7 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
                 data["oremus"] = True
                 continue
 
-            if re.search(r"^[V|R]\.", line.content):
+            if re.search(r"^[VR]\.", line.content):
                 lineobj = parse_versicle(line, rubrics)
                 rubrics = None
             elif (rubric := is_rubric(line)) is not None:
