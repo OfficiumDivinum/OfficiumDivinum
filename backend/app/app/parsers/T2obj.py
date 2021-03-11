@@ -11,7 +11,7 @@ from app.schemas.calendar import FeastCreate
 from .util import parse_DO_sections
 
 
-def parse_file(fn: Path, version: str, language: str) -> FeastCreate:
+def parse_file(fn: Path, language: str, version: str) -> FeastCreate:
     """
     Parse Divinumofficium temporal file into feast object (i.e. ignore most of the
     data.)
