@@ -172,7 +172,10 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
         if any((line.content.startswith("&") for line in verse)):
             if parser_vars.replacements:
                 verse = replace(verse)
-                verse_obj = []
+                try:
+                    verse_obj, data = guess_verse_obj(verse, section_name)
+                except AttributeError as e:
+                    verse_obj = []
             else:
                 raise UnmatchedError("No replacements supplied.")
         else:
