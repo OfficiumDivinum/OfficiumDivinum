@@ -17,6 +17,8 @@ from app.schemas import (
     VersicleCreate,
 )
 
+from .test_parsers import root
+
 
 def test_markup_line():
     content = "r. Thing and some things"
@@ -352,6 +354,10 @@ def test_generate_commemoration_links():
     )
 
 
-# def test_parse_test_data():
-#     root = Path("app/tests/parsers/test-DO-data")
-#     for f in root.glob("*.txt"):
+def test_resolve_link():
+    fn = root / "Latin/SanctiM/03-25.txt"
+    linkstr = "@Sancti/03-25:Capitulum Laudes:1-3"
+    targetf, part = parsers.deref(linkstr, fn)
+    assert targetf == Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt")
+    assert part == "Capitulum Laudes"
+    linked_content = parsers.resolve_link(targetf, part, True, linkstr)

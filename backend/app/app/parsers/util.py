@@ -159,6 +159,33 @@ def generate_commemoration_links(linkstr) -> List[str]:
     return (f"{base}Ant 1", f"{base}Versum 1", f"{base}Ant 2", f"{base}Versum 2")
 
 
+def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List:
+    """Resolve link and return linked content."""
+
+    linked_content = parse_file_as_dict(
+        targetf,
+        part,
+        sublinks,
+        section_key=part,
+        follow_only_interesting_links=False,
+    )[part]
+    linked_content = linked_content.content
+
+    if "s/" in linkstr:
+        linked_content = substitute_linked_content(linked_content, linkstr)
+
+    match = re.search(r":([0-9]+)-([0-9])+", linkstr)
+    if match:
+        debug(match.groups())
+        start = int(match.groups()[0]) - 1
+        end = int(match.groups()[1])
+        linked_content = [linked_content[0][start:end]]
+
+        assert len(linked_content[0]) == end - start
+
+    return linked_content
+
+
 def parse_file_as_dict(
     fn: Path,
     version: str,
@@ -291,19 +318,7 @@ def parse_file_as_dict(
                     line_index -= 1
                     continue
 
-                linked_content = parse_file_as_dict(
-                    targetf,
-                    part,
-                    sublinks,
-                    section_key=part,
-                    follow_only_interesting_links=False,
-                )[part]
-                linked_content = linked_content.content
-
-                if "s/" in line.content and follow_links:
-                    linked_content = substitute_linked_content(
-                        linked_content, line.content
-                    )
+                linked_content = resolve_link(targetf, part, sublinks, line.content)
 
                 for extra_line in verse[line_index + 1 :]:
                     linked_content[-1].append(extra_line)
