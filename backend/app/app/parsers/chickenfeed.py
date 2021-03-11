@@ -299,12 +299,22 @@ def main():
     root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/")
     version = "1960"
     parse_prayers_txt(root, version, "Latin")
-    root = Path(
-        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/"
+    root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
+    success = []
+    failed = []
+    import typer
+
+    with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
+        for fn in fns:
+            try:
+                things = parse_file(Path(fn), version, "Latin")
+                success.append(fn)
+            except:
+                failed.append(fn)
+
+    print(
+        f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f) :2}% parsed"
     )
-    for fn in root.glob("*.txt"):
-        debug(fn)
-        things = parse_file(Path(fn), version, "Latin")
 
     # parse_for_prayers(Path(fn))
 
