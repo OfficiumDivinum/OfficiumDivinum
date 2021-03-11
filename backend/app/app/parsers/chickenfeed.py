@@ -200,6 +200,7 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             # don't parse twice
             if type(line) in create_types:
                 data["parts"].append(line)
+                lineobj = line
                 continue
 
             if join:
