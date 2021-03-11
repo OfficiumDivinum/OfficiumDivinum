@@ -176,7 +176,6 @@ def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List
 
     match = re.search(r":([0-9]+)-([0-9])+", linkstr)
     if match:
-        debug(match.groups())
         start = int(match.groups()[0]) - 1
         end = int(match.groups()[1])
         linked_content = [linked_content[0][start:end]]
