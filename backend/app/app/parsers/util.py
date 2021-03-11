@@ -80,6 +80,13 @@ def parse_DO_sections(
             subcontent = []
         else:
             subcontent.append(Line(lineno, line))
+
+    if current_section:
+        subcontent = [x for x in subcontent if x.content.strip()]
+
+        content.append(subcontent)
+        sections[current_section] = content
+
     return sections
 
 
