@@ -170,11 +170,11 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             verse = [verse[0]]
 
         if any((line.content.startswith("&") for line in verse)):
-            if parser_vars.replacements:
-                verse = replace(verse)
+            verse = replace(verse)
+            try:
+                verse_obj, data = guess_verse_obj(verse, section_name)
+            except AttributeError:
                 verse_obj = []
-            else:
-                raise UnmatchedError("No replacements supplied.")
         else:
             verse_obj, data = guess_verse_obj(
                 [x for x in verse if type(x) not in create_types], section_name
@@ -204,6 +204,10 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
                 continue
             if line.content.endswith("~"):
                 join = True
+
+            if line.content == "v. Orémus.":
+                data["oremus"] = True
+                continue
 
             if re.search(r"^[V|R]\.", line.content):
                 lineobj = parse_versicle(line, rubrics)
