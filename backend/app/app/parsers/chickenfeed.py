@@ -92,7 +92,7 @@ def strip_content(line):
 
 
 def markup(content: str) -> LineBase:
-    return re.sub(r"r\. (.)", r"::\1::", content)
+    return re.sub(r"^r\. (.)", r"::\1::", content)
 
 
 def is_reference(line: Line):
@@ -272,7 +272,11 @@ def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
 
 
 def parse_versicle(line, rubrics):
-    prefix, content = re.search(r"([V|R]\.) (.*)", markup(line.content)).groups()
+    debug(markup(line.content))
+    match = re.search(r"([V|R]\.(br.)*) (.*)", markup(line.content))
+    assert match
+    content = match.groups()[-1]
+    prefix = match.groups()[0]
     return LineBase(content=content, prefix=prefix, lineno=line.lineno, rubrics=rubrics)
 
 

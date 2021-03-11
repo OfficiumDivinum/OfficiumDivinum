@@ -32,6 +32,13 @@ def test_parse_versicle():
     assert resp == LineBase(
         lineno=16, content=content, prefix=prefix, rubrics="stand on your head"
     )
+    prefix = "R.br."
+    content = "Test verse content."
+    line = Line(16, " ".join([prefix, content]))
+    resp = parsers.parse_versicle(line, "stand on your head again")
+    assert resp == LineBase(
+        lineno=16, content=content, prefix=prefix, rubrics="stand on your head again"
+    )
 
 
 def test_parse_rubric():
