@@ -63,7 +63,8 @@ def parse_DO_sections(
         line = line.strip()
         if line == "_":
             subcontent = [x for x in subcontent if x.content.strip()]
-            content.append(subcontent)
+            if subcontent:
+                content.append(subcontent)
             subcontent = []
             continue
         header = re.search(section_header_regex, line)
@@ -71,8 +72,8 @@ def parse_DO_sections(
             if current_section:
 
                 subcontent = [x for x in subcontent if x.content.strip()]
-
-                content.append(subcontent)
+                if subcontent:
+                    content.append(subcontent)
                 sections[current_section] = content
 
             current_section = header.groups()[0]
@@ -83,8 +84,8 @@ def parse_DO_sections(
 
     if current_section:
         subcontent = [x for x in subcontent if x.content.strip()]
-
-        content.append(subcontent)
+        if subcontent:
+            content.append(subcontent)
         sections[current_section] = content
 
     return sections
@@ -209,8 +210,18 @@ def parse_file_as_dict(
             if k in section[0][0].content:
                 section[0] = section[0][1:]
 
+        # add links to [Commemoration] sections
+        if "Commemoration" in key:
+            new_section = []
+            for verse in section:
+                linkstr = [line for line in verse if "@" in line][0]
+                verse = generate_commemoration_links(linkstr) + verse  # handle later
+                new_section.append(verse)
+
         for verse_index, verse in enumerate(section):
-            for line_index, line in enumerate(verse):
+            line_index = 0
+            for line in verse:
+                line_index += 1
 
                 if not follow_links:
                     break
@@ -232,6 +243,36 @@ def parse_file_as_dict(
                     pattern = None
 
                 sublinks = False if pattern == ".@.*" else True
+
+                # DO hand codes these, so we do too
+                if (match := re.search(r"Oratio(.*) proper Gregem", part)) :
+                    # proper only used for 1910
+                    if version == "1910":
+                        continue
+                    elif version in ["DA", "1955", "1960"]:
+                        targetf = fn.parent.parent / "Commune/C4.txt"
+                        # all examples are singular, so we don't care
+                        part = "Oratio9"
+                    else:
+                        i = match.groups()[0]
+                        part = f"Oratio{i}" if i else "Oratio"
+
+                if (match := re.search(r"Oratio(.*) Gregem", part)) :
+                    if version in ["1910", "1570"]:
+                        i = match.groups()[0]
+                        part = f"Oratio{i}" if i else "Oratio"
+                        # section[verse_index].pop(line_index)
+                        # line_index -= 1
+                        # continue
+                    else:
+                        targetf = fn.parent.parent / "Commune/C4.txt"
+                        # all examples are singular, so we don't care
+                        part = "Oratio9"
+
+                if "Oratio proper" in part:
+                    section[verse_index].pop(line_index)
+                    line_index -= 1
+                    continue
 
                 linked_content = parse_file_as_dict(
                     targetf,
