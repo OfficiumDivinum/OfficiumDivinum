@@ -232,9 +232,11 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
                 section_content.append(data["parts"])
             else:
                 section_content.append(verse_obj(**data))
-        else:
+        elif len(section) == 1:
             section_content = lineobj
             section_content.title = section_name
+        else:
+            section_content.append(data["parts"])
 
     if isinstance(section_content, list) and len(section_content) == 1:
         section_content = section_content[0]
