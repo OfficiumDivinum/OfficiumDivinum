@@ -102,10 +102,10 @@ def is_reference(line: Line):
 
 def guess_verse_obj(verse: List, section_name):
 
-    if re.search(r"^[V|R]\.", verse[0].content):
+    if re.search(r"^[VR]\.", verse[0].content):
         return VersicleCreate, {}
 
-    if any((re.search(r"^[V|R]\.", i.content) for i in verse)):
+    if any((re.search(r"^[VR]\.", i.content) for i in verse)):
         return PrayerCreate, {}
 
     if len(verse) == 1:
@@ -131,7 +131,7 @@ def replace(verse: List[Line]) -> List:
 
     new_verse = []
     for line in verse:
-        if (match := re.search(r"[&|$](.*)", line.content)) is not None:
+        if (match := re.search(r"[&$](.*)", line.content)) is not None:
             key = match.groups()[0]
             try:
                 key = sub[key]
