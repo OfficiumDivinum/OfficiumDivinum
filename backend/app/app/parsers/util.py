@@ -26,6 +26,22 @@ class Thing:
     crossref: Optional[str] = None
 
 
+def validate_section(section: List) -> bool:
+    from app.parsers.chickenfeed import is_rubric
+
+    if not section:
+        return False
+
+    flat_section = []
+    for i in section:
+        flat_section += i
+
+    if all((is_rubric(x) for x in flat_section)):
+        return False
+    else:
+        return section
+
+
 def parse_DO_sections(
     fn: Path, section_header_regex=r"\[(.*)\]"
 ) -> Dict[str, List[Union[Line, List[Line]]]]:
@@ -86,7 +102,8 @@ def parse_DO_sections(
         subcontent = [x for x in subcontent if x.content.strip()]
         if subcontent:
             content.append(subcontent)
-        sections[current_section] = content
+        if validate_section(content):
+            sections[current_section] = content
 
     return sections
 
