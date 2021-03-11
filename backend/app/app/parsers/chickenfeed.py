@@ -276,7 +276,6 @@ def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
             assert r
             parsed_things[section_name] = r
         except UnmatchedError as e:
-            debug(e, thing)
             unparsed_things[section_name] = thing
 
     return parsed_things, unparsed_things
@@ -302,6 +301,7 @@ def main():
     root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
     success = []
     failed = []
+    errors = []
     import typer
 
     with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
@@ -309,12 +309,16 @@ def main():
             try:
                 things = parse_file(Path(fn), version, "Latin")
                 success.append(fn)
-            except:
+            except Exception as e:
+                errors.append(e)
                 failed.append(fn)
 
     print(
         f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f) :2}% parsed"
     )
+    for i, fn in enumerate(failed):
+        print(fn)
+        print(f"Errors: {errors[i]}")
 
     # parse_for_prayers(Path(fn))
 
