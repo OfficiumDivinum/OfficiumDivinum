@@ -127,6 +127,13 @@ def guess_section_header(fn: Path) -> str:
         return r"\[(.*)\]"
 
 
+def generate_commemoration_links(linkstr) -> List[str]:
+    """Generates links to the *antiphons* when given a link to the *oratio* (which DO
+    uses for some reason.)"""
+    base = re.search(r"(@.*:).*", linkstr).groups()[0]
+    return (f"{base}Ant 1", f"{base}Versum 1", f"{base}Ant 2", f"{base}Versum 2")
+
+
 def parse_file_as_dict(
     fn: Path,
     version: str,

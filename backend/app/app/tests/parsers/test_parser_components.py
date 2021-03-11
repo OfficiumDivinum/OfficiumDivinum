@@ -275,3 +275,14 @@ def test_parse_replace_section():
         ),
     ]
     assert resp == expected
+
+
+def test_generate_commemoration_links():
+    linkstr = "@Commune/C2:Oratio proper Gregem"
+    resp = parsers.generate_commemoration_links(linkstr)
+    assert resp == (
+        "@Commune/C2:Ant 1",
+        "@Commune/C2:Versum 1",
+        "@Commune/C2:Ant 2",
+        "@Commune/C2:Versum 2",
+    )
