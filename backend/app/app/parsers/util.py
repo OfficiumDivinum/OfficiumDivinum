@@ -174,10 +174,11 @@ def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List
     if "s/" in linkstr:
         linked_content = substitute_linked_content(linked_content, linkstr)
 
-    match = re.search(r":([0-9]+)-([0-9])+", linkstr)
+    match = re.search(r":([0-9]+)-*([0-9])*", linkstr)
     if match:
         start = int(match.groups()[0]) - 1
-        end = int(match.groups()[1])
+        end = match.groups()[1]
+        end = int(end) if end else start + 1
         linked_content = [linked_content[0][start:end]]
 
         assert len(linked_content[0]) == end - start

@@ -361,3 +361,11 @@ def test_resolve_link():
     assert targetf == Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt")
     assert part == "Capitulum Laudes"
     linked_content = parsers.resolve_link(targetf, part, True, linkstr)
+    assert len(linked_content[0]) == 3
+
+    linkstr = "@Sancti/03-25:Capitulum Laudes:1"
+    targetf, part = parsers.deref(linkstr, fn)
+    assert targetf == Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt")
+    assert part == "Capitulum Laudes"
+    linked_content = parsers.resolve_link(targetf, part, True, linkstr)
+    assert len(linked_content[0]) == 1
