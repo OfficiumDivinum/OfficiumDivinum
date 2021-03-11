@@ -272,7 +272,6 @@ def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
 
 
 def parse_versicle(line, rubrics):
-    debug(markup(line.content))
     match = re.search(r"([V|R]\.(br.)*) (.*)", markup(line.content))
     assert match
     content = match.groups()[-1]

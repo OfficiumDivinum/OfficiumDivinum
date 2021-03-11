@@ -105,8 +105,12 @@ def parse_hymn(
             rubrics = None
         try:
             if thing[0].content.startswith("!"):
-                rubrics = thing[0].content[1:]
-        except TypeError:
+                try:
+                    rubrics = thing[0].content[1:]
+                except IndexError:
+                    debug(thing)
+                    raise Exception
+        except IndexError:
             debug(content)
             raise Exception
         else:
