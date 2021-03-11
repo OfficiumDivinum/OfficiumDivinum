@@ -275,7 +275,7 @@ def test_parse_section():
     section = (
         (
             Line(content="v. Collect here", lineno=1),
-            Line(content="&Dominus_vobiscum", lineno=2),
+            Line(content="Dominus_vobiscum", lineno=2),
             Line(content="R. Amen.", lineno=3),
         ),
         (
@@ -290,7 +290,7 @@ def test_parse_section():
             title="Oratio mortuorum",
             parts=[
                 LineBase(content="Collect here", lineno=1),
-                LineBase(content="&Dominus_vobiscum", lineno=2),
+                LineBase(content="Dominus_vobiscum", lineno=2),
                 LineBase(prefix="R.", content="Amen.", lineno=3),
             ],
             language="latin",
