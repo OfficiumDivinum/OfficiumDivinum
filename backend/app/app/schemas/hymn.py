@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from pydantic import Field
 
-from app.schemas.custom_types import HymnTypeLiteral
+from app.schemas.custom_types import HymnTypeLiteral, VersionLiteral
 from app.schemas.office_parts import BlockBase, FromDOMixin, LineBase
 
 
@@ -29,7 +29,7 @@ class VerseUpdate(VerseCreate):
 
 class HymnBase(BlockBase, FromDOMixin):
     parts: Optional[List[Verse]] = Field(None, nullable=True)
-    version: str
+    version: Optional[VersionLiteral]
     language: str
     type_: Optional[HymnTypeLiteral] = Field(None, nullable=True)
 
@@ -49,7 +49,6 @@ class HymnCreate(HymnBase):
     parts: List[VerseCreate]
     crossref: str = Field(None, nullable=True)
     title: str
-    version: str
 
 
 class HymnUpdate(HymnCreate):

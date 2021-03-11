@@ -56,6 +56,8 @@ HymnTypeLiteral = Literal[
     "te deum",
 ]
 
+VersionLiteral = Literal["Monastic", "1570", "1910", "DA", "1955", "1960", "OP"]
+
 PrayerTypeLiteral = Literal["Oratio"]
 
 

@@ -4,14 +4,14 @@ from pydantic import BaseModel, Field
 
 from app.schemas.office_parts import FromDOMixin
 
-from .custom_types import Datestr, RankLiteral
+from .custom_types import Datestr, RankLiteral, VersionLiteral
 
 
 class CommemorationBase(BaseModel, FromDOMixin):
     """Common Commemoration properties."""
 
     name: str
-    version: str
+    version: Optional[VersionLiteral]
     rank_name: RankLiteral
     rank_defeatable: bool
 
@@ -41,7 +41,7 @@ class FeastBase(BaseModel, FromDOMixin):
 
     name: str = "Feria"
     type_: str
-    version: str
+    version: Optional[VersionLiteral]
     rank_name: RankLiteral
     rank_defeatable: bool
     commemorations: Optional[List[Commemoration]]
