@@ -126,7 +126,7 @@ def guess_verse_obj(verse: List, section_name):
 
 def replace(verse: List[Line]) -> List:
 
-    skip = ["Dominus_vobiscum", "Benedicamus_Domino"]
+    skip = [r"Dominus_vobiscum", r"Benedicamus_Domino", r"psalm\(.*\)"]
     sub = {"pater_noster": "Pater_noster1", "teDeum": "Te Deum"}
 
     new_verse = []
@@ -137,7 +137,7 @@ def replace(verse: List[Line]) -> List:
                 key = sub[key]
             except KeyError:
                 pass
-            if key in skip:
+            if any((re.search(i, key) for i in skip)):
                 new_verse.append(line)
                 continue
             r = parser_vars.replacements[key]
