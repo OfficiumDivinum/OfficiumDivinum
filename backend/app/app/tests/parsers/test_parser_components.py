@@ -100,17 +100,19 @@ def test_replace():
     assert resp == [replacements["thing"]]
 
 
-candidates = (
+candidates = [
     (
-        (
-            Line(
-                content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum "
-                "vivit et regnat in unitáte Spíritus Sancti, Deus, "
-                "per ómnia sǽcula sæculórum.",
-                lineno=1,
-            ),
-            Line(content="R. Amen.", lineno=2),
-        ),
+        [
+            (
+                Line(
+                    content="r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum "
+                    "vivit et regnat in unitáte Spíritus Sancti, Deus, "
+                    "per ómnia sǽcula sæculórum.",
+                    lineno=1,
+                ),
+                Line(content="R. Amen.", lineno=2),
+            )
+        ],
         PrayerCreate(
             language="latin",
             parts=[
@@ -128,10 +130,12 @@ candidates = (
     ),
     (
         (
-            (
-                Line(content="Most of Our Father", lineno=1),
-                Line(content="R. Sed libera.", lineno=2),
-            )
+            [
+                (
+                    Line(content="Most of Our Father", lineno=1),
+                    Line(content="R. Sed libera.", lineno=2),
+                )
+            ]
         ),
         PrayerCreate(
             language="latin",
@@ -144,10 +148,12 @@ candidates = (
         ),
     ),
     (
-        (
-            Line(content="V. Benedicámus Dómino.", lineno=1),
-            Line(content="R. Deo grátias.", lineno=2),
-        ),
+        [
+            (
+                Line(content="V. Benedicámus Dómino.", lineno=1),
+                Line(content="R. Deo grátias.", lineno=2),
+            )
+        ],
         VersicleCreate(
             language="latin",
             parts=[
@@ -158,10 +164,12 @@ candidates = (
         ),
     ),
     (
-        (
-            Line(content="v. Credo in Deum.", lineno=1),
-            Line(content="and other things.", lineno=2),
-        ),
+        [
+            (
+                Line(content="v. Credo in Deum.", lineno=1),
+                Line(content="and other things.", lineno=2),
+            )
+        ],
         BlockCreate(
             language="latin",
             title="credo",
@@ -172,7 +180,9 @@ candidates = (
         ),
     ),
     (
-        (Line(content="R. Deo grátias.", lineno=1),),
+        [
+            (Line(content="R. Deo grátias.", lineno=1),),
+        ],
         VersicleCreate(
             language="latin",
             parts=[LineBase(content="Deo grátias.", prefix="R.", lineno=1)],
@@ -180,16 +190,18 @@ candidates = (
         ),
     ),
     (
-        (Line(lineno=1, content="Allelúja, allelúja."),),
+        [(Line(lineno=1, content="Allelúja, allelúja."),)],
         LineBase(lineno=1, content="Allelúja, allelúja.", title="Alleluia Duplex"),
     ),
     (
-        (
-            Line(content="/:flexis genibus:/", lineno=1),
-            Line(content="v. Apéri Dómine", lineno=2),
-            Line(content="R. Amen.", lineno=3),
-            Line(content="v. Dómine, in unióne", lineno=4),
-        ),
+        [
+            (
+                Line(content="/:flexis genibus:/", lineno=1),
+                Line(content="v. Apéri Dómine", lineno=2),
+                Line(content="R. Amen.", lineno=3),
+                Line(content="v. Dómine, in unióne", lineno=4),
+            )
+        ],
         PrayerCreate(
             title="Ante",
             language="latin",
@@ -201,12 +213,14 @@ candidates = (
         ),
     ),
     (
-        (
-            Line(content="Lectio.", lineno=1),
-            Line(content="!Exod 23:20-21", lineno=2),
-            Line(content="20 line 1", lineno=3),
-            Line(content="21 line 2", lineno=4),
-        ),
+        [
+            (
+                Line(content="Lectio.", lineno=1),
+                Line(content="!Exod 23:20-21", lineno=2),
+                Line(content="20 line 1", lineno=3),
+                Line(content="21 line 2", lineno=4),
+            )
+        ],
         ReadingCreate(
             title="Lectio1",
             language="latin",
@@ -219,12 +233,14 @@ candidates = (
         ),
     ),
     (
-        (
-            Line(content="Lectio.", lineno=1),
-            Line(content="!In Psalmum quodlibet", lineno=2),
-            Line(content="20 line 1", lineno=3),
-            Line(content="21 line 2", lineno=4),
-        ),
+        [
+            (
+                Line(content="Lectio.", lineno=1),
+                Line(content="!In Psalmum quodlibet", lineno=2),
+                Line(content="20 line 1", lineno=3),
+                Line(content="21 line 2", lineno=4),
+            )
+        ],
         ReadingCreate(
             title="Lectio1",
             language="latin",
@@ -236,12 +252,13 @@ candidates = (
             ref="In Psalmum quodlibet",
         ),
     ),
-)
+]
 
 
 def test_guess_verse_obj():
     for verses, correct_obj in candidates:
-        resp, data = parsers.guess_verse_obj(verses, correct_obj.title)
+        debug(correct_obj)
+        resp, data = parsers.guess_verse_obj(verses[0], correct_obj.title)
         assert resp is type(correct_obj)
         if type(correct_obj) is type(ReadingCreate):
             assert data["ref"]
@@ -251,9 +268,49 @@ def test_parse_section():
     for section, correct_obj in candidates:
         section_name = correct_obj.title
         resp = parsers.parse_section(
-            Path("Prayers.txt"), section_name, [section], "latin"
+            Path("Prayers.txt"), section_name, section, "latin"
         )
         assert resp == correct_obj
+
+    section = (
+        (
+            Line(content="v. Collect here", lineno=1),
+            Line(content="&Dominus_vobiscum", lineno=2),
+            Line(content="R. Amen.", lineno=3),
+        ),
+        (
+            Line(content="v. Orémus.", lineno=4),
+            Line(content="v. Collect here", lineno=5),
+            Line(content="Termination.", lineno=6),
+            Line(content="R. Amen.", lineno=7),
+        ),
+    )
+    correct_obj = [
+        PrayerCreate(
+            title="Oratio mortuorum",
+            parts=[
+                LineBase(content="Collect here", lineno=1),
+                LineBase(content="&Dominus_vobiscum", lineno=2),
+                LineBase(prefix="R.", content="Amen.", lineno=3),
+            ],
+            language="latin",
+        ),
+        PrayerCreate(
+            oremus=True,
+            title="Oratio mortuorum",
+            parts=[
+                LineBase(content="Collect here", lineno=5),
+                LineBase(content="Termination.", lineno=6),
+                LineBase(prefix="R.", content="Amen.", lineno=7),
+            ],
+            language="latin",
+        ),
+    ]
+    resp = parsers.parse_section(
+        Path("Prayers.txt"), "Oratio mortuorum", section, "latin"
+    )
+    debug(resp)
+    assert resp == correct_obj
 
 
 def test_parse_replace_section():
@@ -293,3 +350,8 @@ def test_generate_commemoration_links():
         "@Commune/C2:Ant 2",
         "@Commune/C2:Versum 2",
     )
+
+
+# def test_parse_test_data():
+#     root = Path("app/tests/parsers/test-DO-data")
+#     for f in root.glob("*.txt"):
