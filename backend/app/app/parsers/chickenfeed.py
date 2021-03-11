@@ -201,6 +201,7 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
 
             if join:
                 data["parts"][-1].content += markup(line.content)
+                join = False
                 continue
             if line.content.endswith("~"):
                 join = True
