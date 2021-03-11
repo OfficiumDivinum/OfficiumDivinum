@@ -205,7 +205,7 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             if line.content.endswith("~"):
                 join = True
 
-            if line.content == "v. Orémus.":
+            if line.content == "v. Orémus." and verse_obj is HymnCreate:
                 data["oremus"] = True
                 continue
 
