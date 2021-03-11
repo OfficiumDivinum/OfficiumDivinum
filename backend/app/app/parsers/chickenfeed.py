@@ -100,7 +100,7 @@ def is_reference(line: Line):
     return match if match else (re.search(r"!(In .*)", line.content))
 
 
-def guess_verse_obj(verse: List, section_name=None):
+def guess_verse_obj(verse: List, section_name):
 
     if re.search(r"^[V|R]\.", verse[0].content):
         return VersicleCreate, {}
@@ -285,9 +285,12 @@ def main():
     root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/")
     version = "1960"
     parse_prayers_txt(root, version, "Latin")
-
-    fn = "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/10-02.txt"
-    parse_file(Path(fn), version, "Latin")
+    root = Path(
+        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/"
+    )
+    for fn in root.glob("*.txt"):
+        debug(fn)
+        things = parse_file(Path(fn), version, "Latin")
 
     # parse_for_prayers(Path(fn))
 

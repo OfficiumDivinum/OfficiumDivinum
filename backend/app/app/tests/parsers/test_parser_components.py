@@ -52,13 +52,9 @@ def test_guess_section_obj():
     candidates = (
         ("Invit", [], AntiphonCreate, None),
         ("Ant Matutinum", [], List, None),
-        # ("Lectio1", [], ReadingCreate, None),
-        # ("Responsory2", [], VersicleCreate, None),
         ("HymnusM Laudes", [], HymnCreate, None),
         ("Te Deum", [], HymnCreate, None),
-        # ("Capitulum Laudes", [], ReadingCreate, None),
         ("Ant 1", [], AntiphonCreate, None),
-        ("Oratio", [], PrayerCreate, None),
     )
 
     for section_name, section, correct_obj, _ in candidates:
@@ -238,7 +234,7 @@ candidates = (
 
 def test_guess_verse_obj():
     for verses, correct_obj in candidates:
-        resp, data = parsers.guess_verse_obj(verses)
+        resp, data = parsers.guess_verse_obj(verses, correct_obj.title)
         assert resp is type(correct_obj)
         if type(correct_obj) is type(ReadingCreate):
             assert data["ref"]
