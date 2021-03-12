@@ -318,9 +318,11 @@ def parse_file_as_dict(
                     line_index -= 1
                     continue
 
+                logger.debug(f"Resolving for {key} {section}, {verse}")
                 linked_content = resolve_link(targetf, part, sublinks, line.content)
 
-                for extra_line in verse[line_index + 1 :]:
+                for extra_line in verse[line_index:]:
+                    logger.debug(f"Appending line {extra_line}")
                     linked_content[-1].append(extra_line)
 
                 if line_index > 0:
