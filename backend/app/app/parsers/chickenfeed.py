@@ -61,6 +61,7 @@ def parse_prayers_txt(root: Path, version: str, language: str):
 def parse_file(fn: Path, version: str, language: str) -> Dict:
     sections = parse_file_as_dict(fn, version)
     matched, unmatched = magic_parser(fn, sections, language)
+    debug(unmatched)
     assert not unmatched
     return matched
 
@@ -301,6 +302,11 @@ def parse_antiphon(line):
 def main():
     root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/")
     version = "1960"
+    fn = Path(
+        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/TemporaM/Nat2-0.txt"
+    )
+    parse_file(fn, "1960", "latin")
+
     parse_prayers_txt(root, version, "Latin")
     root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
     success = []
