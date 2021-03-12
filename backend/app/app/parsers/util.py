@@ -1,4 +1,5 @@
 """Utilities to handle DO's files."""
+import logging
 import re
 import unicodedata
 from dataclasses import dataclass
@@ -8,6 +9,8 @@ from typing import Any, Dict, List, Optional, Union
 from devtools import debug
 
 from app.parsers.deref import deref
+
+logger = logging.getLogger(__name__)
 
 
 class ParsingError(Exception):
@@ -30,6 +33,7 @@ def validate_section(section: List) -> bool:
     from app.parsers.chickenfeed import is_rubric
 
     if not section:
+        logger.debug("Section empty.")
         return False
 
     flat_section = []
@@ -37,6 +41,7 @@ def validate_section(section: List) -> bool:
         flat_section += i
 
     if all((is_rubric(x) for x in flat_section)):
+        logger.debug("Section only rubrics.")
         return False
     else:
         return section
@@ -57,6 +62,7 @@ def parse_DO_sections(
       and the contents are lists.
     """
 
+    logger.debug("Parsing section.")
     sections = {}
     current_section = None
     content = []
@@ -147,35 +153,37 @@ def guess_section_header(fn: Path) -> str:
       : A regex matching the section header.
     """
     if "Ordinarium" in fn.name:
+        logger.debug("Guessed # for section header.")
         return r"#(.*)"
     else:
+        logger.debug("Guessed [] for section header.")
         return r"\[(.*)\]"
 
 
 def generate_commemoration_links(linkstr) -> List[str]:
     """Generates links to the *antiphons* when given a link to the *oratio* (which DO
     uses for some reason.)"""
+    logger.debug("Generating commemoration links.")
     base = re.search(r"(@.*:).*", linkstr).groups()[0]
     return (f"{base}Ant 1", f"{base}Versum 1", f"{base}Ant 2", f"{base}Versum 2")
 
 
 def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List:
     """Resolve link and return linked content."""
+    logger.debug(f"Resolving link to {targetf} section {part}")
 
     linked_content = parse_file_as_dict(
-        targetf,
-        part,
-        sublinks,
-        section_key=part,
-        follow_only_interesting_links=False,
+        targetf, part, sublinks, section_key=part, follow_only_interesting_links=False,
     )[part]
     linked_content = linked_content.content
 
     if "s/" in linkstr:
+        logger.debug(f"Doing substitution for {linkstr}.")
         linked_content = substitute_linked_content(linked_content, linkstr)
 
     match = re.search(r":([0-9]+)-*([0-9])*", linkstr)
     if match:
+        logger.debug("Limiting to specified lines.")
         start = int(match.groups()[0]) - 1
         end = match.groups()[1]
         end = int(end) if end else start + 1
@@ -215,21 +223,26 @@ def parse_file_as_dict(
     section_header_regex = guess_section_header(fn)
 
     sections = parse_DO_sections(fn, section_header_regex)
+    logger.debug(f"Got {len(sections.keys())} sections.")
     things = {}
     for key, section in sections.items():
         if "rubrica" in key:
             if version not in key:
+                logger.debug(f"Skipping {key} as not {version}.")
                 continue
 
         schemas = [r".*Special.*", r"^Minor.*"]
         if any((re.search(schema, key) for schema in schemas)):
+            logger.info(f"Skipping schema of kind {key}.")
             continue
 
         if section_key and not re.search(section_key, key):
+            logger.debug(f"Skipping {key} as not requested key {section_key}.")
             continue
 
         # skip empty sections
         if not section:
+            logger.debug(f"Skipping empty section.")
             continue
 
         flat_section = []
@@ -240,12 +253,14 @@ def parse_file_as_dict(
         )
 
         if just_links and follow_only_interesting_links:
+            logger.debug(f"Skipping {flat_section} as only links.")
             continue
 
         # get DO key if it's there
         for candidate in key, section[0][0].content:
             crossref = re.search(r".*{:.-(.*):}.*", candidate)
             if crossref:
+                logger.debug(f"Got DO key {crossref}.")
                 crossref = crossref.groups()[0]
                 break
 
@@ -261,6 +276,7 @@ def parse_file_as_dict(
                 linkstr = [line for line in verse if "@" in line][0]
                 verse = generate_commemoration_links(linkstr) + verse  # handle later
                 new_section.append(verse)
+            logger.debug("Added commemoration links to antiphons.")
 
         for verse_index, verse in enumerate(section):
             line_index = 0
@@ -294,6 +310,7 @@ def parse_file_as_dict(
                     if version == "1910":
                         continue
                     elif version in ["DA", "1955", "1960"]:
+                        logger.debug("Substituting Gregem prayer.")
                         targetf = fn.parent.parent / "Commune/C4.txt"
                         # all examples are singular, so we don't care
                         part = "Oratio9"
@@ -309,6 +326,7 @@ def parse_file_as_dict(
                         # line_index -= 1
                         # continue
                     else:
+                        logger.debug("Substituting Gregem prayer.")
                         targetf = fn.parent.parent / "Commune/C4.txt"
                         # all examples are singular, so we don't care
                         part = "Oratio9"
@@ -332,6 +350,8 @@ def parse_file_as_dict(
 
                 for i, linked_verse in enumerate(linked_content[1:]):
                     section.insert(verse_index + i + 1, linked_verse)
+
+                logger.debug(f"Final version was {section}")
 
                 # add in anything else *after* matched section
 

@@ -1,4 +1,5 @@
 """Parsers for all the other little bits."""
+import logging
 import re
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -19,6 +20,10 @@ from app.schemas import (
     VerseCreate,
     VersicleCreate,
 )
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
 
 create_types = (
     AntiphonCreate,
