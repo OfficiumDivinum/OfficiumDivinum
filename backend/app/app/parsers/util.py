@@ -386,6 +386,8 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
         raise ParsingError(f"No substitution found in {line}")
     sub_index = 0
     for _, pattern, sub, multiline in matches:
+        sub = sub.replace("$", "\\")
+        debug(sub)
         sub_index += 1
         logger.debug(
             f"Doing substition {sub_index}/{len(matches)} {pattern} {sub} {multiline}"
@@ -395,11 +397,16 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
             logger.debug("Skipping substitution of v. as we always do that.")
             continue
 
-        for linked_verse_index, linked_verse in enumerate(linked_content):
-            for linked_line_index, linked_line in enumerate(linked_verse):
+        new_content = []
 
-                debug(multiline)
-                debug(linked_line)
+        for linked_verse_index, linked_verse in enumerate(linked_content):
+            joined = None
+            for linked_line_index, linked_line in enumerate(linked_verse):
+                if joined:
+                    linked_line.content = joined + " " + linked_line.content
+                    joined = None
+                    debug(linked_line.content)
+
                 match = re.search(pattern, linked_line.content)
                 if match:
                     content = re.sub(pattern, sub, linked_line.content).strip()
@@ -426,5 +433,8 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
                         logger.debug("Not multiline")
                 else:
                     logger.debug(f"Unable to match {pattern} in {linked_line.content}")
+                if linked_line.content.endswith("~"):
+                    debug("Here")
+                    joined = linked_line.content[:-1]
 
     return linked_content
