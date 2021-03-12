@@ -115,7 +115,16 @@ def parse_hymn(
             debug(content)
             raise Exception
         else:
-            verse = [LineBase(content=i.content) for i in thing]
+            verse = []
+            for line in thing:
+                match = re.search(r"/:\((.*)\):/ (.*)", line.content)
+                line_data = {"content": line.content, "lineno": line.lineno}
+                if match:
+                    line_data["content"] = match.groups()[1]
+                    line_data["rubrics"] = match.groups()[0]
+                    verse.append(LineBase(**line_data))
+                else:
+                    verse.append(LineBase(**line_data))
     verses.append(VerseCreate(parts=verse, rubrics=rubrics))
 
     # we use a regex here to strip final punctuation.

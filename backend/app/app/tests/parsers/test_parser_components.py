@@ -275,10 +275,54 @@ candidates = [
     ),
 ]
 
+hymn_test = (
+    (
+        [
+            (
+                Line(content="Te Deum laudámus: * te", lineno=0),
+                Line(content="Te ætérnum Patrem * omnis ", lineno=1),
+                Line(content="Tibi omnes Ángeli, * tibi: ", lineno=2,),
+                Line(content="Tibi Chérubim * et Séraphim:", lineno=3,),
+            ),
+            (Line(content="/:(Fit reverentia):/ Sanctus, * Dóminus.", lineno=4,),),
+            (Line(content="Pleni sunt cæli et terra * tuæ.", lineno=5,),),
+        ],
+        HymnCreate(
+            title="te deum laudamus te",
+            version="pius v",
+            language="latin",
+            type_="te deum",
+            parts=[
+                VerseCreate(
+                    parts=[
+                        LineBase(content="Te Deum laudámus: * te", lineno=0),
+                        LineBase(content="Te ætérnum Patrem * omnis ", lineno=1),
+                        LineBase(content="Tibi omnes Ángeli, * tibi: ", lineno=2,),
+                        LineBase(content="Tibi Chérubim * et Séraphim:", lineno=3,),
+                    ]
+                ),
+                VerseCreate(
+                    parts=[
+                        LineBase(
+                            content="Sanctus, * Dóminus.",
+                            rubrics="Fit reverentia",
+                            lineno=4,
+                        )
+                    ]
+                ),
+                VerseCreate(
+                    parts=[
+                        LineBase(content="Pleni sunt cæli et terra * tuæ.", lineno=5,)
+                    ]
+                ),
+            ],
+        ),
+    ),
+)
+
 
 def test_guess_verse_obj():
     for verses, correct_obj in candidates:
-        debug(correct_obj)
         resp, data = parsers.guess_verse_obj(verses[0], correct_obj.title)
         assert resp is type(correct_obj)
         if type(correct_obj) is type(ReadingCreate):
@@ -286,11 +330,16 @@ def test_guess_verse_obj():
 
 
 def test_parse_section():
+    global candidates
+    candidates += hymn_test
     for section, correct_obj in candidates:
         section_name = correct_obj.title
+        if "te deum" in section_name:
+            section_name = "Te Deum"
         resp = parsers.parse_section(
             Path("Prayers.txt"), section_name, section, "latin"
         )
+        debug(resp)
         assert resp == correct_obj
 
     section = (
@@ -330,7 +379,6 @@ def test_parse_section():
     resp = parsers.parse_section(
         Path("Prayers.txt"), "Oratio mortuorum", section, "latin"
     )
-    debug(resp)
     assert resp == correct_obj
 
 
@@ -390,44 +438,6 @@ def test_resolve_link():
     assert len(linked_content[0]) == 1
 
 
-# VerseCreate(
-#                        title=None,
-#                        rubrics='Fit reverentia',
-#                        parts=[
-#                            LineBase(
-#                                prefix=None,
-#                                suffix=None,
-#                                rubrics=None,
-#                                content='!Fit reverentia',
-#                                lineno=None,
-#                                crossref=None,
-#                                title=None,
-#                            ),
-#                    VerseCreate(
-#                        title=None,
-#                        rubrics=None,
-#                        parts=[
-#                            LineBase(
-#                                prefix=None,
-#                                suffix=None,
-#                                rubrics=None,
-#                                content='/:(Fit reverentia):/ Sanctus, Sanctus, Sanctus * Dóminus Deus Sábaoth.',
-#                                lineno=None,
-#                                crossref=None,
-#                                title=None,
-#                            ),
-#                        ],
-#                    ),                            LineBase(
-#                                prefix=None,
-#                                suffix=None,
-#                                rubrics=None,
-#                                content='(sed rubrica 1570 dicitur)',
-#                                lineno=None,
-#                                crossref=None,
-#                                title=None,
-#                            ),
-
-
 sub_candidates = (
     (
         [
@@ -452,6 +462,3 @@ def test_substitute_linked_content():
     for start, linkstr, end in sub_candidates:
         resp = parsers.substitute_linked_content([start], linkstr)
         assert resp[0] == end
-
-
-# "Póssumus et áliter dícere; quod étiam eísdem verbis, juxta hebráicam veritátem, in Isáia scriptum sit: Exiet virga de radíce Iesse, et Nazarǽus de radíce ejus conscéndet."
