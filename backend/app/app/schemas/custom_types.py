@@ -54,6 +54,7 @@ HymnTypeLiteral = Literal[
     "hymnus nona",
     "hymnus vespera 3",
     "te deum",
+    "hymnus laudes2",
 ]
 
 VersionLiteral = Literal["Monastic", "1570", "1910", "DA", "1955", "1960", "OP"]

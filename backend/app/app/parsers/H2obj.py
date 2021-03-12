@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import List, Union
 
 from devtools import debug
+from pydantic.error_wrappers import ValidationError
 
 from app.parsers import util
 from app.parsers.util import Thing
@@ -126,12 +127,26 @@ def parse_hymn(
 
     if hymn_name != "Te Deum":
         hymn_name = " ".join(re.search("(Hymnus).*? ( *.*)", hymn_name).groups())
-    return HymnCreate(
-        title=title,
-        parts=verses,
-        language=lang,
-        version=version,
-        crossref=crossref,
-        sourcefile=fn.name,
-        type_=hymn_name.lower(),
-    )
+
+    try:
+        return HymnCreate(
+            title=title,
+            parts=verses,
+            language=lang,
+            version=version,
+            crossref=crossref,
+            sourcefile=fn.name,
+            type_=hymn_name.lower(),
+        )
+    except ValidationError:
+        type_ = hymn_name.lower().split(" ")
+        type_ = f"{type_[0]} {type_[-1]}"
+        return HymnCreate(
+            title=title,
+            parts=verses,
+            language=lang,
+            version=version,
+            crossref=crossref,
+            sourcefile=fn.name,
+            type_=type_,
+        )
