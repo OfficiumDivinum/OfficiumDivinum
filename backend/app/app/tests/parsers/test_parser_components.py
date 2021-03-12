@@ -252,6 +252,28 @@ candidates = [
             ref="In Psalmum quodlibet",
         ),
     ),
+    (
+        [
+            (
+                Line(content="Sequéntia ++ sancti Evangélii", lineno=1),
+                Line(content="!Matt 2:19-23", lineno=2),
+                Line(content="line 1~", lineno=3),
+                Line(content="line 2~", lineno=4),
+                Line(content="line 3~", lineno=5),
+                Line(content="line 4~", lineno=6),
+            )
+        ],
+        ReadingCreate(
+            title="Lectio1",
+            language="latin",
+            parts=[
+                LineBase(content="Sequéntia ++ sancti Evangélii", lineno=1),
+                LineBase(content="!Matt 2:19-23", lineno=2),
+                LineBase(content="line 1 line 2 line 3 line 4", lineno=3),
+            ],
+            ref="Matt 2:19-23",
+        ),
+    ),
 ]
 
 
