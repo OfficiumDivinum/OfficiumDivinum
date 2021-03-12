@@ -24,7 +24,6 @@ from app.schemas import (
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-
 create_types = (
     AntiphonCreate,
     BlockCreate,
@@ -56,6 +55,7 @@ def parse_prayers_txt(root: Path, version: str, language: str):
 
     matched, unmatched = magic_parser(fn, sections, language)
 
+    logger.debug("Setting parser vars.")
     parser_vars.replacements = matched.copy()
     matched, unmatched = magic_parser(fn, sections, language)
 
@@ -139,15 +139,31 @@ def replace(verse: List[Line]) -> List:
     for line in verse:
         if (match := re.search(r"[&$](.*)", line.content)) is not None:
             key = match.groups()[0]
+            join = False
+            if key.endswith("~"):
+                logger.debug("Setting join flag.")
+                join = True
+                key = key[:-1]
             try:
+                old_key = key
                 key = sub[key]
+                logger.debug("Substituting {key} for {old_key}")
             except KeyError:
                 pass
+
             if any((re.search(i, key) for i in skip)):
+                logger.debug("Skipping.")
                 new_verse.append(line)
                 continue
             r = parser_vars.replacements[key]
             assert r
+
+            if join:
+                logger.debug("Adding join ~ to resolved content.")
+                try:
+                    r[-1].content += "~"
+                except TypeError:
+                    r.parts[-1].parts[-1].content += "~"
             new_verse.append(r)
         else:
             new_verse.append(line)
@@ -183,6 +199,7 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
                 except AttributeError as e:
                     verse_obj = []
             else:
+                logger.debug("No replacements")
                 raise UnmatchedError("No replacements supplied.")
         else:
             verse_obj, data = guess_verse_obj(
@@ -211,7 +228,12 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
                 continue
 
             if join:
-                data["parts"][-1].content += markup(line.content)
+                try:
+                    data["parts"][-1].content += markup(line.content)
+                except AttributeError:
+                    data["parts"][-1].parts[-1].parts[-1].content += markup(
+                        line.content
+                    )
                 join = False
                 continue
             if line.content.endswith("~"):
@@ -305,37 +327,39 @@ def parse_antiphon(line):
 
 
 def main():
+    logger.debug("In main")
     root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/")
     version = "1960"
+
+    parse_prayers_txt(root, version, "Latin")
     fn = Path(
         "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/TemporaM/Nat2-0.txt"
     )
-    parse_file(fn, "1960", "latin")
+    things = parse_file(fn, "1960", "latin")
+    debug(things)
+    # root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
+    # success = []
+    # failed = []
+    # errors = []
+    # import typer
 
-    parse_prayers_txt(root, version, "Latin")
-    root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
-    success = []
-    failed = []
-    errors = []
-    import typer
+    # with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
+    #     for fn in fns:
+    #         try:
+    #             things = parse_file(Path(fn), version, "Latin")
+    #             success.append(fn)
+    #         except Exception as e:
+    #             errors.append(e)
+    #             failed.append(fn)
 
-    with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
-        for fn in fns:
-            try:
-                things = parse_file(Path(fn), version, "Latin")
-                success.append(fn)
-            except Exception as e:
-                errors.append(e)
-                failed.append(fn)
+    # print(
+    #     f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f) :2}% parsed"
+    # )
+    # for i, fn in enumerate(failed):
+    #     print(fn)
+    #     print(f"Errors: {errors[i]}")
 
-    print(
-        f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f) :2}% parsed"
-    )
-    for i, fn in enumerate(failed):
-        print(fn)
-        print(f"Errors: {errors[i]}")
-
-    # parse_for_prayers(Path(fn))
+    # # parse_for_prayers(Path(fn))
 
 
 if __name__ == "__main__":
