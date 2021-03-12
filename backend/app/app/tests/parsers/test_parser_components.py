@@ -182,9 +182,7 @@ candidates = [
         ),
     ),
     (
-        [
-            (Line(content="R. Deo grátias.", lineno=1),),
-        ],
+        [(Line(content="R. Deo grátias.", lineno=1),),],
         VersicleCreate(
             language="latin",
             parts=[LineBase(content="Deo grátias.", prefix="R.", lineno=1)],
@@ -369,3 +367,70 @@ def test_resolve_link():
     assert part == "Capitulum Laudes"
     linked_content = parsers.resolve_link(targetf, part, True, linkstr)
     assert len(linked_content[0]) == 1
+
+
+# VerseCreate(
+#                        title=None,
+#                        rubrics='Fit reverentia',
+#                        parts=[
+#                            LineBase(
+#                                prefix=None,
+#                                suffix=None,
+#                                rubrics=None,
+#                                content='!Fit reverentia',
+#                                lineno=None,
+#                                crossref=None,
+#                                title=None,
+#                            ),
+#                    VerseCreate(
+#                        title=None,
+#                        rubrics=None,
+#                        parts=[
+#                            LineBase(
+#                                prefix=None,
+#                                suffix=None,
+#                                rubrics=None,
+#                                content='/:(Fit reverentia):/ Sanctus, Sanctus, Sanctus * Dóminus Deus Sábaoth.',
+#                                lineno=None,
+#                                crossref=None,
+#                                title=None,
+#                            ),
+#                        ],
+#                    ),                            LineBase(
+#                                prefix=None,
+#                                suffix=None,
+#                                rubrics=None,
+#                                content='(sed rubrica 1570 dicitur)',
+#                                lineno=None,
+#                                crossref=None,
+#                                title=None,
+#                            ),
+
+
+candidates = (
+    (
+        [
+            Line(
+                1,
+                "Quóniam Nazarǽus vocábitur. Si fixum de Scriptúris posuísset exémplum, numquam díceret: Quod dictum est per prophétas: sed simplíciter: Quod dictum est per prophétam. Nunc autem pluráliter prophétas vocans, osténdit se non verba de Scriptúris sumpsísse, sed sensum. Nazarǽus sanctus interpretátur; sanctum autem Dóminum futúrum omnis Scriptúra commémorat.",
+            ),
+            Line(2, "&teDeum"),
+        ],
+        "@Sancti/01-05:Lectio9:s/.* Nazarǽus sanctus /Nazarǽus sanctus /s s/$/~/",
+        [
+            Line(
+                1,
+                "Nazarǽus sanctus interpretátur; sanctum autem Dóminum futúrum omnis Scriptúra commémorat.~",
+            )
+        ],
+    ),
+)
+
+
+def test_substitute_linked_content():
+    for start, linkstr, end in candidates:
+        resp = parsers.substitute_linked_content([start], linkstr)
+        assert resp[0] == end
+
+
+# "Póssumus et áliter dícere; quod étiam eísdem verbis, juxta hebráicam veritátem, in Isáia scriptum sit: Exiet virga de radíce Iesse, et Nazarǽus de radíce ejus conscéndet."
