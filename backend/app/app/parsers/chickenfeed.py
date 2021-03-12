@@ -139,11 +139,7 @@ def replace(verse: List[Line]) -> List:
     for line in verse:
         if (match := re.search(r"[&$](.*)", line.content)) is not None:
             key = match.groups()[0]
-            join = False
-            if key.endswith("~"):
-                logger.debug("Setting join flag.")
-                join = True
-                key = key[:-1]
+            key = key.replace("~", "")
             try:
                 old_key = key
                 key = sub[key]
@@ -158,12 +154,6 @@ def replace(verse: List[Line]) -> List:
             r = parser_vars.replacements[key]
             assert r
 
-            if join:
-                logger.debug("Adding join ~ to resolved content.")
-                try:
-                    r[-1].content += "~"
-                except TypeError:
-                    r.parts[-1].parts[-1].content += "~"
             new_verse.append(r)
         else:
             new_verse.append(line)
