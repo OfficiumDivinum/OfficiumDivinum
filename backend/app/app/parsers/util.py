@@ -381,30 +381,40 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
     Raises:
       : ParsingError: if no substitution found.
     """
-
     matches = re.findall(r".*?(s/(.*?)/(.*?)/(s*))", line)
     if not matches:
         raise ParsingError(f"No substitution found in {line}")
+    sub_index = 0
     for _, pattern, sub, multiline in matches:
+        sub_index += 1
+        logger.debug(
+            f"Doing substition {sub_index}/{len(matches)} {pattern} {sub} {multiline}"
+        )
 
-        # Sometimes DO wants to strip vs.  But we already do that.
         if pattern == "^v. ":
+            logger.debug("Skipping substitution of v. as we always do that.")
             continue
 
         for linked_verse_index, linked_verse in enumerate(linked_content):
             for linked_line_index, linked_line in enumerate(linked_verse):
+
+                debug(multiline)
+                debug(linked_line)
                 match = re.search(pattern, linked_line.content)
                 if match:
                     content = re.sub(pattern, sub, linked_line.content).strip()
                     if not content:
+                        logger.debug("Trashing emptied line.")
                         del linked_content[linked_verse_index][linked_line_index]
                         continue
 
                     lineno = linked_line.lineno
                     sub_line = Line(lineno, content)
+                    logger.debug("Replacing line.")
                     linked_content[linked_verse_index][linked_line_index] = sub_line
 
                     if multiline:
+                        logger.debug(f"Pattern {line} is multiline.")
                         # trash everything after the match
                         for i in range(linked_line_index + 1, len(linked_verse)):
                             linked_verse.pop()
@@ -412,5 +422,9 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
                         for i in range(linked_verse_index + 1, len(linked_content)):
                             linked_content.pop()
                         break
+                    else:
+                        logger.debug("Not multiline")
+                else:
+                    logger.debug(f"Unable to match {pattern} in {linked_line.content}")
 
     return linked_content
