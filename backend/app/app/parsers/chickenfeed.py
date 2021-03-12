@@ -220,19 +220,16 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             if join:
                 join = False
                 if line.content.endswith("~"):
-                    logger.debug("Joining line.")
                     line.content = line.content[:-1]
                     join = True
+
+                marked_up = markup(line.content)
                 try:
-                    data["parts"][-1].content += " " + markup(line.content)
+                    data["parts"][-1].content += f" {marked_up}"
                 except AttributeError:
-                    data["parts"][-1].parts[-1].parts[-1].content += " " + markup(
-                        line.content
-                    )
+                    data["parts"][-1].parts[-1].parts[-1].content += f" {marked_up}"
                 continue
-            debug(line.content)
             if line.content.endswith("~"):
-                logger.debug("Joining line.")
                 line.content = line.content[:-1]
                 join = True
 
