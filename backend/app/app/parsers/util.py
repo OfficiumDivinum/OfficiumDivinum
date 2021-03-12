@@ -182,7 +182,7 @@ def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List
         linked_content = substitute_linked_content(linked_content, linkstr)
 
     match = re.search(r":([0-9]+)-*([0-9])*", linkstr)
-    if match:
+    if "s/" not in linkstr and match:
         logger.debug("Limiting to specified lines.")
         start = int(match.groups()[0]) - 1
         end = match.groups()[1]
