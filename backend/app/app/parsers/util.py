@@ -401,6 +401,7 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
         for linked_verse in linked_content:
             new_verse = []
             joined = None
+            trash = None
             for linked_line in linked_verse:
                 if joined:
                     linked_line.content = joined + " " + linked_line.content
