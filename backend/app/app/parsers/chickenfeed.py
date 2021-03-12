@@ -187,6 +187,7 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
 
         join = False
         for line in verse:
+            lineobj = None
             try:
                 linenos.append(line.lineno)
             except AttributeError:  # already done.
@@ -231,6 +232,8 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
 
         if rubrics:
             data["parts"].append(RubricCreate(content=rubrics))
+            if not lineobj:
+                lineobj = RubricCreate(content=rubrics)
 
         if verse_obj is not LineBase:
             if isinstance(verse_obj, list):
@@ -239,6 +242,7 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
                 section_content.append(verse_obj(**data))
         elif len(section) == 1:
             section_content = lineobj
+
             section_content.title = section_name
         else:
             section_content.append(data["parts"])
