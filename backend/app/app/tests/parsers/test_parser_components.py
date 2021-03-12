@@ -407,7 +407,7 @@ def test_resolve_link():
 #                            ),
 
 
-candidates = (
+sub_candidates = (
     (
         [
             Line(
@@ -428,7 +428,7 @@ candidates = (
 
 
 def test_substitute_linked_content():
-    for start, linkstr, end in candidates:
+    for start, linkstr, end in sub_candidates:
         resp = parsers.substitute_linked_content([start], linkstr)
         assert resp[0] == end
 
