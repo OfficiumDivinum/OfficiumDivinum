@@ -387,7 +387,6 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
     sub_index = 0
     for _, pattern, sub, multiline in matches:
         sub = sub.replace("$", "\\")
-        debug(sub)
         sub_index += 1
         logger.debug(
             f"Doing substition {sub_index}/{len(matches)} {pattern} {sub} {multiline}"
@@ -399,42 +398,39 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
 
         new_content = []
 
-        for linked_verse_index, linked_verse in enumerate(linked_content):
+        for linked_verse in linked_content:
+            new_verse = []
             joined = None
-            for linked_line_index, linked_line in enumerate(linked_verse):
+            for linked_line in linked_verse:
                 if joined:
                     linked_line.content = joined + " " + linked_line.content
                     joined = None
-                    debug(linked_line.content)
 
                 match = re.search(pattern, linked_line.content)
                 if match:
-                    content = re.sub(pattern, sub, linked_line.content).strip()
-                    if not content:
+                    linked_line.content = re.sub(
+                        pattern, sub, linked_line.content
+                    ).strip()
+                    if not linked_line.content:
                         logger.debug("Trashing emptied line.")
-                        del linked_content[linked_verse_index][linked_line_index]
                         continue
 
-                    lineno = linked_line.lineno
-                    sub_line = Line(lineno, content)
-                    logger.debug("Replacing line.")
-                    linked_content[linked_verse_index][linked_line_index] = sub_line
-
                     if multiline:
-                        logger.debug(f"Pattern {line} is multiline.")
-                        # trash everything after the match
-                        for i in range(linked_line_index + 1, len(linked_verse)):
-                            linked_verse.pop()
-                        # trash any leftover verses
-                        for i in range(linked_verse_index + 1, len(linked_content)):
-                            linked_content.pop()
+                        trash = True
+                        new_verse.append(linked_line)
                         break
-                    else:
-                        logger.debug("Not multiline")
                 else:
                     logger.debug(f"Unable to match {pattern} in {linked_line.content}")
-                if linked_line.content.endswith("~"):
-                    debug("Here")
-                    joined = linked_line.content[:-1]
+                    if linked_line.content.endswith("~"):
+                        joined = linked_line.content[:-1]
+                        continue
+
+                new_verse.append(linked_line)
+
+            new_content.append(new_verse)
+            if trash:
+                break
+
+        linked_content = new_content
 
     return linked_content
