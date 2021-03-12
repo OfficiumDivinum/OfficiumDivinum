@@ -233,7 +233,7 @@ def parse_file_as_dict(
 
         schemas = [r".*Special.*", r"^Minor.*"]
         if any((re.search(schema, key) for schema in schemas)):
-            logger.info(f"Skipping schema of kind {key}.")
+            logger.debug(f"Skipping schema of kind {key}.")
             continue
 
         if section_key and not re.search(section_key, key):
