@@ -268,7 +268,6 @@ candidates = [
             language="latin",
             parts=[
                 LineBase(content="Sequéntia ++ sancti Evangélii", lineno=1),
-                LineBase(content="!Matt 2:19-23", lineno=2),
                 LineBase(content="line 1 line 2 line 3 line 4", lineno=3),
             ],
             ref="Matt 2:19-23",

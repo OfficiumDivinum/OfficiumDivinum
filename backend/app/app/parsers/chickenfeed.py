@@ -21,7 +21,7 @@ from app.schemas import (
     VersicleCreate,
 )
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 create_types = (
@@ -218,15 +218,22 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
                 continue
 
             if join:
+                join = False
+                if line.content.endswith("~"):
+                    logger.debug("Joining line.")
+                    line.content = line.content[:-1]
+                    join = True
                 try:
-                    data["parts"][-1].content += markup(line.content)
+                    data["parts"][-1].content += " " + markup(line.content)
                 except AttributeError:
-                    data["parts"][-1].parts[-1].parts[-1].content += markup(
+                    data["parts"][-1].parts[-1].parts[-1].content += " " + markup(
                         line.content
                     )
-                join = False
                 continue
+            debug(line.content)
             if line.content.endswith("~"):
+                logger.debug("Joining line.")
+                line.content = line.content[:-1]
                 join = True
 
             if line.content == "v. Orémus." and verse_obj is PrayerCreate:
