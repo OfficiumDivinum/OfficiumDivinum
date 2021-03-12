@@ -455,6 +455,14 @@ sub_candidates = (
             )
         ],
     ),
+    (
+        [
+            Line(1, "Post tríduum Míchaël.~"),
+            Line(2, "Nec ita multo post Bonifátius Papa."),
+        ],
+        "@:Lectio6:s/.*(Nec ita)/$1/s",
+        [Line(2, "Nec ita multo post Bonifátius Papa.")],
+    ),
 )
 
 
