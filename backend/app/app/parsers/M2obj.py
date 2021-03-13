@@ -2,6 +2,7 @@
 
 import re
 from pathlib import Path
+from typing import Optional
 
 from devtools import debug
 
@@ -51,6 +52,21 @@ def parse_file(fn: Path, lang: str, title: str):
         title=title,
         sourcefile=fn.name,
     )
+
+
+def generate_datestr(section_name: str) -> Optional[str]:
+    try:
+        match = re.search(r"(.*?)([0-9]+)-([0-9])", section_name)
+        special = match.group(1)
+        week, day = (int(i) for i in match.group(2, 3))
+        return f"{ordinals[week]} {days[day]} after {specials[special]}"
+    except (AttributeError, IndexError):
+        if section_name == "Nativity":  # hard coded elsewhere.
+            return None
+        elif section_name == "10-DU":
+            return christ_the_king_datestr
+        elif "Defuncti" in section_name:  # Not sure what we need this for.
+            return None
 
 
 def parse_mobile_file(fn: Path, lang: str, title: str):

@@ -477,3 +477,14 @@ def test_substitute_linked_content():
     for start, linkstr, end in sub_candidates:
         resp = parsers.substitute_linked_content([start], linkstr)
         assert resp[0] == end
+
+
+def test_generate_datestr():
+    candidates = {
+        "Adv1-0": "1st Sun after Advent",
+        "Nativity": None,
+        "10-DU": "Sat between 23 Oct 31 Oct",
+        "Defuncti": None,
+    }
+    for k, v in candidates.items():
+        assert parsers.generate_datestr(k) == v
