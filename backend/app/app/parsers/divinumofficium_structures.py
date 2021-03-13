@@ -26,7 +26,6 @@ commands = [
     "Past",
 ]
 
-
 monthnames = [
     "Januarius",
     "Februarius",

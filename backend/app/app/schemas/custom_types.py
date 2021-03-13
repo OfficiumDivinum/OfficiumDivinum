@@ -38,7 +38,7 @@ OfficeLiteral = Literal[
     "tertia",
     "sexta",
     "nona",
-    "versperas",
+    "verspera",
     "completorium",
 ]
 
