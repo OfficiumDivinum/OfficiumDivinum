@@ -6,7 +6,7 @@ from typing import Dict, List, Optional
 
 from devtools import debug
 
-from app.parsers import parser_vars
+from app.parsers import parser_vars, util
 from app.parsers.H2obj import guess_version, parse_hymn
 from app.parsers.util import Line, Thing, parse_file_as_dict
 from app.schemas import (
@@ -101,11 +101,11 @@ def extract_section_information(section_name: str, filename: str) -> Dict:
 
 
 def is_rubric(line: Line) -> Optional[str]:
-    regexs = (r"^!(.*)", r"^/:(.*):/")
+    regexs = (r"^!(.*)()", r"^/:(.*):/(.*)")
     for candidate in regexs:
         if (match := re.search(candidate, line.content)) is not None:
-            return match.groups()[0].strip()
-    return None
+            return [i.strip() for i in match.groups()]
+    return None, None
 
 
 def parse_prayers_txt(root: Path, version: str, language: str):
@@ -124,7 +124,7 @@ def parse_prayers_txt(root: Path, version: str, language: str):
 
 def parse_file(fn: Path, version: str, language: str) -> Dict:
     sections = parse_file_as_dict(fn, version)
-    matched, unmatched = magic_parser(fn, sections, language)
+    matched, unmatched = magic_parser(fn, sections, language, version)
     assert not unmatched
     return matched
 
@@ -165,6 +165,9 @@ def is_reference(line: Line):
 
 
 def guess_verse_obj(verse: List, section_name):
+
+    if any(("Hymnus" in section_name, "Te Deum" in section_name)):
+        return VerseCreate, {}
 
     if re.search(r"^[VR]\.", verse[0].content):
         return VersicleCreate, {}
@@ -219,15 +222,20 @@ def replace(verse: List[Line]) -> List:
     return new_verse
 
 
-def parse_section(fn: Path, section_name: str, section: list, language: str):
+def parse_section(
+    fn: Path, section_name: str, section: list, language: str, version: str
+):
     """Parse a section, returning the right kind of object."""
 
     section_obj = guess_section_obj(section_name, section)
+    section_data = {"version": version}
+    section_data.update(extract_section_information(section_name, fn.name))
+
     if section_obj is HymnCreate:
-        version, matched = guess_version(fn)
-        return parse_hymn(
-            fn, section_name, Thing(content=section), language, version, matched
-        )
+        hymn_version, matched = guess_version(fn)
+        if not matched:
+            hymn_version, matched = guess_version(section_name)
+            section_data["hymn_version"] = hymn_version
     linenos = []
 
     rubrics = None
@@ -250,11 +258,14 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
                 logger.debug("No replacements")
                 raise UnmatchedError("No replacements supplied.")
         else:
+            debug(verse)
             verse_obj, data = guess_verse_obj(
                 [x for x in verse if type(x) not in create_types], section_name
             )
 
-        data.update({"title": section_name, "language": language, "parts": []})
+        data.update({"language": language, "parts": []})
+        if verse_obj is not HymnCreate:
+            data["title"] = section_name
 
         join = False
         for line in verse:
@@ -298,10 +309,12 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             if re.search(r"^[VR]\.", line.content):
                 lineobj = parse_versicle(line, rubrics)
                 rubrics = None
-            elif (rubric := is_rubric(line)) is not None:
-                rubrics = rubric
-                continue
-            elif " * " in line.content:
+            elif is_rubric(line):
+                rubrics, content = is_rubric(line)
+                if not content:
+                    continue
+                line.content = content
+            elif " * " in line.content and verse_obj is not VerseCreate:
                 lineobj = parse_antiphon(line)
             else:
                 content = markup(strip_content(line))
@@ -341,6 +354,12 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
 
     else:
         data = {"title": section_name, "language": language, "parts": section_content}
+        data.update(section_data)
+        if section_obj is HymnCreate:
+            title = re.search(
+                r"(.*)[\.,;:]*", section_content[0].parts[0].content
+            ).groups()[0]
+            data["title"] = util.unicode_to_ascii(title).strip()
         try:
             obj = section_obj(**data)
             assert obj
@@ -350,13 +369,13 @@ def parse_section(fn: Path, section_name: str, section: list, language: str):
             raise Exception(e)
 
 
-def magic_parser(fn: Path, sections: Dict, language: str) -> Dict:
+def magic_parser(fn: Path, sections: Dict, language: str, version: str) -> Dict:
     """Magically return things as the right kind of objects."""
     parsed_things = {}
     unparsed_things = {}
     for section_name, thing in sections.items():
         try:
-            r = parse_section(fn, section_name, thing.content, language)
+            r = parse_section(fn, section_name, thing.content, language, version)
             assert r
             parsed_things[section_name] = r
         except UnmatchedError as e:
