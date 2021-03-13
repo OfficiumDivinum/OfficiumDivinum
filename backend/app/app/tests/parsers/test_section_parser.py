@@ -1,3 +1,5 @@
+import pytest
+
 from app import parsers
 
 candidates = [
@@ -53,7 +55,7 @@ candidates = [
         "filename": "Major Special",
         "section_name": "Day0 Versum 2",
         "resp": {
-            "liturgical_context": ["laudes", "vesperam"],
+            "liturgical_context": ["laudes", "vesperas"],
             "qualifiers": ["Day0"],
             "title": "versum 2",
         },
@@ -67,11 +69,47 @@ candidates = [
             "title": "Laudes2",
         },
     },
+    {
+        "filename": "Minor Special",
+        "section_name": "Dominica Tertia",
+        "resp": {
+            "liturgical_context": ["tertiam"],
+            "qualifiers": ["Dominica"],
+            "title": "Tertia",
+        },
+    },
+    {
+        "filename": "Minor Special",
+        "section_name": "Adv Tertia",
+        "resp": {
+            "liturgical_context": ["tertiam"],
+            "qualifiers": ["Adv"],
+            "title": "Tertia",
+        },
+    },
+    {
+        "filename": "Minor Special",
+        "section_name": "Responsory Adv Tertia",
+        "resp": {
+            "liturgical_context": ["tertiam"],
+            "qualifiers": ["Adv"],
+            "title": "Responsory Tertia",
+        },
+    },
+    {
+        "filename": "Minor Special",
+        "section_name": "Feria Tertia",
+        "resp": {
+            "liturgical_context": ["primam", "tertiam", "sextam", "nonam"],
+            "qualifiers": ["Feria"],
+            "title": "Feria Tertia",
+        },
+    },
 ]
 
 
-def test_extract_section_information():
-    for candidate in candidates:
-        args = {i: candidate[i] for i in candidates if i is not "resp"}
-        resp = parsers.extract_section_information(**args)
-        assert resp == candidate["resp"]
+@pytest.mark.parametrize("candidate", candidates)
+def test_extract_section_information(candidate):
+    args = {i: candidate[i] for i in candidate if i != "resp"}
+    resp = parsers.extract_section_information(**args)
+    assert resp == candidate["resp"]
