@@ -42,10 +42,37 @@ class UnmatchedError(Exception):
 
 
 def extract_section_information(section_name: str, filename: str) -> Dict:
-    """Exctract information to name section object."""
-    resp = {}
+    """Extract information to name section object."""
+    resp = {"qualifiers": []}
 
-    return resp
+    from_fn = {
+        "Matutinum": ["matutinum"],
+        "Major": ["laudes", "vesperas"],
+        "Minor": ["primam", "tertiam", "sextam", "nonam"],
+    }
+    if (match := re.search(r"(.*) Special", filename)) is not None:
+        resp["liturgical_context"] = from_fn[match.groups()[0]]
+
+    qualifier_regexs = [
+        r"(Day[0-9])",
+        r"(Adv)",
+        r"(Quad[0-9]*)",
+        r"(Pash)",
+        r"(Hymnus1)",
+    ]
+    for regex in qualifier_regexs:
+        if (match := re.search(regex, section_name)) is not None:
+            resp["qualifiers"].append(match.groups()[0])
+            section_name = re.sub(regex, "", section_name).strip()
+
+    days = ["Dominica", "Feria"]
+    for day in days:
+        if day in section_name:
+            section_name = section_name.replace(day, "").strip()
+            resp["qualifiers"].append(day)
+
+    resp["title"] = section_name.lower()
+    return {k: v for k, v in resp.items() if v}
 
 
 def is_rubric(line: Line) -> Optional[str]:
@@ -73,7 +100,6 @@ def parse_prayers_txt(root: Path, version: str, language: str):
 def parse_file(fn: Path, version: str, language: str) -> Dict:
     sections = parse_file_as_dict(fn, version)
     matched, unmatched = magic_parser(fn, sections, language)
-    debug(unmatched)
     assert not unmatched
     return matched
 
@@ -333,11 +359,17 @@ def main():
     version = "1960"
 
     parse_prayers_txt(root, version, "Latin")
+
+    # /home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Psalterium/Revtrans.txt
+    # /home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Psalterium/Matutinum Special.txt
+    # /home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/SanctiM/11-17.txt
+    # /home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/SanctiM/12-28.txt
+
     fn = Path(
-        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/TemporaM/Nat2-0.txt"
+        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Psalterium/Matutinum Special.txt"
     )
-    things = parse_file(fn, "1960", "latin")
-    debug(things)
+    parse_file(fn, version, "Latin")
+
     # root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
     # success = []
     # failed = []
@@ -349,6 +381,8 @@ def main():
     #         try:
     #             things = parse_file(Path(fn), version, "Latin")
     #             success.append(fn)
+    #         except FileNotFoundError:
+    #             pass
     #         except Exception as e:
     #             errors.append(e)
     #             failed.append(fn)
@@ -360,7 +394,7 @@ def main():
     #     print(fn)
     #     print(f"Errors: {errors[i]}")
 
-    # # parse_for_prayers(Path(fn))
+    # # # parse_for_prayers(Path(fn))
 
 
 if __name__ == "__main__":
