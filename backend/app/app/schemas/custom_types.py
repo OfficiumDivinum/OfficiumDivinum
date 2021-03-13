@@ -46,15 +46,14 @@ HymnTypeLiteral = Literal[
     "hymnus minor",
     "hymnus vespera",
     "hymnus matutinum",
-    "hymnus matutinum 1",
     "hymnus laudes",
+    "hymnus laudes2",
     "hymnus prima",
     "hymnus tertia",
     "hymnus sexta",
     "hymnus nona",
-    "hymnus vespera 3",
+    "hymnus vespera",
     "te deum",
-    "hymnus laudes2",
 ]
 
 VersionLiteral = Literal["Monastic", "1570", "1910", "DA", "1955", "1960", "OP"]
