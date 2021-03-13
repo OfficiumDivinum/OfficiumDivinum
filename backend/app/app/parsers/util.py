@@ -44,8 +44,8 @@ def validate_section(section: List) -> bool:
     for i in section:
         flat_section += i
 
-    if all((is_rubric(x) for x in flat_section)):
-        logger.debug("Section only rubrics.")
+    if all((is_rubric(x)[0] for x in flat_section)):
+        logger.debug("section only rubrics.")
         return False
     else:
         return section
