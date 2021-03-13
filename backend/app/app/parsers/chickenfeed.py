@@ -51,6 +51,7 @@ def extract_section_information(section_name: str, filename: str) -> Dict:
         "Matutinum": ["matutinum"],
         "Major": ["laudes", "vespera"],
         "Minor": ["prima", "tertia", "sexta", "nona"],
+        "Prima": ["prima"],
     }
     if (match := re.search(r"(.*) Special", filename)) is not None:
         resp["liturgical_context"] += from_fn[match.groups()[0]]
@@ -235,9 +236,12 @@ def parse_section(
 
     if section_obj is HymnCreate:
         hymn_version, matched = guess_version(fn)
+        section_data["hymn_version"] = hymn_version
         if not matched:
             hymn_version, matched = guess_version(section_name)
             section_data["hymn_version"] = hymn_version
+        assert hymn_version
+
     linenos = []
 
     rubrics = None
@@ -362,6 +366,7 @@ def parse_section(
         data = {"title": section_name, "language": language, "parts": section_content}
         data.update(section_data)
         if section_obj is HymnCreate:
+            assert section_data["hymn_version"]
             title = re.search(
                 r"(.*)[\.,;:]*", section_content[0].parts[0].content
             ).groups()[0]
