@@ -3,6 +3,8 @@
 import re
 from pathlib import Path
 
+from devtools import debug
+
 from app.DSL import days, months, ordinals, specials
 from app.schemas import LineBase, MartyrologyCreate
 
@@ -64,8 +66,7 @@ def parse_mobile_file(fn: Path, lang: str, title: str):
     -------
     List of Martyrology objects with rules, which can be applied.
     """
-    with fn.open() as f:
-        sections = parse_DO_sections(f.readlines())
+    sections = parse_DO_sections(fn)
 
     mobile = []
 
@@ -84,15 +85,11 @@ def parse_mobile_file(fn: Path, lang: str, title: str):
                 continue
                 # datestr = "2 Nov"
         parts = []
-        for line in section:
-            parts.append(LineBase(content=line))
+        for verse in section:
+            parts += [LineBase(**vars(x)) for x in verse]
+
         mobile.append(
-            MartyrologyCreate(
-                datestr=datestr,
-                content=parts,
-                title=title,
-                language=lang,
-            )
+            MartyrologyCreate(datestr=datestr, parts=parts, title=title, language=lang,)
         )
 
     return mobile
