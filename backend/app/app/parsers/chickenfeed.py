@@ -41,6 +41,13 @@ class UnmatchedError(Exception):
     pass
 
 
+def extract_section_information(section_name: str, filename: str) -> Dict:
+    """Exctract information to name section object."""
+    resp = {}
+
+    return resp
+
+
 def is_rubric(line: Line) -> Optional[str]:
     regexs = (r"^!(.*)", r"^/:(.*):/")
     for candidate in regexs:
