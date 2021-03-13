@@ -187,12 +187,13 @@ def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List
         logger.debug(f"Doing substitution for {linkstr}.")
         linked_content = substitute_linked_content(linked_content, linkstr)
 
-    match = re.search(r":([0-9]+)-*([0-9])*", linkstr)
+    match = re.search(r":([0-9]+)-*([0-9]*)", linkstr)
     if "s/" not in linkstr and match:
-        logger.debug("Limiting to specified lines.")
+        logger.debug(f"Limiting to specified lines: {linkstr}")
         start = int(match.groups()[0]) - 1
         end = match.groups()[1]
         end = int(end) if end else start + 1
+        assert end > start
         linked_content = [linked_content[0][start:end]]
 
         assert len(linked_content[0]) == end - start
