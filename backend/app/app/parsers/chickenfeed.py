@@ -8,12 +8,14 @@ from devtools import debug
 
 from app.parsers import parser_vars, util
 from app.parsers.H2obj import guess_version, parse_hymn
+from app.parsers.M2obj import generate_datestr
 from app.parsers.util import EmptyFileError, Line, Thing, parse_file_as_dict
 from app.schemas import (
     AntiphonCreate,
     BlockCreate,
     HymnCreate,
     LineBase,
+    MartyrologyCreate,
     PrayerCreate,
     ReadingCreate,
     RubricCreate,
@@ -27,6 +29,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 create_types = (
+    MartyrologyCreate,
     AntiphonCreate,
     BlockCreate,
     HymnCreate,
@@ -231,11 +234,17 @@ def replace(verse: List[Line]) -> List:
 
 
 def parse_section(
-    fn: Path, section_name: str, section: list, language: str, version: str = None
+    fn: Path,
+    section_name: str,
+    section: list,
+    language: str,
+    version: str = None,
+    section_obj=None,
 ):
     """Parse a section, returning the right kind of object."""
 
-    section_obj = guess_section_obj(section_name, section)
+    if not section_obj:
+        section_obj = guess_section_obj(section_name, section)
     section_data = {}
     if version:
         section_data = {"version": [version]}
@@ -248,6 +257,12 @@ def parse_section(
             hymn_version, matched = guess_version(section_name)
             section_data["hymn_version"] = hymn_version
         assert hymn_version
+
+    if section_obj is MartyrologyCreate:
+        section_data["datestr"] = generate_datestr(section_name)
+        if not section_data["datestr"]:
+            logger.info(f"Skipping {section_name}")
+            return None
 
     linenos = []
 
@@ -370,6 +385,8 @@ def parse_section(
         return section_content
 
     else:
+        if not isinstance(section_content, list):
+            section_content = [section_content]
         data = {"title": section_name, "language": language, "parts": section_content}
         data.update(section_data)
         if section_obj is HymnCreate:
@@ -392,9 +409,17 @@ def magic_parser(fn: Path, sections: Dict, language: str, version: str = None) -
     parsed_things = {}
     unparsed_things = {}
     for section_name, thing in sections.items():
+        if "Martyrologium" in fn.parent.name:
+            section_obj = MartyrologyCreate
+        else:
+            section_obj = None
+
         try:
-            r = parse_section(fn, section_name, thing.content, language, version)
-            assert r
+            r = parse_section(
+                fn, section_name, thing.content, language, version, section_obj
+            )
+            if not r:
+                continue
             parsed_things[section_name] = r
         except UnmatchedError as e:
             unparsed_things[section_name] = thing
