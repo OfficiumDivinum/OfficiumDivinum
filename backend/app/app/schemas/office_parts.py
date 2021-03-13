@@ -23,7 +23,7 @@ class BlockBase(BaseModel):
     title: Optional[str] = Field(None, nullable=True)
     liturgical_context: Optional[str] = Field(None, nullable=True)
     qualifiers: Optional[List[str]] = Field(None, nullable=True)
-    version: Optional[str] = Field(None, nullable=True)
+    version: Optional[List[str]] = Field(None, nullable=True)
 
 
 class Office(BaseModel):

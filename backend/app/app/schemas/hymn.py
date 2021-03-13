@@ -29,7 +29,7 @@ class VerseUpdate(VerseCreate):
 
 class HymnBase(BlockBase, FromDOMixin):
     parts: Optional[List[Verse]] = Field(None, nullable=True)
-    version: str
+    hymn_version: str
     language: str
     type_: Optional[HymnTypeLiteral] = Field(None, nullable=True)
 

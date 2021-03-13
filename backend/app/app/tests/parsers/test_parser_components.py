@@ -47,7 +47,11 @@ def test_parse_rubric():
     content = "! Say this whilst jumping up and down."
     line = Line(content=content, lineno=143)
     resp = parsers.is_rubric(line)
-    assert resp == content[2:]
+    assert resp == [content[2:], ""]
+    content = "/:(Fit reverentia):/ Sanctus, * Dóminus."
+    line = Line(content=content, lineno=143)
+    resp = parsers.is_rubric(line)
+    assert resp == ["(Fit reverentia)", "Sanctus, * Dóminus."]
 
 
 def test_parse_antiphon():
@@ -289,15 +293,15 @@ hymn_test = (
         ],
         HymnCreate(
             title="te deum laudamus te",
-            version="pius v",
+            version=["1960"],
+            hymn_version="pius v",
             language="latin",
-            type_="te deum",
             parts=[
                 VerseCreate(
                     parts=[
                         LineBase(content="Te Deum laudámus: * te", lineno=0),
-                        LineBase(content="Te ætérnum Patrem * omnis ", lineno=1),
-                        LineBase(content="Tibi omnes Ángeli, * tibi: ", lineno=2,),
+                        LineBase(content="Te ætérnum Patrem * omnis", lineno=1),
+                        LineBase(content="Tibi omnes Ángeli, * tibi:", lineno=2,),
                         LineBase(content="Tibi Chérubim * et Séraphim:", lineno=3,),
                     ]
                 ),
@@ -305,7 +309,7 @@ hymn_test = (
                     parts=[
                         LineBase(
                             content="Sanctus, * Dóminus.",
-                            rubrics="Fit reverentia",
+                            rubrics="(Fit reverentia)",
                             lineno=4,
                         )
                     ]
@@ -323,6 +327,7 @@ hymn_test = (
 
 def test_guess_verse_obj():
     for verses, correct_obj in candidates:
+        debug(verses[0], correct_obj)
         resp, data = parsers.guess_verse_obj(verses[0], correct_obj.title)
         assert resp is type(correct_obj)
         if type(correct_obj) is type(ReadingCreate):
@@ -337,7 +342,7 @@ def test_parse_section():
         if "te deum" in section_name:
             section_name = "Te Deum"
         resp = parsers.parse_section(
-            Path("Prayers.txt"), section_name, section, "latin"
+            Path("Prayers.txt"), section_name, section, "latin", "1960"
         )
         debug(resp)
         assert resp == correct_obj
@@ -377,7 +382,7 @@ def test_parse_section():
         ),
     ]
     resp = parsers.parse_section(
-        Path("Prayers.txt"), "Oratio mortuorum", section, "latin"
+        Path("Prayers.txt"), "Oratio mortuorum", section, "latin", "1960"
     )
     assert resp == correct_obj
 
@@ -397,7 +402,9 @@ def test_parse_replace_section():
         "BD": VersicleCreate(title="BD", parts=[]),
     }
     parsers.parser_vars.replacements = replacements
-    resp = parsers.parse_section(Path("Prayers.txt"), section_name, [verse], "latin")
+    resp = parsers.parse_section(
+        Path("Prayers.txt"), section_name, [verse], "latin", "1960"
+    )
     parsers.parser_vars.replacements = None
 
     expected = [

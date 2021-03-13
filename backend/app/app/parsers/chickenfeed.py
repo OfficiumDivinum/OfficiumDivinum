@@ -228,7 +228,7 @@ def parse_section(
     """Parse a section, returning the right kind of object."""
 
     section_obj = guess_section_obj(section_name, section)
-    section_data = {"version": version}
+    section_data = {"version": [version]}
     section_data.update(extract_section_information(section_name, fn.name))
 
     if section_obj is HymnCreate:
@@ -258,13 +258,12 @@ def parse_section(
                 logger.debug("No replacements")
                 raise UnmatchedError("No replacements supplied.")
         else:
-            debug(verse)
             verse_obj, data = guess_verse_obj(
                 [x for x in verse if type(x) not in create_types], section_name
             )
 
         data.update({"language": language, "parts": []})
-        if verse_obj is not HymnCreate:
+        if verse_obj is not VerseCreate:
             data["title"] = section_name
 
         join = False
@@ -309,17 +308,22 @@ def parse_section(
             if re.search(r"^[VR]\.", line.content):
                 lineobj = parse_versicle(line, rubrics)
                 rubrics = None
-            elif is_rubric(line):
+
+            elif is_rubric(line) != (None, None):
                 rubrics, content = is_rubric(line)
                 if not content:
                     continue
                 line.content = content
-            elif " * " in line.content and verse_obj is not VerseCreate:
-                lineobj = parse_antiphon(line)
-            else:
-                content = markup(strip_content(line))
-                lineobj = LineBase(content=content, rubrics=rubrics, lineno=line.lineno)
-                rubrics = None
+
+            if not lineobj:
+                if " * " in line.content and verse_obj is not VerseCreate:
+                    lineobj = parse_antiphon(line)
+                else:
+                    content = markup(strip_content(line))
+                    lineobj = LineBase(
+                        content=content, rubrics=rubrics, lineno=line.lineno
+                    )
+                    rubrics = None
 
             data["parts"].append(lineobj)
 
