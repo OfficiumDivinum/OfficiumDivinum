@@ -21,6 +21,8 @@ from app.schemas import (
     VersicleCreate,
 )
 
+from .divinumofficium_structures import commands as office_names
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -43,22 +45,21 @@ class UnmatchedError(Exception):
 
 def extract_section_information(section_name: str, filename: str) -> Dict:
     """Extract information to name section object."""
-    resp = {"qualifiers": []}
+    resp = {"qualifiers": [], "liturgical_context": [], "title": None}
 
     from_fn = {
         "Matutinum": ["matutinum"],
-        "Major": ["laudes", "vesperas"],
-        "Minor": ["primam", "tertiam", "sextam", "nonam"],
+        "Major": ["laudes", "vespera"],
+        "Minor": ["prima", "tertia", "sexta", "nona"],
     }
     if (match := re.search(r"(.*) Special", filename)) is not None:
-        resp["liturgical_context"] = from_fn[match.groups()[0]]
+        resp["liturgical_context"] += from_fn[match.groups()[0]]
 
     qualifier_regexs = [
         r"(Day[0-9])",
         r"(Adv)",
         r"(Quad[0-9]*)",
-        r"(Pash)",
-        r"(Hymnus1)",
+        r"(Pasch)",
     ]
     for regex in qualifier_regexs:
         if (match := re.search(regex, section_name)) is not None:
@@ -71,8 +72,32 @@ def extract_section_information(section_name: str, filename: str) -> Dict:
             section_name = section_name.replace(day, "").strip()
             resp["qualifiers"].append(day)
 
-    resp["title"] = section_name.lower()
-    return {k: v for k, v in resp.items() if v}
+    for office in office_names:
+        if office in section_name:
+            office = re.search(f"({office}[0-9]*)", section_name).groups()[0]
+            resp["liturgical_context"] = [office.lower()]
+            candidate = section_name.replace(office, "").strip()
+            section_name = candidate if candidate else section_name
+
+    multiword_titles = ["Versum 2"]
+    for title in multiword_titles:
+        if title in section_name:
+            resp["title"] = title.lower()
+            section_name = section_name.replace(title, "").strip()
+
+    if (match := re.search(r"(.*)M(.*)", section_name)) is not None:
+        resp["version"] = "monastic"
+        section_name = re.sub(r"(.*)M(.*)", r"\1\2", section_name)
+
+    if (match := re.search(r"(Hymnus[0-9])", section_name)) is not None:
+        resp["qualifiers"].append(match.groups()[0])
+        section_name = re.sub(r"(.*)[0-9](.*)", r"\1\2", section_name).strip()
+
+    if not resp["title"]:
+        resp["title"] = section_name.strip().lower()
+    resp = {k: v for k, v in resp.items() if v}
+    logger.debug(f"Extracted {resp} from {section_name} in {filename}")
+    return resp
 
 
 def is_rubric(line: Line) -> Optional[str]:
