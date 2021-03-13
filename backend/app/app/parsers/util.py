@@ -177,7 +177,6 @@ def generate_commemoration_links(linkstr) -> List[str]:
 def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List:
     """Resolve link and return linked content."""
     logger.debug(f"Resolving link to {targetf} section {part}")
-
     linked_content = parse_file_as_dict(
         targetf, part, sublinks, section_key=part, follow_only_interesting_links=False,
     )[part]
@@ -227,6 +226,7 @@ def parse_file_as_dict(
     Returns:
       : A dict of sections as they are in the file, with no further processing.
     """
+
     section_header_regex = guess_section_header(fn)
 
     sections = parse_DO_sections(fn, section_header_regex)
