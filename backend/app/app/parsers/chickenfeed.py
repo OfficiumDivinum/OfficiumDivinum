@@ -8,7 +8,7 @@ from devtools import debug
 
 from app.parsers import parser_vars, util
 from app.parsers.H2obj import guess_version, parse_hymn
-from app.parsers.util import Line, Thing, parse_file_as_dict
+from app.parsers.util import EmptyFileError, Line, Thing, parse_file_as_dict
 from app.schemas import (
     AntiphonCreate,
     BlockCreate,
@@ -123,11 +123,18 @@ def parse_prayers_txt(root: Path, version: str, language: str):
     return matched
 
 
-def parse_file(fn: Path, version: str, language: str) -> Dict:
+def parse_generic_file(fn: Path, version: str, language: str) -> Dict:
     sections = parse_file_as_dict(fn, version)
     matched, unmatched = magic_parser(fn, sections, language, version)
     assert not unmatched
     return matched
+
+
+def parse_translations(fn: Path, language: str) -> Dict:
+    section = parse_file_as_dict(fn, "")
+    translations = {}
+    for k, v in section.items():
+        translations[k] = [LineBase(**vars(i)) for i in v.content[0]]
 
 
 def guess_section_obj(section_name: str, section: List):
@@ -415,41 +422,41 @@ def main():
 
     parse_prayers_txt(root, version, "Latin")
 
-    # /home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Psalterium/Revtrans.txt
-    # /home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Psalterium/Matutinum Special.txt
-    # /home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/SanctiM/11-17.txt
-    # /home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/SanctiM/12-28.txt
-
     fn = Path(
-        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Psalterium/Matutinum Special.txt"
+        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Psalterium/Revtrans.txt"
     )
-    parse_file(fn, version, "Latin")
+    parse_translations(fn, "Latin")
 
-    # root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
-    # success = []
-    # failed = []
-    # errors = []
-    # import typer
+    root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
+    success = []
+    failed = []
+    errors = []
+    import typer
 
-    # with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
-    #     for fn in fns:
-    #         try:
-    #             things = parse_file(Path(fn), version, "Latin")
-    #             success.append(fn)
-    #         except FileNotFoundError:
-    #             pass
-    #         except Exception as e:
-    #             errors.append(e)
-    #             failed.append(fn)
+    with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
+        for fn in fns:
+            if fn.name in ["Translate.txt", "Revtrans.txt"]:
+                parse_translations(fn, "Latin")
+                continue
 
-    # print(
-    #     f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f) :2}% parsed"
-    # )
-    # for i, fn in enumerate(failed):
-    #     print(fn)
-    #     print(f"Errors: {errors[i]}")
+            # we need to handle kalendarium  and martyrology here.
+            try:
+                things = parse_generic_file(Path(fn), version, "Latin")
+                success.append(fn)
+            except (FileNotFoundError, EmptyFileError):
+                pass
+            except Exception as e:
+                errors.append(e)
+                failed.append(fn)
 
-    # # # parse_for_prayers(Path(fn))
+    print(
+        f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f) :2}% parsed"
+    )
+    for i, fn in enumerate(failed):
+        print(fn)
+        print(f"Errors: {errors[i]}")
+
+    # # parse_for_prayers(Path(fn))
 
 
 if __name__ == "__main__":

@@ -135,7 +135,30 @@ def parse_hymn(
         version, matched = guess_version(hymn_name)
 
     if hymn_name != "Te Deum":
-        hymn_name = " ".join(re.search("(Hymnus).*? ( *.*)", hymn_name).groups())
+        debug(hymn_name)
+        if (match := re.search(".*Day([0-9]).*", hymn_name)) is not None:
+            day = match.groups()[0]
+            hymn_name = re.sub("Day([0-9])", "", hymn_name).strip()
+            debug(hymn_name)
+
+        if "Special" in fn.name:
+            try:
+                hymn_name, season = hymn_name.split(" ")
+            except ValueError:
+                pass
+        debug(hymn_name)
+        if len(hymn_name.split(" ")) == 1:
+            debug("here")
+            match = re.search(r"Hymnus([0-9]*)(M*)", hymn_name)
+            n, m = match.groups()
+            hymn_name = "hymnus matutinum"
+            hymn_name += f" {n}" if n else ""
+            hymn_name += f" {m}" if m else ""
+            debug(hymn_name)
+        else:
+            debug("name", hymn_name)
+            hymn_name = " ".join(re.search(r"(Hymnus).*? ( *.*)", hymn_name).groups())
+        assert hymn_name
 
     try:
         return HymnCreate(
