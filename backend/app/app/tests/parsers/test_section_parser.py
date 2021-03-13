@@ -19,7 +19,7 @@ candidates = [
         "resp": {
             "liturgical_context": ["matutinum"],
             "qualifiers": ["Day0", "Hymnus1"],
-            "version": "monastic",
+            "version": ["monastic"],
             "title": "hymnus",
         },
     },
@@ -29,7 +29,7 @@ candidates = [
         "resp": {
             "liturgical_context": ["matutinum"],
             "qualifiers": ["Adv"],
-            "version": "monastic",
+            "version": ["monastic"],
             "title": "hymnus",
         },
     },
@@ -38,7 +38,7 @@ candidates = [
         "section_name": "HymnusM Laudes",
         "resp": {
             "liturgical_context": ["laudes"],
-            "version": "monastic",
+            "version": ["monastic"],
             "title": "hymnus",
         },
     },
@@ -47,7 +47,7 @@ candidates = [
         "section_name": "HymnusM Day0 Laudes2",
         "resp": {
             "liturgical_context": ["laudes2"],
-            "version": "monastic",
+            "version": ["monastic"],
             "qualifiers": ["Day0"],
             "title": "hymnus",
         },

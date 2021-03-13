@@ -86,7 +86,7 @@ def extract_section_information(section_name: str, filename: str) -> Dict:
             section_name = section_name.replace(title, "").strip()
 
     if (match := re.search(r"(.*)M(.*)", section_name)) is not None:
-        resp["version"] = "monastic"
+        resp["version"] = ["monastic"]
         section_name = re.sub(r"(.*)M(.*)", r"\1\2", section_name)
 
     if (match := re.search(r"(Hymnus[0-9])", section_name)) is not None:
@@ -223,12 +223,14 @@ def replace(verse: List[Line]) -> List:
 
 
 def parse_section(
-    fn: Path, section_name: str, section: list, language: str, version: str
+    fn: Path, section_name: str, section: list, language: str, version: str = None
 ):
     """Parse a section, returning the right kind of object."""
 
     section_obj = guess_section_obj(section_name, section)
-    section_data = {"version": [version]}
+    section_data = {}
+    if version:
+        section_data = {"version": [version]}
     section_data.update(extract_section_information(section_name, fn.name))
 
     if section_obj is HymnCreate:
@@ -373,7 +375,7 @@ def parse_section(
             raise Exception(e)
 
 
-def magic_parser(fn: Path, sections: Dict, language: str, version: str) -> Dict:
+def magic_parser(fn: Path, sections: Dict, language: str, version: str = None) -> Dict:
     """Magically return things as the right kind of objects."""
     parsed_things = {}
     unparsed_things = {}

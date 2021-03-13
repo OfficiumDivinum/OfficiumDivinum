@@ -21,7 +21,7 @@ class BlockBase(BaseModel):
     rubrics: Optional[str] = Field(None, nullable=True)
     parts: Optional[List[Union[LineBase, None]]] = Field(None, nullable=True)
     title: Optional[str] = Field(None, nullable=True)
-    liturgical_context: Optional[str] = Field(None, nullable=True)
+    liturgical_context: Optional[List[str]] = Field(None, nullable=True)
     qualifiers: Optional[List[str]] = Field(None, nullable=True)
     version: Optional[List[str]] = Field(None, nullable=True)
 
