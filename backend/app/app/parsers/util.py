@@ -17,6 +17,10 @@ class ParsingError(Exception):
     pass
 
 
+class EmptyFileError(Exception):
+    pass
+
+
 @dataclass
 class Line:
     lineno: int
@@ -69,6 +73,8 @@ def parse_DO_sections(
     subcontent = []
 
     lines = fn.open().readlines()
+    if not lines:
+        raise EmptyFileError(f"File {fn} is empty!")
 
     skip = False
 
