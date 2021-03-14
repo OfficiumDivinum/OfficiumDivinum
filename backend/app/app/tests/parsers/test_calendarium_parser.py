@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 
 from app import parsers
@@ -48,4 +50,17 @@ candidates = (
 
 @pytest.mark.parametrize("line,correct_resp", candidates)
 def test_extract_line(line, correct_resp):
-    assert parsers.extract_line(line) == correct_resp
+    assert parsers.kalendarium.extract_line(line) == correct_resp
+
+
+versions = (
+    (Path("K1960.txt"), "1960"),
+    (Path("KM.txt"), "monastic"),
+    (Path("KNC.txt"), "newcal"),
+)
+
+
+@pytest.mark.parametrize("fn,version", versions)
+def test_get_version(fn: Path, version: str):
+    parsers.kalendarium.get_version(fn)
+    assert parsers.kalendarium.version == version

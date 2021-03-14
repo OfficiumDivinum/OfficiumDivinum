@@ -1,7 +1,21 @@
 import re
+from pathlib import Path
 from typing import Dict, Optional, Union
 
 from devtools import debug
+
+version = None
+
+version_names = {"M": "monastic", "NC": "newcal"}
+
+
+def get_version(fn: Path):
+    global version
+    v = fn.stem[1:]
+    try:
+        version = version_names[v]
+    except KeyError:
+        version = v
 
 
 def num(s: str) -> Union[int, str]:
