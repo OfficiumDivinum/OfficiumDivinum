@@ -73,7 +73,7 @@ traditional_rank_lookup_table = {
     "feria iv classis": 0,
 }
 
-reverse_trad_rank = {v: k for k, v in traditional_rank_lookup_table.items()}
+rev_trad_rank = {v: k for k, v in traditional_rank_lookup_table.items()}
 
 typo_translations = {
     "I classis Semiduplex": "Semiduplex I classis",
