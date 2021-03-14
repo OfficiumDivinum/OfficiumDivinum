@@ -7,8 +7,6 @@ from typing import Optional
 from app.DSL import days, months, ordinals, specials
 from app.schemas import LineBase, MartyrologyCreate
 
-from .chickenfeed import parse_generic_file
-
 christ_the_king_datestr = "Sat between 23 Oct 31 Oct"
 
 
@@ -26,6 +24,8 @@ def parse_file(fn: Path, lang: str, title: str):
     Martyrology object with rule for specific day.
     """
     if fn.stem == "Mobile":
+        from .chickenfeed import parse_generic_file
+
         return parse_generic_file(fn)
 
     month, day = (int(i) for i in fn.stem.split("-"))
