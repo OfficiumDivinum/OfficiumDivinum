@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import List, Union
 
+import pytest
 from devtools import debug
 
 from app import parsers
@@ -61,31 +62,31 @@ def test_parse_antiphon():
     assert resp == AntiphonCreate(lineno=lineno, content=content)
 
 
-def test_guess_section_obj():
-    candidates = (
-        ("Invit", [], AntiphonCreate, None),
-        ("Ant Matutinum", [], List, None),
-        ("HymnusM Laudes", [], HymnCreate, None),
-        ("Te Deum", [], HymnCreate, None),
-        ("Ant 1", [], AntiphonCreate, None),
-    )
+section_obj_candidates = (
+    ("Invit", [], AntiphonCreate),
+    ("Ant Matutinum", [], List),
+    ("HymnusM Laudes", [], HymnCreate),
+    ("Te Deum", [], HymnCreate),
+    ("Ant 1", [], AntiphonCreate),
+)
 
-    for section_name, section, correct_obj, _ in candidates:
-        resp = parsers.guess_section_obj(section_name, section)
 
-        try:
-            if correct_obj.__origin__ in (list, Union):
-                assert isinstance(resp, correct_obj.__origin__)
-                try:
-                    possible_types = correct_obj.__args__
-                    for i in resp:
-                        assert any((isinstance(i, t) for t in possible_types))
-                except AttributeError:
-                    pass
-            else:
-                raise NotImplementedError("Shouldn't be testing any other funny type")
-        except AttributeError:
-            assert type(resp) is type(correct_obj)
+@pytest.mark.parametrize("section_name,section,correct_obj", section_obj_candidates)
+def test_guess_section_obj(section_name, section, correct_obj):
+    resp = parsers.guess_section_obj(section_name, section)
+    try:
+        if correct_obj.__origin__ in (list, Union):
+            assert isinstance(resp, correct_obj.__origin__)
+            try:
+                possible_types = correct_obj.__args__
+                for i in resp:
+                    assert any((isinstance(i, t) for t in possible_types))
+            except AttributeError:
+                pass
+        else:
+            raise NotImplementedError("Shouldn't be testing any other funny type")
+    except AttributeError:
+        assert type(resp) is type(correct_obj)
 
 
 def test_replace():
@@ -186,7 +187,9 @@ candidates = [
         ),
     ),
     (
-        [(Line(content="R. Deo grátias.", lineno=1),),],
+        [
+            (Line(content="R. Deo grátias.", lineno=1),),
+        ],
         VersicleCreate(
             language="latin",
             parts=[LineBase(content="Deo grátias.", prefix="R.", lineno=1)],
@@ -285,11 +288,27 @@ hymn_test = (
             (
                 Line(content="Te Deum laudámus: * te", lineno=0),
                 Line(content="Te ætérnum Patrem * omnis ", lineno=1),
-                Line(content="Tibi omnes Ángeli, * tibi: ", lineno=2,),
-                Line(content="Tibi Chérubim * et Séraphim:", lineno=3,),
+                Line(
+                    content="Tibi omnes Ángeli, * tibi: ",
+                    lineno=2,
+                ),
+                Line(
+                    content="Tibi Chérubim * et Séraphim:",
+                    lineno=3,
+                ),
             ),
-            (Line(content="/:(Fit reverentia):/ Sanctus, * Dóminus.", lineno=4,),),
-            (Line(content="Pleni sunt cæli et terra * tuæ.", lineno=5,),),
+            (
+                Line(
+                    content="/:(Fit reverentia):/ Sanctus, * Dóminus.",
+                    lineno=4,
+                ),
+            ),
+            (
+                Line(
+                    content="Pleni sunt cæli et terra * tuæ.",
+                    lineno=5,
+                ),
+            ),
         ],
         HymnCreate(
             title="te deum laudamus te",
@@ -301,8 +320,14 @@ hymn_test = (
                     parts=[
                         LineBase(content="Te Deum laudámus: * te", lineno=0),
                         LineBase(content="Te ætérnum Patrem * omnis", lineno=1),
-                        LineBase(content="Tibi omnes Ángeli, * tibi:", lineno=2,),
-                        LineBase(content="Tibi Chérubim * et Séraphim:", lineno=3,),
+                        LineBase(
+                            content="Tibi omnes Ángeli, * tibi:",
+                            lineno=2,
+                        ),
+                        LineBase(
+                            content="Tibi Chérubim * et Séraphim:",
+                            lineno=3,
+                        ),
                     ]
                 ),
                 VerseCreate(
@@ -316,7 +341,10 @@ hymn_test = (
                 ),
                 VerseCreate(
                     parts=[
-                        LineBase(content="Pleni sunt cæli et terra * tuæ.", lineno=5,)
+                        LineBase(
+                            content="Pleni sunt cæli et terra * tuæ.",
+                            lineno=5,
+                        )
                     ]
                 ),
             ],
@@ -325,28 +353,27 @@ hymn_test = (
 )
 
 
-def test_guess_verse_obj():
-    for verses, correct_obj in candidates:
-        debug(verses[0], correct_obj)
-        resp, data = parsers.guess_verse_obj(verses[0], correct_obj.title)
-        assert resp is type(correct_obj)
-        if type(correct_obj) is type(ReadingCreate):
-            assert data["ref"]
+@pytest.mark.parametrize("verses,correct_obj", candidates)
+def test_guess_verse_obj(verses, correct_obj):
+    resp, data = parsers.guess_verse_obj(verses[0], correct_obj.title)
+    assert resp is type(correct_obj)
+    if type(correct_obj) is type(ReadingCreate):
+        assert data["ref"]
 
 
-def test_parse_section():
-    global candidates
-    candidates += hymn_test
-    for section, correct_obj in candidates:
-        section_name = correct_obj.title
-        if "te deum" in section_name:
-            section_name = "Te Deum"
-        resp = parsers.parse_section(
-            Path("Prayers.txt"), section_name, section, "latin", "1960"
-        )
-        debug(resp)
-        assert resp == correct_obj
+@pytest.mark.parametrize("section,correct_obj", [*candidates, *hymn_test])
+def test_parse_section(section, correct_obj):
+    section_name = correct_obj.title
+    if "te deum" in section_name:
+        section_name = "Te Deum"
+    resp = parsers.parse_section(
+        Path("Prayers.txt"), section_name, section, "latin", "1960"
+    )
+    debug(resp)
+    assert resp == correct_obj
 
+
+def test_parse_section_again():  # TODO: combine with previous
     section = (
         (
             Line(content="v. Collect here", lineno=1),
@@ -473,10 +500,10 @@ sub_candidates = (
 )
 
 
-def test_substitute_linked_content():
-    for start, linkstr, end in sub_candidates:
-        resp = parsers.substitute_linked_content([start], linkstr)
-        assert resp[0] == end
+@pytest.mark.parametrize("start,linkstr,end", sub_candidates)
+def test_substitute_linked_content(start, linkstr, end):
+    resp = parsers.substitute_linked_content([start], linkstr)
+    assert resp[0] == end
 
 
 def test_generate_datestr():
