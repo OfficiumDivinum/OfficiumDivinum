@@ -448,40 +448,9 @@ def main():
     parse_prayers_txt(root, version, "Latin")
 
     fn = Path(
-        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Psalterium/Revtrans.txt"
+        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Martyrologium/Mobile.txt"
     )
-    parse_translations(fn, "Latin")
-
-    root = Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/")
-    success = []
-    failed = []
-    errors = []
-    import typer
-
-    with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
-        for fn in fns:
-            if fn.name in ["Translate.txt", "Revtrans.txt"]:
-                parse_translations(fn, "Latin")
-                continue
-
-            # we need to handle kalendarium  and martyrology here.
-            try:
-                things = parse_generic_file(Path(fn), version, "Latin")
-                success.append(fn)
-            except (FileNotFoundError, EmptyFileError):
-                pass
-            except Exception as e:
-                errors.append(e)
-                failed.append(fn)
-
-    print(
-        f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f) :2}% parsed"
-    )
-    for i, fn in enumerate(failed):
-        print(fn)
-        print(f"Errors: {errors[i]}")
-
-    # # parse_for_prayers(Path(fn))
+    debug(parse_generic_file(fn, "1960", "Latin"))
 
 
 if __name__ == "__main__":
