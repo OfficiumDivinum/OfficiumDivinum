@@ -112,6 +112,7 @@ rank_table_by_calendar = {
     "newcal": new_rank_table,
     "1954": rev_trad_rank,
     "1955": rev_trad_rank,
+    "monastic": rev_trad_rank,
 }
 
 latin_feminine_ordinals = [
