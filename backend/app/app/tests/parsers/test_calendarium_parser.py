@@ -54,13 +54,14 @@ def test_extract_line(line, correct_resp):
 
 
 versions = (
-    (Path("K1960.txt"), "1960"),
-    (Path("KM.txt"), "monastic"),
-    (Path("KNC.txt"), "newcal"),
+    (Path("K1960.txt"), "1960", "i classis"),
+    (Path("KM.txt"), "monastic", "duplex i classis"),
+    (Path("KNC.txt"), "newcal", "i classis"),
 )
 
 
-@pytest.mark.parametrize("fn,version", versions)
-def test_get_version(fn: Path, version: str):
+@pytest.mark.parametrize("fn,version,rank_name", versions)
+def test_get_version(fn: Path, version: str, rank_name: str):
     parsers.kalendarium.get_version(fn)
     assert parsers.kalendarium.version == version
+    assert parsers.kalendarium.rank_table[6] == rank_name
