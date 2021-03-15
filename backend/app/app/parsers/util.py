@@ -37,7 +37,7 @@ class Thing:
 
 rubrica_versions = {
     "1960": ["1960"],
-    "1955": ["1950"],
+    "1955": ["1955"],
     "DA": ["divino"],
     "1910": ["1910", "tridentina"],
     "1570": ["1570", "tridentina"],
@@ -77,17 +77,30 @@ def resolve_rubrica(line: str, version: str) -> Dict:
         "replacement": None,
         "skip_next": False,
     }
+    line = line.strip()
+    if (match := re.search(r"(.+)(\(.*rubrica.*\))", line)) :
+        if any((x in match.group(2) for x in versions)):
+            data["line"] = match.group(1).strip()
 
-    if (match := re.search(r"(.+)(\(rubrica.*\))", line)) :
-        if version in match.group(2):
-            data["line"] = match.group(1)
-        return data
+    elif (match := re.search(r"(\(.*rubrica.*\)(.+))", line)) :
+        if any((x in match.group(1) for x in versions)):
+            data["line"] = match.group(2).strip()
 
-    if (match := re.search(r"^\(rubrica (.*)\)$", line.strip())) :
-        debug(version, match.groups())
-        if version not in match.group(1):
+    elif (match := re.search(r"^\(.*?rubrica (.*)dicuntur\)$", line.strip())) :
+        if any((x in match.group(1) for x in versions)):
+            data["replace_previous"] = True
+        else:
             data["skip_next"] = True
-        return data
+
+    elif (match := re.search(r"^\(.*rubrica (.*)omittitur\)$", line.strip())) :
+        if any((x in match.group(1) for x in versions)):
+            data["replace_previous"] = True
+
+    elif (match := re.search(r"^\(.*rubrica (.*)\)$", line.strip())) :
+        if not any((x in match.group(1) for x in versions)):
+            data["skip_next"] = True
+
+    return data
 
 
 def validate_section(section: List) -> bool:
