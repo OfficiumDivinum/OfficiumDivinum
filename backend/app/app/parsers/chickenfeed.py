@@ -292,7 +292,8 @@ def parse_section(
         "source_section": section.source_section,
     }
     if version:
-        section_data["versions"]: [version]
+        debug(version)
+        section_data["versions"] = [version]
     section_data.update(extract_section_information(section_name, fn.name))
 
     if section_obj is FeastCreate:
@@ -316,6 +317,7 @@ def parse_section(
 
     rubrics = None
     section_content = []
+    debug(section_data)
 
     for verse in section.content:
         data = {}
@@ -428,6 +430,10 @@ def parse_section(
             assert section_content
             section_content.sourcefile = section_data["sourcefile"]
             section_content.source_section = section_data["source_section"]
+            try:
+                section_content.versions = section_data["versions"]
+            except (KeyError, AttributeError, ValueError):
+                pass
             return section_content
 
         for i, verse in enumerate(section_content):
@@ -438,6 +444,10 @@ def parse_section(
             section_content = section_content[0]
             section_content.sourcefile = section_data["sourcefile"]
             section_content.source_section = section_data["source_section"]
+            try:
+                section_content.versions = section_data["versions"]
+            except (KeyError, AttributeError, ValueError):
+                pass
         assert section_content
         return section_content
 
@@ -447,6 +457,7 @@ def parse_section(
         data = {"title": section_name, "language": language, "parts": section_content}
         data.update(section_data)
         if section_obj is HymnCreate:
+            debug(data)
             assert section_data["hymn_version"]
             title = re.search(
                 r"(.*)[\.,;:]*", section_content[0].parts[0].content

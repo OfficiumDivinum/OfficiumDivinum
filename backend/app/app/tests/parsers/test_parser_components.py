@@ -122,6 +122,7 @@ candidates = [
             )
         ],
         PrayerCreate(
+            versions=["1960"],
             language="latin",
             parts=[
                 LineBase(
@@ -133,7 +134,6 @@ candidates = [
                 LineBase(content="Amen.", prefix="R.", lineno=2),
             ],
             title="Per Dominum",
-            versions=None,
             sourcefile="Prayers.txt",
             source_section="Per Dominum",
         ),
@@ -148,13 +148,13 @@ candidates = [
             ]
         ),
         PrayerCreate(
+            versions=["1960"],
             language="latin",
             parts=[
                 LineBase(content="Most of Our Father", lineno=1),
                 LineBase(content="Sed libera.", prefix="R.", lineno=2),
             ],
             title="Pater Noster",
-            versions=None,
             sourcefile="Prayers.txt",
             source_section="Pater Noster",
         ),
@@ -167,6 +167,7 @@ candidates = [
             )
         ],
         VersicleCreate(
+            versions=["1960"],
             language="latin",
             parts=[
                 LineBase(content="Benedicámus Dómino.", prefix="V.", lineno=1),
@@ -185,6 +186,7 @@ candidates = [
             )
         ],
         BlockCreate(
+            versions=["1960"],
             sourcefile="Prayers.txt",
             source_section="credo",
             language="latin",
@@ -200,6 +202,7 @@ candidates = [
             (Line(content="R. Deo grátias.", lineno=1),),
         ],
         VersicleCreate(
+            versions=["1960"],
             sourcefile="Prayers.txt",
             source_section="Deo Gratias",
             language="latin",
@@ -227,6 +230,7 @@ candidates = [
             )
         ],
         PrayerCreate(
+            versions=["1960"],
             sourcefile="Prayers.txt",
             source_section="Ante",
             title="Ante",
@@ -248,6 +252,7 @@ candidates = [
             )
         ],
         ReadingCreate(
+            versions=["1960"],
             sourcefile="Prayers.txt",
             source_section="Lectio1",
             title="Lectio1",
@@ -270,6 +275,7 @@ candidates = [
             )
         ],
         ReadingCreate(
+            versions=["1960"],
             sourcefile="Prayers.txt",
             source_section="Lectio1",
             title="Lectio1",
@@ -294,6 +300,7 @@ candidates = [
             )
         ],
         ReadingCreate(
+            versions=["1960"],
             sourcefile="Prayers.txt",
             source_section="Lectio1",
             title="Lectio1",
@@ -336,10 +343,10 @@ section_test = (
             ),
         ],
         HymnCreate(
+            versions=["1960"],
             sourcefile="Prayers.txt",
             source_section="Te Deum",
             title="te deum laudamus te",
-            versions=["1960"],
             hymn_version="pius v",
             language="latin",
             parts=[
@@ -393,6 +400,7 @@ section_test = (
         ),
         [
             PrayerCreate(
+                versions=["1960"],
                 sourcefile="Prayers.txt",
                 source_selfection="Oratio mortuorum",
                 title="Oratio mortuorum",
@@ -404,6 +412,7 @@ section_test = (
                 language="latin",
             ),
             PrayerCreate(
+                versions=["1960"],
                 sourcefile="Prayers.txt",
                 source_selfection="Oratio mortuorum",
                 oremus=True,
