@@ -579,3 +579,63 @@ datestr_candidates = (
 @pytest.mark.parametrize("candidate,resp", datestr_candidates)
 def test_generate_datestr(candidate: str, resp: str):
     assert parsers.generate_datestr(candidate) == resp
+
+
+header_rubrica_candidates = (
+    ["[Responsory1](rubrica tridentina aut rubrica divino)", "1910", True],
+    ["[Responsory1](rubrica tridentina aut rubrica divino)", "1960", False],
+    ["[Responsory1](rubrica tridentina aut rubrica divino)", "1570", True],
+    ["[Section]", "nonesuch", True],
+)
+
+
+@pytest.mark.parametrize("line,version,resp", header_rubrica_candidates)
+def test_resolve_rubrica_header(line, version, resp):
+    assert parsers.util.resolve_rubrica_header(line, version) == resp
+
+
+# rubrica_candidates = ["(sed rubrica tridentina omittitur)", "1910", False, True][
+#     "(sed rubrica monastica dicuntur)", "monastic", None, True
+# ]["(sed rubrica monastica)" "monastic", False, True][
+#     "[Prelude Vespera] (rubrica 1955 aut rubrica 1960) ",
+#     "1955",
+#     "[Prelude Vespera]",
+#     False,
+# ]
+
+
+# @pytes.mark.parametrize("line,version,resp,replace", rubrica_candidates)
+# def test_resolve_rubrica(line, version, resp, replace):
+#     assert parsers.util.resolve_rubrica(line, version) == (resp, replace)
+
+
+# section_version_candidates = (
+#     "[Rank](rubrica 1570 aut rubrica 1910 aut rubrica divino)",
+#     ["1570", "1910", "DA"],
+# )
+
+
+# # tests for sections with 'Rubrica' anywhere near them
+# @pytest.mark.parametrize("candidate,version", section_version_candidates)
+# def test_guess_section_version(candidate, version):
+#     assert parsers.util.guess_section_version(candidate) == version
+
+
+# # tests for file guessing
+
+# not_monastic = ["1570", "1910", "DA", "1955", "1960", "OP", "newcal"]
+# file_version_candidates = (
+#     (Path("SanctiM/01-02.txt"), ["monastic"]),
+#     (Path("TemporaM/01-02.txt"), ["monastic"]),
+#     (Path("Sancti/01-02.txt"), not_monastic),
+#     (Path("Tempora/01-02.txt"), not_monastic),
+#     (Path("Martyrologium/01-02.txt"), ["1910", "DA", "OP"]),
+#     (Path("Martyrologium1570/01-02.txt"), ["1570"]),
+#     (Path("Martyrologium1960/01-02.txt"), ["1960", "newcal"]),
+#     (Path("Martyrologium1955R/01-02.txt"), ["1955"]),
+# )
+
+
+# @pytest.mark.parametrize("candidate,version", file_version_candidates)
+# def test_guess_file_version(candidate, version):
+#     assert parsers.util.guess_file_version(candidate) == version
