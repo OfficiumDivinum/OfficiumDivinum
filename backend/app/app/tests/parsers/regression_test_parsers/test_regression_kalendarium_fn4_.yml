@@ -6,7 +6,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: de Tempore
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 1 Jan
   language: latin
@@ -15,7 +16,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 2 Jan
   language: latin
@@ -24,7 +26,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 3 Jan
   language: latin
@@ -33,7 +36,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 4 Jan
   language: latin
@@ -42,7 +46,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 Jan
   language: latin
@@ -51,7 +56,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 6 Jan
   language: latin
@@ -60,7 +66,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 7 Jan
   language: latin
@@ -69,7 +76,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 8 Jan
   language: latin
@@ -78,7 +86,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 9 Jan
   language: latin
@@ -87,7 +96,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 10 Jan
   language: latin
@@ -96,13 +106,15 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 11 Jan
     name: S. Hyginus Pape Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 11 Jan
   language: latin
   name: Die Undecima Januarii
@@ -110,7 +122,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 12 Jan
   language: latin
@@ -119,7 +132,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 13 Jan
   language: latin
@@ -128,13 +142,15 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 14 Jan
     name: S. Felicis Presbyteri et Mart.
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 14 Jan
   language: latin
   name: S. Hilarii Episcopi Confessoris et Ecclesiae Doctoris
@@ -142,13 +158,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 15 Jan
     name: S. Mauri Abbatis
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 15 Jan
   language: latin
   name: S. Pauli primi Eremitae et Confessoris
@@ -156,7 +174,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 16 Jan
   language: latin
@@ -165,7 +184,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 Jan
   language: latin
@@ -174,7 +194,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 18 Jan
   language: latin
@@ -183,13 +204,15 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 19 Jan
     name: S. Canuti Mart.
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 19 Jan
   language: latin
   name: S. Maurii et Soc. Mart.
@@ -197,7 +220,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 20 Jan
   language: latin
@@ -206,7 +230,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 21 Jan
   language: latin
@@ -215,7 +240,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 22 Jan
   language: latin
@@ -224,13 +250,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 23 Jan
     name: S. Emerentianae Virginis et Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 23 Jan
   language: latin
   name: S. Raymundi de Penafort Confessoris
@@ -238,7 +266,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 24 Jan
   language: latin
@@ -247,7 +276,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 25 Jan
   language: latin
@@ -256,7 +286,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 26 Jan
   language: latin
@@ -265,7 +296,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 27 Jan
   language: latin
@@ -274,13 +306,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 28 Jan
     name: S. Agnetis Virginis Martyris secundo
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 28 Jan
   language: latin
   name: S. Petri Nolasci Confessoris
@@ -288,7 +322,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 29 Jan
   language: latin
@@ -297,7 +332,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 30 Jan
   language: latin
@@ -306,7 +342,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 31 Jan
   language: latin
@@ -315,7 +352,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 1 Feb
   language: latin
@@ -324,7 +362,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 2 Feb
   language: latin
@@ -333,7 +372,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 3 Feb
   language: latin
@@ -342,7 +382,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 4 Feb
   language: latin
@@ -351,7 +392,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 Feb
   language: latin
@@ -360,7 +402,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 6 Feb
   language: latin
@@ -369,7 +412,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 7 Feb
   language: latin
@@ -378,7 +422,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 8 Feb
   language: latin
@@ -387,13 +432,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 9 Feb
     name: S. Apolloniae Virginis et Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 9 Feb
   language: latin
   name: S. Cyrilli Episc Alexandrini Confessoris Ecclesiae Doctoris
@@ -401,7 +448,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 10 Feb
   language: latin
@@ -410,7 +458,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 11 Feb
   language: latin
@@ -419,7 +468,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 12 Feb
   language: latin
@@ -428,7 +478,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 14 Feb
   language: latin
@@ -437,7 +488,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 15 Feb
   language: latin
@@ -446,7 +498,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 18 Feb
   language: latin
@@ -455,7 +508,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 22 Feb
   language: latin
@@ -464,7 +518,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 23 Feb
   language: latin
@@ -473,7 +528,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 24 Feb
   language: latin
@@ -482,7 +538,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 27 Feb
   language: latin
@@ -491,13 +548,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 4 Mar
     name: S. Lucii I Papae et Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 4 Mar
   language: latin
   name: S. Casimiri
@@ -505,7 +564,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 6 Mar
   language: latin
@@ -514,7 +574,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 7 Mar
   language: latin
@@ -523,7 +584,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 8 Mar
   language: latin
@@ -532,7 +594,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 9 Mar
   language: latin
@@ -541,7 +604,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 10 Mar
   language: latin
@@ -550,7 +614,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 12 Mar
   language: latin
@@ -559,7 +624,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 Mar
   language: latin
@@ -568,7 +634,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 18 Mar
   language: latin
@@ -577,7 +644,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 19 Mar
   language: latin
@@ -586,7 +654,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 21 Mar
   language: latin
@@ -595,7 +664,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 24 Mar
   language: latin
@@ -604,7 +674,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 25 Mar
   language: latin
@@ -613,7 +684,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 27 Mar
   language: latin
@@ -622,7 +694,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 28 Mar
   language: latin
@@ -631,7 +704,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 2 Apr
   language: latin
@@ -640,7 +714,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 4 Apr
   language: latin
@@ -649,7 +724,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 Apr
   language: latin
@@ -658,7 +734,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 11 Apr
   language: latin
@@ -667,7 +744,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 13 Apr
   language: latin
@@ -676,7 +754,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 14 Apr
   language: latin
@@ -685,7 +764,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 Apr
   language: latin
@@ -694,7 +774,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 21 Apr
   language: latin
@@ -703,7 +784,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 22 Apr
   language: latin
@@ -712,7 +794,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 23 Apr
   language: latin
@@ -721,7 +804,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 24 Apr
   language: latin
@@ -730,7 +814,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 25 Apr
   language: latin
@@ -739,7 +824,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 26 Apr
   language: latin
@@ -748,7 +834,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 27 Apr
   language: latin
@@ -757,13 +844,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 28 Apr
     name: S. Peter Chanel, priest and martyr
     rank_defeatable: false
     rank_name: iii classis
-    version: newcal
+    versions:
+    - newcal
   datestr: 28 Apr
   language: latin
   name: S. Pauli a Cruce Confessoris
@@ -771,7 +860,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 29 Apr
   language: latin
@@ -780,7 +870,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 30 Apr
   language: latin
@@ -789,7 +880,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 1 May
   language: latin
@@ -798,7 +890,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 2 May
   language: latin
@@ -807,7 +900,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 3 May
   language: latin
@@ -816,7 +910,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 4 May
   language: latin
@@ -825,7 +920,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 May
   language: latin
@@ -834,7 +930,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 7 May
   language: latin
@@ -843,7 +940,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 9 May
   language: latin
@@ -852,13 +950,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 10 May
     name: Ss. Gordiani et Epimachi Martyri
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 10 May
   language: latin
   name: S. Antonii Episcopi Confessoris
@@ -866,7 +966,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 11 May
   language: latin
@@ -875,7 +976,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 12 May
   language: latin
@@ -884,13 +986,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 13 May
     name: Our Lady of Fatima
     rank_defeatable: false
     rank_name: iii classis
-    version: newcal
+    versions:
+    - newcal
   datestr: 13 May
   language: latin
   name: S.Roberti Bellarmino Episcopi Confessoris et Ecclesiae Doctoris
@@ -898,7 +1002,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 14 May
   language: latin
@@ -907,7 +1012,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 15 May
   language: latin
@@ -916,7 +1022,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 16 May
   language: latin
@@ -925,7 +1032,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 May
   language: latin
@@ -934,7 +1042,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 18 May
   language: latin
@@ -943,13 +1052,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 19 May
     name: S. Pudentianae
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 19 May
   language: latin
   name: S. Petri Celestini Papae Confessoris
@@ -957,7 +1068,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 20 May
   language: latin
@@ -966,7 +1078,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 21 May
   language: latin
@@ -975,7 +1088,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 22 May
   language: latin
@@ -984,13 +1098,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 25 May
     name: S. Urbani I Pp et Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 25 May
   language: latin
   name: S. Gregory VII Papae Confessoris
@@ -998,7 +1114,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 26 May
   language: latin
@@ -1007,7 +1124,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 27 May
   language: latin
@@ -1016,7 +1134,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 28 May
   language: latin
@@ -1025,13 +1144,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 29 May
     name: S. Joanne Papa et Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 29 May
   language: latin
   name: S. Mariae Magdalenae de Pazzis
@@ -1039,7 +1160,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 30 May
   language: latin
@@ -1048,7 +1170,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 31 May
   language: latin
@@ -1057,13 +1180,15 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 1 Jun
     name: S. Petronillae
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 1 Jun
   language: latin
   name: S. Angelae Mericiae Virginis
@@ -1071,7 +1196,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 2 Jun
   language: latin
@@ -1080,7 +1206,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 3 Jun
   language: latin
@@ -1089,7 +1216,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 4 Jun
   language: latin
@@ -1098,7 +1226,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 Jun
   language: latin
@@ -1107,7 +1236,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 6 Jun
   language: latin
@@ -1116,7 +1246,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 9 Jun
   language: latin
@@ -1125,7 +1256,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 10 Jun
   language: latin
@@ -1134,7 +1266,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 11 Jun
   language: latin
@@ -1143,13 +1276,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 12 Jun
     name: 'SS Martyrum '
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 12 Jun
   language: latin
   name: S. Joannis a S. Facundo Confessoris
@@ -1157,7 +1292,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 13 Jun
   language: latin
@@ -1166,7 +1302,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 14 Jun
   language: latin
@@ -1175,7 +1312,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 15 Jun
   language: latin
@@ -1184,7 +1322,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 Jun
   language: latin
@@ -1193,13 +1332,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 18 Jun
     name: Ss. Marci et Marcellini Martyrum
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 18 Jun
   language: latin
   name: S. Ephraem Syri Confessorem et Ecclesiae Doctorem
@@ -1207,13 +1348,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 19 Jun
     name: Ss. Gervasii et Protasii Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 19 Jun
   language: latin
   name: S. Julianae de Falconeriis Virginae
@@ -1221,7 +1364,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 20 Jun
   language: latin
@@ -1230,7 +1374,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 21 Jun
   language: latin
@@ -1239,13 +1384,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 22 Jun
     name: S. Paulinus of Nola, bishop
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 22 Jun
   language: latin
   name: Ss. John Fisher and Thomas More, martyrs
@@ -1253,7 +1400,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 23 Jun
   language: latin
@@ -1262,7 +1410,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 24 Jun
   language: latin
@@ -1271,7 +1420,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 25 Jun
   language: latin
@@ -1280,7 +1430,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 26 Jun
   language: latin
@@ -1289,7 +1440,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 28 Jun
   language: latin
@@ -1298,7 +1450,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 29 Jun
   language: latin
@@ -1307,7 +1460,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 30 Jun
   language: latin
@@ -1316,7 +1470,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 1 Jul
   language: latin
@@ -1325,13 +1480,15 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 2 Jul
     name: Ss. Processi et Martiniani Martyrum
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 2 Jul
   language: latin
   name: In Visitatione B Mariae Virginis
@@ -1339,7 +1496,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 3 Jul
   language: latin
@@ -1348,7 +1506,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 Jul
   language: latin
@@ -1357,7 +1516,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 6 Jul
   language: latin
@@ -1366,7 +1526,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 7 Jul
   language: latin
@@ -1375,7 +1536,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 8 Jul
   language: latin
@@ -1384,7 +1546,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 9 Jul
   language: latin
@@ -1393,7 +1556,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 10 Jul
   language: latin
@@ -1402,7 +1566,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 11 Jul
   language: latin
@@ -1411,13 +1576,15 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 12 Jul
     name: Ss. Naboris et Felicis Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 12 Jul
   language: latin
   name: S. Joannis Gualberti Abbatis
@@ -1425,7 +1592,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 14 Jul
   language: latin
@@ -1434,7 +1602,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 15 Jul
   language: latin
@@ -1443,7 +1612,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 16 Jul
   language: latin
@@ -1452,7 +1622,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 Jul
   language: latin
@@ -1461,13 +1632,15 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 18 Jul
     name: pro Ss. Symphorosa et septem filiis Martyribus
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 18 Jul
   language: latin
   name: S. Camilli de Lellis Confessoris
@@ -1475,7 +1648,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 19 Jul
   language: latin
@@ -1484,7 +1658,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 20 Jul
   language: latin
@@ -1493,13 +1668,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 21 Jul
     name: S. Praxedis Virginis
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 21 Jul
   language: latin
   name: S. Laurentii de Brundusio Confessoris et Ecclesiae Doctoris
@@ -1507,7 +1684,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 22 Jul
   language: latin
@@ -1516,13 +1694,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 23 Jul
     name: S. Liborii Ep Conf
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 23 Jul
   language: latin
   name: S. Apollinaris Episcopi et Mart
@@ -1530,13 +1710,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 24 Jul
     name: S. Christinae Virginis Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 24 Jul
   language: latin
   name: S. Sharbel Makhluf, hermit
@@ -1544,13 +1726,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 25 Jul
     name: S. Christophori Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 25 Jul
   language: latin
   name: S. Jacobi Apostoli
@@ -1558,7 +1742,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 26 Jul
   language: latin
@@ -1567,7 +1752,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 27 Jul
   language: latin
@@ -1576,7 +1762,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 28 Jul
   language: latin
@@ -1585,13 +1772,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 29 Jul
     name: Ss. Felicis=Simplicii=Faustini et Beatricis Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 29 Jul
   language: latin
   name: S. Marthae Virginis
@@ -1599,7 +1788,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 30 Jul
   language: latin
@@ -1608,7 +1798,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 31 Jul
   language: latin
@@ -1617,7 +1808,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 1 Aug
   language: latin
@@ -1626,13 +1818,15 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 2 Aug
     name: St Stephano Papae Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 2 Aug
   language: latin
   name: S. Alphonsi Mariae de Ligorio Episc Conf et Eccles Doct
@@ -1640,7 +1834,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 4 Aug
   language: latin
@@ -1649,7 +1844,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 Aug
   language: latin
@@ -1658,13 +1854,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 6 Aug
     name: Ss. Xysti=Felicissimi et Agapiti Martyrum
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 6 Aug
   language: latin
   name: The Transfiguratione Domini Nostri Jesu Christi
@@ -1672,13 +1870,15 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 7 Aug
     name: S. Donati=Ep et Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 7 Aug
   language: latin
   name: S. Cajetani Confessoris
@@ -1686,13 +1886,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 8 Aug
     name: Ss. Cyriacii et socii maryres
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 8 Aug
   language: latin
   name: S. Joannis Vianney Confessoris
@@ -1700,13 +1902,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 9 Aug
     name: Vigilia S. Laurentii
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 9 Aug
   language: latin
   name: S. Teresa Benedicta of the Cross (Edith Stein), virgin and martyr
@@ -1714,7 +1918,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 10 Aug
   language: latin
@@ -1723,7 +1928,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 11 Aug
   language: latin
@@ -1732,7 +1938,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 12 Aug
   language: latin
@@ -1741,7 +1948,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 13 Aug
   language: latin
@@ -1750,18 +1958,21 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 14 Aug
     name: Vigilia Assumptionis BMV
     rank_defeatable: false
     rank_name: iii classis
-    version: newcal
+    versions:
+    - newcal
   - datestr: 14 Aug
     name: S. Eusebii
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 14 Aug
   language: latin
   name: S. Maximilian Mary Kolbe, priest and martyr
@@ -1769,7 +1980,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 15 Aug
   language: latin
@@ -1778,7 +1990,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 16 Aug
   language: latin
@@ -1787,7 +2000,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 Aug
   language: latin
@@ -1796,7 +2010,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 18 Aug
   language: latin
@@ -1805,7 +2020,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 19 Aug
   language: latin
@@ -1814,7 +2030,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 20 Aug
   language: latin
@@ -1823,7 +2040,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 21 Aug
   language: latin
@@ -1832,13 +2050,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 22 Aug
     name: Ss. Timothei=Hippolyti et Symphoriani Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 22 Aug
   language: latin
   name: Festum Immaculati Cordis Beatae Mariae Virginis
@@ -1846,7 +2066,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 23 Aug
   language: latin
@@ -1855,7 +2076,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 24 Aug
   language: latin
@@ -1864,7 +2086,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 25 Aug
   language: latin
@@ -1873,7 +2096,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 26 Aug
   language: latin
@@ -1882,7 +2106,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 27 Aug
   language: latin
@@ -1891,13 +2116,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 28 Aug
     name: S. Hermetis=Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 28 Aug
   language: latin
   name: S. Augustini Episcopi et Confessoris et Ecclesiae Doctoris
@@ -1905,13 +2132,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 29 Aug
     name: S. Sabinae Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 29 Aug
   language: latin
   name: Decollatione S. Joannis Baptistae
@@ -1919,13 +2148,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 30 Aug
     name: Ss. Felicis et Soc. Mart.
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 30 Aug
   language: latin
   name: S. Rosae a Sancta Maria Limanae Virgini
@@ -1933,7 +2164,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 31 Aug
   language: latin
@@ -1942,13 +2174,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 1 Sep
     name: Ss. Duodecim Fratrum Mm
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 1 Sep
   language: latin
   name: S. Aegidii Abbatis
@@ -1956,7 +2190,8 @@
   rank_defeatable: true
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 2 Sep
   language: latin
@@ -1965,7 +2200,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 3 Sep
   language: latin
@@ -1974,7 +2210,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 Sep
   language: latin
@@ -1983,13 +2220,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 8 Sep
     name: S. Adriani=Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 8 Sep
   language: latin
   name: Nativitate Beatae Mariae Virginis
@@ -1997,13 +2236,15 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 9 Sep
     name: S. Gorgonii mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 9 Sep
   language: latin
   name: S. Peter Claver, priest
@@ -2011,7 +2252,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 10 Sep
   language: latin
@@ -2020,7 +2262,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 11 Sep
   language: latin
@@ -2029,7 +2272,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 12 Sep
   language: latin
@@ -2038,7 +2282,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 14 Sep
   language: latin
@@ -2047,7 +2292,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 15 Sep
   language: latin
@@ -2056,13 +2302,15 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 16 Sep
     name: Ss. Euphemiae=Luciae et Geminiani Martyrum
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 16 Sep
   language: latin
   name: Ss. Cornelii et Cypriani Pontificium et Martyrum
@@ -2070,7 +2318,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 Sep
   language: latin
@@ -2079,7 +2328,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 18 Sep
   language: latin
@@ -2088,7 +2338,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 19 Sep
   language: latin
@@ -2097,13 +2348,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 20 Sep
     name: S. Eustachii et Sociorum Martyrum
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 20 Sep
   language: latin
   name: S. Andrew Kim Taegon, priest, and Paul Chong Hasang and companions, martyrs
@@ -2111,7 +2364,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 21 Sep
   language: latin
@@ -2120,13 +2374,15 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 22 Sep
     name: Ss. Martyrsi Mauritii et Sociorum
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 22 Sep
   language: latin
   name: S. Thomae de Villanove Episcopi et Confessoris
@@ -2134,18 +2390,21 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 23 Sep
     name: S. Lini Papae et Martyris
     rank_defeatable: false
     rank_name: iii classis
-    version: newcal
+    versions:
+    - newcal
   - datestr: 23 Sep
     name: S. Theclae Virgini et Martyri
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 23 Sep
   language: latin
   name: S. Pio of Pietrelcina (Padre Pio), priest
@@ -2153,7 +2412,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 24 Sep
   language: latin
@@ -2162,13 +2422,15 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 26 Sep
     name: Ss. Cypriani et Justinae Martyri
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 26 Sep
   language: latin
   name: "Ss. Jean de Br\x8Ebeuf, Isaac Jogues, priests and companions, Martyrs"
@@ -2176,7 +2438,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 27 Sep
   language: latin
@@ -2185,7 +2448,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 28 Sep
   language: latin
@@ -2194,7 +2458,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 29 Sep
   language: latin
@@ -2203,7 +2468,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 30 Sep
   language: latin
@@ -2212,7 +2478,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 1 Oct
   language: latin
@@ -2221,7 +2488,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 2 Oct
   language: latin
@@ -2230,7 +2498,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 3 Oct
   language: latin
@@ -2239,7 +2508,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 4 Oct
   language: latin
@@ -2248,7 +2518,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 Oct
   language: latin
@@ -2257,7 +2528,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 6 Oct
   language: latin
@@ -2266,7 +2538,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 7 Oct
   language: latin
@@ -2275,13 +2548,15 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 8 Oct
     name: Ss. Martyrum Sergii=Bacchi=Marcelli et Apuleji
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 8 Oct
   language: latin
   name: S. Brigittae Viduae
@@ -2289,13 +2564,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 9 Oct
     name: n for S. Dyonisii Ep Rustici et Eleutherii
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 9 Oct
   language: latin
   name: S. Joannis Leonardi Confessoris
@@ -2303,7 +2580,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 10 Oct
   language: latin
@@ -2312,7 +2590,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 11 Oct
   language: latin
@@ -2321,7 +2600,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 13 Oct
   language: latin
@@ -2330,7 +2610,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 14 Oct
   language: latin
@@ -2339,7 +2620,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 15 Oct
   language: latin
@@ -2348,7 +2630,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 16 Oct
   language: latin
@@ -2357,7 +2640,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 Oct
   language: latin
@@ -2366,7 +2650,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 18 Oct
   language: latin
@@ -2375,7 +2660,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 19 Oct
   language: latin
@@ -2384,7 +2670,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 20 Oct
   language: latin
@@ -2393,13 +2680,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 21 Oct
     name: Ss. Ursule et Soc Virg et Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 21 Oct
   language: latin
   name: S. Hilarionis Abbatis
@@ -2407,7 +2696,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 23 Oct
   language: latin
@@ -2416,7 +2706,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 24 Oct
   language: latin
@@ -2425,13 +2716,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 25 Oct
     name: Ss. Chrysanthi et Dariae Martyres
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 25 Oct
   language: latin
   name: S. Isidori Agricolæ Confessoris
@@ -2439,7 +2732,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 26 Oct
   language: latin
@@ -2448,7 +2742,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 28 Oct
   language: latin
@@ -2457,7 +2752,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 1 Nov
   language: latin
@@ -2466,7 +2762,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 2 Nov
   language: latin
@@ -2475,7 +2772,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 3 Nov
   language: latin
@@ -2484,13 +2782,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 4 Nov
     name: Ss. Mart. Vitalis et Agricolae
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 4 Nov
   language: latin
   name: S. Caroli Episcopi et Confessoris
@@ -2498,7 +2798,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 8 Nov
   language: latin
@@ -2507,13 +2808,15 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 9 Nov
     name: S. Theodori
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 9 Nov
   language: latin
   name: In dedicatione Basilicae Ss. Salvatoris
@@ -2521,13 +2824,15 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 10 Nov
     name: Ss. Tryphonis et Sociorum Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 10 Nov
   language: latin
   name: S. Andreae Avellini Confessoris
@@ -2535,13 +2840,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 11 Nov
     name: S. Menna; Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 11 Nov
   language: latin
   name: S. Martini Episcopi et Confessoris
@@ -2549,7 +2856,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 12 Nov
   language: latin
@@ -2558,13 +2866,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 13 Nov
     name: S. Didaci Confessoris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 13 Nov
   language: latin
   name: S. Franciscæ Xaveriæ Cabrini Virginis
@@ -2572,7 +2882,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 14 Nov
   language: latin
@@ -2581,7 +2892,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 15 Nov
   language: latin
@@ -2590,7 +2902,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 16 Nov
   language: latin
@@ -2599,7 +2912,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 17 Nov
   language: latin
@@ -2608,7 +2922,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 18 Nov
   language: latin
@@ -2617,13 +2932,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 19 Nov
     name: S. Pontianae Papae et Martyre
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 19 Nov
   language: latin
   name: S. Elisabeth vidue
@@ -2631,7 +2948,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 20 Nov
   language: latin
@@ -2640,7 +2958,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 21 Nov
   language: latin
@@ -2649,7 +2968,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 22 Nov
   language: latin
@@ -2658,13 +2978,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 23 Nov
     name: S. Felicitatis Mart
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 23 Nov
   language: latin
   name: S. Clementis Papae et Martyris
@@ -2672,13 +2994,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 24 Nov
     name: S. Chrysogoni Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 24 Nov
   language: latin
   name: S. Joannis de Cruce Confessoris et Ecclesiae Doctoris
@@ -2686,7 +3010,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 25 Nov
   language: latin
@@ -2695,7 +3020,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 26 Nov
   language: latin
@@ -2704,7 +3030,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 29 Nov
   language: latin
@@ -2713,7 +3040,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 30 Nov
   language: latin
@@ -2722,7 +3050,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 2 Dec
   language: latin
@@ -2731,7 +3060,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 3 Dec
   language: latin
@@ -2740,13 +3070,15 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations:
   - datestr: 4 Dec
     name: S. Barbarae Virginis et Martyris
     rank_defeatable: false
     rank_name: commemoratio
-    version: newcal
+    versions:
+    - newcal
   datestr: 4 Dec
   language: latin
   name: S. Petri Chrysologi Episcopi Confessoris Ecclesiae Doctoris
@@ -2754,7 +3086,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 5 Dec
   language: latin
@@ -2763,7 +3096,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 6 Dec
   language: latin
@@ -2772,7 +3106,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 7 Dec
   language: latin
@@ -2781,7 +3116,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 8 Dec
   language: latin
@@ -2790,7 +3126,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 9 Dec
   language: latin
@@ -2799,7 +3136,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 10 Dec
   language: latin
@@ -2808,7 +3146,8 @@
   rank_defeatable: false
   rank_name: commemoratio
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 11 Dec
   language: latin
@@ -2817,7 +3156,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 12 Dec
   language: latin
@@ -2826,7 +3166,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 13 Dec
   language: latin
@@ -2835,7 +3176,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 16 Dec
   language: latin
@@ -2844,7 +3186,8 @@
   rank_defeatable: false
   rank_name: iii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 21 Dec
   language: latin
@@ -2853,7 +3196,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 24 Dec
   language: latin
@@ -2862,7 +3206,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 25 Dec
   language: latin
@@ -2871,7 +3216,8 @@
   rank_defeatable: false
   rank_name: i classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 26 Dec
   language: latin
@@ -2880,7 +3226,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 27 Dec
   language: latin
@@ -2889,7 +3236,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 28 Dec
   language: latin
@@ -2898,7 +3246,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 29 Dec
   language: latin
@@ -2907,7 +3256,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 30 Dec
   language: latin
@@ -2916,7 +3266,8 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal
 - commemorations: null
   datestr: 31 Dec
   language: latin
@@ -2925,4 +3276,5 @@
   rank_defeatable: false
   rank_name: ii classis
   type_: Sanctorum
-  version: newcal
+  versions:
+  - newcal

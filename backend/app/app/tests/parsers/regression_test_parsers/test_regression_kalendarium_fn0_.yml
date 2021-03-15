@@ -6,7 +6,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: de Tempore
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 1 Jan
   language: latin
@@ -15,7 +16,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 2 Jan
   language: latin
@@ -24,7 +26,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 3 Jan
   language: latin
@@ -33,7 +36,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 4 Jan
   language: latin
@@ -42,13 +46,15 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 5 Jan
     name: S. Telesphori Papae et Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 5 Jan
   language: latin
   name: Vigilia Epiphaniae
@@ -56,7 +62,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 6 Jan
   language: latin
@@ -65,7 +72,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 7 Jan
   language: latin
@@ -74,7 +82,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 8 Jan
   language: latin
@@ -83,7 +92,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 9 Jan
   language: latin
@@ -92,7 +102,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 10 Jan
   language: latin
@@ -101,7 +112,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 11 Jan
   language: latin
@@ -110,7 +122,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 12 Jan
   language: latin
@@ -119,7 +132,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 13 Jan
   language: latin
@@ -128,13 +142,15 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 14 Jan
     name: S. Felicis Presbyteri et Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 14 Jan
   language: latin
   name: S. Hilarii Episcopi Confessoris Ecclesiae Doctoris
@@ -142,13 +158,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 15 Jan
     name: S. Mauri Abbatis
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 15 Jan
   language: latin
   name: S. Pauli primi Eremitae et Confessoris
@@ -156,7 +174,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 16 Jan
   language: latin
@@ -165,7 +184,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 17 Jan
   language: latin
@@ -174,13 +194,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 18 Jan
     name: S Priscae Virginis
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 18 Jan
   language: latin
   name: Cathedrae S. Petri
@@ -188,13 +210,15 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 19 Jan
     name: S. Canuti Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 19 Jan
   language: latin
   name: S. Maurii et Soc Mart
@@ -202,7 +226,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 20 Jan
   language: latin
@@ -211,7 +236,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 21 Jan
   language: latin
@@ -220,7 +246,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 22 Jan
   language: latin
@@ -229,13 +256,15 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 23 Jan
     name: S. Emerentianae Virginis et Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 23 Jan
   language: latin
   name: S. Raymundi de Penafort Confessoris
@@ -243,7 +272,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 24 Jan
   language: latin
@@ -252,7 +282,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 25 Jan
   language: latin
@@ -261,7 +292,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 Jan
   language: latin
@@ -270,7 +302,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Jan
   language: latin
@@ -279,13 +312,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 28 Jan
     name: S. Agnetis Virginis Martyris secundo
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 28 Jan
   language: latin
   name: S. Petri Nolasci Confessoris
@@ -293,7 +328,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 29 Jan
   language: latin
@@ -302,7 +338,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 30 Jan
   language: latin
@@ -311,7 +348,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 31 Jan
   language: latin
@@ -320,7 +358,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 1 Feb
   language: latin
@@ -329,7 +368,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 2 Feb
   language: latin
@@ -338,7 +378,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 3 Feb
   language: latin
@@ -347,7 +388,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 4 Feb
   language: latin
@@ -356,7 +398,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 Feb
   language: latin
@@ -365,7 +408,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 6 Feb
   language: latin
@@ -374,7 +418,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 7 Feb
   language: latin
@@ -383,7 +428,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 8 Feb
   language: latin
@@ -392,13 +438,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 9 Feb
     name: S. Apolloniae Virginis et Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 9 Feb
   language: latin
   name: S. Cyrilli Episc Alexandrini Confessoris Ecclesiae Doctoris
@@ -406,7 +454,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 10 Feb
   language: latin
@@ -415,7 +464,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 11 Feb
   language: latin
@@ -424,7 +474,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 12 Feb
   language: latin
@@ -433,7 +484,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 14 Feb
   language: latin
@@ -442,7 +494,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 15 Feb
   language: latin
@@ -451,7 +504,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 18 Feb
   language: latin
@@ -460,7 +514,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 22 Feb
   language: latin
@@ -469,7 +524,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 23 Feb
   language: latin
@@ -478,7 +534,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 24 Feb
   language: latin
@@ -487,7 +544,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Feb
   language: latin
@@ -496,13 +554,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 4 Mar
     name: S. Lucii I Papae et Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 4 Mar
   language: latin
   name: S. Casimiri
@@ -510,7 +570,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 6 Mar
   language: latin
@@ -519,7 +580,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 7 Mar
   language: latin
@@ -528,7 +590,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 8 Mar
   language: latin
@@ -537,7 +600,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 9 Mar
   language: latin
@@ -546,7 +610,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 10 Mar
   language: latin
@@ -555,7 +620,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 12 Mar
   language: latin
@@ -564,7 +630,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 17 Mar
   language: latin
@@ -573,7 +640,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 18 Mar
   language: latin
@@ -582,7 +650,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 19 Mar
   language: latin
@@ -591,7 +660,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 21 Mar
   language: latin
@@ -600,7 +670,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 24 Mar
   language: latin
@@ -609,7 +680,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 25 Mar
   language: latin
@@ -618,7 +690,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Mar
   language: latin
@@ -627,7 +700,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 28 Mar
   language: latin
@@ -636,7 +710,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 2 Apr
   language: latin
@@ -645,7 +720,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 4 Apr
   language: latin
@@ -654,7 +730,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 Apr
   language: latin
@@ -663,7 +740,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 11 Apr
   language: latin
@@ -672,7 +750,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 13 Apr
   language: latin
@@ -681,7 +760,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 14 Apr
   language: latin
@@ -690,7 +770,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 17 Apr
   language: latin
@@ -699,7 +780,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 21 Apr
   language: latin
@@ -708,7 +790,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 22 Apr
   language: latin
@@ -717,7 +800,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 23 Apr
   language: latin
@@ -726,7 +810,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 24 Apr
   language: latin
@@ -735,7 +820,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 25 Apr
   language: latin
@@ -744,7 +830,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 Apr
   language: latin
@@ -753,7 +840,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Apr
   language: latin
@@ -762,13 +850,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 28 Apr
     name: 'S. Vitalis Mart '
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 28 Apr
   language: latin
   name: S. Pauli a Cruce Confessoris
@@ -776,7 +866,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 29 Apr
   language: latin
@@ -785,7 +876,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 30 Apr
   language: latin
@@ -794,7 +886,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 1 May
   language: latin
@@ -803,7 +896,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 2 May
   language: latin
@@ -812,13 +906,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 3 May
     name: Ss. Martyrum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 3 May
   language: latin
   name: Inventione Sanctae crucis
@@ -826,7 +922,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 4 May
   language: latin
@@ -835,7 +932,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 May
   language: latin
@@ -844,7 +942,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 6 May
   language: latin
@@ -853,7 +952,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 7 May
   language: latin
@@ -862,7 +962,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 8 May
   language: latin
@@ -871,7 +972,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 9 May
   language: latin
@@ -880,13 +982,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 10 May
     name: Ss. Gordiani et Epimachi Martyri
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 10 May
   language: latin
   name: S. Antonii Episcopi Confessoris
@@ -894,7 +998,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 12 May
   language: latin
@@ -903,7 +1008,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 13 May
   language: latin
@@ -912,7 +1018,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 14 May
   language: latin
@@ -921,7 +1028,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 15 May
   language: latin
@@ -930,7 +1038,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 16 May
   language: latin
@@ -939,7 +1048,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 17 May
   language: latin
@@ -948,7 +1058,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 18 May
   language: latin
@@ -957,13 +1068,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 19 May
     name: S. Pudentianae
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 19 May
   language: latin
   name: S. Petri Celestini Papae Confessoris
@@ -971,7 +1084,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 20 May
   language: latin
@@ -980,13 +1094,15 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 25 May
     name: S. Urbani I Pp et Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 25 May
   language: latin
   name: S. Gregory VII Papae Confessoris
@@ -994,7 +1110,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 May
   language: latin
@@ -1003,7 +1120,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 May
   language: latin
@@ -1012,7 +1130,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 28 May
   language: latin
@@ -1021,13 +1140,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 29 May
     name: S. Joanne Papa et Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 29 May
   language: latin
   name: S. Mariae Magdalenae de Pazzis
@@ -1035,7 +1156,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 30 May
   language: latin
@@ -1044,13 +1166,15 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 31 May
     name: S. Petronillae
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 31 May
   language: latin
   name: BMV Reginae
@@ -1058,7 +1182,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 2 Jun
   language: latin
@@ -1067,7 +1192,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 4 Jun
   language: latin
@@ -1076,7 +1202,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 Jun
   language: latin
@@ -1085,7 +1212,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 6 Jun
   language: latin
@@ -1094,7 +1222,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 9 Jun
   language: latin
@@ -1103,7 +1232,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 10 Jun
   language: latin
@@ -1112,7 +1242,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 11 Jun
   language: latin
@@ -1121,13 +1252,15 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 12 Jun
     name: 'SS Martyrum '
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 12 Jun
   language: latin
   name: S. Joannis a S Facundo Confessoris
@@ -1135,7 +1268,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 13 Jun
   language: latin
@@ -1144,7 +1278,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 14 Jun
   language: latin
@@ -1153,7 +1288,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 15 Jun
   language: latin
@@ -1162,13 +1298,15 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 18 Jun
     name: Ss. Marci et Marcellini Martyrum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 18 Jun
   language: latin
   name: S. Ephraem Syri Confessorem et Ecclesiae Doctorem
@@ -1176,13 +1314,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 19 Jun
     name: Ss. Gervasii et Protasii Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 19 Jun
   language: latin
   name: S. Julianae de Falconeriis Virginae
@@ -1190,7 +1330,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 20 Jun
   language: latin
@@ -1199,7 +1340,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 21 Jun
   language: latin
@@ -1208,7 +1350,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 22 Jun
   language: latin
@@ -1217,7 +1360,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 23 Jun
   language: latin
@@ -1226,7 +1370,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 24 Jun
   language: latin
@@ -1235,7 +1380,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 25 Jun
   language: latin
@@ -1244,7 +1390,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 Jun
   language: latin
@@ -1253,7 +1400,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Jun
   language: latin
@@ -1262,7 +1410,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 28 Jun
   language: latin
@@ -1271,7 +1420,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 29 Jun
   language: latin
@@ -1280,7 +1430,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 30 Jun
   language: latin
@@ -1289,7 +1440,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 1 Jul
   language: latin
@@ -1298,13 +1450,15 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 2 Jul
     name: Ss. Martyrum tantum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 2 Jul
   language: latin
   name: In Visitatione B Mariae Virginis
@@ -1312,7 +1466,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 3 Jul
   language: latin
@@ -1321,7 +1476,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 4 Jul
   language: latin
@@ -1330,7 +1486,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 Jul
   language: latin
@@ -1339,7 +1496,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 6 Jul
   language: latin
@@ -1348,7 +1506,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 7 Jul
   language: latin
@@ -1357,7 +1516,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 8 Jul
   language: latin
@@ -1366,7 +1526,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 10 Jul
   language: latin
@@ -1375,7 +1536,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 11 Jul
   language: latin
@@ -1384,13 +1546,15 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 12 Jul
     name: Ss. Naboris et Felicis Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 12 Jul
   language: latin
   name: S. Joannis Gualberti Abbatis
@@ -1398,7 +1562,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 13 Jul
   language: latin
@@ -1407,7 +1572,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 14 Jul
   language: latin
@@ -1416,7 +1582,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 15 Jul
   language: latin
@@ -1425,7 +1592,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 16 Jul
   language: latin
@@ -1434,7 +1602,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 17 Jul
   language: latin
@@ -1443,13 +1612,15 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 18 Jul
     name: pro Ss. Symphorosa et septem filiis Martyribus
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 18 Jul
   language: latin
   name: S. Camilli de Lellis Confessoris
@@ -1457,7 +1628,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 19 Jul
   language: latin
@@ -1466,7 +1638,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 20 Jul
   language: latin
@@ -1475,7 +1648,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 21 Jul
   language: latin
@@ -1484,7 +1658,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 22 Jul
   language: latin
@@ -1493,13 +1668,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 23 Jul
     name: S. Liborii Ep Conf
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 23 Jul
   language: latin
   name: S. Apollinaris Episcopi et Mart
@@ -1507,13 +1684,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 24 Jul
     name: S. Christinae
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 24 Jul
   language: latin
   name: Vigilia S. Jacobi Apostoli
@@ -1521,13 +1700,15 @@
   rank_defeatable: true
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 25 Jul
     name: S. Christophori Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 25 Jul
   language: latin
   name: S. Jacobi Apostoli
@@ -1535,7 +1716,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 Jul
   language: latin
@@ -1544,7 +1726,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Jul
   language: latin
@@ -1553,7 +1736,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 28 Jul
   language: latin
@@ -1562,13 +1746,15 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 29 Jul
     name: Ss. Felicis=Simplicii=Faustini et Beatricis Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 29 Jul
   language: latin
   name: S. Marthae Virginis
@@ -1576,7 +1762,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 30 Jul
   language: latin
@@ -1585,7 +1772,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 31 Jul
   language: latin
@@ -1594,18 +1782,21 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 1 Aug
     name: S. Pauli
     rank_defeatable: false
     rank_name: duplex majus
-    version: '1955'
+    versions:
+    - '1955'
   - datestr: 1 Aug
     name: Ss. Martyrum Machabaeorum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 1 Aug
   language: latin
   name: S. Petri ad Vincula
@@ -1613,13 +1804,15 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 2 Aug
     name: St Stephano Papae Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 2 Aug
   language: latin
   name: S. Alphonsi Mariae de Ligorio Episc Conf et Eccles Doct
@@ -1627,7 +1820,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 3 Aug
   language: latin
@@ -1636,7 +1830,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 4 Aug
   language: latin
@@ -1645,7 +1840,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 Aug
   language: latin
@@ -1654,13 +1850,15 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 6 Aug
     name: Ss. Xysti=Felicissimi et Agapiti Martyrum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 6 Aug
   language: latin
   name: The Transfiguratione Domini Nostri Jesu Christi
@@ -1668,13 +1866,15 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 7 Aug
     name: S. Donati=Ep et Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 7 Aug
   language: latin
   name: S. Cajetani Confessoris
@@ -1682,7 +1882,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 8 Aug
   language: latin
@@ -1691,18 +1892,21 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 9 Aug
     name: Vigiliae S. Laurentii Martyris
     rank_defeatable: true
     rank_name: semiduplex
-    version: '1955'
+    versions:
+    - '1955'
   - datestr: 9 Aug
     name: S. Romanae Maryris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 9 Aug
   language: latin
   name: S. Joannis Vianney Confessoris
@@ -1710,7 +1914,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 10 Aug
   language: latin
@@ -1719,7 +1924,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 11 Aug
   language: latin
@@ -1728,7 +1934,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 12 Aug
   language: latin
@@ -1737,7 +1944,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 13 Aug
   language: latin
@@ -1746,13 +1954,15 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 14 Aug
     name: S. Eusebii
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 14 Aug
   language: latin
   name: Vigilia Assumptionis B.M.V.
@@ -1760,7 +1970,8 @@
   rank_defeatable: true
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 15 Aug
   language: latin
@@ -1769,7 +1980,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 16 Aug
   language: latin
@@ -1778,7 +1990,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 17 Aug
   language: latin
@@ -1787,13 +2000,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 18 Aug
     name: S. Agapiti Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 18 Aug
   language: latin
   name: Quarta die infra Octavam S. Assumptionis
@@ -1801,7 +2016,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 19 Aug
   language: latin
@@ -1810,7 +2026,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 20 Aug
   language: latin
@@ -1819,7 +2036,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 21 Aug
   language: latin
@@ -1828,13 +2046,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 22 Aug
     name: Ss. Timothei=Hippolyti et Symphoriani Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 22 Aug
   language: latin
   name: Immaculate Heart of Mary
@@ -1842,7 +2062,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 23 Aug
   language: latin
@@ -1851,7 +2072,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 24 Aug
   language: latin
@@ -1860,7 +2082,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 25 Aug
   language: latin
@@ -1869,7 +2092,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 Aug
   language: latin
@@ -1878,7 +2102,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Aug
   language: latin
@@ -1887,13 +2112,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 28 Aug
     name: S. Hermetis=Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 28 Aug
   language: latin
   name: S. Augustini Episcopi et Confessoris et Ecclesiae Doctoris
@@ -1901,13 +2128,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 29 Aug
     name: S. Sabinae Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 29 Aug
   language: latin
   name: Decollatione S. Joannis Baptistae
@@ -1915,13 +2144,15 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 30 Aug
     name: Ss. Felicis etc Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 30 Aug
   language: latin
   name: S. Rosae a Sancta Maria Limange Virgini
@@ -1929,7 +2160,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 31 Aug
   language: latin
@@ -1938,13 +2170,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 1 Sep
     name: Ss. Duodecim Fratrum Mm
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 1 Sep
   language: latin
   name: S. Aegidii Abbatis
@@ -1952,7 +2186,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 2 Sep
   language: latin
@@ -1961,7 +2196,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 3 Sep
   language: latin
@@ -1970,7 +2206,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 Sep
   language: latin
@@ -1979,13 +2216,15 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 8 Sep
     name: S. Adriani=Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 8 Sep
   language: latin
   name: Nativitate Beatae Mariae Virginis
@@ -1993,7 +2232,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 9 Sep
   language: latin
@@ -2002,7 +2242,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 10 Sep
   language: latin
@@ -2011,7 +2252,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 11 Sep
   language: latin
@@ -2020,7 +2262,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 12 Sep
   language: latin
@@ -2029,7 +2272,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 14 Sep
   language: latin
@@ -2038,7 +2282,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 15 Sep
   language: latin
@@ -2047,13 +2292,15 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 16 Sep
     name: Ss. Euphemiae=Luciae et Geminiani Martyrum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 16 Sep
   language: latin
   name: Ss. Cornelii et Cypriani Pontificium et Martyrum
@@ -2061,7 +2308,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 17 Sep
   language: latin
@@ -2070,7 +2318,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 18 Sep
   language: latin
@@ -2079,7 +2328,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 19 Sep
   language: latin
@@ -2088,13 +2338,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 20 Sep
     name: Vigilae St Matthaei Apostoli
     rank_defeatable: true
     rank_name: semiduplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 20 Sep
   language: latin
   name: S. Eustachii et Sociorum Martyrum
@@ -2102,7 +2354,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 21 Sep
   language: latin
@@ -2111,13 +2364,15 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 22 Sep
     name: Ss. Martyris Mauritii et Sociorum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 22 Sep
   language: latin
   name: S. Thomae de Villanove Episcopi et Confessoris
@@ -2125,13 +2380,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 23 Sep
     name: S. Theclae Virgini et Martyri
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 23 Sep
   language: latin
   name: S. Linae Papae et Martyris
@@ -2139,7 +2396,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 24 Sep
   language: latin
@@ -2148,7 +2406,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 Sep
   language: latin
@@ -2157,7 +2416,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Sep
   language: latin
@@ -2166,7 +2426,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 28 Sep
   language: latin
@@ -2175,7 +2436,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 29 Sep
   language: latin
@@ -2184,7 +2446,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 30 Sep
   language: latin
@@ -2193,7 +2456,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 1 Oct
   language: latin
@@ -2202,7 +2466,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 2 Oct
   language: latin
@@ -2211,7 +2476,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 3 Oct
   language: latin
@@ -2220,7 +2486,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 4 Oct
   language: latin
@@ -2229,7 +2496,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 Oct
   language: latin
@@ -2238,7 +2506,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 6 Oct
   language: latin
@@ -2247,13 +2516,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 7 Oct
     name: Ss. Martyrum Sergii=Bacchi=Marcelli et Apuleji
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 7 Oct
   language: latin
   name: Sanctissimi Rosarii Beatae Mariae Virginis
@@ -2261,7 +2532,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 8 Oct
   language: latin
@@ -2270,13 +2542,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 9 Oct
     name: S. Dionysii Episcopi Rustici et Eleuthery Martyrum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 9 Oct
   language: latin
   name: S. Joannis Leonardi
@@ -2284,7 +2558,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 10 Oct
   language: latin
@@ -2293,7 +2568,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 11 Oct
   language: latin
@@ -2302,7 +2578,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 13 Oct
   language: latin
@@ -2311,7 +2588,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 14 Oct
   language: latin
@@ -2320,7 +2598,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 15 Oct
   language: latin
@@ -2329,7 +2608,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 16 Oct
   language: latin
@@ -2338,7 +2618,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 17 Oct
   language: latin
@@ -2347,7 +2628,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 18 Oct
   language: latin
@@ -2356,7 +2638,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 19 Oct
   language: latin
@@ -2365,7 +2648,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 20 Oct
   language: latin
@@ -2374,13 +2658,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 21 Oct
     name: Ss. Ursule et Soc Virg et Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 21 Oct
   language: latin
   name: S. Hilarionis Abbatis
@@ -2388,7 +2674,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 24 Oct
   language: latin
@@ -2397,7 +2684,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 25 Oct
   language: latin
@@ -2406,7 +2694,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 Oct
   language: latin
@@ -2415,7 +2704,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Oct
   language: latin
@@ -2424,7 +2714,8 @@
   rank_defeatable: true
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 28 Oct
   language: latin
@@ -2433,7 +2724,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 31 Oct
   language: latin
@@ -2442,7 +2734,8 @@
   rank_defeatable: true
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 1 Nov
   language: latin
@@ -2451,7 +2744,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 2 Nov
   language: latin
@@ -2460,7 +2754,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 3 Nov
   language: latin
@@ -2469,18 +2764,21 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 4 Nov
     name: Octavae Omnium Sanctorum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   - datestr: 4 Nov
     name: Ss. Mart Vitalis et Agricolae
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 4 Nov
   language: latin
   name: S. Caroli Episcopi et Confessoris
@@ -2488,7 +2786,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 Nov
   language: latin
@@ -2497,7 +2796,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 6 Nov
   language: latin
@@ -2506,7 +2806,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 7 Nov
   language: latin
@@ -2515,13 +2816,15 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 8 Nov
     name: Ss. Mart Quatuor Coronatorum
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 8 Nov
   language: latin
   name: In Octava Omnium Sanctorum
@@ -2529,13 +2832,15 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 9 Nov
     name: S. Theodori
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 9 Nov
   language: latin
   name: In dedicatione Basilicae Ss. Salvatoris
@@ -2543,13 +2848,15 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 10 Nov
     name: Ss. Tryphonis et Sociorum Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 10 Nov
   language: latin
   name: S.Andreae Avellini Confessoris
@@ -2557,13 +2864,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 11 Nov
     name: S. Menna; Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 11 Nov
   language: latin
   name: S. Martini Episcopi et Confessoris
@@ -2571,7 +2880,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 12 Nov
   language: latin
@@ -2580,7 +2890,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 13 Nov
   language: latin
@@ -2589,7 +2900,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 14 Nov
   language: latin
@@ -2598,7 +2910,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 15 Nov
   language: latin
@@ -2607,7 +2920,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 16 Nov
   language: latin
@@ -2616,7 +2930,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 17 Nov
   language: latin
@@ -2625,7 +2940,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 18 Nov
   language: latin
@@ -2634,13 +2950,15 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 19 Nov
     name: S. Pontianae Papae et Martyre
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 19 Nov
   language: latin
   name: S. Elisabeth vidue
@@ -2648,7 +2966,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 20 Nov
   language: latin
@@ -2657,7 +2976,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 21 Nov
   language: latin
@@ -2666,7 +2986,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 22 Nov
   language: latin
@@ -2675,13 +2996,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 23 Nov
     name: S. Felicitatis Mart
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 23 Nov
   language: latin
   name: S. Clement Papae et Martyris
@@ -2689,13 +3012,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 24 Nov
     name: S. Chrysogoni Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 24 Nov
   language: latin
   name: S. Joannis de Cruce Confessoris et Ecclesiae Doctoris
@@ -2703,7 +3028,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 25 Nov
   language: latin
@@ -2712,7 +3038,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 Nov
   language: latin
@@ -2721,13 +3048,15 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 29 Nov
     name: S. Saturnini Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 29 Nov
   language: latin
   name: Vigilia S. Andrae Apostoli
@@ -2735,7 +3064,8 @@
   rank_defeatable: true
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 30 Nov
   language: latin
@@ -2744,7 +3074,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 2 Dec
   language: latin
@@ -2753,7 +3084,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 3 Dec
   language: latin
@@ -2762,13 +3094,15 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 4 Dec
     name: S. Barbarae Virginis et Martyris
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 4 Dec
   language: latin
   name: S. Petri Chrysologi Episcopi Confessoris Ecclesiae Doctoris
@@ -2776,7 +3110,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 5 Dec
   language: latin
@@ -2785,7 +3120,8 @@
   rank_defeatable: false
   rank_name: simplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 6 Dec
   language: latin
@@ -2794,7 +3130,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 7 Dec
   language: latin
@@ -2803,7 +3140,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 8 Dec
   language: latin
@@ -2812,7 +3150,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 9 Dec
   language: latin
@@ -2821,13 +3160,15 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 10 Dec
     name: 'S. S. Melchiadis Papae et Mart '
     rank_defeatable: false
     rank_name: simplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 10 Dec
   language: latin
   name: De III die Infra Octavam Immaculatae Concept Beatae Mariae Virgini
@@ -2835,13 +3176,15 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 11 Dec
     name: Die IV infra Octavam Immaculatae Conceptionis BMV
     rank_defeatable: false
     rank_name: semiduplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 11 Dec
   language: latin
   name: S. Damasi Papae et confessoris
@@ -2849,7 +3192,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 12 Dec
   language: latin
@@ -2858,13 +3202,15 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations:
   - datestr: 13 Dec
     name: Die V infra Octavam Immaculatae conceptionem BMV
     rank_defeatable: false
     rank_name: semiduplex
-    version: '1955'
+    versions:
+    - '1955'
   datestr: 13 Dec
   language: latin
   name: S. Luciae Virginis et Martyris
@@ -2872,7 +3218,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 14 Dec
   language: latin
@@ -2881,7 +3228,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 15 Dec
   language: latin
@@ -2890,7 +3238,8 @@
   rank_defeatable: false
   rank_name: duplex majus
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 16 Dec
   language: latin
@@ -2899,7 +3248,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 21 Dec
   language: latin
@@ -2908,7 +3258,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 24 Dec
   language: latin
@@ -2917,7 +3268,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 25 Dec
   language: latin
@@ -2926,7 +3278,8 @@
   rank_defeatable: false
   rank_name: duplex i classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 26 Dec
   language: latin
@@ -2935,7 +3288,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 27 Dec
   language: latin
@@ -2944,7 +3298,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 28 Dec
   language: latin
@@ -2953,7 +3308,8 @@
   rank_defeatable: false
   rank_name: duplex ii classis
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 29 Dec
   language: latin
@@ -2962,7 +3318,8 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 30 Dec
   language: latin
@@ -2971,7 +3328,8 @@
   rank_defeatable: false
   rank_name: semiduplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
 - commemorations: null
   datestr: 31 Dec
   language: latin
@@ -2980,4 +3338,5 @@
   rank_defeatable: false
   rank_name: duplex
   type_: Sanctorum
-  version: '1955'
+  versions:
+  - '1955'
