@@ -276,7 +276,7 @@ def replace(verse: List[Line]) -> List:
 def parse_section(
     fn: Path,
     section_name: str,
-    section: list,
+    section: Thing,
     language: str,
     version: str = None,
     section_obj=None,
@@ -284,10 +284,13 @@ def parse_section(
     """Parse a section, returning the right kind of object."""
 
     if not section_obj:
-        section_obj = guess_section_obj(section_name, section)
-    section_data = {}
+        section_obj = guess_section_obj(section_name, section.content)
+    section_data = {
+        "source_file": section.source_file,
+        "source_section": section.source_section,
+    }
     if version:
-        section_data = {"version": [version]}
+        section_data["versions"]: [version]
     section_data.update(extract_section_information(section_name, fn.name))
 
     if section_obj is FeastCreate:
@@ -312,7 +315,7 @@ def parse_section(
     rubrics = None
     section_content = []
 
-    for verse in section:
+    for verse in section.content:
         data = {}
         if all((line.content.startswith("r. ") for line in verse)):
             verse[0].content = " ".join([i.content for i in verse])
@@ -408,7 +411,7 @@ def parse_section(
                 section_content.append(data["parts"])
             else:
                 section_content.append(verse_obj(**data))
-        elif len(section) == 1:
+        elif len(section.content) == 1:
             section_content = lineobj
 
             section_content.title = section_name
@@ -421,7 +424,13 @@ def parse_section(
     if not section_obj:
         if not isinstance(section_content, list):
             assert section_content
+            section_content.source_file = section_data["source_file"]
+            section_content.source_section = section_data["source_section"]
             return section_content
+        for i, verse in enumerate(section_content):
+            debug(verse)
+            section_content[i].sourcefile = section_data["sourcefile"]
+            section_content[i].source_section = section_data["source_section"]
         if len(section_content) == 1:
             section_content = section_content[0]
         assert section_content
@@ -458,9 +467,7 @@ def magic_parser(fn: Path, sections: Dict, language: str, version: str = None) -
             section_obj = None
 
         try:
-            r = parse_section(
-                fn, section_name, thing.content, language, version, section_obj
-            )
+            r = parse_section(fn, section_name, thing, language, version, section_obj)
             if not r:
                 continue
             parsed_things[section_name] = r
