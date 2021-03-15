@@ -207,7 +207,9 @@ def strip_content(line):
 
 
 def markup(content: str) -> LineBase:
-    return re.sub(r"^r\. (.)", r"::\1::", content)
+    content = re.sub(r"^r.\ (.)", r"::\1::", content)
+    content = re.sub(r" r.\ (.)", r" ::\1::", content)
+    return content
 
 
 def is_reference(line: Line):
