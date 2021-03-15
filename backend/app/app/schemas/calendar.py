@@ -41,7 +41,7 @@ class FeastBase(BaseModel, FromDOMixin):
 
     name: str = "Feria"
     type_: str
-    version: Optional[VersionLiteral]
+    version: Optional[List[VersionLiteral]]
     rank_name: RankLiteral
     rank_defeatable: bool
     commemorations: Optional[List[Commemoration]]
