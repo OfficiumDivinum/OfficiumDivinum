@@ -216,7 +216,7 @@ def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List
 
 def parse_file_as_dict(
     fn: Path,
-    version: str = None,
+    only_version: str = None,
     follow_links: bool = True,
     follow_only_interesting_links: bool = True,
     nasty_stuff: list = [],
@@ -231,7 +231,7 @@ def parse_file_as_dict(
     Args:
       fn: Path: The complete file path.
       section_key: str: The section to extract.
-      version: str: We're only interested in this version (among sections).
+      only_version: str: We're only interested in this version (among sections).
       follow_links: bool: Whether or not to follow links.  (Default value = True)
       follow_only_interesting_links: bool: Skip links which don't change their target.
     (Default value = True)
@@ -251,7 +251,7 @@ def parse_file_as_dict(
     sourcefile = str(fn)
     for key, section in sections.items():
         section_version = guess_section_version(key)
-        if section_version and section_version != version:
+        if section_version and section_version != only_version:
             continue
         version = section_version if section_version else file_version
 
@@ -305,6 +305,7 @@ def parse_file_as_dict(
         for verse_index, verse in enumerate(section):
             line_index = 0
             for line in verse:
+                assert "Rubrica" not in line.content
                 line_index += 1
 
                 if not follow_links:
