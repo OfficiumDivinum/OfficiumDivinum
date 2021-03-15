@@ -282,7 +282,7 @@ candidates = [
     ),
 ]
 
-hymn_test = (
+section_test = (
     (
         [
             (
@@ -350,6 +350,42 @@ hymn_test = (
             ],
         ),
     ),
+    (
+        (
+            (
+                Line(content="v. Collect here", lineno=1),
+                Line(content="Dominus_vobiscum", lineno=2),
+                Line(content="R. Amen.", lineno=3),
+            ),
+            (
+                Line(content="v. Orémus.", lineno=4),
+                Line(content="v. Collect here", lineno=5),
+                Line(content="Termination.", lineno=6),
+                Line(content="R. Amen.", lineno=7),
+            ),
+        ),
+        [
+            PrayerCreate(
+                title="Oratio mortuorum",
+                parts=[
+                    LineBase(content="Collect here", lineno=1),
+                    LineBase(content="Dominus_vobiscum", lineno=2),
+                    LineBase(prefix="R.", content="Amen.", lineno=3),
+                ],
+                language="latin",
+            ),
+            PrayerCreate(
+                oremus=True,
+                title="Oratio mortuorum",
+                parts=[
+                    LineBase(content="Collect here", lineno=5),
+                    LineBase(content="Termination.", lineno=6),
+                    LineBase(prefix="R.", content="Amen.", lineno=7),
+                ],
+                language="latin",
+            ),
+        ],
+    ),
 )
 
 
@@ -361,56 +397,18 @@ def test_guess_verse_obj(verses, correct_obj):
         assert data["ref"]
 
 
-@pytest.mark.parametrize("section,correct_obj", [*candidates, *hymn_test])
+@pytest.mark.parametrize("section,correct_obj", [*candidates, *section_test])
 def test_parse_section(section, correct_obj):
-    section_name = correct_obj.title
+    if isinstance(correct_obj, list):
+        section_name = correct_obj[0].title
+    else:
+        section_name = correct_obj.title
     if "te deum" in section_name:
         section_name = "Te Deum"
     resp = parsers.parse_section(
         Path("Prayers.txt"), section_name, section, "latin", "1960"
     )
     debug(resp)
-    assert resp == correct_obj
-
-
-def test_parse_section_again():  # TODO: combine with previous
-    section = (
-        (
-            Line(content="v. Collect here", lineno=1),
-            Line(content="Dominus_vobiscum", lineno=2),
-            Line(content="R. Amen.", lineno=3),
-        ),
-        (
-            Line(content="v. Orémus.", lineno=4),
-            Line(content="v. Collect here", lineno=5),
-            Line(content="Termination.", lineno=6),
-            Line(content="R. Amen.", lineno=7),
-        ),
-    )
-    correct_obj = [
-        PrayerCreate(
-            title="Oratio mortuorum",
-            parts=[
-                LineBase(content="Collect here", lineno=1),
-                LineBase(content="Dominus_vobiscum", lineno=2),
-                LineBase(prefix="R.", content="Amen.", lineno=3),
-            ],
-            language="latin",
-        ),
-        PrayerCreate(
-            oremus=True,
-            title="Oratio mortuorum",
-            parts=[
-                LineBase(content="Collect here", lineno=5),
-                LineBase(content="Termination.", lineno=6),
-                LineBase(prefix="R.", content="Amen.", lineno=7),
-            ],
-            language="latin",
-        ),
-    ]
-    resp = parsers.parse_section(
-        Path("Prayers.txt"), "Oratio mortuorum", section, "latin", "1960"
-    )
     assert resp == correct_obj
 
 
@@ -506,12 +504,14 @@ def test_substitute_linked_content(start, linkstr, end):
     assert resp[0] == end
 
 
-def test_generate_datestr():
-    candidates = {
-        "Adv1-0": "1st Sun after Advent",
-        "Nativity": None,
-        "10-DU": "Sat between 23 Oct 31 Oct",
-        "Defuncti": None,
-    }
-    for k, v in candidates.items():
-        assert parsers.generate_datestr(k) == v
+datestr_candidates = (
+    ("Adv1-0", "1st Sun after Advent"),
+    ("Nativity", None),
+    ("10-DU", "Sat between 23 Oct 31 Oct"),
+    ("Defuncti", None),
+)
+
+
+@pytest.mark.parametrize("candidate,resp", datestr_candidates)
+def test_generate_datestr(candidate: str, resp: str):
+    assert parsers.generate_datestr(candidate) == resp
