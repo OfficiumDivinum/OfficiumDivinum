@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pytest
+from devtools import debug
 
 from app import parsers
 
@@ -63,5 +64,6 @@ versions = (
 @pytest.mark.parametrize("fn,version,rank_name", versions)
 def test_get_version(fn: Path, version: str, rank_name: str):
     parsers.kalendarium.get_version(fn)
+    debug(parsers.kalendarium.version)
     assert parsers.kalendarium.version == version
     assert parsers.kalendarium.rank_table[6] == rank_name

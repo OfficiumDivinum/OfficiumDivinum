@@ -5,9 +5,10 @@ from typing import Dict, Optional, Union
 from devtools import debug
 
 from app.DSL import months
-from app.parsers import Line
 from app.parsers.divinumofficium_structures import rank_table_by_calendar
 from app.schemas import CommemorationCreate, FeastCreate
+
+from .util import Line
 
 rank_table = None
 version = None
