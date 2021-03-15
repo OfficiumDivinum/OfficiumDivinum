@@ -402,7 +402,7 @@ section_test = (
             PrayerCreate(
                 versions=["1960"],
                 sourcefile="Prayers.txt",
-                source_selfection="Oratio mortuorum",
+                source_section="Oratio mortuorum",
                 title="Oratio mortuorum",
                 parts=[
                     LineBase(content="Collect here", lineno=1),
@@ -414,7 +414,7 @@ section_test = (
             PrayerCreate(
                 versions=["1960"],
                 sourcefile="Prayers.txt",
-                source_selfection="Oratio mortuorum",
+                source_section="Oratio mortuorum",
                 oremus=True,
                 title="Oratio mortuorum",
                 parts=[

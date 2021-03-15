@@ -313,11 +313,12 @@ def parse_section(
             logger.info(f"Skipping {section_name}")
             return None
 
+    debug(section_obj)
+
     linenos = []
 
     rubrics = None
     section_content = []
-    debug(section_data)
 
     for verse in section.content:
         data = {}
@@ -435,6 +436,15 @@ def parse_section(
             except (KeyError, AttributeError, ValueError):
                 pass
             return section_content
+        if isinstance(section_obj, list):
+            debug(section_content, section_obj)
+            for i in range(len(section_content)):
+                try:
+                    section_content[i].versions = section_data["versions"]
+                    section_content[i].sourcefile = section_data["sourcefile"]
+                    section_content[i].source_section = section_data["source_section"]
+                except (AttributeError, ValueError):
+                    pass
 
         for i, verse in enumerate(section_content):
             if isinstance(verse, list):
