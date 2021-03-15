@@ -22,9 +22,9 @@ from .test_parsers import root
 
 
 def test_markup_line():
-    content = "r. Thing and some things"
+    content = "r. Thing and some things. r. Another."
     resp = parsers.markup(content)
-    assert resp == "::T::hing and some things"
+    assert resp == "::T::hing and some things. ::A::nother."
 
 
 def test_parse_versicle():
