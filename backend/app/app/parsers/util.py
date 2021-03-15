@@ -36,26 +36,25 @@ class Thing:
 
 
 rubrica_versions = {
-    "1960": "1960",
-    "1955": "1950",
-    "DA": "divino",
-    "1570": "tridentina",
-    # "1910": "tridentina",
-    "1910": "1910",
-    "newcal": "innovata",
-    "monastic": "monastica",
+    "1960": ["1960"],
+    "1955": ["1950"],
+    "DA": ["divino"],
+    "1910": ["1910", "tridentina"],
+    "1570": ["1570", "tridentina"],
+    "newcal": ["innovata"],
+    "monastic": ["monastica"],
 }
 
 
 def resolve_rubrica_header(line: str, version: str) -> bool:
     """Resolve rubrica in header."""
     try:
-        version = rubrica_versions[version]
+        versions = rubrica_versions[version]
     except KeyError:
         return True
 
     if (match := re.search(r"(\(rubrica.*\))", line)) :
-        if version in match.group(1):
+        if any((x in match.group(1) for x in versions)):
             return True
         else:
             return False
@@ -71,17 +70,23 @@ def resolve_rubrica(line: str, version: str) -> Dict:
       line: str: line to resolve.
       version: str: version to resolve against.
     """
-    version = rubrica_versions[version]
+    versions = rubrica_versions[version]
+    data = {
+        "line": None,
+        "replace_previous": False,
+        "replacement": None,
+        "skip_next": False,
+    }
 
     if (match := re.search(r"(.+)(\(rubrica.*\))", line)) :
-        data = {
-            "line": None,
-            "replace_previous": False,
-            "replacement": None,
-            "skip_next": False,
-        }
         if version in match.group(2):
             data["line"] = match.group(1)
+        return data
+
+    if (match := re.search(r"^\(rubrica (.*)\)$", line.strip())) :
+        debug(version, match.groups())
+        if version not in match.group(1):
+            data["skip_next"] = True
         return data
 
 
