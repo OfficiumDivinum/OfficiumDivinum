@@ -2,12 +2,10 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
-from app.schemas.office_parts import FromDOMixin
-
 from .custom_types import Datestr, RankLiteral, VersionLiteral
 
 
-class CommemorationBase(BaseModel, FromDOMixin):
+class CommemorationBase(BaseModel):
     """Common Commemoration properties."""
 
     name: str
@@ -36,7 +34,7 @@ class Commemoration(CommemorationInDBBase):
     """Properties to return to client."""
 
 
-class FeastBase(BaseModel, FromDOMixin):
+class FeastBase(BaseModel):
     """Common feast properties."""
 
     name: str = "Feria"

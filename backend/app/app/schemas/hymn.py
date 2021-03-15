@@ -3,7 +3,7 @@ from typing import List, Optional
 from pydantic import Field
 
 from app.schemas.custom_types import HymnTypeLiteral, VersionLiteral
-from app.schemas.office_parts import BlockBase, FromDOMixin, LineBase
+from app.schemas.office_parts import BlockBase, LineBase
 
 
 class VerseBase(BlockBase):
@@ -27,7 +27,7 @@ class VerseUpdate(VerseCreate):
     pass
 
 
-class HymnBase(BlockBase, FromDOMixin):
+class HymnBase(BlockBase):
     parts: Optional[List[Verse]] = Field(None, nullable=True)
     hymn_version: str
     language: str

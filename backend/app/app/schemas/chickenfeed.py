@@ -3,7 +3,7 @@ from typing import List
 from pydantic import Field
 
 from app.schemas.custom_types import HymnTypeLiteral
-from app.schemas.office_parts import BlockBase, FromDOMixin, LineBase
+from app.schemas.office_parts import BlockBase, LineBase
 
 
 class AntiphonBase(LineBase):

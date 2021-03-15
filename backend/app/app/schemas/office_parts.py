@@ -14,6 +14,8 @@ class LineBase(BaseModel):
     lineno: int = Field(None, nullable=True)
     crossref: str = Field(None, nullable=True)
     title: Optional[str] = Field(None, nullable=True)
+    sourcefile: Optional[str] = Field(None, nullable=True)
+    source_section: Optional[str] = Field(None, nullable=True)
 
 
 class BlockBase(BaseModel):
@@ -24,6 +26,8 @@ class BlockBase(BaseModel):
     liturgical_context: Optional[List[str]] = Field(None, nullable=True)
     qualifiers: Optional[List[str]] = Field(None, nullable=True)
     version: Optional[List[str]] = Field(None, nullable=True)
+    sourcefile: Optional[str] = Field(None, nullable=True)
+    source_section: Optional[str] = Field(None, nullable=True)
 
 
 class Office(BaseModel):
@@ -82,7 +86,3 @@ class LineInDB(LineInDBBase):
 
 class BlockInDB(BlockInDBBase):
     pass
-
-
-class FromDOMixin:
-    sourcefile: Optional[str] = Field(None, nullable=True)

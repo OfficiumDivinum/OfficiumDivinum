@@ -2,12 +2,10 @@ from typing import Optional
 
 from pydantic import Field
 
-from app.schemas.office_parts import FromDOMixin
-
 from .office_parts import LineBase
 
 
-class VerseBase(LineBase, FromDOMixin):
+class VerseBase(LineBase):
     language: str
     version: str
     book: Optional[str] = Field(None, nullable=True)

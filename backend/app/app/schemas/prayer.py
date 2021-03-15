@@ -3,10 +3,12 @@ from typing import List, Optional
 from pydantic import Field
 
 from app.schemas.custom_types import PrayerTypeLiteral, VersionLiteral
-from app.schemas.office_parts import BlockBase, FromDOMixin, LineBase
+from app.schemas.office_parts import BlockBase, LineBase
 
 
-class PrayerBase(BlockBase, FromDOMixin):
+class PrayerBase(
+    BlockBase,
+):
     parts: List[LineBase]
     termination: Optional[LineBase] = Field(None, nullable=True)
     version: Optional[VersionLiteral]

@@ -31,6 +31,8 @@ class Line:
 class Thing:
     content: Any
     crossref: Optional[str] = None
+    source_file: str = None
+    source_section: str = None
 
 
 def validate_section(section: List) -> bool:
@@ -178,7 +180,11 @@ def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List
     """Resolve link and return linked content."""
     logger.debug(f"Resolving link to {targetf} section {part}")
     linked_content = parse_file_as_dict(
-        targetf, part, sublinks, section_key=part, follow_only_interesting_links=False,
+        targetf,
+        part,
+        sublinks,
+        section_key=part,
+        follow_only_interesting_links=False,
     )[part]
     linked_content = linked_content.content
 
@@ -232,6 +238,7 @@ def parse_file_as_dict(
     sections = parse_DO_sections(fn, section_header_regex)
     logger.debug(f"Got {len(sections.keys())} sections.")
     things = {}
+    sourcefile = str(fn)
     for key, section in sections.items():
         if "rubrica" in key:
             if version not in key:
@@ -367,7 +374,7 @@ def parse_file_as_dict(
                 for regex in nasty_stuff:
                     section[i][j].content = re.sub(regex, "", section[i][j].content)
 
-        things[key] = Thing(section, crossref)
+        things[key] = Thing(section, crossref, sourcefile, key)
 
     return things
 
