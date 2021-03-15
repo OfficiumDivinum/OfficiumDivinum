@@ -7,12 +7,12 @@ from app.DSL.dsl_parser import dsl_parser
 RankLiteral = Literal[
     "feria",
     "commemoratio",
-    "iii. classis",
-    "iii. classis",
-    "iii. classis",
-    "ii. classis",
-    "i. classis",
-    "i. classis",
+    "iii classis",
+    "iii classis",
+    "iii classis",
+    "ii classis",
+    "i classis",
+    "i classis",
     "feria",
     "simplex",
     "semiduplex",
@@ -56,7 +56,11 @@ HymnTypeLiteral = Literal[
     "te deum",
 ]
 
-VersionLiteral = Literal["Monastic", "1570", "1910", "DA", "1955", "1960", "OP"]
+versions = ["monastic", "1570", "1910", "DA", "1955", "1960", "OP", "newcal"]
+
+VersionLiteral = Literal[
+    "monastic", "1570", "1910", "DA", "1955", "1960", "OP", "newcal"
+]
 
 PrayerTypeLiteral = Literal["Oratio"]
 

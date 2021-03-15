@@ -73,7 +73,6 @@ traditional_rank_lookup_table = {
     "feria iv classis": 0,
 }
 
-rev_trad_rank = {v: k for k, v in traditional_rank_lookup_table.items()}
 
 typo_translations = {
     "I classis Semiduplex": "Semiduplex I classis",
@@ -107,12 +106,12 @@ feria_ranks = {
 
 rank_table_by_calendar = {
     "1960": new_rank_table,
-    "1570": rev_trad_rank,
-    "1888": rev_trad_rank,
+    "1570": traditional_rank_table,
+    "1910": traditional_rank_table,
     "newcal": new_rank_table,
-    "1954": rev_trad_rank,
-    "1955": rev_trad_rank,
-    "monastic": rev_trad_rank,
+    "DA": traditional_rank_table,
+    "1955": traditional_rank_table,
+    "monastic": traditional_rank_table,
 }
 
 latin_feminine_ordinals = [

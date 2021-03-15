@@ -75,7 +75,7 @@ def parse_line(line: Line, language: str, fn: Path) -> Optional[FeastCreate]:
         feast.update(
             {
                 "language": language.lower(),
-                "version": version,
+                "versions": [version],
                 "sourcefile": fn.name,
                 "lineno": lineno,
             }

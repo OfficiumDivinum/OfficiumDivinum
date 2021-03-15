@@ -6,6 +6,7 @@ from typing import Dict, List, Optional
 
 from devtools import debug
 
+from app.DSL import days, months, ordinals, specials
 from app.parsers import parser_vars, util
 from app.parsers.H2obj import guess_version, parse_hymn
 from app.parsers.M2obj import generate_datestr
@@ -13,6 +14,7 @@ from app.parsers.util import EmptyFileError, Line, Thing, parse_file_as_dict
 from app.schemas import (
     AntiphonCreate,
     BlockCreate,
+    FeastCreate,
     HymnCreate,
     LineBase,
     MartyrologyCreate,
@@ -22,6 +24,7 @@ from app.schemas import (
     VerseCreate,
     VersicleCreate,
 )
+from app.schemas.custom_types import versions
 
 from .divinumofficium_structures import commands as office_names
 
@@ -29,6 +32,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 create_types = (
+    FeastCreate,
     MartyrologyCreate,
     AntiphonCreate,
     BlockCreate,
@@ -44,6 +48,39 @@ create_types = (
 
 class UnmatchedError(Exception):
     pass
+
+
+def extract_temporal_info(fn: Path) -> Optional[Dict]:
+    """Extract information from temporal file."""
+    data = {"qualifiers": None, "datestr": None, "name": "Feria"}
+
+    try:
+        after, day = fn.stem.split("-")
+    except ValueError:
+        return  # give up
+    try:
+        int(after)
+        date = after[:-1]
+        week = int(after[-1])
+    except ValueError:
+        date, week = re.search(r"([A-Z][a-z]+)([0-9]+)", after).groups()
+    try:
+        day = int(day)
+    except ValueError:
+        day, data["qualifiers"] = re.search(r"([0-9])(.+)", day).groups()
+
+    try:
+        date = f"1 {months[int(date) - 1]}"
+    except ValueError:
+        # for non month temporal it the reference *might* be a Sunday (e.g. Easter).
+        date = specials[date]
+    data["datestr"] = f"{ordinals[int(week)]} Sun after {date}"
+    # datestr = f"{ordinals[week]} Sun on or after {date}"
+    day = int(day)
+    if day != 0:
+        data["datestr"] = f"{days[day]} after {data['datestr']}"
+
+    return data
 
 
 def extract_section_information(section_name: str, filename: str) -> Dict:
@@ -112,8 +149,10 @@ def is_rubric(line: Line) -> Optional[str]:
     return None, None
 
 
-def parse_prayers_txt(root: Path, version: str, language: str):
+def parse_prayers_txt(root: Path, language: str):
     fn = root / f"{language}/Psalterium/Prayers.txt"
+    version = versions
+
     sections = parse_file_as_dict(fn, version)
 
     matched, unmatched = magic_parser(fn, sections, language)
@@ -147,6 +186,7 @@ def guess_section_obj(section_name: str, section: List):
         "Hymnus": HymnCreate,
         "Ant ": AntiphonCreate,
         "Te Deum": HymnCreate,
+        "Rank": FeastCreate,
     }
     for key, guess in guesses.items():
         if key in section_name:
@@ -249,6 +289,9 @@ def parse_section(
     if version:
         section_data = {"version": [version]}
     section_data.update(extract_section_information(section_name, fn.name))
+
+    if section_obj is FeastCreate:
+        raise NotImplementedError("Rank section needs parsing")
 
     if section_obj is HymnCreate:
         hymn_version, matched = guess_version(fn)
@@ -421,6 +464,8 @@ def magic_parser(fn: Path, sections: Dict, language: str, version: str = None) -
             if not r:
                 continue
             parsed_things[section_name] = r
+        except NotImplementedError:
+            continue
         except UnmatchedError as e:
             unparsed_things[section_name] = thing
 

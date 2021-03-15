@@ -11,8 +11,21 @@ from fastapi.encoders import jsonable_encoder
 from oauthlib.oauth2 import LegacyApplicationClient
 from requests_oauthlib import OAuth2Session
 
-from app.parsers import H2obj, K2obj, M2obj, P2obj, T2obj, divinumofficium_structures
-from app.schemas import OldDateTemplateCreate, OrdinalsCreate
+from app.parsers import (
+    H2obj,
+    M2obj,
+    P2obj,
+    T2obj,
+    divinumofficium_structures,
+    kalendarium,
+)
+from app.parsers.chickenfeed import (
+    parse_generic_file,
+    parse_prayers_txt,
+    parse_translations,
+)
+from app.parsers.util import EmptyFileError
+from app.schemas import MartyrologyCreate, OldDateTemplateCreate, OrdinalsCreate
 
 logger = logging.getLogger(__name__)
 verbose = 0
@@ -356,7 +369,7 @@ def parse_upload_sanctoral(
 
     logger.info("Parsing Sanctoral files")
     fn = root / f"{lang}/Tabulae/K{version}.txt"
-    feasts = K2obj.parse_file(fn, lang, version)
+    feasts = kalendarium.parse_file(fn, lang)
 
     logger.info("Uploading Feasts to server.")
 
@@ -414,6 +427,62 @@ def parse_upload_hymns(
     upload(hymns, endpoint, client, test_token_headers)
 
     return hymns
+
+
+def parse_martyrology_file(fn: Path, lang: str) -> MartyrologyCreate:
+
+    title = translations[lang.lower()]["martyrology_title"]
+    return M2obj.parse_file(fn, lang.lower(), title)
+
+
+@app.command()
+def parser_test(
+    root: Path,
+    lang: str,
+    version: str,
+) -> None:
+
+    success = []
+    failed = []
+    errors = []
+    import typer
+
+    parse_prayers_txt(root, lang)
+
+    root = root / lang
+    with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
+        for fn in fns:
+            if fn.name in ["Translate.txt", "Revtrans.txt"]:
+                parse_translations(fn, "Latin")
+                continue
+
+            if "Martyrologium" in fn.parent.name and fn.stem != "Mobile":
+                parse_martyrology_file(fn, lang)
+                continue
+
+            if "psalms" in fn.parent.name:
+                P2obj.parse_file(fn, lang, version)
+                continue
+
+            if fn.name[0] == "K":
+                kalendarium.parse_file(fn, lang)
+                continue
+
+            try:
+                parse_generic_file(Path(fn), version, "Latin")
+                success.append(fn)
+            except (FileNotFoundError, EmptyFileError):
+                pass
+            except Exception as e:
+                errors.append(e)
+                failed.append(fn)
+
+    print(
+        f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f)}% parsed"
+    )
+    for i, fn in enumerate(failed):
+        print(fn)
+        print(f"Errors: {errors[i]}")
 
 
 if __name__ == "__main__":

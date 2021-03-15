@@ -11,7 +11,7 @@ class CommemorationBase(BaseModel, FromDOMixin):
     """Common Commemoration properties."""
 
     name: str
-    version: Optional[VersionLiteral]
+    versions: Optional[List[VersionLiteral]]
     rank_name: RankLiteral
     rank_defeatable: bool
 
@@ -41,7 +41,7 @@ class FeastBase(BaseModel, FromDOMixin):
 
     name: str = "Feria"
     type_: str
-    version: Optional[List[VersionLiteral]]
+    versions: Optional[List[VersionLiteral]]
     rank_name: RankLiteral
     rank_defeatable: bool
     commemorations: Optional[List[Commemoration]]
