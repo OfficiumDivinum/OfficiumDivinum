@@ -1,0 +1,2085 @@
+- commemorations: null
+  datestr: 1 Jan
+  language: Latin
+  name: Circumcision of the Lord
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 2 Jan
+  language: Latin
+  name: Octave of St. Stephen
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 3 Jan
+  language: Latin
+  name: Octave of St. John
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 4 Jan
+  language: Latin
+  name: Octave of the Holy Innocents
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 5 Jan
+  language: Latin
+  name: Vigilia Epiphaniae
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 6 Jan
+  language: Latin
+  name: Epiphany of the Lord
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 7 Jan
+  language: Latin
+  name: Secunda die infra Octavam Epiphaniae
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 8 Jan
+  language: Latin
+  name: Tertia die infra Octavam Epiphaniae
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 9 Jan
+  language: Latin
+  name: Quarta die infra Octavam Epiphaniae
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 10 Jan
+  language: Latin
+  name: Quinta die infra Octavam Epiphaniae
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 11 Jan
+  language: Latin
+  name: Sexta die infra Octavam Epiphaniae
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 12 Jan
+  language: Latin
+  name: Septima die infra Octavam Epiphaniae
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 13 Jan
+  language: Latin
+  name: Die Octava Epiphaniae
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 14 Jan
+    name: S. Felicis Presbyteri et Mart
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 14 Jan
+  language: Latin
+  name: S. Hilary bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 15 Jan
+    name: S. Mauri Abbatis
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 15 Jan
+  language: Latin
+  name: S. Pauli primi Eremitae et Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 16 Jan
+  language: Latin
+  name: S. Marcelli Papae et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 17 Jan
+  language: Latin
+  name: S. S. Antonii Abbatis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 18 Jan
+    name: Commemoratio S. Prisca virgin martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 18 Jan
+  language: Latin
+  name: Chain of St Peter Rome
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 19 Jan
+  language: Latin
+  name: Ss. Marius, Martha, Audifax, and Abachum martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 20 Jan
+  language: Latin
+  name: Ss. Fabiani et Sebastiani Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 21 Jan
+  language: Latin
+  name: S. Agnetis Virginis et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 22 Jan
+  language: Latin
+  name: Ss. Vincentii et Anastasii Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 23 Jan
+  language: Latin
+  name: S. Emerentiana virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 24 Jan
+  language: Latin
+  name: S. Timothei Episcopi et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 25 Jan
+  language: Latin
+  name: In Conversione S. Pauli Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 26 Jan
+  language: Latin
+  name: S. Polycarpi Episcopi et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 27 Jan
+  language: Latin
+  name: S. Joannis Chrysostomi Episcopi Confessoris Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 28 Jan
+  language: Latin
+  name: S. Agnetis Virginis et Martyris secundo
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 1 Feb
+  language: Latin
+  name: Ignatius bishop and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 2 Feb
+  language: Latin
+  name: Purification of Blessed Mary
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 3 Feb
+  language: Latin
+  name: Blase bishop and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 5 Feb
+  language: Latin
+  name: Agatha virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 6 Feb
+  language: Latin
+  name: S. Dorothy virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 9 Feb
+  language: Latin
+  name: S. Apollonia virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 14 Feb
+  language: Latin
+  name: S. Valentine Priest and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 15 Feb
+  language: Latin
+  name: S. Faustinus and Jovita martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 18 Feb
+  language: Latin
+  name: S. Simeon bishop and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 22 Feb
+  language: Latin
+  name: Chair of St Peter at Antioch
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 23 Feb
+  language: Latin
+  name: Vigilia S. Matthaei Apostoli
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 24 Feb
+  language: Latin
+  name: S. Matthiae Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 7 Mar
+  language: Latin
+  name: St. Thomas Aquinas confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 9 Mar
+  language: Latin
+  name: Ss. Forty Holy martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 12 Mar
+  language: Latin
+  name: S. Gregory pope and confessor, and Doctor of the Church
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 19 Mar
+  language: Latin
+  name: S. Joseph confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 21 Mar
+  language: Latin
+  name: S. Benedict Abbot
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 25 Mar
+  language: Latin
+  name: Annunciation of Blessed Mary
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 11 Apr
+  language: Latin
+  name: S. Leo pope and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 14 Apr
+  language: Latin
+  name: Ss. Tiburtius, Valerian, and Maximus martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 17 Apr
+  language: Latin
+  name: S. Anicetus pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 22 Apr
+  language: Latin
+  name: Ss. Soter and Cajus popes and martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 23 Apr
+  language: Latin
+  name: S. George martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 25 Apr
+  language: Latin
+  name: S. Mark Evangelist
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 26 Apr
+  language: Latin
+  name: Ss. Cletus and Marcellinus popes and martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 28 Apr
+  language: Latin
+  name: S. Vitalis martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 1 May
+  language: Latin
+  name: Ss. Philip and James Apostles
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 2 May
+  language: Latin
+  name: S. Athanasius bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 3 May
+    name: Ss Alexander, Eventius and Theodulus martyrs, and Juvenal bishop and confessor
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 3 May
+  language: Latin
+  name: Invention of the Holy Cross
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 4 May
+  language: Latin
+  name: S. Monica Widow
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 6 May
+  language: Latin
+  name: S. John before the Latin Gate
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 8 May
+  language: Latin
+  name: Apparition of St. Michael
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 9 May
+  language: Latin
+  name: S. Gregory the Theologian bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 10 May
+  language: Latin
+  name: Ss. Gordian and Epimachus martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 12 May
+  language: Latin
+  name: Ss. Nereus, Achilleus and Pancras martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 14 May
+  language: Latin
+  name: S. Boniface martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 19 May
+  language: Latin
+  name: S. Pudentiana virgin
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 25 May
+  language: Latin
+  name: Urban pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 26 May
+  language: Latin
+  name: S. Eleutherius pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 27 May
+  language: Latin
+  name: S. John pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 30 May
+  language: Latin
+  name: S. Felix I pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 31 May
+  language: Latin
+  name: S. Petronilla virgin
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 2 Jun
+  language: Latin
+  name: Ss. Marcellinus, Peter and Erasmus martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 9 Jun
+  language: Latin
+  name: Ss. Primus and Felician martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 11 Jun
+  language: Latin
+  name: S. Barnabas Apostle
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 12 Jun
+  language: Latin
+  name: Ss. Basilides, Cyrinus, Nabor and Nazarius martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 14 Jun
+  language: Latin
+  name: S. Basil bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 15 Jun
+  language: Latin
+  name: Ss. Vitus, Modestus, and Crescentia martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 18 Jun
+  language: Latin
+  name: Ss. Mark and Marcellianus Brothers, martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 19 Jun
+  language: Latin
+  name: Ss. Gervase and Protase martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 20 Jun
+  language: Latin
+  name: S. Silverius pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 22 Jun
+  language: Latin
+  name: S. Paulinus bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 23 Jun
+  language: Latin
+  name: Vigilia Nativitatis S. Joannis Baptistae
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 24 Jun
+  language: Latin
+  name: Nativity of St. John the Baptist
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 25 Jun
+  language: Latin
+  name: Second day of Octava Nativitatis S. Joannis Baptistae
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 26 Jun
+  language: Latin
+  name: Ss. John and Paul martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 27 Jun
+  language: Latin
+  name: Fourth day of the octave of the Nativity of St. John the Baptist
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 28 Jun
+  language: Latin
+  name: S. Leo II pope and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 29 Jun
+  language: Latin
+  name: Ss. Peter and Paul Apostles
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 30 Jun
+  language: Latin
+  name: Commemoration of St Paul Apostle, Double
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 1 Jul
+  language: Latin
+  name: Octave of St. John the Baptist
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 2 Jul
+  language: Latin
+  name: Visitation of Blessed Mary
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 3 Jul
+  language: Latin
+  name: Fifth day of the octave of the Apostles
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 4 Jul
+  language: Latin
+  name: Sixth day of the octave of the Apostles
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 5 Jul
+  language: Latin
+  name: Seventh day of the octave of the Apostles
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 6 Jul
+  language: Latin
+  name: Octave of the Apostles Peter and Paul
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 10 Jul
+  language: Latin
+  name: The Seven Brothers martyrs and Ss. Rufina and Secunda virgins and martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 11 Jul
+  language: Latin
+  name: S. Pius pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 12 Jul
+  language: Latin
+  name: Ss. Nabor and Felix martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 13 Jul
+  language: Latin
+  name: S. Anacletus pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 14 Jul
+  language: Latin
+  name: S. Bonaventure bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 17 Jul
+  language: Latin
+  name: S. Alexius confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 18 Jul
+  language: Latin
+  name: S. Symphorosa with her seven Sons martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 20 Jul
+  language: Latin
+  name: S.  Margaret virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 21 Jul
+  language: Latin
+  name: S. Praxedes virgin
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 22 Jul
+  language: Latin
+  name: S. Mary Magdalene
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 23 Jul
+  language: Latin
+  name: S. Apollinaris bishop and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 24 Jul
+    name: commemoration of Saint Christina virgin and martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 24 Jul
+  language: Latin
+  name: Vigilia S. James Apostle
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 25 Jul
+    name: commemoration of Saint Christopher martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 25 Jul
+  language: Latin
+  name: S. James Apostle
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 27 Jul
+  language: Latin
+  name: S. Pantaleon martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 28 Jul
+  language: Latin
+  name: ss. Nazarius, Celsus, and Victor pope and martyr, and Innocent pope and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 29 Jul
+    name: commemoration of Ss Felix, pope, Simplicius, Faustinus, and Beatrice martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 29 Jul
+  language: Latin
+  name: S. Martha virgin
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 30 Jul
+  language: Latin
+  name: Ss. Abdon and Sennen martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 1 Aug
+    name: commemoration of the Holy Machabees martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 1 Aug
+  language: Latin
+  name: S. Peter in Chains
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 2 Aug
+  language: Latin
+  name: S. Stephen pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 3 Aug
+  language: Latin
+  name: Invention of Saint Stephen protomartyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 4 Aug
+  language: Latin
+  name: S. Dominic confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 5 Aug
+  language: Latin
+  name: Dedication of Our Lady of the Snows
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 6 Aug
+    name: commemoration of Ss. Xystus the Second pope, Felicissimus, and Agapitus
+      martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 6 Aug
+  language: Latin
+  name: Transfiguration of the Lord
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 7 Aug
+  language: Latin
+  name: S. Donatus bishop and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 8 Aug
+  language: Latin
+  name: Ss. Cyriacus, Largus and Smaragdus martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 9 Aug
+    name: commemoration of St. Romanus martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 9 Aug
+  language: Latin
+  name: Vigilia S. Laurentii
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 10 Aug
+  language: Latin
+  name: S. Laurence martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 11 Aug
+    name: commemoration of Saints Tiburtius and Susanna martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 11 Aug
+  language: Latin
+  name: Second day of the octave of St Laurence
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 12 Aug
+    name: commemoration of St Clare virgin
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 12 Aug
+  language: Latin
+  name: Third day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 13 Aug
+    name: commemoration of St Hippolytus and his companions and of Cassian martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 13 Aug
+  language: Latin
+  name: Fourth day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 14 Aug
+    name: commemoration of the Vigil and of St Eusebius confessor
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 14 Aug
+  language: Latin
+  name: Fifth day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 15 Aug
+  language: Latin
+  name: Assumption of the Blessed Virgin Mary
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 16 Aug
+    name: commemoration of the Octave of St. Laurence
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 16 Aug
+  language: Latin
+  name: Second day of the octave of the Assumption of Blessed Mary
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 17 Aug
+    name: commemoration of the Octave of the Assumption
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 17 Aug
+  language: Latin
+  name: Octave of St. Laurence
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 18 Aug
+    name: commemoration of St Agapitus martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 18 Aug
+  language: Latin
+  name: Fourth day of the octave for Assumption
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 19 Aug
+  language: Latin
+  name: Fifth day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 20 Aug
+    name: commemoration of the Octave of the Assumption
+    rank_defeatable: false
+    rank_name: semiduplex
+    version: '1570'
+  datestr: 20 Aug
+  language: Latin
+  name: S. Bernard Abbot
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 21 Aug
+  language: Latin
+  name: Seventh day of the Octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 22 Aug
+    name: commemoration of Ss Timothy, Hippolytus, and Symphorianus martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 22 Aug
+  language: Latin
+  name: Octave of the Assumption of Blessed Mary
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 23 Aug
+  language: Latin
+  name: Vigilia S.Barthalomei Apostoli
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 24 Aug
+  language: Latin
+  name: S. Bartholomew Apostle
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 25 Aug
+  language: Latin
+  name: S. Louis king of France, confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 26 Aug
+  language: Latin
+  name: S. Zephyrinus pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 28 Aug
+    name: commemoration of Saint Hermes martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 28 Aug
+  language: Latin
+  name: S. Augustine bishop, confessor and doctor of the Church
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 29 Aug
+  language: Latin
+  name: Beheading of St. John the Baptist
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 30 Aug
+  language: Latin
+  name: ss. Felix and Adauctus martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 1 Sep
+    name: commemoration of the Holy Twelve Brothers martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 1 Sep
+  language: Latin
+  name: S. Giles Abbot
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 8 Sep
+    name: commemoration of St. Adrian martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 8 Sep
+  language: Latin
+  name: Nativity of Blessed Mary
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 9 Sep
+    name: commemoration of St. Gorgonius martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 9 Sep
+  language: Latin
+  name: Second day of the Octave of Saint Mary
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 10 Sep
+  language: Latin
+  name: Third day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 11 Sep
+    name: commemoration of Ss. Protus and Hyacinth martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 11 Sep
+  language: Latin
+  name: Fourth day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 12 Sep
+  language: Latin
+  name: Fifth day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 13 Sep
+  language: Latin
+  name: Sixth day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 14 Sep
+    name: commemoration of the Octave of the Nativity of St. Mary
+    rank_defeatable: false
+    rank_name: semiduplex
+    version: '1570'
+  datestr: 14 Sep
+  language: Latin
+  name: Exaltation of the Holy Cross
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 15 Sep
+    name: commemoration of St. Nicomedes martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 15 Sep
+  language: Latin
+  name: Octave of the Nativity of Blessed Mary, Double
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 16 Sep
+    name: commemoration of Ss Euphemia, Lucy and Geminianus martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 16 Sep
+  language: Latin
+  name: Ss. Cornelius and Cyprian bishops and martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 20 Sep
+    name: commemoration of St Eustace and Companions martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 20 Sep
+  language: Latin
+  name: Vigilia S. Matthew Apostle
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 21 Sep
+  language: Latin
+  name: S. Matthew Apostle
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 22 Sep
+  language: Latin
+  name: Ss. Maurice and companions martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 23 Sep
+    name: commemoration of St Thecla virgin and martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 23 Sep
+  language: Latin
+  name: S. Linus pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 26 Sep
+  language: Latin
+  name: Ss. Cyprian and Justina martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 27 Sep
+  language: Latin
+  name: Ss. Cosmas and Damian martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 29 Sep
+  language: Latin
+  name: Dedication of St Michael Archangel
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 30 Sep
+  language: Latin
+  name: S. Jerome Priest, confessor, and Doctor of the Church
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 1 Oct
+  language: Latin
+  name: Remigius bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 4 Oct
+  language: Latin
+  name: S. Francis confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 7 Oct
+    name: Ss. Martyrum Sergii=Bacchi=Marcelli et Apuleji
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 7 Oct
+  language: Latin
+  name: S. Marci Papae Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 9 Oct
+  language: Latin
+  name: Ss. Denis, Rusticus, and Eleutherius martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 14 Oct
+  language: Latin
+  name: S. Callistus pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 18 Oct
+  language: Latin
+  name: S. Luke Evangelist
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 21 Oct
+    name: ommemoration of Saint Ursula and companions virgins and martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 21 Oct
+  language: Latin
+  name: S. Hilarion Abbot
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 25 Oct
+  language: Latin
+  name: Ss. Chrysanthus and Daria martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 26 Oct
+  language: Latin
+  name: S. Evaristus pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 27 Oct
+  language: Latin
+  name: Vigilia Ss. Simonis et Juda
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 28 Oct
+  language: Latin
+  name: Ss. Simon and Jude Apostles
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 31 Oct
+  language: Latin
+  name: Vigilia omnium sanctorum
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 1 Nov
+  language: Latin
+  name: Feast of all Saints
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 2 Nov
+  language: Latin
+  name: Commemoratio Omnium Fidelium Defunctorum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 3 Nov
+  language: Latin
+  name: Third day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 4 Nov
+    name: commemoration of Ss. Vitalis and Agricola martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 4 Nov
+  language: Latin
+  name: Fourth day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 5 Nov
+  language: Latin
+  name: Fifth day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 6 Nov
+  language: Latin
+  name: Sixth day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 7 Nov
+  language: Latin
+  name: Seventh day of the octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 8 Nov
+    name: commemoration of the Holy Four Crowned Martyrs
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 8 Nov
+  language: Latin
+  name: Octave of all Saints
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 9 Nov
+    name: commemoration of St. Theodore martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 9 Nov
+  language: Latin
+  name: Dedication of the Basilica of the Saviour
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 10 Nov
+  language: Latin
+  name: Ss. Tryphon, Respicius, and Nympha martyrs
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 11 Nov
+    name: commemoration of St. Menas martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 11 Nov
+  language: Latin
+  name: S. Martin bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 12 Nov
+  language: Latin
+  name: S. Martin pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 17 Nov
+  language: Latin
+  name: S. Gregory Thaumaturgus bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 18 Nov
+  language: Latin
+  name: Dedication of the Basilicas of Peter, and Paul
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 19 Nov
+  language: Latin
+  name: S. Pontianus pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 22 Nov
+  language: Latin
+  name: S. Cecilia virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 23 Nov
+    name: commemoration of St Felicitas martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 23 Nov
+  language: Latin
+  name: S. Clement pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 24 Nov
+  language: Latin
+  name: S. Chrysogonus martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 25 Nov
+  language: Latin
+  name: S. Catherine virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 26 Nov
+  language: Latin
+  name: S. Peter of Alexandria bishop and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations:
+  - datestr: 29 Nov
+    name: commemoration of Saint Saturninus martyr
+    rank_defeatable: false
+    rank_name: simplex
+    version: '1570'
+  datestr: 29 Nov
+  language: Latin
+  name: Vigilia S. Andreas Apostol
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 30 Nov
+  language: Latin
+  name: S Andrew Apostle
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 2 Dec
+  language: Latin
+  name: S. Bibiana virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 4 Dec
+  language: Latin
+  name: S.  Barbara virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 5 Dec
+  language: Latin
+  name: S. Sabbas Abbot
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 6 Dec
+  language: Latin
+  name: S. Nicholas bishop and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 7 Dec
+  language: Latin
+  name: S. Ambrose bishop, confessor, and Doctor of the Church
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 8 Dec
+  language: Latin
+  name: Conception of Blessed Mary
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 10 Dec
+  language: Latin
+  name: S. Melchiades pope and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 11 Dec
+  language: Latin
+  name: S.  Damasus pope and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 13 Dec
+  language: Latin
+  name: S. Lucy virgin and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 20 Dec
+  language: Latin
+  name: Vigilia S. Thomas Apostle
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 21 Dec
+  language: Latin
+  name: S. Thomas the Apostle
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 24 Dec
+  language: Latin
+  name: Vigilia Nativity
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 25 Dec
+  language: Latin
+  name: Nativity of our Lord Jesus Christ
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 26 Dec
+  language: Latin
+  name: S. Stephen Protomartyr
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 27 Dec
+  language: Latin
+  name: S. John Apostle and Evangelist
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 28 Dec
+  language: Latin
+  name: Ss. Innocents
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 29 Dec
+  language: Latin
+  name: S. Thomas bishop of Canterbury and martyr
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 30 Dec
+  language: Latin
+  name: Sixth day of the Octave
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: '1570'
+- commemorations: null
+  datestr: 31 Dec
+  language: Latin
+  name: S. Sylvester pope and confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: '1570'

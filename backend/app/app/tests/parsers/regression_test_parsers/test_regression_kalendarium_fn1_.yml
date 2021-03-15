@@ -1,0 +1,1823 @@
+- commemorations: null
+  datestr: Sun between 2 Jan 5 Jan OR 2 Jan
+  language: Latin
+  name: Sanctissimi Nominis Iesu
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: de Tempore
+  version: monastic
+- commemorations: null
+  datestr: 1 Jan
+  language: Latin
+  name: Die Octavae Nativitatis Domini
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 2 Jan
+  language: Latin
+  name: Die Secunda Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 3 Jan
+  language: Latin
+  name: Die Tertia Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 4 Jan
+    name: S. Titi Episc et Confessoris
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 4 Jan
+  language: Latin
+  name: Die Quarta Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 5 Jan
+  language: Latin
+  name: Die Quinta Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 6 Jan
+  language: Latin
+  name: Epiphaniae Domini
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 7 Jan
+  language: Latin
+  name: Die Septima Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 8 Jan
+  language: Latin
+  name: Die Octava Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 9 Jan
+  language: Latin
+  name: Die Nona Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 10 Jan
+    name: S. Pauli primi Eremitae et Confessoris
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 10 Jan
+  language: Latin
+  name: Die Decima Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 11 Jan
+  language: Latin
+  name: Die Undecima Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 12 Jan
+  language: Latin
+  name: Die Duodecima Januarii
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 13 Jan
+  language: Latin
+  name: Commemoratio Baptismi Domini
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 14 Jan
+    name: S. Felicis Presbyteri et Mart.
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 14 Jan
+  language: Latin
+  name: S. Hilarii Episcopi Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 16 Jan
+  language: Latin
+  name: S. Marcelli Papae et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 17 Jan
+  language: Latin
+  name: S. S. Antonii Abbatis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 19 Jan
+    name: S. Canuti Mart.
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 19 Jan
+  language: Latin
+  name: S. Maurii et Soc. Mart.
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 20 Jan
+  language: Latin
+  name: Ss. Fabiani et Sebastiani Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 21 Jan
+  language: Latin
+  name: S. Agnetis Virginis et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 22 Jan
+  language: Latin
+  name: Ss. Vincentii et Anastasii Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 23 Jan
+  language: Latin
+  name: S. Emerentianae Virginis et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 24 Jan
+  language: Latin
+  name: S. Timothei Episcopi et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 25 Jan
+  language: Latin
+  name: In Conversione S. Pauli Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex majus
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 26 Jan
+  language: Latin
+  name: S. Polycarpi Episcopi et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 27 Jan
+  language: Latin
+  name: S. Joannis Chrysostomi Episcopi Confessoris Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 28 Jan
+  language: Latin
+  name: S. Cyrilli Episc Alexandrini Confessoris Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 29 Jan
+  language: Latin
+  name: S. Francisci Salesii Episcopi Confessoris Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 31 Jan
+  language: Latin
+  name: S.Joannis Bosco Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 1 Feb
+  language: Latin
+  name: S. Ignatii Episcopi et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 2 Feb
+  language: Latin
+  name: In Purificatione Beatae Mariae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 3 Feb
+  language: Latin
+  name: S. S. Blasii Episcopi et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 5 Feb
+  language: Latin
+  name: S. Agathae Virginis et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 7 Feb
+  language: Latin
+  name: S. Romualdi Abbatis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 10 Feb
+  language: Latin
+  name: S. Scholasticae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 14 Feb
+  language: Latin
+  name: S. Valentini
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 22 Feb
+  language: Latin
+  name: In Cathedra S. Petri Ap
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 23 Feb
+  language: Latin
+  name: S. Petri Damiani
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 24 Feb
+  language: Latin
+  name: S. Matthiae Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 6 Mar
+  language: Latin
+  name: Ss. Perpetuae et Felicitatis Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 7 Mar
+  language: Latin
+  name: S. Thomae de Aquino Confessoris Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 9 Mar
+  language: Latin
+  name: S. Franciscae Viduae Romanae
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 10 Mar
+  language: Latin
+  name: Ss. Quadraginta Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 12 Mar
+  language: Latin
+  name: S. Gregorii Papae Confessoris et Eccl Doct
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 18 Mar
+  language: Latin
+  name: S. Cyrilli Episc Hierosolymitani Eccl Doct
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 19 Mar
+  language: Latin
+  name: S. Joseph Sponsi BMV Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 21 Mar
+  language: Latin
+  name: S. Benedicti Abbatis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex majus
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 25 Mar
+  language: Latin
+  name: In Annuntiatione Beatae Mariae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 27 Mar
+  language: Latin
+  name: S. John Damascene Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 4 Apr
+  language: Latin
+  name: S. Isidori Episc Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 11 Apr
+  language: Latin
+  name: S. Leonis I Papae Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 13 Apr
+  language: Latin
+  name: S. Justini Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 14 Apr
+  language: Latin
+  name: Ss. Tiburtii, Valeriani et Maximi
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 21 Apr
+  language: Latin
+  name: S. Anselmi Episcopi Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 23 Apr
+  language: Latin
+  name: S. Georgii Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 25 Apr
+  language: Latin
+  name: S. Marci Evangelistae
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 26 Apr
+  language: Latin
+  name: S. Cleti et Marcellini Pontif Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 27 Apr
+  language: Latin
+  name: S. Petri Canisii Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 29 Apr
+  language: Latin
+  name: Ss Odonis, Maioli, Odilonis et Hugonis Abb.
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 30 Apr
+  language: Latin
+  name: S. Catharinae Senensis Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 1 May
+  language: Latin
+  name: St Joseph the Worker Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 2 May
+  language: Latin
+  name: S. Athanasii Confessoris Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 3 May
+  language: Latin
+  name: Ss. Alexandri et sociorum Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 4 May
+  language: Latin
+  name: S. Monica Vidua
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 5 May
+  language: Latin
+  name: S. Pii V Papae Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 9 May
+  language: Latin
+  name: S. Gregorii Nazianzi Episcopi Confessoris Ecclasiae Doctorum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 10 May
+  language: Latin
+  name: Ss. Gordiani et Epimachi Martyri
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 11 May
+  language: Latin
+  name: Ss. Philippi et Jacobi Apostolorum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 12 May
+  language: Latin
+  name: Ss. Nerei, Achillei et Domitillae Virgini atque Pancratii Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 13 May
+  language: Latin
+  name: S. Roberti Ballarmino Episcopi Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 14 May
+  language: Latin
+  name: S. Pachomius Abbot
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 19 May
+  language: Latin
+  name: S. Petri Celestini Papae Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 25 May
+  language: Latin
+  name: S. Gregory VII Papae Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 26 May
+  language: Latin
+  name: S. Augustini Episcopi Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 27 May
+  language: Latin
+  name: S. Bede Venerabilis Pries Confessor
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex majus
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 2 Jun
+  language: Latin
+  name: Ss. Marcellini et Petri Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 5 Jun
+  language: Latin
+  name: S. Bonifacii Episc et Mart
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 6 Jun
+  language: Latin
+  name: S. Norberti Episc et Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 9 Jun
+  language: Latin
+  name: Ss. Primi et Feliciani Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 11 Jun
+  language: Latin
+  name: S. Barnabae Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 13 Jun
+  language: Latin
+  name: S. Antonii de Padua Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 14 Jun
+  language: Latin
+  name: S. Basilii Magni Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 15 Jun
+  language: Latin
+  name: Ss. Viti Martyri
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 18 Jun
+    name: Ss. Marci et Marcellini Martyrum
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 18 Jun
+  language: Latin
+  name: S. Ephraem Syri Confessorem et Ecclesiae Doctorem
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 19 Jun
+  language: Latin
+  name: Ss. Gervasii et Protasii Mart
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 21 Jun
+  language: Latin
+  name: S. Alosii Gonzagae Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 23 Jun
+  language: Latin
+  name: Vigilia S. Joannis Baptistae
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 24 Jun
+  language: Latin
+  name: In Nativitate S. Joannis Baptistae
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 26 Jun
+  language: Latin
+  name: Ss. Joannis et Pauli Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 28 Jun
+  language: Latin
+  name: Vigilia Ss. Petri et Pauli Apostolorum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 29 Jun
+  language: Latin
+  name: Ss. Apostolorum Petri et Pauli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 30 Jun
+  language: Latin
+  name: In Commemoratione Sancti Pauli Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 2 Jul
+  language: Latin
+  name: In Visitatione B Mariae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 3 Jul
+  language: Latin
+  name: Ss. Processi et Martiniani Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 11 Jul
+  language: Latin
+  name: Solemnity of of Benedict
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 12 Jul
+  language: Latin
+  name: S. Joannis Gualberti Abbatis
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 14 Jul
+  language: Latin
+  name: S. Bonaventurae Episcopi Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 17 Jul
+  language: Latin
+  name: S. Leo IV
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 19 Jul
+  language: Latin
+  name: S. Vincentii a Paulo Conf
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 20 Jul
+  language: Latin
+  name: S. Hieronomy Emiliani Conf
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 22 Jul
+  language: Latin
+  name: S. Mariae Magdalenae Poenitentis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 23 Jul
+    name: S. Liborii Ep Conf
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 23 Jul
+  language: Latin
+  name: S. Apollinaris Episcopi et Mart
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 25 Jul
+    name: S. Christophori Mart
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 25 Jul
+  language: Latin
+  name: S. Jacobi Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 26 Jul
+  language: Latin
+  name: S. Joachim et S. Annae Matris BMV
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 29 Jul
+  language: Latin
+  name: Ss. Felicis=Simplicii=Faustini et Beatricis Mart
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 30 Jul
+  language: Latin
+  name: S. Abdon et Senen Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 31 Jul
+  language: Latin
+  name: S. Ignatii Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 1 Aug
+  language: Latin
+  name: Ss. Martyrum Machabaeorum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 2 Aug
+    name: St Stephano Papae Martyris
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 2 Aug
+  language: Latin
+  name: S. Alphonsi Mariae de Ligorio Episc Conf et Eccles Doct
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 4 Aug
+  language: Latin
+  name: S. Dominici Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex majus
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 5 Aug
+  language: Latin
+  name: S. Mariae ad Nives
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex majus
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 6 Aug
+    name: Ss. Xysti=Felicissimi et Agapiti Martyrum
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 6 Aug
+  language: Latin
+  name: The Transfiguratione Domini Nostri Jesu Christi
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 7 Aug
+  language: Latin
+  name: Ss. Xysti=Felicissimi et Agapiti Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 8 Aug
+  language: Latin
+  name: Ss. Cyriacii et socii maryres
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 9 Aug
+  language: Latin
+  name: Vigilia S. Laurentii Martyris
+  octave: null
+  rank_defeatable: true
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 10 Aug
+  language: Latin
+  name: S. Laurentii Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 11 Aug
+  language: Latin
+  name: Ss. Tiburtii et Susannae Virg Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 12 Aug
+  language: Latin
+  name: S. Clarae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 13 Aug
+  language: Latin
+  name: Ss. Pontianus et Hippoliti Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 14 Aug
+    name: S. Eusebii
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 14 Aug
+  language: Latin
+  name: Vigilia Assumptionis BMV
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 15 Aug
+  language: Latin
+  name: Assumptione Beatae Mariae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 18 Aug
+  language: Latin
+  name: S. Agapiti Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 20 Aug
+  language: Latin
+  name: S. Bernardi Abbatis et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 21 Aug
+  language: Latin
+  name: Bl. Bernard Prolomey
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 22 Aug
+  language: Latin
+  name: Ss. Timothei
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 24 Aug
+  language: Latin
+  name: S. Bartholomaei Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 28 Aug
+    name: S. Hermetis=Mart
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 28 Aug
+  language: Latin
+  name: S. Augustini Episcopi et Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 29 Aug
+    name: S. Sabinae Mart
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 29 Aug
+  language: Latin
+  name: Decollatione S. Joannis Baptistae
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 30 Aug
+  language: Latin
+  name: Ss. Felicis et Soc. Mart.
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 3 Sep
+  language: Latin
+  name: S. Pius X Papae Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 8 Sep
+    name: S. Adriani=Mart
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 8 Sep
+  language: Latin
+  name: Nativitate Beatae Mariae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 9 Sep
+  language: Latin
+  name: S. Gorgonii mart
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 11 Sep
+  language: Latin
+  name: Ss. Proti et Hyacinthi Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 14 Sep
+  language: Latin
+  name: In Exaltatione Sanctae crucis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 15 Sep
+  language: Latin
+  name: Septem Dolorum Beatae Mariae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 16 Sep
+    name: Ss. Euphemiae=Luciae et Geminiani Martyrum
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 16 Sep
+  language: Latin
+  name: Ss. Cornelii et Cypriani Pontificium et Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 17 Sep
+  language: Latin
+  name: St. Hildegard
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 21 Sep
+  language: Latin
+  name: S. Matthaei Apostoli et Evangelistae
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 22 Sep
+  language: Latin
+  name: Ss. Martyrsi Mauritii et Sociorum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 23 Sep
+  language: Latin
+  name: S. Linae Papae et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 27 Sep
+  language: Latin
+  name: S. Cosmae et Damiani Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 29 Sep
+  language: Latin
+  name: In dedicatione S. Michaelis Archangelis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 30 Sep
+  language: Latin
+  name: S. Hieronomy Presbitery Confessorie et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 2 Oct
+  language: Latin
+  name: Ss. Angelorum Custodum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex majus
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 3 Oct
+  language: Latin
+  name: S. Theresiae a Jesu Infante Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 4 Oct
+  language: Latin
+  name: S. Francisci Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex majus
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 5 Oct
+  language: Latin
+  name: S. Maur et Placidi et Sociorum Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 6 Oct
+  language: Latin
+  name: S. Brunonis Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 7 Oct
+  language: Latin
+  name: Festum Beatae Mariae Virginis a Rosario
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 14 Oct
+  language: Latin
+  name: S. Callisti Papae et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 15 Oct
+  language: Latin
+  name: S. Teresiae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 18 Oct
+  language: Latin
+  name: S. Lucae Evangelistae
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 21 Oct
+    name: Ss. Ursule et Soc Virg et Mart
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 21 Oct
+  language: Latin
+  name: S. Hilarionis Abbatis
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 25 Oct
+  language: Latin
+  name: Ss. Chrysanthi et Dariae Martyres
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 28 Oct
+  language: Latin
+  name: Ss. Simonis et Judae Apostolorum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 1 Nov
+  language: Latin
+  name: Omnium Sanctorum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 2 Nov
+  language: Latin
+  name: Commemoratio Omnium Fidelium Defunctorum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 4 Nov
+  language: Latin
+  name: S. Caroli Episcopi et Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 8 Nov
+  language: Latin
+  name: Ss. Quatuor Coronatorum Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 9 Nov
+    name: S. Theodori
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 9 Nov
+  language: Latin
+  name: In dedicatione Basilicae Ss. Salvatoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 10 Nov
+  language: Latin
+  name: 'S. Theodori '
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 11 Nov
+  language: Latin
+  name: S. Martini Episcopi et Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 12 Nov
+  language: Latin
+  name: 'S. Menna '
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 13 Nov
+  language: Latin
+  name: All Saints of Benedictine order
+  octave: null
+  rank_defeatable: false
+  rank_name: semiduplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 14 Nov
+  language: Latin
+  name: All Souls of Benedictine orde
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 15 Nov
+  language: Latin
+  name: S. Albertus Magnus Ep Conf et Eccl Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 17 Nov
+  language: Latin
+  name: S. Gertrudis Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 18 Nov
+  language: Latin
+  name: In Dedicatione Basilicarum Ss. Apostolorum Petri et Pauli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 21 Nov
+  language: Latin
+  name: In Presentatione of Beatae Mariae Virginis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 22 Nov
+  language: Latin
+  name: S. Ceciliae Virginis et Martyrum
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 23 Nov
+    name: S. Felicitatis Mart
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 23 Nov
+  language: Latin
+  name: S. Clement Papae et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 24 Nov
+    name: S. Chrysogoni Martyris
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 24 Nov
+  language: Latin
+  name: S. Joannis de Cruce Confessoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 25 Nov
+  language: Latin
+  name: S. Catharinae Virginis et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 26 Nov
+  language: Latin
+  name: S. Silvesteri Abbatis Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 29 Nov
+  language: Latin
+  name: S. Saturnini Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: simplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 30 Nov
+  language: Latin
+  name: S. Andreae Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations:
+  - datestr: 2 Dec
+    name: S. Barbarae Virginis et Martyris
+    rank_defeatable: false
+    rank_name: simplex
+    version: monastic
+  datestr: 2 Dec
+  language: Latin
+  name: S. Petri Chrysologi Episcopi Confessoris Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 3 Dec
+  language: Latin
+  name: S. Francisci Xaverii Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex majus
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 6 Dec
+  language: Latin
+  name: S. Nicolai Episcopi et Confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 7 Dec
+  language: Latin
+  name: S. Ambrosii Episcopi Confesoris et Ecclesiae Doctoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 8 Dec
+  language: Latin
+  name: ' Immaculata Conceptione Beatae Mariae Virginis'
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 11 Dec
+  language: Latin
+  name: S. Damasi Papae et confessoris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 13 Dec
+  language: Latin
+  name: S. Luciae Virginis et Martyris
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 21 Dec
+  language: Latin
+  name: S. Thomae Apostoli
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 24 Dec
+  language: Latin
+  name: Vigilia Nativitatis Domini
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 25 Dec
+  language: Latin
+  name: In Nativitate Domini
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex i classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 26 Dec
+  language: Latin
+  name: Die secunda infra octavam Nativitati
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 27 Dec
+  language: Latin
+  name: Die tertia infra octavam Nativitati
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 28 Dec
+  language: Latin
+  name: Die quarta infra octavam Nativitati
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 29 Dec
+  language: Latin
+  name: Die quinta infra octavam Nativitati
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 30 Dec
+  language: Latin
+  name: Die sexta infra Octavam Nativitatis
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic
+- commemorations: null
+  datestr: 31 Dec
+  language: Latin
+  name: Die septima infra octavam Nativitati
+  octave: null
+  rank_defeatable: false
+  rank_name: duplex ii classis
+  type_: Sanctorum
+  version: monastic

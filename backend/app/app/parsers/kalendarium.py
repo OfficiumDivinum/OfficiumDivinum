@@ -13,7 +13,7 @@ from .util import Line
 rank_table = None
 version = None
 
-version_names = {"M": "monastic", "NC": "newcal"}
+version_names = {"M": "monastic", "NC": "newcal", "1954": "DA", "1888": "1910"}
 
 
 def get_version(fn: Path):
@@ -54,9 +54,9 @@ def parse_line(line: Line, language: str, fn: Path) -> Optional[FeastCreate]:
     """Parse a line of a divinumofficium calendar file."""
 
     data = extract_line(line.content)
-    month, day = (int(x) for x in data["date"].split("-"))
     if not data:
         return None
+    month, day = (int(x) for x in data["date"].split("-"))
     lineno = line.lineno
     feasts = sorted(data["feasts"], reverse=True, key=lambda x: x["rank"])
 
@@ -82,8 +82,8 @@ def parse_line(line: Line, language: str, fn: Path) -> Optional[FeastCreate]:
         )
         try:
             feast["rank_name"] = rank_table[feast["rank"]]
-        except ValueError:
-            feast["rank_name"] = rank_table[feast["rank"] + 0.5]
+        except TypeError:
+            feast["rank_name"] = rank_table[int(feast["rank"] + 0.5)]
 
         feast["rank_defeatable"] = True if isinstance(feast["rank"], float) else False
 
@@ -95,7 +95,7 @@ def parse_line(line: Line, language: str, fn: Path) -> Optional[FeastCreate]:
     return FeastCreate(**feasts[0])
 
 
-def parse_file(fn: Path, language: str, version: str):
+def parse_file(fn: Path, language: str):
     """
     Parse a divinumofficium calendar file.
 
@@ -112,10 +112,18 @@ def parse_file(fn: Path, language: str, version: str):
     """
     get_version(fn)
     year = []
-    lines = (Line(i, x) for i, x in enumerate(fn.readlines()))
+    lines = (Line(i, x) for i, x in enumerate(fn.open().readlines()))
     for line in lines:
         parsed = parse_line(line, language, fn)
         if parsed:
             year.append(parsed)
 
     return year
+
+
+def main():
+    root = Path(
+        "/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Tabulae/"
+    )
+    for fn in root.glob("K*.txt"):
+        debug(parse_file(fn, "Latin"))
