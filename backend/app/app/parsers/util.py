@@ -35,6 +35,14 @@ class Thing:
     source_section: str = None
 
 
+def guess_file_version(fn: Path) -> str:
+    raise NotImplementedError()
+
+
+def guess_section_version(section_name) -> Optional[str]:
+    raise NotImplementedError()
+
+
 def validate_section(section: List) -> bool:
     from app.parsers.chickenfeed import is_rubric
 
@@ -208,7 +216,7 @@ def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List
 
 def parse_file_as_dict(
     fn: Path,
-    version: str,
+    version: str = None,
     follow_links: bool = True,
     follow_only_interesting_links: bool = True,
     nasty_stuff: list = [],
@@ -223,7 +231,7 @@ def parse_file_as_dict(
     Args:
       fn: Path: The complete file path.
       section_key: str: The section to extract.
-      version: str: The version in question (e.g. 1960).
+      version: str: We're only interested in this version (among sections).
       follow_links: bool: Whether or not to follow links.  (Default value = True)
       follow_only_interesting_links: bool: Skip links which don't change their target.
     (Default value = True)
@@ -235,15 +243,17 @@ def parse_file_as_dict(
 
     section_header_regex = guess_section_header(fn)
 
+    file_version = guess_file_version(fn)
+
     sections = parse_DO_sections(fn, section_header_regex)
     logger.debug(f"Got {len(sections.keys())} sections.")
     things = {}
     sourcefile = str(fn)
     for key, section in sections.items():
-        if "rubrica" in key:
-            if version not in key:
-                logger.debug(f"Skipping {key} as not {version}.")
-                continue
+        section_version = guess_section_version(key)
+        if section_version and section_version != version:
+            continue
+        version = section_version if section_version else file_version
 
         schemas = [r".*Special.*", r"^Minor.*"]
         if any((re.search(schema, key) for schema in schemas)):
