@@ -31,7 +31,7 @@ class Line:
 class Thing:
     content: Any
     crossref: Optional[str] = None
-    source_file: str = None
+    sourcefile: str = None
     source_section: str = None
 
 

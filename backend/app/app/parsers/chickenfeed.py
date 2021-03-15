@@ -286,7 +286,7 @@ def parse_section(
     if not section_obj:
         section_obj = guess_section_obj(section_name, section.content)
     section_data = {
-        "source_file": section.source_file,
+        "sourcefile": section.sourcefile,
         "source_section": section.source_section,
     }
     if version:
@@ -424,7 +424,7 @@ def parse_section(
     if not section_obj:
         if not isinstance(section_content, list):
             assert section_content
-            section_content.source_file = section_data["source_file"]
+            section_content.sourcefile = section_data["sourcefile"]
             section_content.source_section = section_data["source_section"]
             return section_content
         for i, verse in enumerate(section_content):
