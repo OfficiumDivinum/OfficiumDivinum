@@ -1,6 +1,6 @@
 - commemorations: null
   datestr: Sun between 2 Jan 5 Jan OR 2 Jan
-  language: Latin
+  language: latin
   name: Sanctissimi Nominis Iesu
   octave: null
   rank_defeatable: false
@@ -9,7 +9,7 @@
   version: '1960'
 - commemorations: null
   datestr: 1 Jan
-  language: Latin
+  language: latin
   name: Die Octavae Nativitatis Domini
   octave: null
   rank_defeatable: false
@@ -18,7 +18,7 @@
   version: '1960'
 - commemorations: null
   datestr: 2 Jan
-  language: Latin
+  language: latin
   name: Die Secunda Januarii
   octave: null
   rank_defeatable: false
@@ -27,7 +27,7 @@
   version: '1960'
 - commemorations: null
   datestr: 3 Jan
-  language: Latin
+  language: latin
   name: Die Tertia Januarii
   octave: null
   rank_defeatable: false
@@ -36,7 +36,7 @@
   version: '1960'
 - commemorations: null
   datestr: 4 Jan
-  language: Latin
+  language: latin
   name: Die Quarta Januarii
   octave: null
   rank_defeatable: false
@@ -45,7 +45,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 Jan
-  language: Latin
+  language: latin
   name: Die Quinta Januarii
   octave: null
   rank_defeatable: false
@@ -54,7 +54,7 @@
   version: '1960'
 - commemorations: null
   datestr: 6 Jan
-  language: Latin
+  language: latin
   name: Epiphaniae Domini
   octave: null
   rank_defeatable: false
@@ -63,7 +63,7 @@
   version: '1960'
 - commemorations: null
   datestr: 7 Jan
-  language: Latin
+  language: latin
   name: Die Septima Januarii
   octave: null
   rank_defeatable: false
@@ -72,7 +72,7 @@
   version: '1960'
 - commemorations: null
   datestr: 8 Jan
-  language: Latin
+  language: latin
   name: Die Octava Januarii
   octave: null
   rank_defeatable: false
@@ -81,7 +81,7 @@
   version: '1960'
 - commemorations: null
   datestr: 9 Jan
-  language: Latin
+  language: latin
   name: Die Nona Januarii
   octave: null
   rank_defeatable: false
@@ -90,7 +90,7 @@
   version: '1960'
 - commemorations: null
   datestr: 10 Jan
-  language: Latin
+  language: latin
   name: Die Decima Januarii
   octave: null
   rank_defeatable: false
@@ -104,7 +104,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 11 Jan
-  language: Latin
+  language: latin
   name: Die Undecima Januarii
   octave: null
   rank_defeatable: false
@@ -113,7 +113,7 @@
   version: '1960'
 - commemorations: null
   datestr: 12 Jan
-  language: Latin
+  language: latin
   name: Die Duodecima Januarii
   octave: null
   rank_defeatable: false
@@ -122,7 +122,7 @@
   version: '1960'
 - commemorations: null
   datestr: 13 Jan
-  language: Latin
+  language: latin
   name: Commemoratio Baptismi Domini
   octave: null
   rank_defeatable: false
@@ -136,7 +136,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 14 Jan
-  language: Latin
+  language: latin
   name: S. Hilarii Episcopi Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -150,7 +150,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 15 Jan
-  language: Latin
+  language: latin
   name: S. Pauli primi Eremitae et Confessoris
   octave: null
   rank_defeatable: false
@@ -159,7 +159,7 @@
   version: '1960'
 - commemorations: null
   datestr: 16 Jan
-  language: Latin
+  language: latin
   name: S. Marcelli Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -168,7 +168,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 Jan
-  language: Latin
+  language: latin
   name: S. S. Antonii Abbatis
   octave: null
   rank_defeatable: false
@@ -177,7 +177,7 @@
   version: '1960'
 - commemorations: null
   datestr: 18 Jan
-  language: Latin
+  language: latin
   name: 'S Priscae Virginis '
   octave: null
   rank_defeatable: false
@@ -191,7 +191,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 19 Jan
-  language: Latin
+  language: latin
   name: S. Maurii et Soc. Mart.
   octave: null
   rank_defeatable: false
@@ -200,7 +200,7 @@
   version: '1960'
 - commemorations: null
   datestr: 20 Jan
-  language: Latin
+  language: latin
   name: Ss. Fabiani et Sebastiani Martyrum
   octave: null
   rank_defeatable: false
@@ -209,7 +209,7 @@
   version: '1960'
 - commemorations: null
   datestr: 21 Jan
-  language: Latin
+  language: latin
   name: S. Agnetis Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -218,7 +218,7 @@
   version: '1960'
 - commemorations: null
   datestr: 22 Jan
-  language: Latin
+  language: latin
   name: Ss. Vincentii et Anastasii Martyrum
   octave: null
   rank_defeatable: false
@@ -232,7 +232,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 23 Jan
-  language: Latin
+  language: latin
   name: S. Raymundi de Penafort Confessoris
   octave: null
   rank_defeatable: false
@@ -241,7 +241,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Jan
-  language: Latin
+  language: latin
   name: S. Timothei Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -250,7 +250,7 @@
   version: '1960'
 - commemorations: null
   datestr: 25 Jan
-  language: Latin
+  language: latin
   name: In Conversione S. Pauli Apostoli
   octave: null
   rank_defeatable: false
@@ -259,7 +259,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 Jan
-  language: Latin
+  language: latin
   name: S. Polycarpi Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -268,7 +268,7 @@
   version: '1960'
 - commemorations: null
   datestr: 27 Jan
-  language: Latin
+  language: latin
   name: S. Joannis Chrysostomi Episcopi Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -282,7 +282,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 28 Jan
-  language: Latin
+  language: latin
   name: S. Petri Nolasci Confessoris
   octave: null
   rank_defeatable: false
@@ -291,7 +291,7 @@
   version: '1960'
 - commemorations: null
   datestr: 29 Jan
-  language: Latin
+  language: latin
   name: S. Francisci Salesii Episcopi Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -300,7 +300,7 @@
   version: '1960'
 - commemorations: null
   datestr: 30 Jan
-  language: Latin
+  language: latin
   name: S. Martinae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -309,7 +309,7 @@
   version: '1960'
 - commemorations: null
   datestr: 31 Jan
-  language: Latin
+  language: latin
   name: S.Joannis Bosco Confessoris
   octave: null
   rank_defeatable: false
@@ -318,7 +318,7 @@
   version: '1960'
 - commemorations: null
   datestr: 1 Feb
-  language: Latin
+  language: latin
   name: S. Ignatii Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -327,7 +327,7 @@
   version: '1960'
 - commemorations: null
   datestr: 2 Feb
-  language: Latin
+  language: latin
   name: In Purificatione Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -336,7 +336,7 @@
   version: '1960'
 - commemorations: null
   datestr: 3 Feb
-  language: Latin
+  language: latin
   name: S. S. Blasii Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -345,7 +345,7 @@
   version: '1960'
 - commemorations: null
   datestr: 4 Feb
-  language: Latin
+  language: latin
   name: S. Andreae Corsini Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -354,7 +354,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 Feb
-  language: Latin
+  language: latin
   name: S. Agathae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -363,7 +363,7 @@
   version: '1960'
 - commemorations: null
   datestr: 6 Feb
-  language: Latin
+  language: latin
   name: S. Titi Episc et Confessoris
   octave: null
   rank_defeatable: false
@@ -372,7 +372,7 @@
   version: '1960'
 - commemorations: null
   datestr: 7 Feb
-  language: Latin
+  language: latin
   name: S. Romualdi Abbatis
   octave: null
   rank_defeatable: false
@@ -381,7 +381,7 @@
   version: '1960'
 - commemorations: null
   datestr: 8 Feb
-  language: Latin
+  language: latin
   name: S. S. Joannis de Matha Confessoris
   octave: null
   rank_defeatable: false
@@ -395,7 +395,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 9 Feb
-  language: Latin
+  language: latin
   name: S. Cyrilli Episc Alexandrini Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -404,7 +404,7 @@
   version: '1960'
 - commemorations: null
   datestr: 10 Feb
-  language: Latin
+  language: latin
   name: S. Scholasticae Virginis
   octave: null
   rank_defeatable: false
@@ -413,7 +413,7 @@
   version: '1960'
 - commemorations: null
   datestr: 11 Feb
-  language: Latin
+  language: latin
   name: In Apparitione Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -422,7 +422,7 @@
   version: '1960'
 - commemorations: null
   datestr: 12 Feb
-  language: Latin
+  language: latin
   name: Ss. Septem Fundatorum Ordinis Servorum B. M. V.
   octave: null
   rank_defeatable: false
@@ -431,7 +431,7 @@
   version: '1960'
 - commemorations: null
   datestr: 14 Feb
-  language: Latin
+  language: latin
   name: S. Valentini
   octave: null
   rank_defeatable: false
@@ -440,7 +440,7 @@
   version: '1960'
 - commemorations: null
   datestr: 15 Feb
-  language: Latin
+  language: latin
   name: Ss. Faustini et Jovitae
   octave: null
   rank_defeatable: false
@@ -449,7 +449,7 @@
   version: '1960'
 - commemorations: null
   datestr: 18 Feb
-  language: Latin
+  language: latin
   name: S. Simeonis Faustini et Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -458,7 +458,7 @@
   version: '1960'
 - commemorations: null
   datestr: 22 Feb
-  language: Latin
+  language: latin
   name: In Cathedra S. Petri Ap
   octave: null
   rank_defeatable: false
@@ -467,7 +467,7 @@
   version: '1960'
 - commemorations: null
   datestr: 23 Feb
-  language: Latin
+  language: latin
   name: S. Petri Damiani
   octave: null
   rank_defeatable: false
@@ -476,7 +476,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Feb
-  language: Latin
+  language: latin
   name: S. Matthiae Apostoli
   octave: null
   rank_defeatable: false
@@ -485,7 +485,7 @@
   version: '1960'
 - commemorations: null
   datestr: 27 Feb
-  language: Latin
+  language: latin
   name: St Gabriel Confessor
   octave: null
   rank_defeatable: false
@@ -499,7 +499,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 4 Mar
-  language: Latin
+  language: latin
   name: S. Casimiri
   octave: null
   rank_defeatable: false
@@ -508,7 +508,7 @@
   version: '1960'
 - commemorations: null
   datestr: 6 Mar
-  language: Latin
+  language: latin
   name: Ss. Perpetuae et Felicitatis Martyrum
   octave: null
   rank_defeatable: false
@@ -517,7 +517,7 @@
   version: '1960'
 - commemorations: null
   datestr: 7 Mar
-  language: Latin
+  language: latin
   name: S. Thomae de Aquino Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -526,7 +526,7 @@
   version: '1960'
 - commemorations: null
   datestr: 8 Mar
-  language: Latin
+  language: latin
   name: S. Joannis de Deo Confessoris
   octave: null
   rank_defeatable: false
@@ -535,7 +535,7 @@
   version: '1960'
 - commemorations: null
   datestr: 9 Mar
-  language: Latin
+  language: latin
   name: S. Franciscae Viduae Romanae
   octave: null
   rank_defeatable: false
@@ -544,7 +544,7 @@
   version: '1960'
 - commemorations: null
   datestr: 10 Mar
-  language: Latin
+  language: latin
   name: Ss. Quadraginta Martyrum
   octave: null
   rank_defeatable: false
@@ -553,7 +553,7 @@
   version: '1960'
 - commemorations: null
   datestr: 12 Mar
-  language: Latin
+  language: latin
   name: S. Gregorii Papae Confessoris et Eccl Doct
   octave: null
   rank_defeatable: false
@@ -562,7 +562,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 Mar
-  language: Latin
+  language: latin
   name: S. Patritii Episcopi et Conf
   octave: null
   rank_defeatable: false
@@ -571,7 +571,7 @@
   version: '1960'
 - commemorations: null
   datestr: 18 Mar
-  language: Latin
+  language: latin
   name: S. Cyrilli Episc Hierosolymitani Eccl Doct
   octave: null
   rank_defeatable: false
@@ -580,7 +580,7 @@
   version: '1960'
 - commemorations: null
   datestr: 19 Mar
-  language: Latin
+  language: latin
   name: S. Joseph Sponsi BMV Confessoris
   octave: null
   rank_defeatable: false
@@ -589,7 +589,7 @@
   version: '1960'
 - commemorations: null
   datestr: 21 Mar
-  language: Latin
+  language: latin
   name: S. Benedicti Abbatis
   octave: null
   rank_defeatable: false
@@ -598,7 +598,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Mar
-  language: Latin
+  language: latin
   name: S. Gabrielis Archangeli
   octave: null
   rank_defeatable: false
@@ -607,7 +607,7 @@
   version: '1960'
 - commemorations: null
   datestr: 25 Mar
-  language: Latin
+  language: latin
   name: In Annuntiatione Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -616,7 +616,7 @@
   version: '1960'
 - commemorations: null
   datestr: 27 Mar
-  language: Latin
+  language: latin
   name: S. John Damascene Confessoris
   octave: null
   rank_defeatable: false
@@ -625,7 +625,7 @@
   version: '1960'
 - commemorations: null
   datestr: 28 Mar
-  language: Latin
+  language: latin
   name: S. John Capistrano Confessoris
   octave: null
   rank_defeatable: false
@@ -634,7 +634,7 @@
   version: '1960'
 - commemorations: null
   datestr: 2 Apr
-  language: Latin
+  language: latin
   name: S. Francisci de Paula Confessoris
   octave: null
   rank_defeatable: false
@@ -643,7 +643,7 @@
   version: '1960'
 - commemorations: null
   datestr: 4 Apr
-  language: Latin
+  language: latin
   name: S. Isidori Episc Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -652,7 +652,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 Apr
-  language: Latin
+  language: latin
   name: S. Vincentii Ferrerii Confessoris
   octave: null
   rank_defeatable: false
@@ -661,7 +661,7 @@
   version: '1960'
 - commemorations: null
   datestr: 11 Apr
-  language: Latin
+  language: latin
   name: S. Leonis I Papae Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -670,7 +670,7 @@
   version: '1960'
 - commemorations: null
   datestr: 13 Apr
-  language: Latin
+  language: latin
   name: S. Hermenegildi Martyris
   octave: null
   rank_defeatable: false
@@ -679,7 +679,7 @@
   version: '1960'
 - commemorations: null
   datestr: 14 Apr
-  language: Latin
+  language: latin
   name: S. Justini Martyris
   octave: null
   rank_defeatable: false
@@ -688,7 +688,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 Apr
-  language: Latin
+  language: latin
   name: S. Aniceti Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -697,7 +697,7 @@
   version: '1960'
 - commemorations: null
   datestr: 21 Apr
-  language: Latin
+  language: latin
   name: S. Anselmi Episcopi Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -706,7 +706,7 @@
   version: '1960'
 - commemorations: null
   datestr: 22 Apr
-  language: Latin
+  language: latin
   name: Ss. Soteris ct Caji Pont et Mart
   octave: null
   rank_defeatable: false
@@ -715,7 +715,7 @@
   version: '1960'
 - commemorations: null
   datestr: 23 Apr
-  language: Latin
+  language: latin
   name: S. Georgii Martyris
   octave: null
   rank_defeatable: false
@@ -724,7 +724,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Apr
-  language: Latin
+  language: latin
   name: S. Fidelis a Sigmaringa Martyris
   octave: null
   rank_defeatable: false
@@ -733,7 +733,7 @@
   version: '1960'
 - commemorations: null
   datestr: 25 Apr
-  language: Latin
+  language: latin
   name: S. Marci Evangelistae
   octave: null
   rank_defeatable: false
@@ -742,7 +742,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 Apr
-  language: Latin
+  language: latin
   name: S. Cleti et Marcellini Pontif Martyrum
   octave: null
   rank_defeatable: false
@@ -751,7 +751,7 @@
   version: '1960'
 - commemorations: null
   datestr: 27 Apr
-  language: Latin
+  language: latin
   name: S. Petri Canisii Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -765,7 +765,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 28 Apr
-  language: Latin
+  language: latin
   name: S. Pauli a Cruce Confessoris
   octave: null
   rank_defeatable: false
@@ -774,7 +774,7 @@
   version: '1960'
 - commemorations: null
   datestr: 29 Apr
-  language: Latin
+  language: latin
   name: S. Petri Martyris
   octave: null
   rank_defeatable: false
@@ -783,7 +783,7 @@
   version: '1960'
 - commemorations: null
   datestr: 30 Apr
-  language: Latin
+  language: latin
   name: S. Catharinae Senensis Virginis
   octave: null
   rank_defeatable: false
@@ -792,7 +792,7 @@
   version: '1960'
 - commemorations: null
   datestr: 1 May
-  language: Latin
+  language: latin
   name: St Joseph the Worker Confessoris
   octave: null
   rank_defeatable: false
@@ -801,7 +801,7 @@
   version: '1960'
 - commemorations: null
   datestr: 2 May
-  language: Latin
+  language: latin
   name: S. Athanasii Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -810,7 +810,7 @@
   version: '1960'
 - commemorations: null
   datestr: 3 May
-  language: Latin
+  language: latin
   name: Ss. Alexandri et sociorum Martyrum
   octave: null
   rank_defeatable: false
@@ -819,7 +819,7 @@
   version: '1960'
 - commemorations: null
   datestr: 4 May
-  language: Latin
+  language: latin
   name: S. Monica Vidua
   octave: null
   rank_defeatable: false
@@ -828,7 +828,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 May
-  language: Latin
+  language: latin
   name: S. Pii V Papae Confessoris
   octave: null
   rank_defeatable: false
@@ -837,7 +837,7 @@
   version: '1960'
 - commemorations: null
   datestr: 7 May
-  language: Latin
+  language: latin
   name: S. Stanislai Episcopi Martyri
   octave: null
   rank_defeatable: false
@@ -846,7 +846,7 @@
   version: '1960'
 - commemorations: null
   datestr: 9 May
-  language: Latin
+  language: latin
   name: S. Gregorii Nazianzi Episcopi Confessoris Ecclasiae Doctorum
   octave: null
   rank_defeatable: false
@@ -860,7 +860,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 10 May
-  language: Latin
+  language: latin
   name: S. Antonii Episcopi Confessoris
   octave: null
   rank_defeatable: false
@@ -869,7 +869,7 @@
   version: '1960'
 - commemorations: null
   datestr: 11 May
-  language: Latin
+  language: latin
   name: Ss. Philippi et Jacobi Apostolorum
   octave: null
   rank_defeatable: false
@@ -878,7 +878,7 @@
   version: '1960'
 - commemorations: null
   datestr: 12 May
-  language: Latin
+  language: latin
   name: Ss. Nerei, Achillei et Domitillae Virgini atque Pancratii Martyrum
   octave: null
   rank_defeatable: false
@@ -887,7 +887,7 @@
   version: '1960'
 - commemorations: null
   datestr: 13 May
-  language: Latin
+  language: latin
   name: S.Roberti Ballarmino Episcopi Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -896,7 +896,7 @@
   version: '1960'
 - commemorations: null
   datestr: 14 May
-  language: Latin
+  language: latin
   name: S. Bonifacii Martyri
   octave: null
   rank_defeatable: false
@@ -905,7 +905,7 @@
   version: '1960'
 - commemorations: null
   datestr: 15 May
-  language: Latin
+  language: latin
   name: S. Joanni Baptistae de la Salle Confessoris
   octave: null
   rank_defeatable: false
@@ -914,7 +914,7 @@
   version: '1960'
 - commemorations: null
   datestr: 16 May
-  language: Latin
+  language: latin
   name: S. Ubaldi Episcopi Confessoris
   octave: null
   rank_defeatable: false
@@ -923,7 +923,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 May
-  language: Latin
+  language: latin
   name: S. Paschalis Baylon Confessoris
   octave: null
   rank_defeatable: false
@@ -932,7 +932,7 @@
   version: '1960'
 - commemorations: null
   datestr: 18 May
-  language: Latin
+  language: latin
   name: S. Venantii Martyris;
   octave: null
   rank_defeatable: false
@@ -946,7 +946,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 19 May
-  language: Latin
+  language: latin
   name: S. Petri Celestini Papae Confessoris
   octave: null
   rank_defeatable: false
@@ -955,7 +955,7 @@
   version: '1960'
 - commemorations: null
   datestr: 20 May
-  language: Latin
+  language: latin
   name: S. Bernardini Senensis Confessoris
   octave: null
   rank_defeatable: false
@@ -969,7 +969,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 25 May
-  language: Latin
+  language: latin
   name: S. Gregory VII Papae Confessoris
   octave: null
   rank_defeatable: false
@@ -978,7 +978,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 May
-  language: Latin
+  language: latin
   name: S. Philippi Neri Confessoris
   octave: null
   rank_defeatable: false
@@ -987,7 +987,7 @@
   version: '1960'
 - commemorations: null
   datestr: 27 May
-  language: Latin
+  language: latin
   name: S. Bede Venerabilis Pries Confessor
   octave: null
   rank_defeatable: false
@@ -996,7 +996,7 @@
   version: '1960'
 - commemorations: null
   datestr: 28 May
-  language: Latin
+  language: latin
   name: S. Augustini Episcopi Confessoris
   octave: null
   rank_defeatable: false
@@ -1010,7 +1010,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 29 May
-  language: Latin
+  language: latin
   name: S. Mariae Magdalenae de Pazzis
   octave: null
   rank_defeatable: false
@@ -1019,7 +1019,7 @@
   version: '1960'
 - commemorations: null
   datestr: 30 May
-  language: Latin
+  language: latin
   name: S. Felicis Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -1028,7 +1028,7 @@
   version: '1960'
 - commemorations: null
   datestr: 31 May
-  language: Latin
+  language: latin
   name: Beatae Mariae Virginis Regina
   octave: null
   rank_defeatable: false
@@ -1042,7 +1042,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 1 Jun
-  language: Latin
+  language: latin
   name: S. Angelae Mericiae Virginis
   octave: null
   rank_defeatable: false
@@ -1051,7 +1051,7 @@
   version: '1960'
 - commemorations: null
   datestr: 2 Jun
-  language: Latin
+  language: latin
   name: Ss. Marcellini, Petri, atque Erasmi Martyrum
   octave: null
   rank_defeatable: false
@@ -1060,7 +1060,7 @@
   version: '1960'
 - commemorations: null
   datestr: 4 Jun
-  language: Latin
+  language: latin
   name: S. Francisci Caracciolo Confessoris
   octave: null
   rank_defeatable: false
@@ -1069,7 +1069,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 Jun
-  language: Latin
+  language: latin
   name: S. Bonifacii Episc et Mart
   octave: null
   rank_defeatable: false
@@ -1078,7 +1078,7 @@
   version: '1960'
 - commemorations: null
   datestr: 6 Jun
-  language: Latin
+  language: latin
   name: S. Norberti Episc et Confessoris
   octave: null
   rank_defeatable: false
@@ -1087,7 +1087,7 @@
   version: '1960'
 - commemorations: null
   datestr: 9 Jun
-  language: Latin
+  language: latin
   name: Ss. Primi et Feliciani Martyrum
   octave: null
   rank_defeatable: false
@@ -1096,7 +1096,7 @@
   version: '1960'
 - commemorations: null
   datestr: 10 Jun
-  language: Latin
+  language: latin
   name: S. Margaritae Reginae viduae
   octave: null
   rank_defeatable: false
@@ -1105,7 +1105,7 @@
   version: '1960'
 - commemorations: null
   datestr: 11 Jun
-  language: Latin
+  language: latin
   name: S. Barnabae Apostoli
   octave: null
   rank_defeatable: false
@@ -1119,7 +1119,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 12 Jun
-  language: Latin
+  language: latin
   name: S. Joannis a S. Facundo Confessoris
   octave: null
   rank_defeatable: false
@@ -1128,7 +1128,7 @@
   version: '1960'
 - commemorations: null
   datestr: 13 Jun
-  language: Latin
+  language: latin
   name: S. Antonii de Padua Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1137,7 +1137,7 @@
   version: '1960'
 - commemorations: null
   datestr: 14 Jun
-  language: Latin
+  language: latin
   name: S. Basilii Magni Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1146,7 +1146,7 @@
   version: '1960'
 - commemorations: null
   datestr: 15 Jun
-  language: Latin
+  language: latin
   name: Ss. Viti, Modesti atque Crescentiae Martyrum
   octave: null
   rank_defeatable: false
@@ -1155,7 +1155,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 Jun
-  language: Latin
+  language: latin
   name: S. Gregorii Barbadici Ep. Conf
   octave: null
   rank_defeatable: false
@@ -1169,7 +1169,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 18 Jun
-  language: Latin
+  language: latin
   name: S. Ephraem Syri Confessorem et Ecclesiae Doctorem
   octave: null
   rank_defeatable: false
@@ -1183,7 +1183,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 19 Jun
-  language: Latin
+  language: latin
   name: S. Julianae de Falconeriis Virginae
   octave: null
   rank_defeatable: false
@@ -1192,7 +1192,7 @@
   version: '1960'
 - commemorations: null
   datestr: 20 Jun
-  language: Latin
+  language: latin
   name: S. Sylverii Papae et Martyri
   octave: null
   rank_defeatable: false
@@ -1201,7 +1201,7 @@
   version: '1960'
 - commemorations: null
   datestr: 21 Jun
-  language: Latin
+  language: latin
   name: S. Alosii Gonzagae Confessoris
   octave: null
   rank_defeatable: false
@@ -1210,7 +1210,7 @@
   version: '1960'
 - commemorations: null
   datestr: 22 Jun
-  language: Latin
+  language: latin
   name: S. Paulini Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -1219,7 +1219,7 @@
   version: '1960'
 - commemorations: null
   datestr: 23 Jun
-  language: Latin
+  language: latin
   name: Vigilia S. Joannis Baptistae
   octave: null
   rank_defeatable: false
@@ -1228,7 +1228,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Jun
-  language: Latin
+  language: latin
   name: In Nativitate S. Joannis Baptistae
   octave: null
   rank_defeatable: false
@@ -1237,7 +1237,7 @@
   version: '1960'
 - commemorations: null
   datestr: 25 Jun
-  language: Latin
+  language: latin
   name: S. Gulielmi Abbatis
   octave: null
   rank_defeatable: false
@@ -1246,7 +1246,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 Jun
-  language: Latin
+  language: latin
   name: Ss. Joannis et Pauli Martyrum
   octave: null
   rank_defeatable: false
@@ -1255,7 +1255,7 @@
   version: '1960'
 - commemorations: null
   datestr: 28 Jun
-  language: Latin
+  language: latin
   name: Vigilia Ss. Petri et Pauli Apostolorum
   octave: null
   rank_defeatable: false
@@ -1264,7 +1264,7 @@
   version: '1960'
 - commemorations: null
   datestr: 29 Jun
-  language: Latin
+  language: latin
   name: Ss. Apostolorum Petri et Pauli
   octave: null
   rank_defeatable: false
@@ -1273,7 +1273,7 @@
   version: '1960'
 - commemorations: null
   datestr: 30 Jun
-  language: Latin
+  language: latin
   name: In Commemoratione Sancti Pauli Apostoli
   octave: null
   rank_defeatable: false
@@ -1282,7 +1282,7 @@
   version: '1960'
 - commemorations: null
   datestr: 1 Jul
-  language: Latin
+  language: latin
   name: Pretiosissimi Sanguinis Domini Nostri Jesu Christi
   octave: null
   rank_defeatable: false
@@ -1296,7 +1296,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 2 Jul
-  language: Latin
+  language: latin
   name: In Visitatione B Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1305,7 +1305,7 @@
   version: '1960'
 - commemorations: null
   datestr: 3 Jul
-  language: Latin
+  language: latin
   name: S. Irenaei Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -1314,7 +1314,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 Jul
-  language: Latin
+  language: latin
   name: S. Antonii Mariae Zacharia Confessor
   octave: null
   rank_defeatable: false
@@ -1323,7 +1323,7 @@
   version: '1960'
 - commemorations: null
   datestr: 7 Jul
-  language: Latin
+  language: latin
   name: Ss. Cyrilli et Methodii Pont et Conf
   octave: null
   rank_defeatable: false
@@ -1332,7 +1332,7 @@
   version: '1960'
 - commemorations: null
   datestr: 8 Jul
-  language: Latin
+  language: latin
   name: S. Elisabeth Reg Portugaliae Viduae
   octave: null
   rank_defeatable: false
@@ -1341,7 +1341,7 @@
   version: '1960'
 - commemorations: null
   datestr: 10 Jul
-  language: Latin
+  language: latin
   name: Ss. Septem Fratrum Martyrum, ac Rufinae et Secundae Virgini et Martyri
   octave: null
   rank_defeatable: false
@@ -1350,7 +1350,7 @@
   version: '1960'
 - commemorations: null
   datestr: 11 Jul
-  language: Latin
+  language: latin
   name: S. Pii I Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -1364,7 +1364,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 12 Jul
-  language: Latin
+  language: latin
   name: S. Joannis Gualberti Abbatis
   octave: null
   rank_defeatable: false
@@ -1373,7 +1373,7 @@
   version: '1960'
 - commemorations: null
   datestr: 14 Jul
-  language: Latin
+  language: latin
   name: S. Bonaventurae Episcopi Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1382,7 +1382,7 @@
   version: '1960'
 - commemorations: null
   datestr: 15 Jul
-  language: Latin
+  language: latin
   name: S. Henrici Imperatoris Confessoris
   octave: null
   rank_defeatable: false
@@ -1391,7 +1391,7 @@
   version: '1960'
 - commemorations: null
   datestr: 16 Jul
-  language: Latin
+  language: latin
   name: In Commemoratione Beatae Mariae Virginis de Monte Carmelo.
   octave: null
   rank_defeatable: false
@@ -1400,7 +1400,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 Jul
-  language: Latin
+  language: latin
   name: S. Alexii Confessoris
   octave: null
   rank_defeatable: false
@@ -1414,7 +1414,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 18 Jul
-  language: Latin
+  language: latin
   name: S. Camilli de Lellis Confessoris
   octave: null
   rank_defeatable: false
@@ -1423,7 +1423,7 @@
   version: '1960'
 - commemorations: null
   datestr: 19 Jul
-  language: Latin
+  language: latin
   name: S. Vincentii a Paulo Conf
   octave: null
   rank_defeatable: false
@@ -1432,7 +1432,7 @@
   version: '1960'
 - commemorations: null
   datestr: 20 Jul
-  language: Latin
+  language: latin
   name: S. Hieronomy Emiliani Conf
   octave: null
   rank_defeatable: false
@@ -1446,7 +1446,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 21 Jul
-  language: Latin
+  language: latin
   name: S. Laurentii de Brundusio Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1455,7 +1455,7 @@
   version: '1960'
 - commemorations: null
   datestr: 22 Jul
-  language: Latin
+  language: latin
   name: S. Mariae Magdalenae Poenitentis
   octave: null
   rank_defeatable: false
@@ -1469,7 +1469,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 23 Jul
-  language: Latin
+  language: latin
   name: S. Apollinaris Episcopi et Mart
   octave: null
   rank_defeatable: false
@@ -1478,7 +1478,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Jul
-  language: Latin
+  language: latin
   name: S. Christinae Virginis Martyris
   octave: null
   rank_defeatable: false
@@ -1492,7 +1492,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 25 Jul
-  language: Latin
+  language: latin
   name: S. Jacobi Apostoli
   octave: null
   rank_defeatable: false
@@ -1501,7 +1501,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 Jul
-  language: Latin
+  language: latin
   name: S. Annae Matris BMV
   octave: null
   rank_defeatable: false
@@ -1510,7 +1510,7 @@
   version: '1960'
 - commemorations: null
   datestr: 27 Jul
-  language: Latin
+  language: latin
   name: S. Pantaleon Martyr
   octave: null
   rank_defeatable: false
@@ -1519,7 +1519,7 @@
   version: '1960'
 - commemorations: null
   datestr: 28 Jul
-  language: Latin
+  language: latin
   name: Ss. Nazarii et Celsi Martyrum
   octave: null
   rank_defeatable: false
@@ -1533,7 +1533,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 29 Jul
-  language: Latin
+  language: latin
   name: S. Marthae Virginis
   octave: null
   rank_defeatable: false
@@ -1542,7 +1542,7 @@
   version: '1960'
 - commemorations: null
   datestr: 30 Jul
-  language: Latin
+  language: latin
   name: S. Abdon et Senen Martyrum
   octave: null
   rank_defeatable: false
@@ -1551,7 +1551,7 @@
   version: '1960'
 - commemorations: null
   datestr: 31 Jul
-  language: Latin
+  language: latin
   name: S. Ignatii Confessoris
   octave: null
   rank_defeatable: false
@@ -1560,7 +1560,7 @@
   version: '1960'
 - commemorations: null
   datestr: 1 Aug
-  language: Latin
+  language: latin
   name: Ss. Martyrum Machabaeorum
   octave: null
   rank_defeatable: false
@@ -1574,7 +1574,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 2 Aug
-  language: Latin
+  language: latin
   name: S. Alphonsi Mariae de Ligorio Episc Conf et Eccles Doct
   octave: null
   rank_defeatable: false
@@ -1583,7 +1583,7 @@
   version: '1960'
 - commemorations: null
   datestr: 4 Aug
-  language: Latin
+  language: latin
   name: S. Dominici Confessoris
   octave: null
   rank_defeatable: false
@@ -1592,7 +1592,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 Aug
-  language: Latin
+  language: latin
   name: S. Mariae ad Nives
   octave: null
   rank_defeatable: false
@@ -1606,7 +1606,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 6 Aug
-  language: Latin
+  language: latin
   name: The Transfiguratione Domini Nostri Jesu Christi
   octave: null
   rank_defeatable: false
@@ -1620,7 +1620,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 7 Aug
-  language: Latin
+  language: latin
   name: S. Cajetani Confessoris
   octave: null
   rank_defeatable: false
@@ -1634,7 +1634,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 8 Aug
-  language: Latin
+  language: latin
   name: S. Joannis Vianney Confessoris
   octave: null
   rank_defeatable: false
@@ -1643,7 +1643,7 @@
   version: '1960'
 - commemorations: null
   datestr: 9 Aug
-  language: Latin
+  language: latin
   name: Vigilia S. Laurentii Martyris
   octave: null
   rank_defeatable: true
@@ -1652,7 +1652,7 @@
   version: '1960'
 - commemorations: null
   datestr: 10 Aug
-  language: Latin
+  language: latin
   name: S. Laurentii Martyris
   octave: null
   rank_defeatable: false
@@ -1661,7 +1661,7 @@
   version: '1960'
 - commemorations: null
   datestr: 11 Aug
-  language: Latin
+  language: latin
   name: Ss. Tiburtii et Susannae Virg Martyrum
   octave: null
   rank_defeatable: false
@@ -1670,7 +1670,7 @@
   version: '1960'
 - commemorations: null
   datestr: 12 Aug
-  language: Latin
+  language: latin
   name: S. Clarae Virginis
   octave: null
   rank_defeatable: false
@@ -1679,7 +1679,7 @@
   version: '1960'
 - commemorations: null
   datestr: 13 Aug
-  language: Latin
+  language: latin
   name: Ss. Hippoliti et Cassiano Martyrum
   octave: null
   rank_defeatable: false
@@ -1693,7 +1693,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 14 Aug
-  language: Latin
+  language: latin
   name: Vigilia Assumptionis BMV
   octave: null
   rank_defeatable: false
@@ -1702,7 +1702,7 @@
   version: '1960'
 - commemorations: null
   datestr: 15 Aug
-  language: Latin
+  language: latin
   name: Assumptione Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1711,7 +1711,7 @@
   version: '1960'
 - commemorations: null
   datestr: 16 Aug
-  language: Latin
+  language: latin
   name: S. Joachim Confessoris, Patris B Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1720,7 +1720,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 Aug
-  language: Latin
+  language: latin
   name: S. Hyacinthi Confessoris
   octave: null
   rank_defeatable: false
@@ -1729,7 +1729,7 @@
   version: '1960'
 - commemorations: null
   datestr: 18 Aug
-  language: Latin
+  language: latin
   name: S. Agapiti Martyris
   octave: null
   rank_defeatable: false
@@ -1738,7 +1738,7 @@
   version: '1960'
 - commemorations: null
   datestr: 19 Aug
-  language: Latin
+  language: latin
   name: S. Joannis Eudes Confessoris
   octave: null
   rank_defeatable: false
@@ -1747,7 +1747,7 @@
   version: '1960'
 - commemorations: null
   datestr: 20 Aug
-  language: Latin
+  language: latin
   name: S. Bernardi Abbatis et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1756,7 +1756,7 @@
   version: '1960'
 - commemorations: null
   datestr: 21 Aug
-  language: Latin
+  language: latin
   name: S. Joanne Franciscae Fremiot de Chantal Viduae
   octave: null
   rank_defeatable: false
@@ -1770,7 +1770,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 22 Aug
-  language: Latin
+  language: latin
   name: Festum Immaculati Cordis Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1779,7 +1779,7 @@
   version: '1960'
 - commemorations: null
   datestr: 23 Aug
-  language: Latin
+  language: latin
   name: S. Philippi Beniti Confessoris
   octave: null
   rank_defeatable: false
@@ -1788,7 +1788,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Aug
-  language: Latin
+  language: latin
   name: S. Bartholomaei Apostoli
   octave: null
   rank_defeatable: false
@@ -1797,7 +1797,7 @@
   version: '1960'
 - commemorations: null
   datestr: 25 Aug
-  language: Latin
+  language: latin
   name: S. Ludovioci Confessoris
   octave: null
   rank_defeatable: false
@@ -1806,7 +1806,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 Aug
-  language: Latin
+  language: latin
   name: S. Zephirini Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -1815,7 +1815,7 @@
   version: '1960'
 - commemorations: null
   datestr: 27 Aug
-  language: Latin
+  language: latin
   name: S. Josephi Calasantini Confessoris
   octave: null
   rank_defeatable: false
@@ -1829,7 +1829,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 28 Aug
-  language: Latin
+  language: latin
   name: S. Augustini Episcopi et Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1843,7 +1843,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 29 Aug
-  language: Latin
+  language: latin
   name: Decollatione S. Joannis Baptistae
   octave: null
   rank_defeatable: false
@@ -1857,7 +1857,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 30 Aug
-  language: Latin
+  language: latin
   name: S. Rosae a Sancta Maria Limanae Virgini
   octave: null
   rank_defeatable: false
@@ -1866,7 +1866,7 @@
   version: '1960'
 - commemorations: null
   datestr: 31 Aug
-  language: Latin
+  language: latin
   name: S. Raymundi Nonnati Confessori
   octave: null
   rank_defeatable: false
@@ -1880,7 +1880,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 1 Sep
-  language: Latin
+  language: latin
   name: S. Aegidii Abbatis
   octave: null
   rank_defeatable: true
@@ -1889,7 +1889,7 @@
   version: '1960'
 - commemorations: null
   datestr: 2 Sep
-  language: Latin
+  language: latin
   name: S. Stephani Hungariae Regis Confessoris
   octave: null
   rank_defeatable: false
@@ -1898,7 +1898,7 @@
   version: '1960'
 - commemorations: null
   datestr: 3 Sep
-  language: Latin
+  language: latin
   name: S. Pius X Papae Confessoris
   octave: null
   rank_defeatable: false
@@ -1907,7 +1907,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 Sep
-  language: Latin
+  language: latin
   name: S. Laurentii Justiniani Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -1921,7 +1921,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 8 Sep
-  language: Latin
+  language: latin
   name: Nativitate Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1930,7 +1930,7 @@
   version: '1960'
 - commemorations: null
   datestr: 9 Sep
-  language: Latin
+  language: latin
   name: S. Gorgonii mart
   octave: null
   rank_defeatable: false
@@ -1939,7 +1939,7 @@
   version: '1960'
 - commemorations: null
   datestr: 10 Sep
-  language: Latin
+  language: latin
   name: S. Nicolai de Tolentino Confessoris
   octave: null
   rank_defeatable: false
@@ -1948,7 +1948,7 @@
   version: '1960'
 - commemorations: null
   datestr: 11 Sep
-  language: Latin
+  language: latin
   name: Ss. Proti et Hyacinthi Martyrum
   octave: null
   rank_defeatable: false
@@ -1957,7 +1957,7 @@
   version: '1960'
 - commemorations: null
   datestr: 12 Sep
-  language: Latin
+  language: latin
   name: S. Nominis Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1966,7 +1966,7 @@
   version: '1960'
 - commemorations: null
   datestr: 14 Sep
-  language: Latin
+  language: latin
   name: In Exaltatione Sanctae crucis
   octave: null
   rank_defeatable: false
@@ -1975,7 +1975,7 @@
   version: '1960'
 - commemorations: null
   datestr: 15 Sep
-  language: Latin
+  language: latin
   name: Septem Dolorum Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1989,7 +1989,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 16 Sep
-  language: Latin
+  language: latin
   name: Ss. Cornelii et Cypriani Pontificium et Martyrum
   octave: null
   rank_defeatable: false
@@ -1998,7 +1998,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 Sep
-  language: Latin
+  language: latin
   name: Impressionis Stigmatum S. Francisci
   octave: null
   rank_defeatable: false
@@ -2007,7 +2007,7 @@
   version: '1960'
 - commemorations: null
   datestr: 18 Sep
-  language: Latin
+  language: latin
   name: S. Joseph Cupertino
   octave: null
   rank_defeatable: false
@@ -2016,7 +2016,7 @@
   version: '1960'
 - commemorations: null
   datestr: 19 Sep
-  language: Latin
+  language: latin
   name: S. Januarii Episcopi et Sociorum Martyrum
   octave: null
   rank_defeatable: false
@@ -2030,7 +2030,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 20 Sep
-  language: Latin
+  language: latin
   name: Vigilae St Matthaei Apostoli
   octave: null
   rank_defeatable: true
@@ -2039,7 +2039,7 @@
   version: '1960'
 - commemorations: null
   datestr: 21 Sep
-  language: Latin
+  language: latin
   name: S. Matthaei Apostoli et Evangelistae
   octave: null
   rank_defeatable: false
@@ -2053,7 +2053,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 22 Sep
-  language: Latin
+  language: latin
   name: S. Thomae de Villanove Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -2067,7 +2067,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 23 Sep
-  language: Latin
+  language: latin
   name: S. Linae Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -2076,7 +2076,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Sep
-  language: Latin
+  language: latin
   name: Beatae Mariae Virginis de Mercede
   octave: null
   rank_defeatable: false
@@ -2085,7 +2085,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 Sep
-  language: Latin
+  language: latin
   name: Ss. Cypriani et Justinae Martyri
   octave: null
   rank_defeatable: false
@@ -2094,7 +2094,7 @@
   version: '1960'
 - commemorations: null
   datestr: 27 Sep
-  language: Latin
+  language: latin
   name: S. Cosmae et Damiani Martyrum
   octave: null
   rank_defeatable: false
@@ -2103,7 +2103,7 @@
   version: '1960'
 - commemorations: null
   datestr: 28 Sep
-  language: Latin
+  language: latin
   name: S. Wenceslai Ducis et Martyris
   octave: null
   rank_defeatable: false
@@ -2112,7 +2112,7 @@
   version: '1960'
 - commemorations: null
   datestr: 29 Sep
-  language: Latin
+  language: latin
   name: In dedicatione S. Michaelis Archangelis
   octave: null
   rank_defeatable: false
@@ -2121,7 +2121,7 @@
   version: '1960'
 - commemorations: null
   datestr: 30 Sep
-  language: Latin
+  language: latin
   name: S. Hieronomy Presbitery Confessorie et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -2130,7 +2130,7 @@
   version: '1960'
 - commemorations: null
   datestr: 1 Oct
-  language: Latin
+  language: latin
   name: S. Remigii Episcopi Confessoris
   octave: null
   rank_defeatable: false
@@ -2139,7 +2139,7 @@
   version: '1960'
 - commemorations: null
   datestr: 2 Oct
-  language: Latin
+  language: latin
   name: Ss. Angelorum Custodum
   octave: null
   rank_defeatable: false
@@ -2148,7 +2148,7 @@
   version: '1960'
 - commemorations: null
   datestr: 3 Oct
-  language: Latin
+  language: latin
   name: S. Theresiae a Jesu Infante Virginis
   octave: null
   rank_defeatable: false
@@ -2157,7 +2157,7 @@
   version: '1960'
 - commemorations: null
   datestr: 4 Oct
-  language: Latin
+  language: latin
   name: S. Francisci Confessoris
   octave: null
   rank_defeatable: false
@@ -2166,7 +2166,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 Oct
-  language: Latin
+  language: latin
   name: S. Placidi et Sociorum Martyrum
   octave: null
   rank_defeatable: false
@@ -2175,7 +2175,7 @@
   version: '1960'
 - commemorations: null
   datestr: 6 Oct
-  language: Latin
+  language: latin
   name: S. Brunonis Confessoris
   octave: null
   rank_defeatable: false
@@ -2184,7 +2184,7 @@
   version: '1960'
 - commemorations: null
   datestr: 7 Oct
-  language: Latin
+  language: latin
   name: Festum Beatae Mariae Virginis a Rosario
   octave: null
   rank_defeatable: false
@@ -2198,7 +2198,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 8 Oct
-  language: Latin
+  language: latin
   name: S. Brigittae Viduae
   octave: null
   rank_defeatable: false
@@ -2212,7 +2212,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 9 Oct
-  language: Latin
+  language: latin
   name: S. Joannis Leonardi Confessoris
   octave: null
   rank_defeatable: false
@@ -2221,7 +2221,7 @@
   version: '1960'
 - commemorations: null
   datestr: 10 Oct
-  language: Latin
+  language: latin
   name: S. Francisci Borgiae Confessoris
   octave: null
   rank_defeatable: false
@@ -2230,7 +2230,7 @@
   version: '1960'
 - commemorations: null
   datestr: 11 Oct
-  language: Latin
+  language: latin
   name: Maternitatis Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -2239,7 +2239,7 @@
   version: '1960'
 - commemorations: null
   datestr: 13 Oct
-  language: Latin
+  language: latin
   name: S. Eduardi Regis Confessoris
   octave: null
   rank_defeatable: false
@@ -2248,7 +2248,7 @@
   version: '1960'
 - commemorations: null
   datestr: 14 Oct
-  language: Latin
+  language: latin
   name: S. Callisti Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -2257,7 +2257,7 @@
   version: '1960'
 - commemorations: null
   datestr: 15 Oct
-  language: Latin
+  language: latin
   name: S. Teresiae Virginis
   octave: null
   rank_defeatable: false
@@ -2266,7 +2266,7 @@
   version: '1960'
 - commemorations: null
   datestr: 16 Oct
-  language: Latin
+  language: latin
   name: S. Hedwigis Viduae
   octave: null
   rank_defeatable: false
@@ -2275,7 +2275,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 Oct
-  language: Latin
+  language: latin
   name: S. Margaritae Mariae Alaquoque Virginis
   octave: null
   rank_defeatable: false
@@ -2284,7 +2284,7 @@
   version: '1960'
 - commemorations: null
   datestr: 18 Oct
-  language: Latin
+  language: latin
   name: S. Lucae Evangelistae
   octave: null
   rank_defeatable: false
@@ -2293,7 +2293,7 @@
   version: '1960'
 - commemorations: null
   datestr: 19 Oct
-  language: Latin
+  language: latin
   name: S. Petri de Alcantara Confessoris
   octave: null
   rank_defeatable: false
@@ -2302,7 +2302,7 @@
   version: '1960'
 - commemorations: null
   datestr: 20 Oct
-  language: Latin
+  language: latin
   name: S. Joannis Cantii Confessoris
   octave: null
   rank_defeatable: false
@@ -2316,7 +2316,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 21 Oct
-  language: Latin
+  language: latin
   name: S. Hilarionis Abbatis
   octave: null
   rank_defeatable: false
@@ -2325,7 +2325,7 @@
   version: '1960'
 - commemorations: null
   datestr: 23 Oct
-  language: Latin
+  language: latin
   name: S. Antonii Mariae Claret Episcopi Confessoris
   octave: null
   rank_defeatable: false
@@ -2334,7 +2334,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Oct
-  language: Latin
+  language: latin
   name: S. Raphaelis Archangeli
   octave: null
   rank_defeatable: false
@@ -2343,7 +2343,7 @@
   version: '1960'
 - commemorations: null
   datestr: 25 Oct
-  language: Latin
+  language: latin
   name: Ss. Chrysanthi et Dariae Martyres
   octave: null
   rank_defeatable: false
@@ -2352,7 +2352,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 Oct
-  language: Latin
+  language: latin
   name: S. Evaristi Papae et Martyri
   octave: null
   rank_defeatable: false
@@ -2361,7 +2361,7 @@
   version: '1960'
 - commemorations: null
   datestr: 28 Oct
-  language: Latin
+  language: latin
   name: Ss. Simonis et Judae Apostolorum
   octave: null
   rank_defeatable: false
@@ -2370,7 +2370,7 @@
   version: '1960'
 - commemorations: null
   datestr: 1 Nov
-  language: Latin
+  language: latin
   name: Omnium Sanctorum
   octave: null
   rank_defeatable: false
@@ -2379,7 +2379,7 @@
   version: '1960'
 - commemorations: null
   datestr: 2 Nov
-  language: Latin
+  language: latin
   name: Commemoratio Omnium Fidelium Defunctorum
   octave: null
   rank_defeatable: false
@@ -2393,7 +2393,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 4 Nov
-  language: Latin
+  language: latin
   name: S. Caroli Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -2402,7 +2402,7 @@
   version: '1960'
 - commemorations: null
   datestr: 8 Nov
-  language: Latin
+  language: latin
   name: Ss. Quatuor Coronatorum Martyrum
   octave: null
   rank_defeatable: false
@@ -2416,7 +2416,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 9 Nov
-  language: Latin
+  language: latin
   name: In dedicatione Basilicae Ss. Salvatoris
   octave: null
   rank_defeatable: false
@@ -2430,7 +2430,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 10 Nov
-  language: Latin
+  language: latin
   name: S. Andreae Avellini Confessoris
   octave: null
   rank_defeatable: false
@@ -2444,7 +2444,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 11 Nov
-  language: Latin
+  language: latin
   name: S. Martini Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -2453,7 +2453,7 @@
   version: '1960'
 - commemorations: null
   datestr: 12 Nov
-  language: Latin
+  language: latin
   name: S. Martini Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -2462,7 +2462,7 @@
   version: '1960'
 - commemorations: null
   datestr: 13 Nov
-  language: Latin
+  language: latin
   name: S. Didaci Confessoris
   octave: null
   rank_defeatable: false
@@ -2471,7 +2471,7 @@
   version: '1960'
 - commemorations: null
   datestr: 14 Nov
-  language: Latin
+  language: latin
   name: S. Josaphat Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -2480,7 +2480,7 @@
   version: '1960'
 - commemorations: null
   datestr: 15 Nov
-  language: Latin
+  language: latin
   name: S. Albertus Magnus Ep Conf et Eccl Doctoris
   octave: null
   rank_defeatable: false
@@ -2489,7 +2489,7 @@
   version: '1960'
 - commemorations: null
   datestr: 16 Nov
-  language: Latin
+  language: latin
   name: S. Gertrudis Virginis
   octave: null
   rank_defeatable: false
@@ -2498,7 +2498,7 @@
   version: '1960'
 - commemorations: null
   datestr: 17 Nov
-  language: Latin
+  language: latin
   name: S. Gregorii Thaumaturgi Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -2507,7 +2507,7 @@
   version: '1960'
 - commemorations: null
   datestr: 18 Nov
-  language: Latin
+  language: latin
   name: In Dedicatione Basilicarum Ss. Apostolorum Petri et Pauli
   octave: null
   rank_defeatable: false
@@ -2521,7 +2521,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 19 Nov
-  language: Latin
+  language: latin
   name: S. Elisabeth vidue
   octave: null
   rank_defeatable: false
@@ -2530,7 +2530,7 @@
   version: '1960'
 - commemorations: null
   datestr: 20 Nov
-  language: Latin
+  language: latin
   name: S. Felicis Valois Confessoris
   octave: null
   rank_defeatable: false
@@ -2539,7 +2539,7 @@
   version: '1960'
 - commemorations: null
   datestr: 21 Nov
-  language: Latin
+  language: latin
   name: In Presentatione of Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -2548,7 +2548,7 @@
   version: '1960'
 - commemorations: null
   datestr: 22 Nov
-  language: Latin
+  language: latin
   name: S. Ceciliae Virginis et Martyrum
   octave: null
   rank_defeatable: false
@@ -2562,7 +2562,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 23 Nov
-  language: Latin
+  language: latin
   name: S. Clement Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -2576,7 +2576,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 24 Nov
-  language: Latin
+  language: latin
   name: S. Joannis de Cruce Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -2585,7 +2585,7 @@
   version: '1960'
 - commemorations: null
   datestr: 25 Nov
-  language: Latin
+  language: latin
   name: S. Catharinae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -2594,7 +2594,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 Nov
-  language: Latin
+  language: latin
   name: S. Silvesteri Abbatis Confessoris
   octave: null
   rank_defeatable: false
@@ -2603,7 +2603,7 @@
   version: '1960'
 - commemorations: null
   datestr: 29 Nov
-  language: Latin
+  language: latin
   name: S. Saturnini Martyris
   octave: null
   rank_defeatable: false
@@ -2612,7 +2612,7 @@
   version: '1960'
 - commemorations: null
   datestr: 30 Nov
-  language: Latin
+  language: latin
   name: S. Andreae Apostoli
   octave: null
   rank_defeatable: false
@@ -2621,7 +2621,7 @@
   version: '1960'
 - commemorations: null
   datestr: 2 Dec
-  language: Latin
+  language: latin
   name: S. Bibianae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -2630,7 +2630,7 @@
   version: '1960'
 - commemorations: null
   datestr: 3 Dec
-  language: Latin
+  language: latin
   name: S. Francisci Xaverii Confessoris
   octave: null
   rank_defeatable: false
@@ -2644,7 +2644,7 @@
     rank_name: commemoratio
     version: '1960'
   datestr: 4 Dec
-  language: Latin
+  language: latin
   name: S. Petri Chrysologi Episcopi Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -2653,7 +2653,7 @@
   version: '1960'
 - commemorations: null
   datestr: 5 Dec
-  language: Latin
+  language: latin
   name: S. Sabbae Abbatis
   octave: null
   rank_defeatable: false
@@ -2662,7 +2662,7 @@
   version: '1960'
 - commemorations: null
   datestr: 6 Dec
-  language: Latin
+  language: latin
   name: S. Nicolai Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -2671,7 +2671,7 @@
   version: '1960'
 - commemorations: null
   datestr: 7 Dec
-  language: Latin
+  language: latin
   name: S. Ambrosii Episcopi Confesoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -2680,7 +2680,7 @@
   version: '1960'
 - commemorations: null
   datestr: 8 Dec
-  language: Latin
+  language: latin
   name: ' Immaculata Conceptione Beatae Mariae Virginis'
   octave: null
   rank_defeatable: false
@@ -2689,7 +2689,7 @@
   version: '1960'
 - commemorations: null
   datestr: 10 Dec
-  language: Latin
+  language: latin
   name: S. Melchiadis Papae et Mart
   octave: null
   rank_defeatable: false
@@ -2698,7 +2698,7 @@
   version: '1960'
 - commemorations: null
   datestr: 11 Dec
-  language: Latin
+  language: latin
   name: S. Damasi Papae et confessoris
   octave: null
   rank_defeatable: false
@@ -2707,7 +2707,7 @@
   version: '1960'
 - commemorations: null
   datestr: 13 Dec
-  language: Latin
+  language: latin
   name: S. Luciae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -2716,7 +2716,7 @@
   version: '1960'
 - commemorations: null
   datestr: 16 Dec
-  language: Latin
+  language: latin
   name: S. Eusebii Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -2725,7 +2725,7 @@
   version: '1960'
 - commemorations: null
   datestr: 21 Dec
-  language: Latin
+  language: latin
   name: S. Thomae Apostoli
   octave: null
   rank_defeatable: false
@@ -2734,7 +2734,7 @@
   version: '1960'
 - commemorations: null
   datestr: 24 Dec
-  language: Latin
+  language: latin
   name: Vigilia Nativitatis Domini
   octave: null
   rank_defeatable: false
@@ -2743,7 +2743,7 @@
   version: '1960'
 - commemorations: null
   datestr: 25 Dec
-  language: Latin
+  language: latin
   name: In Nativitate Domini
   octave: null
   rank_defeatable: false
@@ -2752,7 +2752,7 @@
   version: '1960'
 - commemorations: null
   datestr: 26 Dec
-  language: Latin
+  language: latin
   name: Die secunda infra octavam Nativitatis
   octave: null
   rank_defeatable: false
@@ -2761,7 +2761,7 @@
   version: '1960'
 - commemorations: null
   datestr: 27 Dec
-  language: Latin
+  language: latin
   name: Die tertia infra octavam Nativitatis
   octave: null
   rank_defeatable: false
@@ -2770,7 +2770,7 @@
   version: '1960'
 - commemorations: null
   datestr: 28 Dec
-  language: Latin
+  language: latin
   name: Die quarta infra octavam Nativitatis
   octave: null
   rank_defeatable: false
@@ -2779,7 +2779,7 @@
   version: '1960'
 - commemorations: null
   datestr: 29 Dec
-  language: Latin
+  language: latin
   name: Die quinta infra octavam Nativitatis
   octave: null
   rank_defeatable: false
@@ -2788,7 +2788,7 @@
   version: '1960'
 - commemorations: null
   datestr: 30 Dec
-  language: Latin
+  language: latin
   name: Die sexta infra Octavam Nativitatis
   octave: null
   rank_defeatable: false
@@ -2797,7 +2797,7 @@
   version: '1960'
 - commemorations: null
   datestr: 31 Dec
-  language: Latin
+  language: latin
   name: Die septima infra octavam Nativitatis
   octave: null
   rank_defeatable: false

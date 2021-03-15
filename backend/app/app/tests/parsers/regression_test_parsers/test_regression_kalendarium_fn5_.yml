@@ -1,6 +1,6 @@
 - commemorations: null
   datestr: 1 Jan
-  language: Latin
+  language: latin
   name: In Circumcisione Domini
   octave: null
   rank_defeatable: false
@@ -9,7 +9,7 @@
   version: '1910'
 - commemorations: null
   datestr: 2 Jan
-  language: Latin
+  language: latin
   name: In Octava Sancti Stephani
   octave: null
   rank_defeatable: false
@@ -18,7 +18,7 @@
   version: '1910'
 - commemorations: null
   datestr: 3 Jan
-  language: Latin
+  language: latin
   name: In Octavam S. Joannis
   octave: null
   rank_defeatable: false
@@ -27,7 +27,7 @@
   version: '1910'
 - commemorations: null
   datestr: 4 Jan
-  language: Latin
+  language: latin
   name: In Octava Ss. Innocentium
   octave: null
   rank_defeatable: false
@@ -41,7 +41,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 5 Jan
-  language: Latin
+  language: latin
   name: Vigilia Epiphaniae
   octave: null
   rank_defeatable: false
@@ -50,7 +50,7 @@
   version: '1910'
 - commemorations: null
   datestr: 6 Jan
-  language: Latin
+  language: latin
   name: Epiphaniae Domini
   octave: null
   rank_defeatable: false
@@ -59,7 +59,7 @@
   version: '1910'
 - commemorations: null
   datestr: 7 Jan
-  language: Latin
+  language: latin
   name: Secunda die infra Octavam Epiphaniae
   octave: null
   rank_defeatable: false
@@ -68,7 +68,7 @@
   version: '1910'
 - commemorations: null
   datestr: 8 Jan
-  language: Latin
+  language: latin
   name: Tertia die infra Octavam Epiphaniae
   octave: null
   rank_defeatable: false
@@ -77,7 +77,7 @@
   version: '1910'
 - commemorations: null
   datestr: 9 Jan
-  language: Latin
+  language: latin
   name: Quarta die infra Octavam Epiphaniae
   octave: null
   rank_defeatable: false
@@ -86,7 +86,7 @@
   version: '1910'
 - commemorations: null
   datestr: 10 Jan
-  language: Latin
+  language: latin
   name: Quinta die infra Octavam Epiphaniae
   octave: null
   rank_defeatable: false
@@ -95,7 +95,7 @@
   version: '1910'
 - commemorations: null
   datestr: 11 Jan
-  language: Latin
+  language: latin
   name: Sexta die infra Octavam Epiphaniae
   octave: null
   rank_defeatable: false
@@ -104,7 +104,7 @@
   version: '1910'
 - commemorations: null
   datestr: 12 Jan
-  language: Latin
+  language: latin
   name: Septima die infra Octavam Epiphaniae
   octave: null
   rank_defeatable: false
@@ -113,7 +113,7 @@
   version: '1910'
 - commemorations: null
   datestr: 13 Jan
-  language: Latin
+  language: latin
   name: Die Octava Epiphaniae
   octave: null
   rank_defeatable: false
@@ -127,7 +127,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 14 Jan
-  language: Latin
+  language: latin
   name: S. Hilarii Episcopi Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -141,7 +141,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 15 Jan
-  language: Latin
+  language: latin
   name: S. Pauli primi Eremitae et Confessoris
   octave: null
   rank_defeatable: false
@@ -150,7 +150,7 @@
   version: '1910'
 - commemorations: null
   datestr: 16 Jan
-  language: Latin
+  language: latin
   name: S. Marcelli Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -159,7 +159,7 @@
   version: '1910'
 - commemorations: null
   datestr: 17 Jan
-  language: Latin
+  language: latin
   name: S. S. Antonii Abbatis
   octave: null
   rank_defeatable: false
@@ -173,7 +173,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 18 Jan
-  language: Latin
+  language: latin
   name: Cathedrae S. Petri
   octave: null
   rank_defeatable: false
@@ -187,7 +187,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 19 Jan
-  language: Latin
+  language: latin
   name: S. Canuti Regis et Martyrum
   octave: null
   rank_defeatable: false
@@ -196,7 +196,7 @@
   version: '1910'
 - commemorations: null
   datestr: 20 Jan
-  language: Latin
+  language: latin
   name: Ss. Fabiani et Sebastiani Martyrum
   octave: null
   rank_defeatable: false
@@ -205,7 +205,7 @@
   version: '1910'
 - commemorations: null
   datestr: 21 Jan
-  language: Latin
+  language: latin
   name: S. Agnetis Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -214,7 +214,7 @@
   version: '1910'
 - commemorations: null
   datestr: 22 Jan
-  language: Latin
+  language: latin
   name: Ss. Vincentii et Anastasii Martyrum
   octave: null
   rank_defeatable: false
@@ -228,7 +228,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 23 Jan
-  language: Latin
+  language: latin
   name: S. Raymundi de Penafort Confessoris
   octave: null
   rank_defeatable: false
@@ -237,7 +237,7 @@
   version: '1910'
 - commemorations: null
   datestr: 24 Jan
-  language: Latin
+  language: latin
   name: S. Timothei Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -246,7 +246,7 @@
   version: '1910'
 - commemorations: null
   datestr: 25 Jan
-  language: Latin
+  language: latin
   name: In Conversione S. Pauli Apostoli
   octave: null
   rank_defeatable: false
@@ -255,7 +255,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 Jan
-  language: Latin
+  language: latin
   name: S. Polycarpi Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -264,7 +264,7 @@
   version: '1910'
 - commemorations: null
   datestr: 27 Jan
-  language: Latin
+  language: latin
   name: S. Joannis Chrysostomi Episcopi Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -273,7 +273,7 @@
   version: '1910'
 - commemorations: null
   datestr: 28 Jan
-  language: Latin
+  language: latin
   name: S. Agnetis Virginis et Martyris secundo
   octave: null
   rank_defeatable: false
@@ -282,7 +282,7 @@
   version: '1910'
 - commemorations: null
   datestr: 29 Jan
-  language: Latin
+  language: latin
   name: S. Francisci Salesii Episcopi Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -291,7 +291,7 @@
   version: '1910'
 - commemorations: null
   datestr: 30 Jan
-  language: Latin
+  language: latin
   name: S. Martinae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -300,7 +300,7 @@
   version: '1910'
 - commemorations: null
   datestr: 31 Jan
-  language: Latin
+  language: latin
   name: S. Petri Nolasci Confessoris
   octave: null
   rank_defeatable: false
@@ -309,7 +309,7 @@
   version: '1910'
 - commemorations: null
   datestr: 1 Feb
-  language: Latin
+  language: latin
   name: S. Ignatii Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -318,7 +318,7 @@
   version: '1910'
 - commemorations: null
   datestr: 2 Feb
-  language: Latin
+  language: latin
   name: In Purificatione Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -327,7 +327,7 @@
   version: '1910'
 - commemorations: null
   datestr: 3 Feb
-  language: Latin
+  language: latin
   name: S. S. Blasii Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -336,7 +336,7 @@
   version: '1910'
 - commemorations: null
   datestr: 4 Feb
-  language: Latin
+  language: latin
   name: S. Andreae Corsini Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -345,7 +345,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 Feb
-  language: Latin
+  language: latin
   name: S. Agathae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -354,7 +354,7 @@
   version: '1910'
 - commemorations: null
   datestr: 6 Feb
-  language: Latin
+  language: latin
   name: S. Titi Episc et Confessoris
   octave: null
   rank_defeatable: false
@@ -363,7 +363,7 @@
   version: '1910'
 - commemorations: null
   datestr: 7 Feb
-  language: Latin
+  language: latin
   name: S. Romualdi Abbatis
   octave: null
   rank_defeatable: false
@@ -372,7 +372,7 @@
   version: '1910'
 - commemorations: null
   datestr: 8 Feb
-  language: Latin
+  language: latin
   name: S. S. Joannis de Matha Confessoris
   octave: null
   rank_defeatable: false
@@ -386,7 +386,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 9 Feb
-  language: Latin
+  language: latin
   name: S. Cyrilli Episc Alexandrini Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -395,7 +395,7 @@
   version: '1910'
 - commemorations: null
   datestr: 10 Feb
-  language: Latin
+  language: latin
   name: S. Scholasticae Virginis
   octave: null
   rank_defeatable: false
@@ -404,7 +404,7 @@
   version: '1910'
 - commemorations: null
   datestr: 14 Feb
-  language: Latin
+  language: latin
   name: S. Valentini
   octave: null
   rank_defeatable: false
@@ -413,7 +413,7 @@
   version: '1910'
 - commemorations: null
   datestr: 15 Feb
-  language: Latin
+  language: latin
   name: SS Faustini et Jovitae
   octave: null
   rank_defeatable: false
@@ -422,7 +422,7 @@
   version: '1910'
 - commemorations: null
   datestr: 18 Feb
-  language: Latin
+  language: latin
   name: S. Simeonis Faustini et Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -431,7 +431,7 @@
   version: '1910'
 - commemorations: null
   datestr: 22 Feb
-  language: Latin
+  language: latin
   name: In Cathedra S. Petri Ap Antiochiae
   octave: null
   rank_defeatable: false
@@ -440,7 +440,7 @@
   version: '1910'
 - commemorations: null
   datestr: 23 Feb
-  language: Latin
+  language: latin
   name: S. Petri Damiani
   octave: null
   rank_defeatable: false
@@ -449,7 +449,7 @@
   version: '1910'
 - commemorations: null
   datestr: 24 Feb
-  language: Latin
+  language: latin
   name: S. Matthiae Apostoli
   octave: null
   rank_defeatable: false
@@ -463,7 +463,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 4 Mar
-  language: Latin
+  language: latin
   name: S. Casimiri
   octave: null
   rank_defeatable: false
@@ -472,7 +472,7 @@
   version: '1910'
 - commemorations: null
   datestr: 7 Mar
-  language: Latin
+  language: latin
   name: S. Thomae de Aquino Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -481,7 +481,7 @@
   version: '1910'
 - commemorations: null
   datestr: 8 Mar
-  language: Latin
+  language: latin
   name: S. Joannis de Deo Confessoris
   octave: null
   rank_defeatable: false
@@ -490,7 +490,7 @@
   version: '1910'
 - commemorations: null
   datestr: 9 Mar
-  language: Latin
+  language: latin
   name: S. Franciscae Viduae Romanae
   octave: null
   rank_defeatable: false
@@ -499,7 +499,7 @@
   version: '1910'
 - commemorations: null
   datestr: 10 Mar
-  language: Latin
+  language: latin
   name: Ss. Quadraginta Martyrum
   octave: null
   rank_defeatable: false
@@ -508,7 +508,7 @@
   version: '1910'
 - commemorations: null
   datestr: 12 Mar
-  language: Latin
+  language: latin
   name: S. Gregorii Papae Confessoris et Eccl Doct
   octave: null
   rank_defeatable: false
@@ -517,7 +517,7 @@
   version: '1910'
 - commemorations: null
   datestr: 17 Mar
-  language: Latin
+  language: latin
   name: S. Patritii Episcopi et Conf
   octave: null
   rank_defeatable: false
@@ -526,7 +526,7 @@
   version: '1910'
 - commemorations: null
   datestr: 18 Mar
-  language: Latin
+  language: latin
   name: S. Cyrilli Episc Hierosolymitani Eccl Doct
   octave: null
   rank_defeatable: false
@@ -535,7 +535,7 @@
   version: '1910'
 - commemorations: null
   datestr: 19 Mar
-  language: Latin
+  language: latin
   name: S. Joseph sponsi BMV confessoris
   octave: null
   rank_defeatable: false
@@ -544,7 +544,7 @@
   version: '1910'
 - commemorations: null
   datestr: 21 Mar
-  language: Latin
+  language: latin
   name: S. Benedicti Abbatis
   octave: null
   rank_defeatable: false
@@ -553,7 +553,7 @@
   version: '1910'
 - commemorations: null
   datestr: 25 Mar
-  language: Latin
+  language: latin
   name: In Annuntiatione Beate Mariæ Virginis
   octave: null
   rank_defeatable: false
@@ -562,7 +562,7 @@
   version: '1910'
 - commemorations: null
   datestr: 2 Apr
-  language: Latin
+  language: latin
   name: S. Francisci de Paula Confessoris
   octave: null
   rank_defeatable: false
@@ -571,7 +571,7 @@
   version: '1910'
 - commemorations: null
   datestr: 4 Apr
-  language: Latin
+  language: latin
   name: S. Isidori Episc Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -580,7 +580,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 Apr
-  language: Latin
+  language: latin
   name: S. Vincentii Ferrerii Confessoris
   octave: null
   rank_defeatable: false
@@ -589,7 +589,7 @@
   version: '1910'
 - commemorations: null
   datestr: 11 Apr
-  language: Latin
+  language: latin
   name: S. Leonis I Papae Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -598,7 +598,7 @@
   version: '1910'
 - commemorations: null
   datestr: 13 Apr
-  language: Latin
+  language: latin
   name: S. Hermenegildi Martyris
   octave: null
   rank_defeatable: false
@@ -607,7 +607,7 @@
   version: '1910'
 - commemorations: null
   datestr: 14 Apr
-  language: Latin
+  language: latin
   name: S. Justini Martyris
   octave: null
   rank_defeatable: false
@@ -616,7 +616,7 @@
   version: '1910'
 - commemorations: null
   datestr: 17 Apr
-  language: Latin
+  language: latin
   name: S. Aniceti Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -625,7 +625,7 @@
   version: '1910'
 - commemorations: null
   datestr: 21 Apr
-  language: Latin
+  language: latin
   name: S. Anselmi Episcopi Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -634,7 +634,7 @@
   version: '1910'
 - commemorations: null
   datestr: 22 Apr
-  language: Latin
+  language: latin
   name: SS Soteris ct Caji Pont et Mart
   octave: null
   rank_defeatable: false
@@ -643,7 +643,7 @@
   version: '1910'
 - commemorations: null
   datestr: 23 Apr
-  language: Latin
+  language: latin
   name: S. Georgii Martyris
   octave: null
   rank_defeatable: false
@@ -652,7 +652,7 @@
   version: '1910'
 - commemorations: null
   datestr: 24 Apr
-  language: Latin
+  language: latin
   name: S. Fidelis Sigmaringa Martyris
   octave: null
   rank_defeatable: false
@@ -661,7 +661,7 @@
   version: '1910'
 - commemorations: null
   datestr: 25 Apr
-  language: Latin
+  language: latin
   name: S. Marci Evangelistae
   octave: null
   rank_defeatable: false
@@ -670,7 +670,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 Apr
-  language: Latin
+  language: latin
   name: S. Cleti et Marcellini Pontif Martyrum
   octave: null
   rank_defeatable: false
@@ -684,7 +684,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 28 Apr
-  language: Latin
+  language: latin
   name: S. Pauli a Cruce Confessoris
   octave: null
   rank_defeatable: false
@@ -693,7 +693,7 @@
   version: '1910'
 - commemorations: null
   datestr: 29 Apr
-  language: Latin
+  language: latin
   name: S. Petri Martyris
   octave: null
   rank_defeatable: false
@@ -702,7 +702,7 @@
   version: '1910'
 - commemorations: null
   datestr: 30 Apr
-  language: Latin
+  language: latin
   name: S. Catharinae Senensis Virginis
   octave: null
   rank_defeatable: false
@@ -711,7 +711,7 @@
   version: '1910'
 - commemorations: null
   datestr: 1 May
-  language: Latin
+  language: latin
   name: SS Philippi et Jacobi Apostolorum
   octave: null
   rank_defeatable: false
@@ -720,7 +720,7 @@
   version: '1910'
 - commemorations: null
   datestr: 2 May
-  language: Latin
+  language: latin
   name: S. Athanasii Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -734,7 +734,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 3 May
-  language: Latin
+  language: latin
   name: Inventione Sanctae crucis
   octave: null
   rank_defeatable: false
@@ -743,7 +743,7 @@
   version: '1910'
 - commemorations: null
   datestr: 4 May
-  language: Latin
+  language: latin
   name: S. Monica Vidua
   octave: null
   rank_defeatable: false
@@ -752,7 +752,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 May
-  language: Latin
+  language: latin
   name: S. Pii V Papae Confessoris
   octave: null
   rank_defeatable: false
@@ -761,7 +761,7 @@
   version: '1910'
 - commemorations: null
   datestr: 6 May
-  language: Latin
+  language: latin
   name: S. Joannis Apostoli ante portam Latinam
   octave: null
   rank_defeatable: false
@@ -770,7 +770,7 @@
   version: '1910'
 - commemorations: null
   datestr: 7 May
-  language: Latin
+  language: latin
   name: S. Stanislai Episcopi Martyri
   octave: null
   rank_defeatable: false
@@ -779,7 +779,7 @@
   version: '1910'
 - commemorations: null
   datestr: 8 May
-  language: Latin
+  language: latin
   name: Apparitione S Michaelis Archangeli
   octave: null
   rank_defeatable: false
@@ -788,7 +788,7 @@
   version: '1910'
 - commemorations: null
   datestr: 9 May
-  language: Latin
+  language: latin
   name: S. Gregorii Nazianzi Episcopi Confessoris Ecclasiae Doctorum
   octave: null
   rank_defeatable: false
@@ -802,7 +802,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 10 May
-  language: Latin
+  language: latin
   name: S. Antonii Episcopi Confessoris
   octave: null
   rank_defeatable: false
@@ -811,7 +811,7 @@
   version: '1910'
 - commemorations: null
   datestr: 12 May
-  language: Latin
+  language: latin
   name: Ss. Nerei, Achillei et Domitillae Virgini atque Pancratii Martyrum
   octave: null
   rank_defeatable: false
@@ -820,7 +820,7 @@
   version: '1910'
 - commemorations: null
   datestr: 14 May
-  language: Latin
+  language: latin
   name: S. Bonifacii Martyri
   octave: null
   rank_defeatable: false
@@ -829,7 +829,7 @@
   version: '1910'
 - commemorations: null
   datestr: 16 May
-  language: Latin
+  language: latin
   name: S. Ubaldi Episcopi Confessoris
   octave: null
   rank_defeatable: false
@@ -838,7 +838,7 @@
   version: '1910'
 - commemorations: null
   datestr: 17 May
-  language: Latin
+  language: latin
   name: S. Paschalis Baylon Confessoris
   octave: null
   rank_defeatable: false
@@ -847,7 +847,7 @@
   version: '1910'
 - commemorations: null
   datestr: 18 May
-  language: Latin
+  language: latin
   name: S. Venantii Martyris;
   octave: null
   rank_defeatable: false
@@ -861,7 +861,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 19 May
-  language: Latin
+  language: latin
   name: S. Petri Celestini Papae Confessoris
   octave: null
   rank_defeatable: false
@@ -870,7 +870,7 @@
   version: '1910'
 - commemorations: null
   datestr: 20 May
-  language: Latin
+  language: latin
   name: S. Bernardini Senensis Confessoris
   octave: null
   rank_defeatable: false
@@ -884,7 +884,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 25 May
-  language: Latin
+  language: latin
   name: S. Gregory VII Papae Confessoris
   octave: null
   rank_defeatable: false
@@ -893,7 +893,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 May
-  language: Latin
+  language: latin
   name: S. Philippi Neri Confessoris
   octave: null
   rank_defeatable: false
@@ -902,7 +902,7 @@
   version: '1910'
 - commemorations: null
   datestr: 27 May
-  language: Latin
+  language: latin
   name: S. Bede Venerabilis Pries Confessor
   octave: null
   rank_defeatable: false
@@ -911,7 +911,7 @@
   version: '1910'
 - commemorations: null
   datestr: 28 May
-  language: Latin
+  language: latin
   name: S. Augustini Episcopi Confessoris
   octave: null
   rank_defeatable: false
@@ -925,7 +925,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 29 May
-  language: Latin
+  language: latin
   name: S. Mariae Magdalenae de Pazzis
   octave: null
   rank_defeatable: false
@@ -934,7 +934,7 @@
   version: '1910'
 - commemorations: null
   datestr: 30 May
-  language: Latin
+  language: latin
   name: S. Felicis Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -948,7 +948,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 31 May
-  language: Latin
+  language: latin
   name: S. Angelae Mericiae Virginis
   octave: null
   rank_defeatable: false
@@ -957,7 +957,7 @@
   version: '1910'
 - commemorations: null
   datestr: 2 Jun
-  language: Latin
+  language: latin
   name: Ss. Marcellini, Petri, atque Erasmi Martyrum
   octave: null
   rank_defeatable: false
@@ -966,7 +966,7 @@
   version: '1910'
 - commemorations: null
   datestr: 4 Jun
-  language: Latin
+  language: latin
   name: S. Francisci Caracciolo Confessoris
   octave: null
   rank_defeatable: false
@@ -975,7 +975,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 Jun
-  language: Latin
+  language: latin
   name: S. Bonifacii Episc et Mart
   octave: null
   rank_defeatable: false
@@ -984,7 +984,7 @@
   version: '1910'
 - commemorations: null
   datestr: 6 Jun
-  language: Latin
+  language: latin
   name: S. Norberti Episc et Confessoris
   octave: null
   rank_defeatable: false
@@ -993,7 +993,7 @@
   version: '1910'
 - commemorations: null
   datestr: 9 Jun
-  language: Latin
+  language: latin
   name: Ss. Primi et Feliciani Martyrum
   octave: null
   rank_defeatable: false
@@ -1002,7 +1002,7 @@
   version: '1910'
 - commemorations: null
   datestr: 10 Jun
-  language: Latin
+  language: latin
   name: S. Margaritae Reginae viduae
   octave: null
   rank_defeatable: false
@@ -1011,7 +1011,7 @@
   version: '1910'
 - commemorations: null
   datestr: 11 Jun
-  language: Latin
+  language: latin
   name: S. Barnabae Apostoli
   octave: null
   rank_defeatable: false
@@ -1025,7 +1025,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 12 Jun
-  language: Latin
+  language: latin
   name: S. Joannis a S Facundo Confessoris
   octave: null
   rank_defeatable: false
@@ -1034,7 +1034,7 @@
   version: '1910'
 - commemorations: null
   datestr: 13 Jun
-  language: Latin
+  language: latin
   name: S. Antonii de Padua Confessoris
   octave: null
   rank_defeatable: false
@@ -1043,7 +1043,7 @@
   version: '1910'
 - commemorations: null
   datestr: 14 Jun
-  language: Latin
+  language: latin
   name: S. Basilii Magni Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1052,7 +1052,7 @@
   version: '1910'
 - commemorations: null
   datestr: 15 Jun
-  language: Latin
+  language: latin
   name: Ss. Viti, Modesti atque Crescentiae Martyrum
   octave: null
   rank_defeatable: false
@@ -1061,7 +1061,7 @@
   version: '1910'
 - commemorations: null
   datestr: 18 Jun
-  language: Latin
+  language: latin
   name: SS Marci et Marcellini Martyrum
   octave: null
   rank_defeatable: false
@@ -1075,7 +1075,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 19 Jun
-  language: Latin
+  language: latin
   name: S. Julianae de Falconeriis Virginae
   octave: null
   rank_defeatable: false
@@ -1084,7 +1084,7 @@
   version: '1910'
 - commemorations: null
   datestr: 20 Jun
-  language: Latin
+  language: latin
   name: S. Sylverii Papae et Martyri
   octave: null
   rank_defeatable: false
@@ -1093,7 +1093,7 @@
   version: '1910'
 - commemorations: null
   datestr: 21 Jun
-  language: Latin
+  language: latin
   name: S. Alosii Gonzage Confessoris
   octave: null
   rank_defeatable: false
@@ -1102,7 +1102,7 @@
   version: '1910'
 - commemorations: null
   datestr: 22 Jun
-  language: Latin
+  language: latin
   name: S. Paulini episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -1111,7 +1111,7 @@
   version: '1910'
 - commemorations: null
   datestr: 23 Jun
-  language: Latin
+  language: latin
   name: Vigilia S. Joannis Baptistae
   octave: null
   rank_defeatable: true
@@ -1120,7 +1120,7 @@
   version: '1910'
 - commemorations: null
   datestr: 24 Jun
-  language: Latin
+  language: latin
   name: In Nativitate S. Joannis Baptistae
   octave: null
   rank_defeatable: false
@@ -1129,7 +1129,7 @@
   version: '1910'
 - commemorations: null
   datestr: 25 Jun
-  language: Latin
+  language: latin
   name: S. Gulielmi Abbatis
   octave: null
   rank_defeatable: false
@@ -1138,7 +1138,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 Jun
-  language: Latin
+  language: latin
   name: Ss. Joannis et Pauli Martyrum
   octave: null
   rank_defeatable: false
@@ -1147,7 +1147,7 @@
   version: '1910'
 - commemorations: null
   datestr: 27 Jun
-  language: Latin
+  language: latin
   name: Quarta die infra Octavam Nativitatis S. Joannis Baptistae
   octave: null
   rank_defeatable: false
@@ -1156,7 +1156,7 @@
   version: '1910'
 - commemorations: null
   datestr: 28 Jun
-  language: Latin
+  language: latin
   name: S. Leonis Papae et Confessoris
   octave: null
   rank_defeatable: false
@@ -1165,7 +1165,7 @@
   version: '1910'
 - commemorations: null
   datestr: 29 Jun
-  language: Latin
+  language: latin
   name: 'SS Apostolorum Petri et Pauli '
   octave: null
   rank_defeatable: false
@@ -1174,7 +1174,7 @@
   version: '1910'
 - commemorations: null
   datestr: 30 Jun
-  language: Latin
+  language: latin
   name: In Commemoratione Sancti Pauli Apostoli
   octave: null
   rank_defeatable: false
@@ -1188,7 +1188,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 1 Jul
-  language: Latin
+  language: latin
   name: In Octava S. Joannis Baptistae
   octave: null
   rank_defeatable: false
@@ -1202,7 +1202,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 2 Jul
-  language: Latin
+  language: latin
   name: In Visitatione B Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1211,7 +1211,7 @@
   version: '1910'
 - commemorations: null
   datestr: 3 Jul
-  language: Latin
+  language: latin
   name: Quinta die infra Octavam Ss. Petri et Pauli
   octave: null
   rank_defeatable: false
@@ -1220,7 +1220,7 @@
   version: '1910'
 - commemorations: null
   datestr: 4 Jul
-  language: Latin
+  language: latin
   name: Sexta die infra Octavam Ss. Petri et Pauli
   octave: null
   rank_defeatable: false
@@ -1229,7 +1229,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 Jul
-  language: Latin
+  language: latin
   name: Ss. Cyrilli et Methodii Pont et Conf
   octave: null
   rank_defeatable: false
@@ -1238,7 +1238,7 @@
   version: '1910'
 - commemorations: null
   datestr: 6 Jul
-  language: Latin
+  language: latin
   name: In Octava Ss. Petri et Pauli
   octave: null
   rank_defeatable: false
@@ -1247,7 +1247,7 @@
   version: '1910'
 - commemorations: null
   datestr: 8 Jul
-  language: Latin
+  language: latin
   name: S. Elisabeth Reg Portugaliae Viduae
   octave: null
   rank_defeatable: false
@@ -1256,7 +1256,7 @@
   version: '1910'
 - commemorations: null
   datestr: 10 Jul
-  language: Latin
+  language: latin
   name: Ss. Septem Fratrum Martyrum, ac Rufinae et Secundae Virgini et Martyri
   octave: null
   rank_defeatable: false
@@ -1265,7 +1265,7 @@
   version: '1910'
 - commemorations: null
   datestr: 11 Jul
-  language: Latin
+  language: latin
   name: S. Pii I Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -1279,7 +1279,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 12 Jul
-  language: Latin
+  language: latin
   name: S. Joannis Gualberti Abbatis
   octave: null
   rank_defeatable: false
@@ -1288,7 +1288,7 @@
   version: '1910'
 - commemorations: null
   datestr: 13 Jul
-  language: Latin
+  language: latin
   name: S. Anacleti Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -1297,7 +1297,7 @@
   version: '1910'
 - commemorations: null
   datestr: 14 Jul
-  language: Latin
+  language: latin
   name: S. Bonaventurae Episcopi Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1306,7 +1306,7 @@
   version: '1910'
 - commemorations: null
   datestr: 15 Jul
-  language: Latin
+  language: latin
   name: S. Henrici Imperatoris Confessoris
   octave: null
   rank_defeatable: false
@@ -1315,7 +1315,7 @@
   version: '1910'
 - commemorations: null
   datestr: 16 Jul
-  language: Latin
+  language: latin
   name: In Commemoratione Beatae Mariae Virginis de Monte Carmelo
   octave: null
   rank_defeatable: false
@@ -1324,7 +1324,7 @@
   version: '1910'
 - commemorations: null
   datestr: 17 Jul
-  language: Latin
+  language: latin
   name: S. Alexii Confessoris
   octave: null
   rank_defeatable: false
@@ -1338,7 +1338,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 18 Jul
-  language: Latin
+  language: latin
   name: S. Camilli de Lellis Confessoris
   octave: null
   rank_defeatable: false
@@ -1347,7 +1347,7 @@
   version: '1910'
 - commemorations: null
   datestr: 19 Jul
-  language: Latin
+  language: latin
   name: S. Vincentii a Paulo Conf
   octave: null
   rank_defeatable: false
@@ -1356,7 +1356,7 @@
   version: '1910'
 - commemorations: null
   datestr: 20 Jul
-  language: Latin
+  language: latin
   name: S. Hieronomy Emiliani Conf
   octave: null
   rank_defeatable: false
@@ -1365,7 +1365,7 @@
   version: '1910'
 - commemorations: null
   datestr: 21 Jul
-  language: Latin
+  language: latin
   name: S. Praxedis Virginis
   octave: null
   rank_defeatable: false
@@ -1374,7 +1374,7 @@
   version: '1910'
 - commemorations: null
   datestr: 22 Jul
-  language: Latin
+  language: latin
   name: S. Mariae Magdalenae Poenitentis
   octave: null
   rank_defeatable: false
@@ -1388,7 +1388,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 23 Jul
-  language: Latin
+  language: latin
   name: S. Apollinaris Episcopi et Mart
   octave: null
   rank_defeatable: false
@@ -1402,7 +1402,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 24 Jul
-  language: Latin
+  language: latin
   name: Vigilia S. Jacobi Apostoli
   octave: null
   rank_defeatable: true
@@ -1416,7 +1416,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 25 Jul
-  language: Latin
+  language: latin
   name: S. Jacobi Apostoli
   octave: null
   rank_defeatable: false
@@ -1425,7 +1425,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 Jul
-  language: Latin
+  language: latin
   name: S. Annae Matris BMV
   octave: null
   rank_defeatable: false
@@ -1434,7 +1434,7 @@
   version: '1910'
 - commemorations: null
   datestr: 27 Jul
-  language: Latin
+  language: latin
   name: S. Pantaleon Martyr
   octave: null
   rank_defeatable: false
@@ -1443,7 +1443,7 @@
   version: '1910'
 - commemorations: null
   datestr: 28 Jul
-  language: Latin
+  language: latin
   name: Ss. Nazarii et Celsi Martyrum
   octave: null
   rank_defeatable: false
@@ -1457,7 +1457,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 29 Jul
-  language: Latin
+  language: latin
   name: S. Marthae Virginis
   octave: null
   rank_defeatable: false
@@ -1466,7 +1466,7 @@
   version: '1910'
 - commemorations: null
   datestr: 30 Jul
-  language: Latin
+  language: latin
   name: S. Abdon et Senen Martyrum
   octave: null
   rank_defeatable: false
@@ -1475,7 +1475,7 @@
   version: '1910'
 - commemorations: null
   datestr: 31 Jul
-  language: Latin
+  language: latin
   name: S. Ignatii Confessoris
   octave: null
   rank_defeatable: false
@@ -1494,7 +1494,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 1 Aug
-  language: Latin
+  language: latin
   name: S. Petri ad Vincula
   octave: null
   rank_defeatable: false
@@ -1508,7 +1508,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 2 Aug
-  language: Latin
+  language: latin
   name: S. Alphonsi Mariae de Ligorio Episc Conf et Eccles Doct
   octave: null
   rank_defeatable: false
@@ -1517,7 +1517,7 @@
   version: '1910'
 - commemorations: null
   datestr: 3 Aug
-  language: Latin
+  language: latin
   name: De Inventione S. Stephani Protomartyris
   octave: null
   rank_defeatable: false
@@ -1526,7 +1526,7 @@
   version: '1910'
 - commemorations: null
   datestr: 4 Aug
-  language: Latin
+  language: latin
   name: S. Dominici Confessoris
   octave: null
   rank_defeatable: false
@@ -1535,7 +1535,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 Aug
-  language: Latin
+  language: latin
   name: S. Mariae ad Nives
   octave: null
   rank_defeatable: false
@@ -1549,7 +1549,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 6 Aug
-  language: Latin
+  language: latin
   name: The Transfiguratione Domini Nostri Jesu Christi
   octave: null
   rank_defeatable: false
@@ -1563,7 +1563,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 7 Aug
-  language: Latin
+  language: latin
   name: S. Cajetani Confessoris
   octave: null
   rank_defeatable: false
@@ -1572,7 +1572,7 @@
   version: '1910'
 - commemorations: null
   datestr: 8 Aug
-  language: Latin
+  language: latin
   name: Ss. Cyriaci, Largi et Smaragdi Martyrum
   octave: null
   rank_defeatable: false
@@ -1581,7 +1581,7 @@
   version: '1910'
 - commemorations: null
   datestr: 9 Aug
-  language: Latin
+  language: latin
   name: Vigilia S. Laurentii Martyris
   octave: null
   rank_defeatable: true
@@ -1590,7 +1590,7 @@
   version: '1910'
 - commemorations: null
   datestr: 10 Aug
-  language: Latin
+  language: latin
   name: S. Laurentii Martyris
   octave: null
   rank_defeatable: false
@@ -1604,7 +1604,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 11 Aug
-  language: Latin
+  language: latin
   name: Secunda die infra Octavam S. Laurentii
   octave: null
   rank_defeatable: false
@@ -1613,7 +1613,7 @@
   version: '1910'
 - commemorations: null
   datestr: 12 Aug
-  language: Latin
+  language: latin
   name: S. Clarae Virginis
   octave: null
   rank_defeatable: false
@@ -1622,7 +1622,7 @@
   version: '1910'
 - commemorations: null
   datestr: 13 Aug
-  language: Latin
+  language: latin
   name: Quarta die infra Octavam S. Laurentii
   octave: null
   rank_defeatable: false
@@ -1641,7 +1641,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 14 Aug
-  language: Latin
+  language: latin
   name: Quinta die infra Octavam S. Laurentii
   octave: null
   rank_defeatable: false
@@ -1650,7 +1650,7 @@
   version: '1910'
 - commemorations: null
   datestr: 15 Aug
-  language: Latin
+  language: latin
   name: Assumptione Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1659,7 +1659,7 @@
   version: '1910'
 - commemorations: null
   datestr: 16 Aug
-  language: Latin
+  language: latin
   name: S. Joachim Confessoris, Patris B Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1673,7 +1673,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 17 Aug
-  language: Latin
+  language: latin
   name: Octava S. Laurentii Martyris
   octave: null
   rank_defeatable: false
@@ -1687,7 +1687,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 18 Aug
-  language: Latin
+  language: latin
   name: Quarta die infra Octavam S. Assumptionis
   octave: null
   rank_defeatable: false
@@ -1696,7 +1696,7 @@
   version: '1910'
 - commemorations: null
   datestr: 19 Aug
-  language: Latin
+  language: latin
   name: Quinta die infra Octavam S. Assumptionis
   octave: null
   rank_defeatable: false
@@ -1705,7 +1705,7 @@
   version: '1910'
 - commemorations: null
   datestr: 20 Aug
-  language: Latin
+  language: latin
   name: S. Bernardi Abbatis et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1714,7 +1714,7 @@
   version: '1910'
 - commemorations: null
   datestr: 21 Aug
-  language: Latin
+  language: latin
   name: S. Joanne Franciscae Fremiot de Chantal Viduae
   octave: null
   rank_defeatable: false
@@ -1728,7 +1728,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 22 Aug
-  language: Latin
+  language: latin
   name: In Octava Assumptionis BMV
   octave: null
   rank_defeatable: false
@@ -1737,7 +1737,7 @@
   version: '1910'
 - commemorations: null
   datestr: 23 Aug
-  language: Latin
+  language: latin
   name: S. Philippi BenitiConfessoris
   octave: null
   rank_defeatable: false
@@ -1746,7 +1746,7 @@
   version: '1910'
 - commemorations: null
   datestr: 24 Aug
-  language: Latin
+  language: latin
   name: S. Bathalomaei Apostoli
   octave: null
   rank_defeatable: false
@@ -1755,7 +1755,7 @@
   version: '1910'
 - commemorations: null
   datestr: 25 Aug
-  language: Latin
+  language: latin
   name: S. Ludovioci Confessoris
   octave: null
   rank_defeatable: false
@@ -1764,7 +1764,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 Aug
-  language: Latin
+  language: latin
   name: S. Zephirini Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -1773,7 +1773,7 @@
   version: '1910'
 - commemorations: null
   datestr: 27 Aug
-  language: Latin
+  language: latin
   name: S. Josephi Calasantini Confessoris
   octave: null
   rank_defeatable: false
@@ -1787,7 +1787,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 28 Aug
-  language: Latin
+  language: latin
   name: S. Augustini Episcopi et Confessoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -1801,7 +1801,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 29 Aug
-  language: Latin
+  language: latin
   name: Decollatione S. Joannis Baptistae
   octave: null
   rank_defeatable: false
@@ -1815,7 +1815,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 30 Aug
-  language: Latin
+  language: latin
   name: S. Rosae a Sancta Maria Limange Virgini
   octave: null
   rank_defeatable: false
@@ -1824,7 +1824,7 @@
   version: '1910'
 - commemorations: null
   datestr: 31 Aug
-  language: Latin
+  language: latin
   name: S. Raymundi Nonnati Confessori
   octave: null
   rank_defeatable: false
@@ -1838,7 +1838,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 1 Sep
-  language: Latin
+  language: latin
   name: S. Aegidii Abbatis
   octave: null
   rank_defeatable: false
@@ -1847,7 +1847,7 @@
   version: '1910'
 - commemorations: null
   datestr: 2 Sep
-  language: Latin
+  language: latin
   name: S. Stephani Hungariae Regis Confessoris
   octave: null
   rank_defeatable: false
@@ -1856,7 +1856,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 Sep
-  language: Latin
+  language: latin
   name: S. Laurentii Justiniani Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -1870,7 +1870,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 8 Sep
-  language: Latin
+  language: latin
   name: Nativitate Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1884,7 +1884,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 9 Sep
-  language: Latin
+  language: latin
   name: Secunda die infra Octavam S. Nativitatis Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1893,7 +1893,7 @@
   version: '1910'
 - commemorations: null
   datestr: 10 Sep
-  language: Latin
+  language: latin
   name: S. Nicolai de Tolentino Confessoris
   octave: null
   rank_defeatable: false
@@ -1907,7 +1907,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 11 Sep
-  language: Latin
+  language: latin
   name: Quarta die infra Octavam Nativitatis Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1916,7 +1916,7 @@
   version: '1910'
 - commemorations: null
   datestr: 12 Sep
-  language: Latin
+  language: latin
   name: S. Nominis Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1925,7 +1925,7 @@
   version: '1910'
 - commemorations: null
   datestr: 13 Sep
-  language: Latin
+  language: latin
   name: Sexta die infra Octavam Nativitatis Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1934,7 +1934,7 @@
   version: '1910'
 - commemorations: null
   datestr: 14 Sep
-  language: Latin
+  language: latin
   name: In Exaltatione Sanctae crucis
   octave: null
   rank_defeatable: false
@@ -1948,7 +1948,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 15 Sep
-  language: Latin
+  language: latin
   name: In Octava Nativitatis Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -1962,7 +1962,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 16 Sep
-  language: Latin
+  language: latin
   name: Ss. Cornelii et Cypriani Pontificium et Martyrum
   octave: null
   rank_defeatable: false
@@ -1971,7 +1971,7 @@
   version: '1910'
 - commemorations: null
   datestr: 17 Sep
-  language: Latin
+  language: latin
   name: Impressionis Stigmatum S. Francisci
   octave: null
   rank_defeatable: false
@@ -1980,7 +1980,7 @@
   version: '1910'
 - commemorations: null
   datestr: 18 Sep
-  language: Latin
+  language: latin
   name: S. Joseph Cupertino
   octave: null
   rank_defeatable: false
@@ -1989,7 +1989,7 @@
   version: '1910'
 - commemorations: null
   datestr: 19 Sep
-  language: Latin
+  language: latin
   name: S. Januarii Episcopi et Sociorum Martyrum
   octave: null
   rank_defeatable: false
@@ -2003,7 +2003,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 20 Sep
-  language: Latin
+  language: latin
   name: S. Eustachii et Sociorum Martyrum
   octave: null
   rank_defeatable: false
@@ -2012,7 +2012,7 @@
   version: '1910'
 - commemorations: null
   datestr: 21 Sep
-  language: Latin
+  language: latin
   name: S. Matthaei Apostoli et Evangelistae
   octave: null
   rank_defeatable: false
@@ -2026,7 +2026,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 22 Sep
-  language: Latin
+  language: latin
   name: S. Thomae de Villanove Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -2040,7 +2040,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 23 Sep
-  language: Latin
+  language: latin
   name: S. Linae Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -2049,7 +2049,7 @@
   version: '1910'
 - commemorations: null
   datestr: 24 Sep
-  language: Latin
+  language: latin
   name: Beatae Mariae Virginis de Mercede
   octave: null
   rank_defeatable: false
@@ -2058,7 +2058,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 Sep
-  language: Latin
+  language: latin
   name: Ss. Cypriani et Justinae Martyri
   octave: null
   rank_defeatable: false
@@ -2067,7 +2067,7 @@
   version: '1910'
 - commemorations: null
   datestr: 27 Sep
-  language: Latin
+  language: latin
   name: S. Cosmae et Damiani Martyrum
   octave: null
   rank_defeatable: false
@@ -2076,7 +2076,7 @@
   version: '1910'
 - commemorations: null
   datestr: 28 Sep
-  language: Latin
+  language: latin
   name: S. Wenceslai Ducis et Martyris
   octave: null
   rank_defeatable: false
@@ -2085,7 +2085,7 @@
   version: '1910'
 - commemorations: null
   datestr: 29 Sep
-  language: Latin
+  language: latin
   name: In dedicatione S. Michaelis Archangelis
   octave: null
   rank_defeatable: false
@@ -2094,7 +2094,7 @@
   version: '1910'
 - commemorations: null
   datestr: 30 Sep
-  language: Latin
+  language: latin
   name: S. Hieronomy Presbitery Confessorie et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -2103,7 +2103,7 @@
   version: '1910'
 - commemorations: null
   datestr: 1 Oct
-  language: Latin
+  language: latin
   name: S. Remigii Episcopi Confessoris
   octave: null
   rank_defeatable: false
@@ -2112,7 +2112,7 @@
   version: '1910'
 - commemorations: null
   datestr: 2 Oct
-  language: Latin
+  language: latin
   name: Ss. Angelorum Custodum
   octave: null
   rank_defeatable: false
@@ -2121,7 +2121,7 @@
   version: '1910'
 - commemorations: null
   datestr: 4 Oct
-  language: Latin
+  language: latin
   name: S. Francisci Confessoris
   octave: null
   rank_defeatable: false
@@ -2130,7 +2130,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 Oct
-  language: Latin
+  language: latin
   name: S. Placidi et Sociorum Martyrum
   octave: null
   rank_defeatable: false
@@ -2139,7 +2139,7 @@
   version: '1910'
 - commemorations: null
   datestr: 6 Oct
-  language: Latin
+  language: latin
   name: S. Brunonis Confessoris
   octave: null
   rank_defeatable: false
@@ -2153,7 +2153,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 7 Oct
-  language: Latin
+  language: latin
   name: S. Marci Papae Confessoris
   octave: null
   rank_defeatable: true
@@ -2162,7 +2162,7 @@
   version: '1910'
 - commemorations: null
   datestr: 8 Oct
-  language: Latin
+  language: latin
   name: S. Brigittae Viduae
   octave: null
   rank_defeatable: false
@@ -2171,7 +2171,7 @@
   version: '1910'
 - commemorations: null
   datestr: 9 Oct
-  language: Latin
+  language: latin
   name: S. Dionysii Episcopi Rustici et Eleuthery Martyrum
   octave: null
   rank_defeatable: false
@@ -2180,7 +2180,7 @@
   version: '1910'
 - commemorations: null
   datestr: 10 Oct
-  language: Latin
+  language: latin
   name: S. Francisci Borgiae Confessoris
   octave: null
   rank_defeatable: false
@@ -2189,7 +2189,7 @@
   version: '1910'
 - commemorations: null
   datestr: 13 Oct
-  language: Latin
+  language: latin
   name: S. Eduardi Regis Confessoris
   octave: null
   rank_defeatable: false
@@ -2198,7 +2198,7 @@
   version: '1910'
 - commemorations: null
   datestr: 14 Oct
-  language: Latin
+  language: latin
   name: S. Callisti Papae et Martyri
   octave: null
   rank_defeatable: false
@@ -2207,7 +2207,7 @@
   version: '1910'
 - commemorations: null
   datestr: 15 Oct
-  language: Latin
+  language: latin
   name: S. Teresiae Virginis
   octave: null
   rank_defeatable: false
@@ -2216,7 +2216,7 @@
   version: '1910'
 - commemorations: null
   datestr: 17 Oct
-  language: Latin
+  language: latin
   name: S. Hedwigis Viduae
   octave: null
   rank_defeatable: false
@@ -2225,7 +2225,7 @@
   version: '1910'
 - commemorations: null
   datestr: 18 Oct
-  language: Latin
+  language: latin
   name: S. Lucae Evangelistae
   octave: null
   rank_defeatable: false
@@ -2234,7 +2234,7 @@
   version: '1910'
 - commemorations: null
   datestr: 19 Oct
-  language: Latin
+  language: latin
   name: S. Petri de Alcantara Confessoris
   octave: null
   rank_defeatable: false
@@ -2243,7 +2243,7 @@
   version: '1910'
 - commemorations: null
   datestr: 20 Oct
-  language: Latin
+  language: latin
   name: S. Joannis Cantii Confessoris
   octave: null
   rank_defeatable: false
@@ -2257,7 +2257,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 21 Oct
-  language: Latin
+  language: latin
   name: S. Hilarionis Abbatis
   octave: null
   rank_defeatable: false
@@ -2266,7 +2266,7 @@
   version: '1910'
 - commemorations: null
   datestr: 25 Oct
-  language: Latin
+  language: latin
   name: Ss. Chrysanthi et Dariae Martyres
   octave: null
   rank_defeatable: false
@@ -2275,7 +2275,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 Oct
-  language: Latin
+  language: latin
   name: S. Evaristi Papae et Martyri
   octave: null
   rank_defeatable: false
@@ -2284,7 +2284,7 @@
   version: '1910'
 - commemorations: null
   datestr: 27 Oct
-  language: Latin
+  language: latin
   name: In Vigilia Ss. Simonis et Judae Apostolorum
   octave: null
   rank_defeatable: true
@@ -2293,7 +2293,7 @@
   version: '1910'
 - commemorations: null
   datestr: 28 Oct
-  language: Latin
+  language: latin
   name: Ss. Simonis et Judae Apostolorum
   octave: null
   rank_defeatable: false
@@ -2302,7 +2302,7 @@
   version: '1910'
 - commemorations: null
   datestr: 31 Oct
-  language: Latin
+  language: latin
   name: In Vigilia Omnium Sanctorum
   octave: null
   rank_defeatable: true
@@ -2311,7 +2311,7 @@
   version: '1910'
 - commemorations: null
   datestr: 1 Nov
-  language: Latin
+  language: latin
   name: Omnium Sanctorum
   octave: null
   rank_defeatable: false
@@ -2320,7 +2320,7 @@
   version: '1910'
 - commemorations: null
   datestr: 2 Nov
-  language: Latin
+  language: latin
   name: Commemoratio Omnium Fidelium Defunctorum
   octave: null
   rank_defeatable: false
@@ -2329,7 +2329,7 @@
   version: '1910'
 - commemorations: null
   datestr: 3 Nov
-  language: Latin
+  language: latin
   name: Tertia die infra Octavam Omnium Sanctorum
   octave: null
   rank_defeatable: false
@@ -2348,7 +2348,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 4 Nov
-  language: Latin
+  language: latin
   name: S. Caroli Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -2357,7 +2357,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 Nov
-  language: Latin
+  language: latin
   name: Quinta die infra Octavam Omnium Sanctorum
   octave: null
   rank_defeatable: false
@@ -2366,7 +2366,7 @@
   version: '1910'
 - commemorations: null
   datestr: 6 Nov
-  language: Latin
+  language: latin
   name: Sexta die infra Octavam Omnium Sanctorum
   octave: null
   rank_defeatable: false
@@ -2375,7 +2375,7 @@
   version: '1910'
 - commemorations: null
   datestr: 7 Nov
-  language: Latin
+  language: latin
   name: Septima die infra Octavam Omnium Sanctorum
   octave: null
   rank_defeatable: false
@@ -2389,7 +2389,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 8 Nov
-  language: Latin
+  language: latin
   name: In Octava Omnium Sanctorum
   octave: null
   rank_defeatable: false
@@ -2403,7 +2403,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 9 Nov
-  language: Latin
+  language: latin
   name: In dedicatione Basilicae Ss. Salvatoris
   octave: null
   rank_defeatable: false
@@ -2417,7 +2417,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 10 Nov
-  language: Latin
+  language: latin
   name: S.Andreae Avellini Confessoris
   octave: null
   rank_defeatable: false
@@ -2431,7 +2431,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 11 Nov
-  language: Latin
+  language: latin
   name: S. Martini Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -2440,7 +2440,7 @@
   version: '1910'
 - commemorations: null
   datestr: 12 Nov
-  language: Latin
+  language: latin
   name: S. Martini Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -2449,7 +2449,7 @@
   version: '1910'
 - commemorations: null
   datestr: 13 Nov
-  language: Latin
+  language: latin
   name: S. Didaci Confessoris
   octave: null
   rank_defeatable: false
@@ -2458,7 +2458,7 @@
   version: '1910'
 - commemorations: null
   datestr: 14 Nov
-  language: Latin
+  language: latin
   name: S. Josaphat Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -2467,7 +2467,7 @@
   version: '1910'
 - commemorations: null
   datestr: 15 Nov
-  language: Latin
+  language: latin
   name: S. Gertrudis Virginis
   octave: null
   rank_defeatable: false
@@ -2476,7 +2476,7 @@
   version: '1910'
 - commemorations: null
   datestr: 17 Nov
-  language: Latin
+  language: latin
   name: S. Gregorii Thaumaturgi Episcopi et Confessoris
   octave: null
   rank_defeatable: false
@@ -2485,7 +2485,7 @@
   version: '1910'
 - commemorations: null
   datestr: 18 Nov
-  language: Latin
+  language: latin
   name: In Dedicatione Basilicarum Ss. Apostolorum Petri et Pauli
   octave: null
   rank_defeatable: false
@@ -2499,7 +2499,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 19 Nov
-  language: Latin
+  language: latin
   name: S. Elisabeth vidue
   octave: null
   rank_defeatable: false
@@ -2508,7 +2508,7 @@
   version: '1910'
 - commemorations: null
   datestr: 20 Nov
-  language: Latin
+  language: latin
   name: S. Felicis Valois Confessoris
   octave: null
   rank_defeatable: false
@@ -2517,7 +2517,7 @@
   version: '1910'
 - commemorations: null
   datestr: 21 Nov
-  language: Latin
+  language: latin
   name: In Presentatione of Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -2526,7 +2526,7 @@
   version: '1910'
 - commemorations: null
   datestr: 22 Nov
-  language: Latin
+  language: latin
   name: S. Ceciliae Virginis et Martyrum
   octave: null
   rank_defeatable: false
@@ -2540,7 +2540,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 23 Nov
-  language: Latin
+  language: latin
   name: S. Clement Papae et Martyris
   octave: null
   rank_defeatable: false
@@ -2554,7 +2554,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 24 Nov
-  language: Latin
+  language: latin
   name: S. Joannis de Cruce Confessoris
   octave: null
   rank_defeatable: false
@@ -2563,7 +2563,7 @@
   version: '1910'
 - commemorations: null
   datestr: 25 Nov
-  language: Latin
+  language: latin
   name: S. Catharinae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -2572,7 +2572,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 Nov
-  language: Latin
+  language: latin
   name: S. Petri Alexandrini
   octave: null
   rank_defeatable: false
@@ -2586,7 +2586,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 29 Nov
-  language: Latin
+  language: latin
   name: Vigilia S. Andrae Apostoli
   octave: null
   rank_defeatable: true
@@ -2595,7 +2595,7 @@
   version: '1910'
 - commemorations: null
   datestr: 30 Nov
-  language: Latin
+  language: latin
   name: S. Andrae Apostoli
   octave: null
   rank_defeatable: false
@@ -2604,7 +2604,7 @@
   version: '1910'
 - commemorations: null
   datestr: 2 Dec
-  language: Latin
+  language: latin
   name: S. Bibianae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -2613,7 +2613,7 @@
   version: '1910'
 - commemorations: null
   datestr: 3 Dec
-  language: Latin
+  language: latin
   name: S. Francisci Xaverii Confessoris
   octave: null
   rank_defeatable: false
@@ -2627,7 +2627,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 4 Dec
-  language: Latin
+  language: latin
   name: S. Petri Chrysologi Episcopi Confessoris Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -2636,7 +2636,7 @@
   version: '1910'
 - commemorations: null
   datestr: 5 Dec
-  language: Latin
+  language: latin
   name: S. Sabbae abbatis
   octave: null
   rank_defeatable: false
@@ -2645,7 +2645,7 @@
   version: '1910'
 - commemorations: null
   datestr: 6 Dec
-  language: Latin
+  language: latin
   name: S. Nicolai Episcopi et confessoris
   octave: null
   rank_defeatable: false
@@ -2654,7 +2654,7 @@
   version: '1910'
 - commemorations: null
   datestr: 7 Dec
-  language: Latin
+  language: latin
   name: S. Ambrosii Episcopi Confesoris et Ecclesiae Doctoris
   octave: null
   rank_defeatable: false
@@ -2663,7 +2663,7 @@
   version: '1910'
 - commemorations: null
   datestr: 8 Dec
-  language: Latin
+  language: latin
   name: Immaculata Conceptione Beatae Mariae Virginis
   octave: null
   rank_defeatable: false
@@ -2672,7 +2672,7 @@
   version: '1910'
 - commemorations: null
   datestr: 9 Dec
-  language: Latin
+  language: latin
   name: De II die Infra Octavam Immaculatae Concept Beatae Mariae Virgini
   octave: null
   rank_defeatable: false
@@ -2686,7 +2686,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 10 Dec
-  language: Latin
+  language: latin
   name: De III die Infra Octavam Immaculatae Concept Beatae Mariae Virgini
   octave: null
   rank_defeatable: false
@@ -2700,7 +2700,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 11 Dec
-  language: Latin
+  language: latin
   name: S. Damasi Papae et confessoris
   octave: null
   rank_defeatable: false
@@ -2709,7 +2709,7 @@
   version: '1910'
 - commemorations: null
   datestr: 12 Dec
-  language: Latin
+  language: latin
   name: De V die Infra Octavam Immaculatae Concept Beatae Mariae Virgini
   octave: null
   rank_defeatable: false
@@ -2723,7 +2723,7 @@
     rank_name: simplex
     version: '1910'
   datestr: 13 Dec
-  language: Latin
+  language: latin
   name: S. Luciae Virginis et Martyris
   octave: null
   rank_defeatable: false
@@ -2732,7 +2732,7 @@
   version: '1910'
 - commemorations: null
   datestr: 14 Dec
-  language: Latin
+  language: latin
   name: De VII die Infra Octavam Immaculatae Concept Beatae Mariae Virgini
   octave: null
   rank_defeatable: false
@@ -2741,7 +2741,7 @@
   version: '1910'
 - commemorations: null
   datestr: 15 Dec
-  language: Latin
+  language: latin
   name: In Octava Immaculatae Concept Beatae Mariae Virgini
   octave: null
   rank_defeatable: false
@@ -2750,7 +2750,7 @@
   version: '1910'
 - commemorations: null
   datestr: 16 Dec
-  language: Latin
+  language: latin
   name: S. S. Eusebii Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -2759,7 +2759,7 @@
   version: '1910'
 - commemorations: null
   datestr: 21 Dec
-  language: Latin
+  language: latin
   name: S.Sancti Thomae Apostoli
   octave: null
   rank_defeatable: false
@@ -2768,7 +2768,7 @@
   version: '1910'
 - commemorations: null
   datestr: 24 Dec
-  language: Latin
+  language: latin
   name: Vigilia Nativitatis Domini
   octave: null
   rank_defeatable: false
@@ -2777,7 +2777,7 @@
   version: '1910'
 - commemorations: null
   datestr: 25 Dec
-  language: Latin
+  language: latin
   name: In Nativitate Domini
   octave: null
   rank_defeatable: false
@@ -2786,7 +2786,7 @@
   version: '1910'
 - commemorations: null
   datestr: 26 Dec
-  language: Latin
+  language: latin
   name: S. Stephani Protomartyris
   octave: null
   rank_defeatable: false
@@ -2795,7 +2795,7 @@
   version: '1910'
 - commemorations: null
   datestr: 27 Dec
-  language: Latin
+  language: latin
   name: S. Joanni Apostoli
   octave: null
   rank_defeatable: false
@@ -2804,7 +2804,7 @@
   version: '1910'
 - commemorations: null
   datestr: 28 Dec
-  language: Latin
+  language: latin
   name: Ss. Innocetium
   octave: null
   rank_defeatable: false
@@ -2813,7 +2813,7 @@
   version: '1910'
 - commemorations: null
   datestr: 29 Dec
-  language: Latin
+  language: latin
   name: S. Thomae Episcopi et Martyris
   octave: null
   rank_defeatable: false
@@ -2822,7 +2822,7 @@
   version: '1910'
 - commemorations: null
   datestr: 30 Dec
-  language: Latin
+  language: latin
   name: Die VI infra Octavam Nativitatis
   octave: null
   rank_defeatable: false
@@ -2831,7 +2831,7 @@
   version: '1910'
 - commemorations: null
   datestr: 31 Dec
-  language: Latin
+  language: latin
   name: S. Silvestri Papae et Conf
   octave: null
   rank_defeatable: false
