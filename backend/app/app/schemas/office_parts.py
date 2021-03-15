@@ -25,7 +25,7 @@ class BlockBase(BaseModel):
     title: Optional[str] = Field(None, nullable=True)
     liturgical_context: Optional[List[str]] = Field(None, nullable=True)
     qualifiers: Optional[List[str]] = Field(None, nullable=True)
-    version: Optional[List[str]] = Field(None, nullable=True)
+    versions: Optional[List[str]] = Field(None, nullable=True)
     sourcefile: Optional[str] = Field(None, nullable=True)
     source_section: Optional[str] = Field(None, nullable=True)
 

@@ -132,7 +132,7 @@ candidates = [
                 LineBase(content="Amen.", prefix="R.", lineno=2),
             ],
             title="Per Dominum",
-            version=None,
+            versions=None,
         ),
     ),
     (
@@ -151,7 +151,7 @@ candidates = [
                 LineBase(content="Sed libera.", prefix="R.", lineno=2),
             ],
             title="Pater Noster",
-            version=None,
+            versions=None,
         ),
     ),
     (
@@ -312,7 +312,7 @@ section_test = (
         ],
         HymnCreate(
             title="te deum laudamus te",
-            version=["1960"],
+            versions=["1960"],
             hymn_version="pius v",
             language="latin",
             parts=[
