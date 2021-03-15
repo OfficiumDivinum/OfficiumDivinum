@@ -14,14 +14,14 @@ versions = ["1960"]
 root = Path("app/tests/parsers/test-DO-data")
 
 
-@pytest.mark.parametrize("lang,version", product(languages, versions))
-def test_parse_prayers_txt(lang: str, version: str):
+@pytest.mark.parametrize("lang", languages)
+def test_parse_prayers_txt(lang: str):
     """
     Test parsing the prayers.txt file.
 
     The parser itself asserts complete coverage.
     """
-    parsers.parse_prayers_txt(root, version, lang)
+    parsers.parse_prayers_txt(root, lang)
 
 
 @pytest.mark.parametrize("version", versions)
