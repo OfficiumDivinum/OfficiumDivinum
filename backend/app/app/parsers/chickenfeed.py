@@ -7,8 +7,7 @@ from typing import Dict, List, Optional
 from devtools import debug
 
 from app.DSL import days, months, ordinals, specials
-from app.parsers import parser_vars, util
-from app.parsers.H2obj import guess_version, parse_hymn
+from app.parsers import hymn, parser_vars, util
 from app.parsers.M2obj import generate_datestr
 from app.parsers.util import EmptyFileError, Line, Thing, parse_file_as_dict
 from app.schemas import (
@@ -218,7 +217,6 @@ def is_reference(line: Line):
 
 
 def guess_verse_obj(verse: List, section_name):
-    debug("Guessing verse obj", section_name)
 
     if any(("Hymnus" in section_name, "Te Deum" in section_name)):
         return VerseCreate, {}
@@ -230,7 +228,6 @@ def guess_verse_obj(verse: List, section_name):
         return PrayerCreate, {}
 
     if any((x in section_name for x in ["Lectio", "Capitulum"])):
-        debug("here")
         candidates = verse[:2]
         for candidate in candidates:
             if (match := is_reference(candidate)) is not None:
@@ -296,7 +293,6 @@ def parse_section(
         "source_section": section.source_section,
     }
     if version:
-        debug(version)
         section_data["versions"] = [version]
     section_data.update(extract_section_information(section_name, fn.name))
 
@@ -304,10 +300,10 @@ def parse_section(
         raise NotImplementedError("Rank section needs parsing")
 
     if section_obj is HymnCreate:
-        hymn_version, matched = guess_version(fn)
+        hymn_version, matched = hymn.guess_version(fn)
         section_data["hymn_version"] = hymn_version
         if not matched:
-            hymn_version, matched = guess_version(section_name)
+            hymn_version, matched = hymn.guess_version(section_name)
             section_data["hymn_version"] = hymn_version
         assert hymn_version
 
@@ -316,8 +312,6 @@ def parse_section(
         if not section_data["datestr"]:
             logger.info(f"Skipping {section_name}")
             return None
-
-    debug(section_obj)
 
     linenos = []
 
@@ -441,7 +435,6 @@ def parse_section(
                 pass
             return section_content
         if isinstance(section_obj, list):
-            debug(section_content, section_obj)
             for i in range(len(section_content)):
                 try:
                     section_content[i].versions = section_data["versions"]
@@ -471,7 +464,6 @@ def parse_section(
         data = {"title": section_name, "language": language, "parts": section_content}
         data.update(section_data)
         if section_obj is HymnCreate:
-            debug(data)
             assert section_data["hymn_version"]
             title = re.search(
                 r"(.*)[\.,;:]*", section_content[0].parts[0].content

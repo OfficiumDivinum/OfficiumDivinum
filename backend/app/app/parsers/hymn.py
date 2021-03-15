@@ -138,6 +138,7 @@ def parse_hymn(
         debug(hymn_name)
         if (match := re.search(".*Day([0-9]).*", hymn_name)) is not None:
             day = match.groups()[0]
+            raise NotImplementedError(f"Found {day} in {fn}")
             hymn_name = re.sub("Day([0-9])", "", hymn_name).strip()
             debug(hymn_name)
 

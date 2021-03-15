@@ -20,6 +20,7 @@ from app.parsers import (
     kalendarium,
 )
 from app.parsers.chickenfeed import (
+    guess_version,
     parse_generic_file,
     parse_prayers_txt,
     parse_translations,
@@ -416,7 +417,7 @@ def parse_upload_hymns(
     hymns = []
     for fns in generators:
         for fn in fns:
-            resp = H2obj.parse_file(fn, lang, version)
+            resp = hymn.parse_file(fn, lang, version)
             if resp:
                 hymns += resp
     # debug(hymns)
@@ -439,7 +440,6 @@ def parse_martyrology_file(fn: Path, lang: str) -> MartyrologyCreate:
 def parser_test(
     root: Path,
     lang: str,
-    version: str,
 ) -> None:
 
     success = []
@@ -450,26 +450,28 @@ def parser_test(
     parse_prayers_txt(root, lang)
 
     root = root / lang
+    things = []
+    verson = guess_version
     with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
         for fn in fns:
             if fn.name in ["Translate.txt", "Revtrans.txt"]:
-                parse_translations(fn, "Latin")
+                things.append(parse_translations(fn, "Latin"))
                 continue
 
             if "Martyrologium" in fn.parent.name and fn.stem != "Mobile":
-                parse_martyrology_file(fn, lang)
+                things.append(parse_martyrology_file(fn, lang))
                 continue
 
             if "psalms" in fn.parent.name:
-                P2obj.parse_file(fn, lang, version)
+                things.append(P2obj.parse_file(fn, lang, version))
                 continue
 
             if fn.name[0] == "K":
-                kalendarium.parse_file(fn, lang)
+                things.append(kalendarium.parse_file(fn, lang))
                 continue
 
             try:
-                parse_generic_file(Path(fn), version, "Latin")
+                things.append(parse_generic_file(Path(fn), version, "Latin"))
                 success.append(fn)
             except (FileNotFoundError, EmptyFileError):
                 pass
@@ -483,6 +485,8 @@ def parser_test(
     for i, fn in enumerate(failed):
         print(fn)
         print(f"Errors: {errors[i]}")
+
+    return things, success, errors, failed
 
 
 if __name__ == "__main__":
