@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from pydantic import Field
 
@@ -27,7 +27,7 @@ class VersicleCreate(VersicleBase):
 
 class ReadingBase(BlockBase):
     parts: List[LineBase]
-    ref: str
+    ref: Optional[str] = Field(None, nullable=True)
 
 
 class ReadingCreate(ReadingBase):

@@ -266,6 +266,19 @@ candidates = [
         ),
     ),
     (
+        [(Line(content="Nec tantum", lineno=183),)],
+        ReadingCreate(
+            versions=["1960"],
+            sourcefile="/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas/Latin/Sancti/01-00.txt",
+            source_section="Lectio6",
+            title="Lectio6",
+            language="latin",
+            parts=[
+                LineBase(content="Nec tantum", lineno=183),
+            ],
+        ),
+    ),
+    (
         [
             (
                 Line(content="Lectio.", lineno=1),
@@ -446,10 +459,18 @@ def test_parse_section(section, correct_obj):
     if "te deum" in section_name:
         section_name = "Te Deum"
 
-    kwargs = {"sourcefile": "Prayers.txt", "source_section": section_name}
+    try:
+        sourcefile = correct_obj.sourcefile
+    except AttributeError:
+        sourcefile = "Prayers.txt"
+    kwargs = {"sourcefile": sourcefile, "source_section": section_name}
 
     resp = parsers.parse_section(
-        Path("Prayers.txt"), section_name, Thing(section, **kwargs), "latin", "1960"
+        Path(sourcefile),
+        section_name,
+        Thing(section, **kwargs),
+        "latin",
+        "1960",
     )
     debug(resp)
     assert resp == correct_obj

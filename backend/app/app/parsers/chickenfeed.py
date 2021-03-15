@@ -218,6 +218,7 @@ def is_reference(line: Line):
 
 
 def guess_verse_obj(verse: List, section_name):
+    debug("Guessing verse obj", section_name)
 
     if any(("Hymnus" in section_name, "Te Deum" in section_name)):
         return VerseCreate, {}
@@ -228,16 +229,19 @@ def guess_verse_obj(verse: List, section_name):
     if any((re.search(r"^[VR]\.", i.content) for i in verse)):
         return PrayerCreate, {}
 
+    if any((x in section_name for x in ["Lectio", "Capitulum"])):
+        debug("here")
+        candidates = verse[:2]
+        for candidate in candidates:
+            if (match := is_reference(candidate)) is not None:
+                return ReadingCreate, {"ref": match.group(1)}
+        return ReadingCreate, {}
+
     if len(verse) == 1:
         return LineBase, {}
 
     if re.search(r"^v\.", verse[0].content):
         return BlockCreate, {}
-
-    if any((x in section_name for x in ["Lectio", "Capitulum"])):
-        for candidate in (verse[0], verse[1]):
-            if (match := is_reference(candidate)) is not None:
-                return ReadingCreate, {"ref": match.groups()[0]}
 
     return [], {}
 
@@ -443,7 +447,7 @@ def parse_section(
                     section_content[i].versions = section_data["versions"]
                     section_content[i].sourcefile = section_data["sourcefile"]
                     section_content[i].source_section = section_data["source_section"]
-                except (AttributeError, ValueError):
+                except (AttributeError, ValueError, KeyError):
                     pass
 
         for i, verse in enumerate(section_content):
@@ -456,7 +460,7 @@ def parse_section(
             section_content.source_section = section_data["source_section"]
             try:
                 section_content.versions = section_data["versions"]
-            except (KeyError, AttributeError, ValueError):
+            except (KeyError, AttributeError, ValueError, KeyError):
                 pass
         assert section_content
         return section_content
