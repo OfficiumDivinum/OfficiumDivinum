@@ -21,6 +21,114 @@ from app.schemas import (
 
 from .test_parsers import root
 
+rubrica_candidates = (
+    [
+        "ex Tempora/Pasc5-4;(rubrica 1570 aut rubrica 1910 aut rubrica divino)",
+        "1910",
+        {
+            "line": "ex Tempora/Pasc5-4;",
+            "replace_previous": False,
+            "replacement": None,
+            "skip_next": False,
+        },
+    ],
+    [
+        "ex Tempora/Pasc5-4;(rubrica 1570 aut rubrica 1910 aut rubrica divino)",
+        "1960",
+        {
+            "line": None,
+            "replace_previous": False,
+            "replacement": None,
+            "skip_next": False,
+        },
+    ],
+    [
+        "(rubrica 1570)",
+        "1570",
+        {
+            "line": None,
+            "replace_previous": False,
+            "replacement": None,
+            "skip_next": False,
+        },
+    ],
+    [
+        "(rubrica 1570)",
+        "1960",
+        {
+            "line": None,
+            "replace_previous": False,
+            "replacement": None,
+            "skip_next": True,
+        },
+    ],
+    [
+        "(rubrica 1570 hæc versus omittitur)",
+        "1570",
+        {
+            "line": None,
+            "replace_previous": True,
+            "replacement": None,
+            "skip_next": False,
+        },
+    ],
+    [
+        "(rubrica 1570 hæc versus omittitur)",
+        "1960",
+        {
+            "line": None,
+            "replace_previous": False,
+            "replacement": None,
+            "skip_next": False,
+        },
+    ],
+    [
+        "(rubrica 1960) Psalm5 Vespera=138",
+        "1960",
+        {
+            "line": "Psalm5 Vespera=138",
+            "replace_previous": False,
+            "replacement": None,
+            "skip_next": False,
+        },
+    ],
+    [
+        "(rubrica 1960) Psalm5 Vespera=138",
+        "1955",
+        {
+            "line": None,
+            "replace_previous": False,
+            "replacement": None,
+            "skip_next": False,
+        },
+    ],
+    [
+        "(sed rubrica 1955 aut rubrica 1960 loco horum versuum dicuntur)",
+        "1955",
+        {
+            "line": None,
+            "replace_previous": True,
+            "replacement": None,
+            "skip_next": False,
+        },
+    ],
+    [
+        "(sed rubrica 1955 aut rubrica 1960 loco horum versuum dicuntur)",
+        "1570",
+        {
+            "line": None,
+            "replace_previous": False,
+            "replacement": None,
+            "skip_next": True,
+        },
+    ],
+)
+
+
+@pytest.mark.parametrize("line,version,resp", rubrica_candidates)
+def test_resolve_rubrica(line, version, resp):
+    assert parsers.util.resolve_rubrica(line, version) == resp
+
 
 def test_markup_line():
     content = "r. Thing and some things. r. Another."
@@ -592,21 +700,6 @@ header_rubrica_candidates = (
 @pytest.mark.parametrize("line,version,resp", header_rubrica_candidates)
 def test_resolve_rubrica_header(line, version, resp):
     assert parsers.util.resolve_rubrica_header(line, version) == resp
-
-
-# rubrica_candidates = ["(sed rubrica tridentina omittitur)", "1910", False, True][
-#     "(sed rubrica monastica dicuntur)", "monastic", None, True
-# ]["(sed rubrica monastica)" "monastic", False, True][
-#     "[Prelude Vespera] (rubrica 1955 aut rubrica 1960) ",
-#     "1955",
-#     "[Prelude Vespera]",
-#     False,
-# ]
-
-
-# @pytes.mark.parametrize("line,version,resp,replace", rubrica_candidates)
-# def test_resolve_rubrica(line, version, resp, replace):
-#     assert parsers.util.resolve_rubrica(line, version) == (resp, replace)
 
 
 # section_version_candidates = (

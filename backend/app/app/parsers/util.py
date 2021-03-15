@@ -35,12 +35,54 @@ class Thing:
     source_section: str = None
 
 
-def guess_file_version(fn: Path) -> str:
-    raise NotImplementedError()
+rubrica_versions = {
+    "1960": "1960",
+    "1955": "1950",
+    "DA": "divino",
+    "1570": "tridentina",
+    # "1910": "tridentina",
+    "1910": "1910",
+    "newcal": "innovata",
+    "monastic": "monastica",
+}
 
 
-def guess_section_version(section_name) -> Optional[str]:
-    raise NotImplementedError()
+def resolve_rubrica_header(line: str, version: str) -> bool:
+    """Resolve rubrica in header."""
+    try:
+        version = rubrica_versions[version]
+    except KeyError:
+        return True
+
+    if (match := re.search(r"(\(rubrica.*\))", line)) :
+        if version in match.group(1):
+            return True
+        else:
+            return False
+    else:
+        return True
+
+
+def resolve_rubrica(line: str, version: str) -> Dict:
+    """
+    Resolve rubrica.
+
+    Args:
+      line: str: line to resolve.
+      version: str: version to resolve against.
+    """
+    version = rubrica_versions[version]
+
+    if (match := re.search(r"(.+)(\(rubrica.*\))", line)) :
+        data = {
+            "line": None,
+            "replace_previous": False,
+            "replacement": None,
+            "skip_next": False,
+        }
+        if version in match.group(2):
+            data["line"] = match.group(1)
+        return data
 
 
 def validate_section(section: List) -> bool:
@@ -62,7 +104,7 @@ def validate_section(section: List) -> bool:
 
 
 def parse_DO_sections(
-    fn: Path, section_header_regex=r"\[(.*)\]"
+    fn: Path, section_header_regex=r"\[(.*)\]", version=None
 ) -> Dict[str, List[Union[Line, List[Line]]]]:
     """
     Parses DO files into lists per section.
@@ -93,10 +135,14 @@ def parse_DO_sections(
         sections = parse_DO_sections(targetf)
         skip = True
 
+    old_header = None
     for lineno, line in enumerate(lines):
         if skip:
             skip = False
             continue
+
+        # rubrica
+
         line = re.sub(r"\[([a-z])\]", "_\1_", line)
         line = line.strip()
         if line == "_":
@@ -112,20 +158,23 @@ def parse_DO_sections(
                 subcontent = [x for x in subcontent if x.content.strip()]
                 if subcontent:
                     content.append(subcontent)
-                sections[current_section] = content
+                if resolve_rubrica_header(old_header, version):
+                    sections[current_section] = content
 
             current_section = header.group(1)
+            old_header = header
             content = []
             subcontent = []
         else:
             subcontent.append(Line(lineno, line))
 
     if current_section:
-        subcontent = [x for x in subcontent if x.content.strip()]
-        if subcontent:
-            content.append(subcontent)
-        if validate_section(content):
-            sections[current_section] = content
+        if resolve_rubrica_header(old_header, version):
+            subcontent = [x for x in subcontent if x.content.strip()]
+            if subcontent:
+                content.append(subcontent)
+            if validate_section(content):
+                sections[current_section] = content
 
     return sections
 
@@ -216,7 +265,7 @@ def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List
 
 def parse_file_as_dict(
     fn: Path,
-    only_version: str = None,
+    version: str,
     follow_links: bool = True,
     follow_only_interesting_links: bool = True,
     nasty_stuff: list = [],
@@ -231,7 +280,7 @@ def parse_file_as_dict(
     Args:
       fn: Path: The complete file path.
       section_key: str: The section to extract.
-      only_version: str: We're only interested in this version (among sections).
+      version: str: We're only interested in this version (among sections).
       follow_links: bool: Whether or not to follow links.  (Default value = True)
       follow_only_interesting_links: bool: Skip links which don't change their target.
     (Default value = True)
@@ -243,17 +292,11 @@ def parse_file_as_dict(
 
     section_header_regex = guess_section_header(fn)
 
-    file_version = guess_file_version(fn)
-
-    sections = parse_DO_sections(fn, section_header_regex)
+    sections = parse_DO_sections(fn, section_header_regex, version)
     logger.debug(f"Got {len(sections.keys())} sections.")
     things = {}
     sourcefile = str(fn)
     for key, section in sections.items():
-        section_version = guess_section_version(key)
-        if section_version and section_version != only_version:
-            continue
-        version = section_version if section_version else file_version
 
         schemas = [r".*Special.*", r"^Minor.*"]
         if any((re.search(schema, key) for schema in schemas)):
@@ -305,7 +348,6 @@ def parse_file_as_dict(
         for verse_index, verse in enumerate(section):
             line_index = 0
             for line in verse:
-                assert "Rubrica" not in line.content
                 line_index += 1
 
                 if not follow_links:
