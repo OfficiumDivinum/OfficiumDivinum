@@ -427,12 +427,15 @@ def parse_section(
             section_content.sourcefile = section_data["sourcefile"]
             section_content.source_section = section_data["source_section"]
             return section_content
+
         for i, verse in enumerate(section_content):
-            debug(verse)
-            section_content[i].sourcefile = section_data["sourcefile"]
-            section_content[i].source_section = section_data["source_section"]
+            if isinstance(verse, list):
+                if len(verse) == 1:
+                    section_content[i] = verse[0]
         if len(section_content) == 1:
             section_content = section_content[0]
+            section_content.sourcefile = section_data["sourcefile"]
+            section_content.source_section = section_data["source_section"]
         assert section_content
         return section_content
 
