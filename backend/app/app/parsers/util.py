@@ -114,7 +114,7 @@ def parse_DO_sections(
                     content.append(subcontent)
                 sections[current_section] = content
 
-            current_section = header.groups()[0]
+            current_section = header.group(1)
             content = []
             subcontent = []
         else:
@@ -180,7 +180,7 @@ def generate_commemoration_links(linkstr) -> List[str]:
     """Generates links to the *antiphons* when given a link to the *oratio* (which DO
     uses for some reason.)"""
     logger.debug("Generating commemoration links.")
-    base = re.search(r"(@.*:).*", linkstr).groups()[0]
+    base = re.search(r"(@.*:).*", linkstr).group(1)
     return (f"{base}Ant 1", f"{base}Versum 1", f"{base}Ant 2", f"{base}Versum 2")
 
 
@@ -203,7 +203,7 @@ def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List
     match = re.search(r":([0-9]+)-*([0-9]*)", linkstr)
     if "s/" not in linkstr and match:
         logger.debug(f"Limiting to specified lines: {linkstr}")
-        start = int(match.groups()[0]) - 1
+        start = int(match.group(1)) - 1
         end = match.groups()[1]
         end = int(end) if end else start + 1
         assert end > start
@@ -285,7 +285,7 @@ def parse_file_as_dict(
             crossref = re.search(r".*{:.-(.*):}.*", candidate)
             if crossref:
                 logger.debug(f"Got DO key {crossref}.")
-                crossref = crossref.groups()[0]
+                crossref = crossref.group(1)
                 break
 
         # if told to, remove DO's type assertions
@@ -340,12 +340,12 @@ def parse_file_as_dict(
                         # all examples are singular, so we don't care
                         part = "Oratio9"
                     else:
-                        i = match.groups()[0]
+                        i = match.group(1)
                         part = f"Oratio{i}" if i else "Oratio"
 
                 if (match := re.search(r"Oratio(.*) Gregem", part)) :
                     if version in ["1910", "1570"]:
-                        i = match.groups()[0]
+                        i = match.group(1)
                         part = f"Oratio{i}" if i else "Oratio"
                         # section[verse_index].pop(line_index)
                         # line_index -= 1
