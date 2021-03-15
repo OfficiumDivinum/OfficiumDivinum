@@ -6,6 +6,7 @@ from devtools import debug
 
 from app import parsers
 from app.parsers import Line
+from app.parsers.util import Thing
 from app.schemas import (
     AntiphonCreate,
     BlockCreate,
@@ -133,6 +134,8 @@ candidates = [
             ],
             title="Per Dominum",
             versions=None,
+            sourcefile="Prayers.txt",
+            source_section="Per Dominum",
         ),
     ),
     (
@@ -152,6 +155,8 @@ candidates = [
             ],
             title="Pater Noster",
             versions=None,
+            sourcefile="Prayers.txt",
+            source_section="Pater Noster",
         ),
     ),
     (
@@ -168,6 +173,8 @@ candidates = [
                 LineBase(content="Deo grátias.", prefix="R.", lineno=2),
             ],
             title="Benedicamus Domino",
+            sourcefile="Prayers.txt",
+            source_section="Benedicamus Domino",
         ),
     ),
     (
@@ -178,6 +185,8 @@ candidates = [
             )
         ],
         BlockCreate(
+            sourcefile="Prayers.txt",
+            source_section="credo",
             language="latin",
             title="credo",
             parts=[
@@ -191,6 +200,8 @@ candidates = [
             (Line(content="R. Deo grátias.", lineno=1),),
         ],
         VersicleCreate(
+            sourcefile="Prayers.txt",
+            source_section="Deo Gratias",
             language="latin",
             parts=[LineBase(content="Deo grátias.", prefix="R.", lineno=1)],
             title="Deo Gratias",
@@ -198,7 +209,13 @@ candidates = [
     ),
     (
         [(Line(lineno=1, content="Allelúja, allelúja."),)],
-        LineBase(lineno=1, content="Allelúja, allelúja.", title="Alleluia Duplex"),
+        LineBase(
+            lineno=1,
+            content="Allelúja, allelúja.",
+            title="Alleluia Duplex",
+            sourcefile="Prayers.txt",
+            source_section="Alleluia Duplex",
+        ),
     ),
     (
         [
@@ -210,6 +227,8 @@ candidates = [
             )
         ],
         PrayerCreate(
+            sourcefile="Prayers.txt",
+            source_section="Ante",
             title="Ante",
             language="latin",
             parts=[
@@ -229,6 +248,8 @@ candidates = [
             )
         ],
         ReadingCreate(
+            sourcefile="Prayers.txt",
+            source_section="Lectio1",
             title="Lectio1",
             language="latin",
             parts=[
@@ -249,6 +270,8 @@ candidates = [
             )
         ],
         ReadingCreate(
+            sourcefile="Prayers.txt",
+            source_section="Lectio1",
             title="Lectio1",
             language="latin",
             parts=[
@@ -271,6 +294,8 @@ candidates = [
             )
         ],
         ReadingCreate(
+            sourcefile="Prayers.txt",
+            source_section="Lectio1",
             title="Lectio1",
             language="latin",
             parts=[
@@ -311,6 +336,8 @@ section_test = (
             ),
         ],
         HymnCreate(
+            sourcefile="Prayers.txt",
+            source_section="Te Deum",
             title="te deum laudamus te",
             versions=["1960"],
             hymn_version="pius v",
@@ -366,6 +393,8 @@ section_test = (
         ),
         [
             PrayerCreate(
+                sourcefile="Prayers.txt",
+                source_selfection="Oratio mortuorum",
                 title="Oratio mortuorum",
                 parts=[
                     LineBase(content="Collect here", lineno=1),
@@ -375,6 +404,8 @@ section_test = (
                 language="latin",
             ),
             PrayerCreate(
+                sourcefile="Prayers.txt",
+                source_selfection="Oratio mortuorum",
                 oremus=True,
                 title="Oratio mortuorum",
                 parts=[
@@ -405,8 +436,11 @@ def test_parse_section(section, correct_obj):
         section_name = correct_obj.title
     if "te deum" in section_name:
         section_name = "Te Deum"
+
+    kwargs = {"sourcefile": "Prayers.txt", "source_section": section_name}
+
     resp = parsers.parse_section(
-        Path("Prayers.txt"), section_name, section, "latin", "1960"
+        Path("Prayers.txt"), section_name, Thing(section, **kwargs), "latin", "1960"
     )
     debug(resp)
     assert resp == correct_obj
@@ -428,7 +462,7 @@ def test_parse_replace_section():
     }
     parsers.parser_vars.replacements = replacements
     resp = parsers.parse_section(
-        Path("Prayers.txt"), section_name, [verse], "latin", "1960"
+        Path("Prayers.txt"), section_name, Thing([verse]), "latin", "1960"
     )
     parsers.parser_vars.replacements = None
 
