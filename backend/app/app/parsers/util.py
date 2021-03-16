@@ -50,7 +50,7 @@ def resolve_rubrica_header(line: str, version: str) -> bool:
     """Resolve rubrica in header."""
     try:
         versions = rubrica_versions[version]
-    except KeyError:
+    except (KeyError, TypeError):
         return True
 
     if (match := re.search(r"(\(rubrica.*\))", line)) :
@@ -70,13 +70,17 @@ def resolve_rubrica(line: str, version: str) -> Dict:
       line: str: line to resolve.
       version: str: version to resolve against.
     """
-    versions = rubrica_versions[version]
     line = line.strip()
     data = {
         "line": None if "rubrica" in line else line,
         "replace_previous": False,
         "skip_next": False,
     }
+    try:
+        versions = rubrica_versions[version]
+    except TypeError:
+        data["line"] = line
+        return data
 
     if (match := re.search(r"(.+)(\(.*rubrica.*\))", line)) :
         if any((x in match.group(2) for x in versions)):
