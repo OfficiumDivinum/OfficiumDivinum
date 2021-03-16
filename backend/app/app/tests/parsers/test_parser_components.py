@@ -641,6 +641,31 @@ sub_candidates = (
         "@:Lectio6:s/.*(Nec ita)/$1/s",
         [Line(2, "Nec ita multo post Bonifátius Papa.")],
     ),
+    (
+        [
+            Line(1, "Post tríduum Míchaël.~"),
+            Line(2, "Nec ita multo post Bonifátius Papa."),
+        ],
+        "@:Lectio6:s/.*(Nec ita)/$1/s",
+        [Line(2, "Nec ita multo post Bonifátius Papa.")],
+    ),
+    (
+        [
+            Line(1, "Justifíceris, Dómine, * in sermónibus tuis,"),
+            Line(2, "Dóminus * tamquam ovis ad víctimam ductus est, et"),
+            Line(3, "Contrítum est * cor meum in médio mei,"),
+            Line(4, "Exhortátus es * in virtúte tua, et in"),
+            Line(5, "Oblátus est * quia ipse vóluit, et"),
+        ],
+        "Tempora/Quad6-4::s/\n/_/smg s/_/;;50\n/ s/_/;;89\n/ s/_/;;35\n/ s/_/;;224\n/ s/$/;;146\n/s",
+        [
+            Line(1, "Justifíceris, Dómine, * in sermónibus tuis, ;;50"),
+            Line(2, "Dóminus * tamquam ovis ad víctimam ductus est, et ;;89"),
+            Line(3, "Contrítum est * cor meum in médio mei, ;;35"),
+            Line(4, "Exhortátus es * in virtúte tua, et in ;;224"),
+            Line(5, "Oblátus est * quia ipse vóluit, et ;;146"),
+        ],
+    ),
 )
 
 
