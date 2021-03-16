@@ -616,6 +616,33 @@ def test_generate_commemoration_links():
     )
 
 
+datestr_candidates = (
+    ("Adv1-0", "1st Sun after Advent"),
+    ("Nativity", None),
+    ("10-DU", "Sat between 23 Oct 31 Oct"),
+    ("Defuncti", "3 Nov"),
+)
+
+
+@pytest.mark.parametrize("candidate,resp", datestr_candidates)
+def test_generate_datestr(candidate: str, resp: str):
+    assert parsers.generate_datestr(candidate) == resp
+
+
+header_rubrica_candidates = (
+    ["[Responsory1](rubrica tridentina aut rubrica divino)", "1910", True],
+    ["[Responsory1](rubrica tridentina aut rubrica divino)", "1960", False],
+    ["[Responsory1](rubrica tridentina aut rubrica divino)", "1570", True],
+    ["[Section]", "nonesuch", True],
+    ["[Section](rubrica inextans)", None, True],
+)
+
+
+@pytest.mark.parametrize("line,version,resp", header_rubrica_candidates)
+def test_resolve_rubrica_header(line, version, resp):
+    assert parsers.util.resolve_rubrica_header(line, version) == resp
+
+
 sub_candidates = (
     (
         [
@@ -657,13 +684,13 @@ sub_candidates = (
             Line(4, "Exhortátus es * in virtúte tua, et in"),
             Line(5, "Oblátus est * quia ipse vóluit, et"),
         ],
-        "Tempora/Quad6-4::s/\n/_/smg s/_/;;50\n/ s/_/;;89\n/ s/_/;;35\n/ s/_/;;224\n/ s/$/;;146\n/s",
+        r"Tempora/Quad6-4::s/\n/_/smg s/_/;;50\n/ s/_/;;89\n/ s/_/;;35\n/ s/_/;;224\n/ s/$/;;146\n/s",
         [
-            Line(1, "Justifíceris, Dómine, * in sermónibus tuis, ;;50"),
-            Line(2, "Dóminus * tamquam ovis ad víctimam ductus est, et ;;89"),
-            Line(3, "Contrítum est * cor meum in médio mei, ;;35"),
-            Line(4, "Exhortátus es * in virtúte tua, et in ;;224"),
-            Line(5, "Oblátus est * quia ipse vóluit, et ;;146"),
+            Line(1, "Justifíceris, Dómine, * in sermónibus tuis,;;50"),
+            Line(2, "Dóminus * tamquam ovis ad víctimam ductus est, et;;89"),
+            Line(3, "Contrítum est * cor meum in médio mei,;;35"),
+            Line(4, "Exhortátus es * in virtúte tua, et in;;224"),
+            Line(5, "Oblátus est * quia ipse vóluit, et;;146"),
         ],
     ),
 )
@@ -673,30 +700,3 @@ sub_candidates = (
 def test_substitute_linked_content(start, linkstr, end):
     resp = parsers.substitute_linked_content([start], linkstr)
     assert resp[0] == end
-
-
-datestr_candidates = (
-    ("Adv1-0", "1st Sun after Advent"),
-    ("Nativity", None),
-    ("10-DU", "Sat between 23 Oct 31 Oct"),
-    ("Defuncti", "3 Nov"),
-)
-
-
-@pytest.mark.parametrize("candidate,resp", datestr_candidates)
-def test_generate_datestr(candidate: str, resp: str):
-    assert parsers.generate_datestr(candidate) == resp
-
-
-header_rubrica_candidates = (
-    ["[Responsory1](rubrica tridentina aut rubrica divino)", "1910", True],
-    ["[Responsory1](rubrica tridentina aut rubrica divino)", "1960", False],
-    ["[Responsory1](rubrica tridentina aut rubrica divino)", "1570", True],
-    ["[Section]", "nonesuch", True],
-    ["[Section](rubrica inextans)", None, True],
-)
-
-
-@pytest.mark.parametrize("line,version,resp", header_rubrica_candidates)
-def test_resolve_rubrica_header(line, version, resp):
-    assert parsers.util.resolve_rubrica_header(line, version) == resp
