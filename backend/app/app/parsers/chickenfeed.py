@@ -172,7 +172,7 @@ def parse_generic_file(fn: Path, version: str, language: str) -> Dict:
     sections = parse_file_as_dict(fn, version)
     matched, unmatched = magic_parser(fn, sections, language, version)
     assert not unmatched
-    return matched
+    return [v for k, v in matched.items()]
 
 
 def parse_translations(fn: Path, language: str) -> Dict:

@@ -46,7 +46,7 @@ def parse_file(fn: Path, lang: str, title: str):
         if isinstance(version, list):
             things = parse_generic_file(fn, version[0], lang)
             for x in things:
-                things[x].versions = version
+                x.versions = version
             return things
         else:
             return parse_generic_file(fn, version, lang)
