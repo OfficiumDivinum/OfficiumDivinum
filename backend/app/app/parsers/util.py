@@ -152,9 +152,13 @@ def parse_DO_sections(
     skip = False
 
     if "@" in lines[0]:
-        targetf, part = deref(lines[0], fn)
-        sections = parse_DO_sections(targetf)
-        skip = True
+        data = resolve_rubrica(lines[1], version)
+        if not data["replace_previous"]:
+            targetf, part = deref(lines[0], fn)
+            sections = parse_DO_sections(targetf)
+            skip = True
+        else:
+            lines = lines[2:]
 
     old_header = None
     for lineno, line in enumerate(lines):
