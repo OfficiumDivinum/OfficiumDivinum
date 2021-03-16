@@ -155,6 +155,14 @@ def test_resolve_link():
     assert len(linked_content[0]) == 1
 
 
+def test_version_substitution():
+    fn = root / "Latin/Sancti/05-25o.txt"
+    resp = parsers.parse_file_as_dict(fn, "1960", False, section_key="Oratio")
+    assert resp["Oratio"].content[0][0].content.startswith("Deus, qui")
+    resp = parsers.parse_file_as_dict(fn, "1570", False, section_key="Oratio")
+    assert resp["Oratio"].content[0][0].content.startswith("Da")
+
+
 def test_markup_line():
     content = "r. Thing and some things. r. Another."
     resp = parsers.markup(content)
@@ -708,35 +716,3 @@ header_rubrica_candidates = (
 @pytest.mark.parametrize("line,version,resp", header_rubrica_candidates)
 def test_resolve_rubrica_header(line, version, resp):
     assert parsers.util.resolve_rubrica_header(line, version) == resp
-
-
-# section_version_candidates = (
-#     "[Rank](rubrica 1570 aut rubrica 1910 aut rubrica divino)",
-#     ["1570", "1910", "DA"],
-# )
-
-
-# # tests for sections with 'Rubrica' anywhere near them
-# @pytest.mark.parametrize("candidate,version", section_version_candidates)
-# def test_guess_section_version(candidate, version):
-#     assert parsers.util.guess_section_version(candidate) == version
-
-
-# # tests for file guessing
-
-# not_monastic = ["1570", "1910", "DA", "1955", "1960", "OP", "newcal"]
-# file_version_candidates = (
-#     (Path("SanctiM/01-02.txt"), ["monastic"]),
-#     (Path("TemporaM/01-02.txt"), ["monastic"]),
-#     (Path("Sancti/01-02.txt"), not_monastic),
-#     (Path("Tempora/01-02.txt"), not_monastic),
-#     (Path("Martyrologium/01-02.txt"), ["1910", "DA", "OP"]),
-#     (Path("Martyrologium1570/01-02.txt"), ["1570"]),
-#     (Path("Martyrologium1960/01-02.txt"), ["1960", "newcal"]),
-#     (Path("Martyrologium1955R/01-02.txt"), ["1955"]),
-# )
-
-
-# @pytest.mark.parametrize("candidate,version", file_version_candidates)
-# def test_guess_file_version(candidate, version):
-#     assert parsers.util.guess_file_version(candidate) == version
