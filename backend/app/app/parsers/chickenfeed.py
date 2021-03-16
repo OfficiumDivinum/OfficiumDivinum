@@ -313,8 +313,11 @@ def parse_section(
 
     if section_obj is MartyrologyCreate:
         section_data["datestr"] = generate_datestr(section_name)
+        section_data["read_first"] = (
+            section_name == "Pasc0-1" or "Defuncti" in section_name
+        )
+
         if not section_data["datestr"]:
-            logger.info(f"Skipping {section_name}")
             return None
 
     linenos = []

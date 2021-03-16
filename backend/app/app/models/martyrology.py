@@ -3,7 +3,7 @@ from functools import total_ordering
 from typing import TYPE_CHECKING
 
 import pylunar
-from sqlalchemy import Column, ForeignKey, Integer, PickleType, String, Table
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, PickleType, String, Table
 from sqlalchemy.ext.mutable import MutableList
 from sqlalchemy.orm import relationship
 from sqlalchemy.types import VARCHAR, Date, TypeDecorator
@@ -75,6 +75,7 @@ class Martyrology(Base, BlockMixin, FromDOMixin):
         back_populates="martyrologies",
         lazy="joined",
     )
+    read_first = Column(Boolean)
 
     def lunar(self):
         """Calculate age of moon as integer."""

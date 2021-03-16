@@ -15,6 +15,7 @@ class MartyrologyBase(BlockBase):
     datestr: str
     title: str
     language: str
+    read_first: bool = Field(None, nullable=True)
 
 
 # Properties shared by models stored in DB
