@@ -1,6 +1,5 @@
 from itertools import product
 from pathlib import Path
-from typing import Dict
 
 import pytest
 from fastapi.testclient import TestClient
@@ -24,36 +23,41 @@ def test_parse_prayers_txt(lang: str):
     parsers.parse_prayers_txt(root, lang)
 
 
-@pytest.mark.parametrize("version", versions)
-def test_pokemon(
-    version: str,
-    client: TestClient,
-    superuser_token_headers: Dict[str, str],
-):
-    """Test all the parsers."""
-    lang = "Latin"
-
-    # test without upload
-    run_parsers.parse_upload(root, lang, version, pokemon=True, test=True)
+# @pytest.mark.parametrize("lang", languages)
+# def test_parser_test(lang: str):
+#     parser_test(root, lang, version)
 
 
-@pytest.mark.parametrize("version,thing", product(versions, things))
-def test_upload_parsers(
-    version: str,
-    thing: str,
-    client: TestClient,
-    superuser_token_headers: Dict[str, str],
-):
-    """Test all the parsers."""
-    lang = "Latin"
+# @pytest.mark.parametrize("version", versions)
+# def test_pokemon(
+#     version: str,
+#     client: TestClient,
+#     superuser_token_headers: Dict[str, str],
+# ):
+#     """Test all the parsers."""
+#     lang = "Latin"
 
-    args = {
-        "root": root,
-        "lang": lang,
-        "version": version,
-        "client": client,
-        "host": "",
-        "test_token_headers": superuser_token_headers,
-    }
-    fn = getattr(run_parsers, f"parse_upload_{thing}")
-    fn(**args)
+#     # test without upload
+#     run_parsers.parse_upload(root, lang, version, pokemon=True, test=True)
+
+
+# @pytest.mark.parametrize("version,thing", product(versions, things))
+# def test_upload_parsers(
+#     version: str,
+#     thing: str,
+#     client: TestClient,
+#     superuser_token_headers: Dict[str, str],
+# ):
+#     """Test all the parsers."""
+#     lang = "Latin"
+
+#     args = {
+#         "root": root,
+#         "lang": lang,
+#         "version": version,
+#         "client": client,
+#         "host": "",
+#         "test_token_headers": superuser_token_headers,
+#     }
+#     fn = getattr(run_parsers, f"parse_upload_{thing}")
+#     fn(**args)
