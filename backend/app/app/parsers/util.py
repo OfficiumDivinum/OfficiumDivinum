@@ -78,7 +78,7 @@ def resolve_rubrica(line: str, version: str) -> Dict:
     }
     try:
         versions = rubrica_versions[version]
-    except TypeError:
+    except (TypeError, KeyError):
         data["line"] = line
         return data
 
