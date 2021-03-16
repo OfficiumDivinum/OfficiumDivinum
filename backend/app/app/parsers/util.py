@@ -152,7 +152,11 @@ def parse_DO_sections(
     skip = False
 
     if "@" in lines[0]:
-        data = resolve_rubrica(lines[1], version)
+        try:
+            data = resolve_rubrica(lines[1], version)
+        except IndexError:
+            data = {"replace_previous": False}
+
         if not data["replace_previous"]:
             targetf, part = deref(lines[0], fn)
             sections = parse_DO_sections(targetf)
