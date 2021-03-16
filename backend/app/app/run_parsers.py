@@ -451,40 +451,43 @@ def parser_test(
 
     root = root / lang
     things = []
-    with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
-        for fn in fns:
-            version = guess_version(fn)
-            if fn.name in ["Translate.txt", "Revtrans.txt"]:
-                things.append(parse_translations(fn, "Latin"))
-                continue
+    versions = ["1960"]
+    for version in versions:
+        print(f"Parsing for version {version}")
 
-            if "Martyrologium" in fn.parent.name and fn.stem != "Mobile":
-                things.append(parse_martyrology_file(fn, lang))
-                continue
+        with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
+            for fn in fns:
+                if fn.name in ["Translate.txt", "Revtrans.txt"]:
+                    things.append(parse_translations(fn, "Latin"))
+                    continue
 
-            if "psalms" in fn.parent.name:
-                things.append(P2obj.parse_file(fn, lang, version))
-                continue
+                if "Martyrologium" in fn.parent.name and fn.stem != "Mobile":
+                    things.append(parse_martyrology_file(fn, lang))
+                    continue
 
-            if fn.name[0] == "K":
-                things.append(kalendarium.parse_file(fn, lang))
-                continue
+                if "psalms" in fn.parent.name:
+                    things.append(P2obj.parse_file(fn, lang, version))
+                    continue
 
-            try:
-                things.append(parse_generic_file(Path(fn), version, "Latin"))
-                success.append(fn)
-            except (FileNotFoundError, EmptyFileError):
-                pass
-            except Exception as e:
-                errors.append(e)
-                failed.append(fn)
+                if fn.name[0] == "K":
+                    things.append(kalendarium.parse_file(fn, lang))
+                    continue
 
-    print(
-        f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f)}% parsed"
-    )
-    for i, fn in enumerate(failed):
-        print(fn)
-        print(f"Errors: {errors[i]}")
+                try:
+                    things.append(parse_generic_file(Path(fn), version, "Latin"))
+                    success.append(fn)
+                except (FileNotFoundError, EmptyFileError):
+                    pass
+                except Exception as e:
+                    errors.append(e)
+                    failed.append(fn)
+
+        print(
+            f"Parsed {(f:=len(failed)) + (s:=len(success))} files of which {s*100/(s+f)}% parsed"
+        )
+        for i, fn in enumerate(failed):
+            print(fn)
+            print(f"Errors: {errors[i]}")
 
     return things, success, errors, failed
 
