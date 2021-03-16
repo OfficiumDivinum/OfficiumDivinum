@@ -4,10 +4,26 @@ import re
 from pathlib import Path
 from typing import Optional
 
+from devtools import debug
+
 from app.DSL import days, months, ordinals, specials
 from app.schemas import LineBase, MartyrologyCreate
 
 christ_the_king_datestr = "Sat between 23 Oct 31 Oct"
+
+
+def guess_martyrology_version(fn: Path) -> str:
+    """Guess martyrology version."""
+    version_translation = {
+        "1570": "1570",
+        "1960": "1960",
+        "1955R": "1955",
+    }
+    stem = fn.parent.name.replace("Martyrologium", "")
+    if not stem:
+        return ["1910", "DA"]
+    else:
+        return version_translation[stem]
 
 
 def parse_file(fn: Path, lang: str, title: str):
@@ -26,7 +42,14 @@ def parse_file(fn: Path, lang: str, title: str):
     if fn.stem == "Mobile":
         from .chickenfeed import parse_generic_file
 
-        return parse_generic_file(fn)
+        version = guess_martyrology_version(fn)
+        if isinstance(version, list):
+            things = parse_generic_file(fn, version[0], lang)
+            for x in things:
+                things[x].versions = version
+            return things
+        else:
+            return parse_generic_file(fn, version, lang)
 
     month, day = (int(i) for i in fn.stem.split("-"))
     datestr = f"{day} {months[month - 1]}"

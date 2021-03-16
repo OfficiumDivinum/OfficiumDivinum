@@ -466,6 +466,49 @@ def parser_test(
     things = []
 
     versions = ["1570", "1910", "1955", "1960", "newcal", "DA", "monastic"]
+    martyrologies = []
+    translate = []
+    calendars = []
+    psalms = []
+
+    skip = []
+
+    print("Parsing translations.")
+    for fn in (
+        root / "Psalterium/Translate.txt",
+        root / "Psalterium/Revtrans.txt",
+    ):
+        skip.append(fn)
+        translate.append(parse_translations(fn, lang))
+
+    print("Parsing Martyrologies.")
+    with typer.progressbar(list((root).glob("Martyrologium*/*.txt"))) as fns:
+        for fn in fns:
+            skip.append(fn)
+            martyrologies.append(parse_martyrology_file(fn, lang))
+
+    print("Parsing Calendars.")
+    with typer.progressbar(list((root / "Tabulae/").glob("K*.txt"))) as fns:
+        for fn in fns:
+            skip.append(fn)
+            calendars.append(kalendarium.parse_file(fn, lang))
+
+    print("Parsing Psalms.")
+
+    with typer.progressbar(list((root / "psalms1/").glob("*.txt"))) as fns:
+        for fn in fns:
+            skip.append(fn)
+            version = guess_psalm_version(fn)
+            psalms.append(P2obj.parse_file(fn, lang, version))
+    try:
+        with typer.progressbar(list((root / "PiusXII").glob("*.txt"))) as fns:
+            for fn in fns:
+                skip.append(fn)
+                version = guess_psalm_version(fn)
+                psalms.append(P2obj.parse_file(fn, lang, version))
+    except Exception as e:
+        print(e)
+
     for version in versions:
         print(f"Parsing for version {version}")
 
@@ -473,52 +516,11 @@ def parser_test(
         success = []
         failed = []
         errors = []
-        martyrologies = []
-        translate = []
-        calendars = []
-        psalms = []
-
-        skip = []
-
-        print("Parsing translations.")
-        for fn in (
-            root / "Psalterium/Translate.txt",
-            root / "Psalterium/Revtrans.txt",
-        ):
-            skip.append(fn)
-            translate.append(parse_translations(fn, lang))
-
-        print("Parsing Martyrologies.")
-        with typer.progressbar(list((root / "Martyrologium").glob("**/*.txt"))) as fns:
-            for fn in fns:
-                skip.append(fn)
-                martyrologies.append(parse_martyrology_file(fn, lang))
-
-        print("Parsing Calendars.")
-        with typer.progressbar(list((root / "Tabulae/").glob("K*.txt"))) as fns:
-            for fn in fns:
-                skip.append(fn)
-                calendars.append(kalendarium.parse_file(fn, lang))
-
-        print("Parsing Psalms.")
-        with typer.progressbar(list(root.glob("/psalms1/*.txt"))) as fns:
-            for fn in fns:
-
-                skip.append(fn)
-                version = guess_psalm_version(fn)
-                psalms.append(P2obj.parse_file(fn, lang, version))
-        try:
-            with typer.progressbar(list(root.glob("/PiusXII/*.txt"))) as fns:
-                for fn in fns:
-                    skip.append(fn)
-                    version = guess_psalm_version(fn)
-                    psalms.append(P2obj.parse_file(fn, lang, version))
-        except Exception as e:
-            print(e)
 
         fns = list(root.glob("**/*.txt"))
         fns = [i for i in fns if not i in skip]
-        with typer.progressbar() as fns:
+
+        with typer.progressbar(fns) as fns:
             for fn in fns:
                 try:
                     things.append(parse_generic_file(Path(fn), version, lang))
