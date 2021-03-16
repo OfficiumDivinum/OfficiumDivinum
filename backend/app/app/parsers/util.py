@@ -11,7 +11,7 @@ from devtools import debug
 from app.parsers.deref import deref
 
 logger = logging.getLogger(__name__)
-# logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
 
 
 class ParsingError(Exception):
@@ -418,8 +418,6 @@ def parse_file_as_dict(
                 else:
                     pattern = None
 
-                sublinks = False if pattern == ".@.*" else True
-
                 # DO hand codes these, so we do too
                 if (match := re.search(r"Oratio(.*) proper Gregem", part)) :
                     # proper only used for 1910
@@ -453,6 +451,7 @@ def parse_file_as_dict(
                     continue
 
                 logger.debug(f"Resolving for {key} {section}, {verse}")
+                sublinks = False if (targetf == fn) else True
                 linked_content = resolve_link(
                     targetf, part, sublinks, line.content, version
                 )
@@ -479,7 +478,7 @@ def parse_file_as_dict(
                     section[i][j].content = re.sub(regex, "", section[i][j].content)
 
         things[key] = Thing(section, crossref, sourcefile, key)
-
+    debug(things)
     return things
 
 

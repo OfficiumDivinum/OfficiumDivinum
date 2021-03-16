@@ -27,7 +27,7 @@ from app.schemas.custom_types import versions
 
 from .divinumofficium_structures import commands as office_names
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 create_types = (
@@ -186,6 +186,8 @@ def guess_section_obj(section_name: str, section: List):
     guesses = {
         "Invit": AntiphonCreate,
         "Ant Matutinum": [],
+        "Ant Laudes": [],
+        "Ant Vesperas": [],
         "Hymnus": HymnCreate,
         "Ant ": AntiphonCreate,
         "Te Deum": HymnCreate,
@@ -328,6 +330,9 @@ def parse_section(
     rubrics = None
     section_content = []
 
+    if section_name == "Ant Laudes":
+        debug(section, section_obj, section_data)
+
     for verse in section.content:
         if not verse:
             continue
@@ -452,7 +457,7 @@ def parse_section(
                     section_content[i].versions = section_data["versions"]
                     section_content[i].sourcefile = section_data["sourcefile"]
                     section_content[i].source_section = section_data["source_section"]
-                except (AttributeError, ValueError, KeyError):
+                except (AttributeError, ValueError, KeyError) as e:
                     pass
 
         for i, verse in enumerate(section_content):
@@ -522,7 +527,8 @@ def parse_versicle(line, rubrics):
 
 
 def parse_antiphon(line):
-    a = AntiphonCreate(lineno=line.lineno, content=markup(line.content))
+    content = re.sub(";;[0-9]+", "", line.content)
+    a = AntiphonCreate(lineno=line.lineno, content=markup(content))
     return a
 
 
