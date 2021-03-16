@@ -131,5 +131,4 @@ candidates = [
 def test_extract_section_information(candidate):
     args = {i: candidate[i] for i in candidate if i != "resp"}
     resp = parsers.extract_section_information(**args)
-    debug(resp, candidate["resp"])
     assert resp == candidate["resp"]
