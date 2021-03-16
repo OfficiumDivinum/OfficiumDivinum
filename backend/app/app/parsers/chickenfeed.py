@@ -323,6 +323,8 @@ def parse_section(
     section_content = []
 
     for verse in section.content:
+        if not verse:
+            continue
         data = {}
         if all((line.content.startswith("r. ") for line in verse)):
             verse[0].content = " ".join([i.content for i in verse])
