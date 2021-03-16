@@ -16,6 +16,7 @@ class LineBase(BaseModel):
     title: Optional[str] = Field(None, nullable=True)
     sourcefile: Optional[str] = Field(None, nullable=True)
     source_section: Optional[str] = Field(None, nullable=True)
+    versions: Optional[List[str]] = Field(None, nullable=True)
 
 
 class BlockBase(BaseModel):
