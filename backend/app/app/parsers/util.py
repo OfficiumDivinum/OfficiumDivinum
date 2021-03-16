@@ -71,13 +71,13 @@ def resolve_rubrica(line: str, version: str) -> Dict:
       version: str: version to resolve against.
     """
     versions = rubrica_versions[version]
+    line = line.strip()
     data = {
-        "line": None,
+        "line": None if "rubrica" in line else line,
         "replace_previous": False,
-        "replacement": None,
         "skip_next": False,
     }
-    line = line.strip()
+
     if (match := re.search(r"(.+)(\(.*rubrica.*\))", line)) :
         if any((x in match.group(2) for x in versions)):
             data["line"] = match.group(1).strip()
@@ -135,7 +135,6 @@ def parse_DO_sections(
       : A dict of the file, where the keys are the section headers,
       and the contents are lists.
     """
-
     logger.debug("Parsing section.")
     sections = {}
     current_section = None
@@ -158,8 +157,21 @@ def parse_DO_sections(
         if skip:
             skip = False
             continue
+        line = line.strip()
+        if not line:
+            continue
 
         # rubrica
+        header = re.search(section_header_regex, line)
+        if not header:
+            data = resolve_rubrica(line, version)
+            if data["replace_previous"]:
+                subcontent.pop()
+            if data["skip_next"]:
+                skip = True
+            line = data["line"]
+            if not line:
+                continue
 
         line = re.sub(r"\[([a-z])\]", "_\1_", line)
         line = line.strip()
@@ -169,7 +181,6 @@ def parse_DO_sections(
                 content.append(subcontent)
             subcontent = []
             continue
-        header = re.search(section_header_regex, line)
         if header:
             if current_section:
 
@@ -180,7 +191,7 @@ def parse_DO_sections(
                     sections[current_section] = content
 
             current_section = header.group(1)
-            old_header = header
+            old_header = line
             content = []
             subcontent = []
         else:
@@ -251,13 +262,16 @@ def generate_commemoration_links(linkstr) -> List[str]:
     return (f"{base}Ant 1", f"{base}Versum 1", f"{base}Ant 2", f"{base}Versum 2")
 
 
-def resolve_link(targetf: Path, part: str, sublinks: bool, linkstr: str) -> List:
+def resolve_link(
+    targetf: Path, part: str, sublinks: bool, linkstr: str, version: str
+) -> List:
     """Resolve link and return linked content."""
     logger.debug(f"Resolving link to {targetf} section {part}")
+
     linked_content = parse_file_as_dict(
         targetf,
-        part,
-        sublinks,
+        version,
+        follow_links=sublinks,
         section_key=part,
         follow_only_interesting_links=False,
     )[part]
@@ -309,8 +323,8 @@ def parse_file_as_dict(
     """
 
     section_header_regex = guess_section_header(fn)
-
     sections = parse_DO_sections(fn, section_header_regex, version)
+
     logger.debug(f"Got {len(sections.keys())} sections.")
     things = {}
     sourcefile = str(fn)
@@ -327,7 +341,7 @@ def parse_file_as_dict(
 
         # skip empty sections
         if not section:
-            logger.debug(f"Skipping empty section.")
+            logger.debug(f"Skipping empty section. {section}, {key}")
             continue
 
         flat_section = []
@@ -338,7 +352,7 @@ def parse_file_as_dict(
         )
 
         if just_links and follow_only_interesting_links:
-            logger.debug(f"Skipping {flat_section} as only links.")
+            logger.debug(f"Skipping {flat_section} ({key}) as only links.")
             continue
 
         # get DO key if it's there
@@ -422,7 +436,9 @@ def parse_file_as_dict(
                     continue
 
                 logger.debug(f"Resolving for {key} {section}, {verse}")
-                linked_content = resolve_link(targetf, part, sublinks, line.content)
+                linked_content = resolve_link(
+                    targetf, part, sublinks, line.content, version
+                )
 
                 for extra_line in verse[line_index:]:
                     logger.debug(f"Appending line {extra_line}")

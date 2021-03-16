@@ -28,7 +28,6 @@ rubrica_candidates = (
         {
             "line": "ex Tempora/Pasc5-4;",
             "replace_previous": False,
-            "replacement": None,
             "skip_next": False,
         },
     ],
@@ -38,7 +37,6 @@ rubrica_candidates = (
         {
             "line": None,
             "replace_previous": False,
-            "replacement": None,
             "skip_next": False,
         },
     ],
@@ -48,7 +46,6 @@ rubrica_candidates = (
         {
             "line": None,
             "replace_previous": False,
-            "replacement": None,
             "skip_next": False,
         },
     ],
@@ -58,7 +55,6 @@ rubrica_candidates = (
         {
             "line": None,
             "replace_previous": False,
-            "replacement": None,
             "skip_next": True,
         },
     ],
@@ -67,9 +63,8 @@ rubrica_candidates = (
         "1570",
         {
             "line": None,
-            "replace_previous": True,
-            "replacement": None,
             "skip_next": False,
+            "replace_previous": True,
         },
     ],
     [
@@ -78,7 +73,6 @@ rubrica_candidates = (
         {
             "line": None,
             "replace_previous": False,
-            "replacement": None,
             "skip_next": False,
         },
     ],
@@ -88,7 +82,6 @@ rubrica_candidates = (
         {
             "line": "Psalm5 Vespera=138",
             "replace_previous": False,
-            "replacement": None,
             "skip_next": False,
         },
     ],
@@ -98,7 +91,6 @@ rubrica_candidates = (
         {
             "line": None,
             "replace_previous": False,
-            "replacement": None,
             "skip_next": False,
         },
     ],
@@ -108,7 +100,6 @@ rubrica_candidates = (
         {
             "line": None,
             "replace_previous": True,
-            "replacement": None,
             "skip_next": False,
         },
     ],
@@ -118,8 +109,25 @@ rubrica_candidates = (
         {
             "line": None,
             "replace_previous": False,
-            "replacement": None,
             "skip_next": True,
+        },
+    ],
+    [
+        "v. a line which doesn't have rubrics in it!",
+        "1570",
+        {
+            "line": "v. a line which doesn't have rubrics in it!",
+            "replace_previous": False,
+            "skip_next": False,
+        },
+    ],
+    [
+        "v. a line which doesn't have rubrics in it! (Allelúja.)",
+        "1570",
+        {
+            "line": "v. a line which doesn't have rubrics in it! (Allelúja.)",
+            "replace_previous": False,
+            "skip_next": False,
         },
     ],
 )
@@ -128,6 +136,23 @@ rubrica_candidates = (
 @pytest.mark.parametrize("line,version,resp", rubrica_candidates)
 def test_resolve_rubrica(line, version, resp):
     assert parsers.util.resolve_rubrica(line, version) == resp
+
+
+def test_resolve_link():
+    fn = root / "Latin/SanctiM/03-25.txt"
+    linkstr = "@Sancti/03-25:Capitulum Laudes:1-3"
+    targetf, part = parsers.deref(linkstr, fn)
+    assert targetf == Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt")
+    assert part == "Capitulum Laudes"
+    linked_content = parsers.resolve_link(targetf, part, True, linkstr, "1960")
+    assert len(linked_content[0]) == 3
+
+    linkstr = "@Sancti/03-25:Capitulum Laudes:1"
+    targetf, part = parsers.deref(linkstr, fn)
+    assert targetf == Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt")
+    assert part == "Capitulum Laudes"
+    linked_content = parsers.resolve_link(targetf, part, True, linkstr, "1960")
+    assert len(linked_content[0]) == 1
 
 
 def test_markup_line():
@@ -580,7 +605,6 @@ def test_parse_section(section, correct_obj):
         "latin",
         "1960",
     )
-    debug(resp)
     assert resp == correct_obj
 
 
@@ -623,23 +647,6 @@ def test_generate_commemoration_links():
         "@Commune/C2:Ant 2",
         "@Commune/C2:Versum 2",
     )
-
-
-def test_resolve_link():
-    fn = root / "Latin/SanctiM/03-25.txt"
-    linkstr = "@Sancti/03-25:Capitulum Laudes:1-3"
-    targetf, part = parsers.deref(linkstr, fn)
-    assert targetf == Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt")
-    assert part == "Capitulum Laudes"
-    linked_content = parsers.resolve_link(targetf, part, True, linkstr)
-    assert len(linked_content[0]) == 3
-
-    linkstr = "@Sancti/03-25:Capitulum Laudes:1"
-    targetf, part = parsers.deref(linkstr, fn)
-    assert targetf == Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt")
-    assert part == "Capitulum Laudes"
-    linked_content = parsers.resolve_link(targetf, part, True, linkstr)
-    assert len(linked_content[0]) == 1
 
 
 sub_candidates = (
@@ -694,6 +701,7 @@ header_rubrica_candidates = (
     ["[Responsory1](rubrica tridentina aut rubrica divino)", "1960", False],
     ["[Responsory1](rubrica tridentina aut rubrica divino)", "1570", True],
     ["[Section]", "nonesuch", True],
+    ["[Section](rubrica inextans)", None, True],
 )
 
 
