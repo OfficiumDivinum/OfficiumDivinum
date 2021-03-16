@@ -49,6 +49,10 @@ class UnmatchedError(Exception):
     pass
 
 
+def guess_version(fn: Path) -> str:
+    return "1960"
+
+
 def extract_temporal_info(fn: Path) -> Optional[Dict]:
     """Extract information from temporal file."""
     data = {"qualifiers": None, "datestr": None, "name": "Feria"}

@@ -12,11 +12,11 @@ from oauthlib.oauth2 import LegacyApplicationClient
 from requests_oauthlib import OAuth2Session
 
 from app.parsers import (
-    H2obj,
     M2obj,
     P2obj,
     T2obj,
     divinumofficium_structures,
+    hymn,
     kalendarium,
 )
 from app.parsers.chickenfeed import (
@@ -451,9 +451,9 @@ def parser_test(
 
     root = root / lang
     things = []
-    verson = guess_version
     with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
         for fn in fns:
+            version = guess_version(fn)
             if fn.name in ["Translate.txt", "Revtrans.txt"]:
                 things.append(parse_translations(fn, "Latin"))
                 continue
