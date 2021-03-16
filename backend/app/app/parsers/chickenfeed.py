@@ -176,7 +176,7 @@ def parse_generic_file(fn: Path, version: str, language: str) -> Dict:
 
 
 def parse_translations(fn: Path, language: str) -> Dict:
-    section = parse_file_as_dict(fn, "")
+    section = parse_file_as_dict(fn, None)
     translations = {}
     for k, v in section.items():
         translations[k] = [LineBase(**vars(i)) for i in v.content[0]]
