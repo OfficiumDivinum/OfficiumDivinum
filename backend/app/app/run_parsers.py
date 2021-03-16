@@ -453,10 +453,7 @@ def guess_psalm_version(fn) -> str:
 
 
 @app.command()
-def parser_test(
-    root: Path,
-    lang: str,
-) -> None:
+def parser_test(root: Path, lang: str,) -> None:
 
     import typer
 
@@ -466,6 +463,7 @@ def parser_test(
     things = []
 
     versions = ["1570", "1910", "1955", "1960", "newcal", "DA", "monastic"]
+    versions = ["1960"]
     martyrologies = []
     translate = []
     calendars = []
@@ -523,7 +521,7 @@ def parser_test(
         with typer.progressbar(fns) as fns:
             for fn in fns:
                 try:
-                    things.append(parse_generic_file(Path(fn), version, lang))
+                    things += parse_generic_file(Path(fn), version, lang)
                     success.append(fn)
                 except (FileNotFoundError, EmptyFileError):
                     pass
@@ -539,9 +537,30 @@ def parser_test(
             print(f"Errors: {errors[i]}")
 
     debug(len(things))
+    types = []
+    typed = {}
+    for thing in things:
+        try:
+            typed[str(type(thing))].append(thing)
+        except KeyError:
+            typed[str(type(thing))] = [thing]
+        if (t := type(thing)) not in types:
+            types.append(t)
+        if isinstance(thing, list):
+            for thing in things:
+                try:
+                    typed[str(type(thing))].append(thing)
+                except KeyError:
+                    typed[str(type(thing))] = [thing]
+                if (t := type(thing)) not in types:
+                    types.append(t)
+    debug(types)
 
-    return things, success, errors, failed
+    return things, typed
 
 
 if __name__ == "__main__":
     app()
+    things, typed = parser_test(
+        Path("/home/john/code/OfficiumDivinum/divinum-officium/web/www/horas"), "Latin"
+    )
