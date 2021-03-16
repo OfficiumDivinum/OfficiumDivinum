@@ -3,7 +3,7 @@ import os
 from getpass import getpass
 from json import JSONDecodeError, dumps
 from pathlib import Path
-from typing import Optional
+from typing import List, Optional
 
 import typer
 from devtools import debug
@@ -436,45 +436,92 @@ def parse_martyrology_file(fn: Path, lang: str) -> MartyrologyCreate:
     return M2obj.parse_file(fn, lang.lower(), title)
 
 
+def all_langs(root: Path) -> List[str]:
+    """Get all versions from Linguae.txt."""
+    return (root / "Linguae.txt").open().readlines()
+
+
+def guess_psalm_version(fn) -> str:
+    lang = fn.parent.parent.name
+    if lang == "Latin":
+        if fn.parent.name == "PiusXII":
+            return "PiusXII"
+        else:
+            return "clementine"
+    else:
+        return lang  # should probably have lookup table here
+
+
 @app.command()
 def parser_test(
     root: Path,
     lang: str,
 ) -> None:
 
-    success = []
-    failed = []
-    errors = []
     import typer
 
     parse_prayers_txt(root, lang)
 
     root = root / lang
     things = []
-    versions = ["1960"]
+
+    versions = ["1570", "1910", "1955", "1960", "newcal", "DA", "monastic"]
     for version in versions:
         print(f"Parsing for version {version}")
 
-        with typer.progressbar(list(root.glob("**/*.txt"))) as fns:
+        # conceptually cleaner and faster to do the psalms + martyrology + translate + kalendars first.
+        success = []
+        failed = []
+        errors = []
+        martyrologies = []
+        translate = []
+        calendars = []
+        psalms = []
+
+        skip = []
+
+        print("Parsing translations.")
+        for fn in (
+            root / "Psalterium/Translate.txt",
+            root / "Psalterium/Revtrans.txt",
+        ):
+            skip.append(fn)
+            translate.append(parse_translations(fn, lang))
+
+        print("Parsing Martyrologies.")
+        with typer.progressbar(list((root / "Martyrologium").glob("**/*.txt"))) as fns:
             for fn in fns:
-                if fn.name in ["Translate.txt", "Revtrans.txt"]:
-                    things.append(parse_translations(fn, "Latin"))
-                    continue
+                skip.append(fn)
+                martyrologies.append(parse_martyrology_file(fn, lang))
 
-                if "Martyrologium" in fn.parent.name and fn.stem != "Mobile":
-                    things.append(parse_martyrology_file(fn, lang))
-                    continue
+        print("Parsing Calendars.")
+        with typer.progressbar(list((root / "Tabulae/").glob("K*.txt"))) as fns:
+            for fn in fns:
+                skip.append(fn)
+                calendars.append(kalendarium.parse_file(fn, lang))
 
-                if "psalms" in fn.parent.name:
-                    things.append(P2obj.parse_file(fn, lang, version))
-                    continue
+        print("Parsing Psalms.")
+        with typer.progressbar(list(root.glob("/psalms1/*.txt"))) as fns:
+            for fn in fns:
 
-                if fn.name[0] == "K":
-                    things.append(kalendarium.parse_file(fn, lang))
-                    continue
+                skip.append(fn)
+                version = guess_psalm_version(fn)
+                psalms.append(P2obj.parse_file(fn, lang, version))
+        try:
+            with typer.progressbar(list(root.glob("/PiusXII/*.txt"))) as fns:
+                for fn in fns:
+                    skip.append(fn)
+                    version = guess_psalm_version(fn)
+                    psalms.append(P2obj.parse_file(fn, lang, version))
+        except Exception as e:
+            print(e)
 
+        fns = list(root.glob("**/*.txt"))
+        fns = [i for i in fns if not i in skip]
+        with typer.progressbar() as fns:
+            for fn in fns:
                 try:
-                    things.append(parse_generic_file(Path(fn), version, "Latin"))
+                    things.append(parse_generic_file(Path(fn), version, lang))
                     success.append(fn)
                 except (FileNotFoundError, EmptyFileError):
                     pass
@@ -488,6 +535,8 @@ def parser_test(
         for i, fn in enumerate(failed):
             print(fn)
             print(f"Errors: {errors[i]}")
+
+    debug(len(things))
 
     return things, success, errors, failed
 
