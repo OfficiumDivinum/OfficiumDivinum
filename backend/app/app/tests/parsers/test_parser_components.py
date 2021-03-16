@@ -95,6 +95,15 @@ rubrica_candidates = (
         },
     ],
     [
+        "(rubrica 1960) Psalm5 Vespera=138",
+        None,
+        {
+            "line": "(rubrica 1960) Psalm5 Vespera=138",
+            "replace_previous": False,
+            "skip_next": False,
+        },
+    ],
+    [
         "(sed rubrica 1955 aut rubrica 1960 loco horum versuum dicuntur)",
         "1955",
         {
