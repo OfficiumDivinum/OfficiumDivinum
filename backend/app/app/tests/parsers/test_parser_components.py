@@ -326,6 +326,7 @@ candidates = [
             title="Alleluia Duplex",
             sourcefile="Prayers.txt",
             source_section="Alleluia Duplex",
+            versions=["1960"],
         ),
     ),
     (
@@ -543,6 +544,64 @@ section_test = (
             language="latin",
         ),
     ),
+    (
+        [
+            [
+                Line(lineno=157, content="Justifíceris, Dómine, * in judicáris.;;50",),
+                Line(lineno=158, content="Dóminus * tamquam ovis suum.;;89",),
+                Line(lineno=159, content="Contrítum est * cor , ossa mea.;;35",),
+                Line(lineno=160, content="Exhortátus es * in , tua, Dómine.;;224",),
+                Line(lineno=161, content="Oblátus est * quia ipse portávit.;;146",),
+            ]
+        ],
+        [
+            AntiphonCreate(
+                versions=["1960"],
+                sourcefile="Prayers.txt",
+                source_section="Ant Laudes",
+                liturgical_context="Laudes",
+                language="latin",
+                lineno=157,
+                content="Justifíceris, Dómine, * in judicáris.",
+            ),
+            AntiphonCreate(
+                versions=["1960"],
+                sourcefile="Prayers.txt",
+                source_section="Ant Laudes",
+                liturgical_context="Laudes",
+                language="latin",
+                lineno=158,
+                content="Dóminus * tamquam ovis suum.",
+            ),
+            AntiphonCreate(
+                versions=["1960"],
+                sourcefile="Prayers.txt",
+                source_section="Ant Laudes",
+                liturgical_context="Laudes",
+                language="latin",
+                lineno=159,
+                content="Contrítum est * cor , ossa mea.",
+            ),
+            AntiphonCreate(
+                versions=["1960"],
+                sourcefile="Prayers.txt",
+                source_section="Ant Laudes",
+                liturgical_context="Laudes",
+                language="latin",
+                lineno=160,
+                content="Exhortátus es * in , tua, Dómine.",
+            ),
+            AntiphonCreate(
+                versions=["1960"],
+                sourcefile="Prayers.txt",
+                source_section="Ant Laudes",
+                liturgical_context="Laudes",
+                language="latin",
+                lineno=161,
+                content="Oblátus est * quia ipse portávit.",
+            ),
+        ],
+    ),
 )
 
 
@@ -557,9 +616,9 @@ def test_guess_verse_obj(verses, correct_obj):
 @pytest.mark.parametrize("section,correct_obj", [*candidates, *section_test])
 def test_parse_section(section, correct_obj):
     if isinstance(correct_obj, list):
-        section_name = correct_obj[0].title
+        section_name = correct_obj[0].source_section
     else:
-        section_name = correct_obj.title
+        section_name = correct_obj.source_section
     if "te deum" in section_name:
         section_name = "Te Deum"
 
