@@ -5,6 +5,7 @@ class BlockMixin:
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     rubrics = Column(String, index=True)
+    posture = Column(String, index=True)
 
 
 class LineMixin:

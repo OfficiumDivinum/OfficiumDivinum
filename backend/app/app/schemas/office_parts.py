@@ -28,6 +28,7 @@ class BlockBase(BaseModel):
     versions: Optional[List[str]] = Field(None, nullable=True)
     sourcefile: Optional[str] = Field(None, nullable=True)
     source_section: Optional[str] = Field(None, nullable=True)
+    posture: Optional[str] = Field(None, nullable=True)
 
 
 class Office(BaseModel):
