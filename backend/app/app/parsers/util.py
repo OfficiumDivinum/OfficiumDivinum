@@ -11,6 +11,7 @@ from devtools import debug
 from app.parsers.deref import deref
 
 logger = logging.getLogger(__name__)
+# logging.basicConfig(level=logging.DEBUG)
 
 
 class ParsingError(Exception):
@@ -478,7 +479,7 @@ def parse_file_as_dict(
     return things
 
 
-def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
+def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
     """
     Substitutes linked content as requested.
 
@@ -486,7 +487,7 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
 
     Args:
       linked_content: List: linked content to substitute
-      line: str: line containing substiution instructions
+      linkstr: str: line containing substiution instructions
 
     Returns:
       : linked content (a list).
@@ -494,11 +495,18 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
     Raises:
       : ParsingError: if no substitution found.
     """
-    matches = re.findall(r".*?(s/(.*?)/(.*?)/(s*))", line)
+
+    matches = re.findall(r".*?(s/(.*?)/(.*?)/(s*m*g*))", linkstr)
     if not matches:
-        raise ParsingError(f"No substitution found in {line}")
+        raise ParsingError(f"No substitution found in {linkstr}")
+    offset = linked_content[0][0].lineno
+
     sub_index = 0
     for _, pattern, sub, multiline in matches:
+        if "g" in multiline:
+            count = 0
+        else:
+            count = 1
         sub = sub.replace("$", "\\")
         sub_index += 1
         logger.debug(
@@ -507,6 +515,16 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
 
         if pattern == "^v. ":
             logger.debug("Skipping substitution of v. as we always do that.")
+            continue
+
+        if "m" in multiline:
+            verses = []
+            for verse in linked_content:
+                verses.append("\n".join((x.content for x in verse)))
+            one_line = "\n_\n".join(verses)
+            one_line = re.sub(pattern, sub, one_line, count=count)
+
+            linked_content = [[Line(0, one_line)]]
             continue
 
         new_content = []
@@ -523,13 +541,13 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
                 match = re.search(pattern, linked_line.content)
                 if match:
                     linked_line.content = re.sub(
-                        pattern, sub, linked_line.content
+                        pattern, sub, linked_line.content, count=count
                     ).strip()
                     if not linked_line.content:
                         logger.debug("Trashing emptied line.")
                         continue
 
-                    if multiline:
+                    if "s" in multiline:
                         trash = True
                         new_verse.append(linked_line)
                         break
@@ -546,5 +564,13 @@ def substitute_linked_content(linked_content: List, line: str) -> List[Line]:
                 break
 
         linked_content = new_content
+
+    if any(("\n" in x.content for y in linked_content for x in y)):
+        assert len(linked_content) == 1
+        assert len(linked_content[0]) == 1
+        lines = linked_content[0][0].content.split("\n")
+        linked_content = [[]]
+        for i, line in enumerate(lines):
+            linked_content[0].append(Line(i + offset, line))
 
     return linked_content
