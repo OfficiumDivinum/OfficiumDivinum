@@ -654,7 +654,7 @@ datestr_candidates = (
     ("Adv1-0", "1st Sun after Advent"),
     ("Nativity", None),
     ("10-DU", "Sat between 23 Oct 31 Oct"),
-    ("Defuncti", None),
+    ("Defuncti", "3 Nov"),
 )
 
 

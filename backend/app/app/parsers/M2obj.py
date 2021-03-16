@@ -87,4 +87,4 @@ def generate_datestr(section_name: str) -> Optional[str]:
         elif section_name == "10-DU":
             return christ_the_king_datestr
         elif "Defuncti" in section_name:
-            return "2 Nov"
+            return "3 Nov"  # this way read on 2 nov

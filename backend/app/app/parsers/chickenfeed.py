@@ -231,6 +231,9 @@ def guess_verse_obj(verse: List, section_name):
     if any((re.search(r"^[VR]\.", i.content) for i in verse)):
         return PrayerCreate, {}
 
+    if "Oratio" in section_name:
+        return PrayerCreate, {}
+
     if any((x in section_name for x in ["Lectio", "Capitulum"])):
         candidates = verse[:2]
         for candidate in candidates:
