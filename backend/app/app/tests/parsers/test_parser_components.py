@@ -9,6 +9,7 @@ from app.parsers import Line
 from app.parsers.util import Thing
 from app.schemas import (
     AntiphonCreate,
+    BibleVerseCreate,
     BlockCreate,
     HymnCreate,
     LineBase,
@@ -393,8 +394,20 @@ candidates = [
             language="latin",
             parts=[
                 LineBase(content="Lectio.", lineno=1),
-                LineBase(content="20 line 1", lineno=3),
-                LineBase(content="21 line 2", lineno=4),
+                BibleVerseCreate(
+                    book="Exod",
+                    prefix="23:20",
+                    content="line 1",
+                    lineno=3,
+                    language="latin",
+                ),
+                BibleVerseCreate(
+                    book="Exod",
+                    prefix="23:21",
+                    content="line 2",
+                    lineno=4,
+                    language="latin",
+                ),
             ],
             ref="Exod 23:20-21",
         ),
@@ -437,7 +450,7 @@ candidates = [
         [
             (
                 Line(content="Sequéntia ++ sancti Evangélii", lineno=1),
-                Line(content="!Matt 2:19-23", lineno=2),
+                Line(content="!Matt 2:19-22", lineno=2),
                 Line(content="line 1~", lineno=3),
                 Line(content="line 2~", lineno=4),
                 Line(content="line 3~", lineno=5),
@@ -623,7 +636,7 @@ section_test = (
                 liturgical_context="Laudes",
                 language="latin",
                 lineno=161,
-                content="Oblátus est * quia ipse portávit.",
+                content="Oblátus est * qui ipse portávit.",
             ),
         ],
     ),
