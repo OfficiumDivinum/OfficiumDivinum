@@ -92,7 +92,9 @@ def dedup(
                     if x == unversion:
                         obj_index = indexes[i]
                         deduped[kind][obj_index].versions = list(
-                            set(obj.versions + deduped[kind][obj_index].versions)
+                            sorted(
+                                set(obj.versions + deduped[kind][obj_index].versions)
+                            )
                         )
                         debug("Appending")
                         appended = True
