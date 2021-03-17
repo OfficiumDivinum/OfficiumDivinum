@@ -475,16 +475,14 @@ def parse_file_as_dict(
                         break
 
                 logger.debug(f"Got {linked_content} for {key}.")
-                jump = len(linked_content[0]) - 1
+                jump = len(linked_content[0]) - 2
 
+                # append lines left in verse to linked verse
                 for extra_line in section[verse_index][line_index:]:
                     logger.debug(f"Appending line {extra_line} to linked_content.")
                     linked_content[-1].append(extra_line)
 
-                    # this is where the problem is.  Something is up with the references.
-
-                # append all lines in resp at current point.
-                debug(section[verse_index], section[verse_index][line_index])
+                # append linked verse at point
                 if line_index > 0:
                     section[verse_index] = (
                         section[verse_index][: line_index - 1] + linked_content[0]
@@ -492,23 +490,18 @@ def parse_file_as_dict(
                 else:
                     section[verse_index] = linked_content[0]
 
-                # move pointer forward to end of marked section
-                line_index += jump - 1
-                debug(
-                    jump, len(linked_content[0]), len(section[verse_index]), line_index
-                )
-                # line_index += len(section[verse_index]) - 1
-                debug(jump, section[verse_index], section[verse_index][line_index])
+                # move pointer forward to end of section we just inserted.
+                line_index += jump
 
+                # append any linked _verses_ to _section_
                 for i, linked_verse in enumerate(linked_content[1:]):
                     section.insert(verse_index + i + 1, linked_verse)
 
+                # if we're over.
                 if line_index > len(section[verse_index]):
                     break
 
                 logger.debug(f"Final version was {section[verse_index]}")
-
-                # add in anything else *after* matched section
 
         for i in range(len(section)):
             for j in range(len(section[i])):
