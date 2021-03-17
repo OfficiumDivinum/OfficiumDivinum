@@ -12,6 +12,7 @@ from app.parsers.M2obj import generate_datestr
 from app.parsers.util import EmptyFileError, Line, Thing, parse_file_as_dict
 from app.schemas import (
     AntiphonCreate,
+    BibleVerseCreate,
     BlockCreate,
     FeastCreate,
     HymnCreate,
@@ -32,6 +33,7 @@ logger = logging.getLogger(__name__)
 
 create_types = (
     AntiphonCreate,
+    BibleVerseCreate,
     BlockCreate,
     FeastCreate,
     HymnCreate,
@@ -521,6 +523,15 @@ def parse_versicle(line, rubrics):
     content = match.groups()[-1]
     prefix = match.groups()[0]
     return LineBase(content=content, prefix=prefix, lineno=line.lineno, rubrics=rubrics)
+
+
+def parse_bible_verse(line: Line, ref: str, lang: str):
+    book, chap = re.search(r"(.+) ([0-9]):*.*", ref).groups()
+    verseno, content = re.search(r"([0-9]+) (.*)", line.content).groups()
+    prefix = f"{chap}:{verseno}"
+    return BibleVerseCreate(
+        lineno=line.lineno, content=content, prefix=prefix, book=book, language=lang
+    )
 
 
 def parse_antiphon(line):

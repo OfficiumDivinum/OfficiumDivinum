@@ -22,6 +22,29 @@ from app.schemas import (
 
 from .test_parsers import root
 
+verse_candidates = (
+    (
+        Line(1, "20 content"),
+        "Exod 1:20-23",
+        BibleVerseCreate(
+            book="Exod", prefix="1:20", content="content", lineno=1, language="latin"
+        ),
+    ),
+    (
+        Line(2, "21 content 2"),
+        "Exod 1:20-23",
+        BibleVerseCreate(
+            book="Exod", prefix="1:21", content="content 2", lineno=2, language="latin"
+        ),
+    ),
+)
+
+
+@pytest.mark.parametrize("line,ref,correct", verse_candidates)
+def test_parse_bible_verse(line, ref, correct):
+    assert parsers.parse_bible_verse(line, ref, "latin") == correct
+
+
 rubrica_candidates = (
     [
         "ex Tempora/Pasc5-4;(rubrica 1570 aut rubrica 1910 aut rubrica divino)",
