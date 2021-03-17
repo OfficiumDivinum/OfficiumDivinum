@@ -161,7 +161,7 @@ link_candidates = (
         "linkstr": "@Tempora/Pent11-0:Lectio2:s/!.*//:s/4 .*//s",
         "targetf": Path("app/tests/parsers/test-DO-data/Latin/Tempora/Pent11-0.txt"),
         "part": "Lectio2",
-        "length": 5,
+        "length": 3,
         "section": "Lectio1",
     },
 )
