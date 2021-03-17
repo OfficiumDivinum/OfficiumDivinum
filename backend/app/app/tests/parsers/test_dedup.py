@@ -20,12 +20,13 @@ def test_hash():
         title="",
         language="",
         datestr="1 Jan",
-        versions=["1960"],
+        versions=["1961"],
         # parts=None,
         parts=[LineBase(content="line 1")],
     )
     assert m.__hash__() == m.__hash__()
     assert m.__hash__() == n.__hash__()
+    assert hash(m) == m.__hash__()
 
 
 candidates = (
