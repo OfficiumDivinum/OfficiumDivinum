@@ -5,10 +5,12 @@ from .base import CRUDWithOwnerBase
 
 class CRUDBible(
     CRUDWithOwnerBase[
-        models.bible.Verse, schemas.bible.VerseCreate, schemas.bible.VerseUpdate
+        models.bible.BibleVerse,
+        schemas.bible.BibleVerseCreate,
+        schemas.bible.BibleVerseUpdate,
     ]
 ):
     pass
 
 
-bible = CRUDBible(models.bible.Verse)
+bible = CRUDBible(models.bible.BibleVerse)

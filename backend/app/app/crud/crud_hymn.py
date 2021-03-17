@@ -5,7 +5,7 @@ from .base import CRUDWithOwnerBase
 
 class CRUDHymnVerse(
     CRUDWithOwnerBase[
-        models.hymn.HymnVerse, schemas.hymn.VerseCreate, schemas.bible.VerseUpdate
+        models.hymn.HymnVerse, schemas.hymn.VerseCreate, schemas.hymn.VerseUpdate
     ]
 ):
     pass

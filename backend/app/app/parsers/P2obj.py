@@ -3,10 +3,10 @@
 import re
 from pathlib import Path
 
-from app.schemas.bible import VerseCreate
+from app.schemas.bible import BibleVerseCreate
 
 
-def parse_file(fn: Path, lang: str, version: str) -> VerseCreate:
+def parse_file(fn: Path, lang: str, version: str) -> BibleVerseCreate:
     """Parse a Divinumofficium psalm file."""
 
     verses = []
@@ -32,7 +32,7 @@ def parse_file(fn: Path, lang: str, version: str) -> VerseCreate:
                     # aka = aka.strip()
                     # book = None
                     # continue
-            verse = VerseCreate(
+            verse = BibleVerseCreate(
                 language=lang,
                 version=version,
                 book=book,
@@ -51,7 +51,7 @@ def parse_creed(fn: Path, lang, version):
         lines = f.readlines()
     aka = lines[0]
     for line in lines[1:]:
-        verse = VerseCreate(
+        verse = BibleVerseCreate(
             language=lang,
             version=version,
             content=line,

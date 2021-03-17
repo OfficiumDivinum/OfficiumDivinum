@@ -20,6 +20,10 @@ class CommemorationCreate(CommemorationBase):
     datestr: Datestr
 
 
+class CommemorationUpdate(CommemorationCreate):
+    pass
+
+
 class CommemorationInDBBase(CommemorationBase):
     """Commemoration in DB properties."""
 
@@ -66,4 +70,8 @@ class FeastInDBBase(FeastBase):
 
 
 class Feast(FeastInDBBase):
+    pass
+
+
+class FeastUpdate(FeastCreate):
     pass

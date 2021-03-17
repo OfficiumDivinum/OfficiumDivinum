@@ -5,7 +5,7 @@ from app.db.base_class import Base
 from app.models.office_parts import FromDOMixin, LineMixin
 
 
-class Verse(Base, LineMixin, FromDOMixin):
+class BibleVerse(Base, LineMixin, FromDOMixin):
     """A verse of the bible in some version and language."""
 
     language = Column(String, index=True)
@@ -26,7 +26,7 @@ class Verse(Base, LineMixin, FromDOMixin):
 # class Chapter(BlockBase):
 #     """A chapter of the bible."""
 #     parts = relationship(
-#         "Verse",
+#         "BibleVerse",
 #         secondary=line_association_table,
 #         back_populates="chapters",
 #         lazy="joined",

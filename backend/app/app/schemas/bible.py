@@ -5,27 +5,27 @@ from pydantic import Field
 from .office_parts import LineBase
 
 
-class VerseBase(LineBase):
+class BibleVerseBase(LineBase):
     language: str
     version: str
     book: Optional[str] = Field(None, nullable=True)
     aka: Optional[str] = Field(None, nullable=True)
 
 
-class VerseInDB(VerseBase):
+class BibleVerseInDB(BibleVerseBase):
     id: int = Field(gt=0)
 
     class Config:
         orm_mode = True
 
 
-class Verse(VerseInDB):
+class BibleVerse(BibleVerseInDB):
     pass
 
 
-class VerseCreate(VerseBase):
+class BibleVerseCreate(BibleVerseBase):
     pass
 
 
-class VerseUpdate(VerseInDB):
+class BibleVerseUpdate(BibleVerseInDB):
     pass

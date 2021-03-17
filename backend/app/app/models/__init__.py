@@ -1,4 +1,4 @@
-from .bible import Verse  # noqa
+from .bible import BibleVerse  # noqa
 from .calendar import Commemoration, Feast  # noqa
 from .hymn import Hymn, HymnVerse  # noqa
 from .item import Item  # noqa

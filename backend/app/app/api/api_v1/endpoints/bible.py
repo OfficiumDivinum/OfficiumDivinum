@@ -3,8 +3,8 @@ from app import crud, schemas
 from .item_base import create_item_crud
 
 router = create_item_crud(
-    schemas.bible.Verse,
+    schemas.bible.BibleVerse,
     crud.bible,
-    schemas.bible.VerseCreate,
-    schemas.bible.VerseUpdate,
+    schemas.bible.BibleVerseCreate,
+    schemas.bible.BibleVerseUpdate,
 )
