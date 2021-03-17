@@ -1,18 +1,55 @@
 """Dedup objects intelligently."""
 from copy import deepcopy
-from typing import Dict, List
+from typing import Dict, List, Union
 
-from deepdiff import DeepDiff
 from devtools import debug
+
+from app.schemas import (
+    AntiphonCreate,
+    BlockCreate,
+    FeastCreate,
+    HymnCreate,
+    LineBase,
+    MartyrologyCreate,
+    PrayerCreate,
+    ReadingCreate,
+    RubricCreate,
+    VerseCreate,
+    VersicleCreate,
+)
+
+CreateTypes = Union[
+    AntiphonCreate,
+    BlockCreate,
+    FeastCreate,
+    HymnCreate,
+    LineBase,
+    MartyrologyCreate,
+    PrayerCreate,
+    ReadingCreate,
+    RubricCreate,
+    VerseCreate,
+    VersicleCreate,
+]
 
 english_names = {
     "MartyrologyCreate": "Martyrologies",
     "PrayerCreate": "Prayers",
     "AntiphonCreate": "Antiphons",
+    "BlockCreate": "Blocks",
+    "FeastCreate": "Feasts",
+    "HymnCreate": "Hymns",
+    "LineBase": "Lines",
+    "ReadingCreate": "Readings",
+    "RubricCreate": "Rubrics",
+    "VerseCreate": "Verses",
+    "VersicleCreate": "Vesicles",
 }
 
 
-def dedup(things: List) -> Dict:
+def dedup(
+    things: List[Union[List[CreateTypes], CreateTypes]]
+) -> Dict[str, CreateTypes]:
     """
     Dedup objs.
 
