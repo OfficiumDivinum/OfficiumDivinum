@@ -18,6 +18,16 @@ class LineBase(BaseModel):
     source_section: Optional[str] = Field(None, nullable=True)
     versions: Optional[List[str]] = Field(None, nullable=True)
 
+    def __hash__(self):
+        exclude_attrs = ["versions"]
+        long_str = "".join(
+            (str(v) for k, v in vars(self).items() if k not in exclude_attrs)
+        )
+        return hash(long_str)
+
+    def __cmp__(self, other):
+        return self.__hash__() == other.__hash__()
+
 
 class BlockBase(BaseModel):
     title: Optional[str] = Field(None, nullable=True)
@@ -30,6 +40,16 @@ class BlockBase(BaseModel):
     sourcefile: Optional[str] = Field(None, nullable=True)
     source_section: Optional[str] = Field(None, nullable=True)
     posture: Optional[str] = Field(None, nullable=True)
+
+    def __hash__(self):
+        exclude_attrs = ["versions"]
+        long_str = "".join(
+            (str(v) for k, v in vars(self).items() if k not in exclude_attrs)
+        )
+        return hash(long_str)
+
+    def __cmp__(self, other):
+        return self.__hash__() == other.__hash__()
 
 
 class Office(BaseModel):
