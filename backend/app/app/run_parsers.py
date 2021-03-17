@@ -539,8 +539,8 @@ def parser_test(root: Path, lang: str,) -> None:
 
     debug(len(things))
     things = dedup(things)
-    for k, v in things:
-        print(f"{k}: len(v)")
+    for k, v in things.items():
+        print(f"{k}: {len(v)}")
     # types = []
     # typed = {}
     # for thing in things:
