@@ -91,8 +91,6 @@ def dedup(
                     continue
 
                 if hasattr(obj, "versions"):
-                    # I'm bored of try statements, and this is faster than copying first.
-                    # Sure, we could do a throwaway access, but what's wrong with hasattr? ;)
                     unversion = deepcopy(obj)
                     unversion.versions = None
                     for i, x in unversioned.items():
