@@ -1,5 +1,4 @@
 """Dedup objects intelligently."""
-from copy import deepcopy
 from typing import Dict, List, Union
 
 from devtools import debug
@@ -68,47 +67,33 @@ def dedup(
       : a dict of deduped objects by kind, flattened.  We use nice names defined
     in `english_names.`
     """
-    unversioned = {}
     deduped = {v: [] for _, v in english_names.items()}
-    indexes = {}
     print(f"Deduplicating at least {len(things)} items.")
-    index = -1
+
+    hash_dict = {}
+
     with progressbar(things) as progress:
         for thing in progress:
-            index += 1
+            # replace this with hash version:
+            # check if hash in hash dict keys.
+            # if so, if version not in hash dict versions, append it.
             if not isinstance(thing, list):
                 thing = [thing]
 
             for obj in thing:
-                appended = False
+                obj_hash = obj.__hash__()
                 try:
-                    kind = english_names[type(obj).__name__]
+                    hash_dict[obj_hash].versions = list(
+                        set(obj.versions + hash_dict[obj_hash].versions)
+                    )
                 except KeyError:
-                    debug(obj)
-                    continue
+                    hash_dict[obj_hash] = obj
 
-                if obj in deduped[kind]:
-                    continue
-
-                if hasattr(obj, "versions"):
-                    unversion = deepcopy(obj)
-                    unversion.versions = None
-                    for i, x in unversioned.items():
-                        if x == unversion:
-                            obj_index = indexes[i]
-                            deduped[kind][obj_index].versions = list(
-                                sorted(
-                                    set(
-                                        obj.versions + deduped[kind][obj_index].versions
-                                    )
-                                )
-                            )
-                            appended = True
-                            break
-                if not appended:
-                    deduped[kind].append(obj)
-                    unversioned[index] = unversion
-                    indexes[index] = len(deduped[kind]) - 1  # index pointing to obj
+    debug(hash_dict)
+    for _, uniq_obj in hash_dict.items():
+        debug(uniq_obj)
+        category = english_names[type(uniq_obj).__name__]
+        deduped[category].append(uniq_obj)
 
     print("Stripping empty categories.")
     deduped = {k: v for k, v in deduped.items() if v}
