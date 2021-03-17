@@ -31,17 +31,17 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 create_types = (
-    FeastCreate,
-    MartyrologyCreate,
     AntiphonCreate,
     BlockCreate,
+    FeastCreate,
     HymnCreate,
     LineBase,
+    MartyrologyCreate,
     PrayerCreate,
     ReadingCreate,
+    RubricCreate,
     VerseCreate,
     VersicleCreate,
-    RubricCreate,
 )
 
 
