@@ -3,6 +3,7 @@ from copy import deepcopy
 from typing import Dict, List, Union
 
 from devtools import debug
+from typer import progressbar
 
 from app.schemas import (
     AntiphonCreate,
@@ -70,41 +71,47 @@ def dedup(
     unversioned = {}
     deduped = {v: [] for _, v in english_names.items()}
     indexes = {}
-    for index, thing in enumerate(things):
-        if not isinstance(thing, list):
-            thing = [thing]
+    print(f"Deduplicating at least {len(things)} items.")
+    index = -1
+    with progressbar(things) as progress:
+        for thing in progress:
+            index += 1
+            if not isinstance(thing, list):
+                thing = [thing]
 
-        for obj in thing:
-            appended = False
-            debug("New obj")
-            kind = english_names[type(obj).__name__]
+            for obj in thing:
+                appended = False
+                try:
+                    kind = english_names[type(obj).__name__]
+                except KeyError:
+                    debug(obj)
+                    continue
 
-            if obj in deduped[kind]:
-                debug("Skipping")
-                continue
+                if obj in deduped[kind]:
+                    continue
 
-            if hasattr(obj, "versions"):
-                # I'm bored of try statements, and this is faster than copying first.
-                # Sure, we could do a throwaway access, but what's wrong with hasattr? ;)
-                unversion = deepcopy(obj)
-                unversion.versions = None
-                for i, x in unversioned.items():
-                    if x == unversion:
-                        obj_index = indexes[i]
-                        deduped[kind][obj_index].versions = list(
-                            sorted(
-                                set(obj.versions + deduped[kind][obj_index].versions)
+                if hasattr(obj, "versions"):
+                    # I'm bored of try statements, and this is faster than copying first.
+                    # Sure, we could do a throwaway access, but what's wrong with hasattr? ;)
+                    unversion = deepcopy(obj)
+                    unversion.versions = None
+                    for i, x in unversioned.items():
+                        if x == unversion:
+                            obj_index = indexes[i]
+                            deduped[kind][obj_index].versions = list(
+                                sorted(
+                                    set(
+                                        obj.versions + deduped[kind][obj_index].versions
+                                    )
+                                )
                             )
-                        )
-                        debug("Appending")
-                        appended = True
-                        break
-            if not appended:
-                debug("Adding")
-                deduped[kind].append(obj)
-                unversioned[index] = unversion
-                indexes[index] = len(deduped[kind]) - 1  # index pointing to obj
+                            appended = True
+                            break
+                if not appended:
+                    deduped[kind].append(obj)
+                    unversioned[index] = unversion
+                    indexes[index] = len(deduped[kind]) - 1  # index pointing to obj
 
+    print("Stripping empty categories.")
     deduped = {k: v for k, v in deduped.items() if v}
-    debug()
     return deduped
