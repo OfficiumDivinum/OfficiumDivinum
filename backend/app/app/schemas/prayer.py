@@ -6,9 +6,7 @@ from app.schemas.custom_types import PrayerTypeLiteral, VersionLiteral
 from app.schemas.office_parts import BlockBase, LineBase
 
 
-class PrayerBase(
-    BlockBase,
-):
+class PrayerBase(BlockBase):
     parts: List[LineBase]
     termination: Optional[LineBase] = Field(None, nullable=True)
     version: Optional[VersionLiteral]
