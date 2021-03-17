@@ -7,7 +7,7 @@ from .office_parts import LineBase
 
 class BibleVerseBase(LineBase):
     language: str
-    version: str
+    version: Optional[str] = Field(None, nullable=True)
     book: Optional[str] = Field(None, nullable=True)
     aka: Optional[str] = Field(None, nullable=True)
 
