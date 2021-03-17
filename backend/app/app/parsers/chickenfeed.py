@@ -408,8 +408,9 @@ def parse_section(
                     continue
                 line.content = content
 
-            if re.search("^[0-9]", line.content):
-                lineobj = parse_bible_verse(line, data["ref"], language)
+            if verse_obj is ReadingCreate and re.search("^[0-9]", line.content):
+                ref = data["ref"]
+                lineobj = parse_bible_verse(line, ref, language)
 
             if not lineobj:
                 if " * " in line.content and verse_obj is not VerseCreate:

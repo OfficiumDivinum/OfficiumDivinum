@@ -80,18 +80,26 @@ def dedup(
             if not isinstance(thing, list):
                 thing = [thing]
 
-            for obj in thing:
-                obj_hash = obj.__hash__()
+            # sometimes we have a list of lists still
+            flat_thing = []
+            for x in thing:
+                if isinstance(x, list):
+                    flat_thing == x
+                else:
+                    flat_thing.append(x)
+
+            for obj in flat_thing:
+                obj_hash = obj.__custom_hash__()
                 try:
                     hash_dict[obj_hash].versions = list(
                         set(obj.versions + hash_dict[obj_hash].versions)
                     )
                 except KeyError:
                     hash_dict[obj_hash] = obj
+                except TypeError:
+                    continue
 
-    debug(hash_dict)
     for _, uniq_obj in hash_dict.items():
-        debug(uniq_obj)
         category = english_names[type(uniq_obj).__name__]
         deduped[category].append(uniq_obj)
 
