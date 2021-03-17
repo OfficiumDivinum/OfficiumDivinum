@@ -107,21 +107,46 @@ def test_resolve_rubrica(line, version, resp):
     assert parsers.util.resolve_rubrica(line, version) == resp
 
 
-def test_resolve_link():
-    fn = root / "Latin/SanctiM/03-25.txt"
-    linkstr = "@Sancti/03-25:Capitulum Laudes:1-3"
-    targetf, part = parsers.deref(linkstr, fn)
-    assert targetf == Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt")
-    assert part == "Capitulum Laudes"
-    linked_content = parsers.resolve_link(targetf, part, True, linkstr, "1960")
-    assert len(linked_content[0]) == 3
+link_candidates = (
+    {
+        "fn": "Latin/SanctiM/03-25.txt",
+        "linkstr": "@Sancti/03-25:Capitulum Laudes:1-3",
+        "targetf": Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt"),
+        "part": "Capitulum Laudes",
+        "length": 3,
+        "section": None,
+    },
+    {
+        "fn": "Latin/SanctiM/03-25.txt",
+        "linkstr": "@Sancti/03-25:Capitulum Laudes:1",
+        "targetf": Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt"),
+        "part": "Capitulum Laudes",
+        "length": 1,
+        "section": None,
+    },
+    {
+        "fn": "Latin/SanctiM/03-25.txt",
+        "linkstr": "@Tempora/Epi5-0:Lectio1:",
+        "targetf": Path("app/tests/parsers/test-DO-data/Latin/Tempora/Epi5-0.txt"),
+        "part": "Lectio1",
+        "length": 6,
+        "section": "Lectio1",
+    },
+)
 
-    linkstr = "@Sancti/03-25:Capitulum Laudes:1"
-    targetf, part = parsers.deref(linkstr, fn)
-    assert targetf == Path("app/tests/parsers/test-DO-data/Latin/Sancti/03-25.txt")
-    assert part == "Capitulum Laudes"
-    linked_content = parsers.resolve_link(targetf, part, True, linkstr, "1960")
-    assert len(linked_content[0]) == 1
+
+@pytest.mark.parametrize("data", link_candidates)
+def test_resolve_link(data):
+    fn = root / data["fn"]
+    f, p = parsers.deref(data["linkstr"], fn)
+    assert f == data["targetf"]
+    assert p == data["part"]
+    if not p:
+        p = data["section"]
+    linked_content = parsers.resolve_link(
+        data["targetf"], p, True, data["linkstr"], "1960"
+    )
+    assert len(linked_content[0]) == data["length"]
 
 
 def test_version_substitution():
