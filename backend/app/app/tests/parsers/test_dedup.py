@@ -99,7 +99,7 @@ candidates = (
 
 
 @pytest.mark.parametrize("candidate,correct", candidates)
-def test_dedup(candidate, correct):
+def test_dedup_manual(candidate, correct):
     resp = dedup.dedup(candidate)
     assert resp == correct
     # for k, v in correct.items():
