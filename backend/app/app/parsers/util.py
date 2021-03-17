@@ -11,7 +11,7 @@ from devtools import debug
 from app.parsers.deref import deref
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
+# logging.basicConfig(level=logging.DEBUG)
 
 
 class ParsingError(Exception):
@@ -478,7 +478,6 @@ def parse_file_as_dict(
                     section[i][j].content = re.sub(regex, "", section[i][j].content)
 
         things[key] = Thing(section, crossref, sourcefile, key)
-    debug(things)
     return things
 
 

@@ -25,6 +25,7 @@ from app.parsers.chickenfeed import (
     parse_prayers_txt,
     parse_translations,
 )
+from app.parsers.dedup import dedup
 from app.parsers.util import EmptyFileError
 from app.schemas import MartyrologyCreate, OldDateTemplateCreate, OrdinalsCreate
 
@@ -537,26 +538,30 @@ def parser_test(root: Path, lang: str,) -> None:
             print(f"Errors: {errors[i]}")
 
     debug(len(things))
-    types = []
-    typed = {}
-    for thing in things:
-        try:
-            typed[str(type(thing))].append(thing)
-        except KeyError:
-            typed[str(type(thing))] = [thing]
-        if (t := type(thing)) not in types:
-            types.append(t)
-        if isinstance(thing, list):
-            for thing in things:
-                try:
-                    typed[str(type(thing))].append(thing)
-                except KeyError:
-                    typed[str(type(thing))] = [thing]
-                if (t := type(thing)) not in types:
-                    types.append(t)
-    debug(types)
+    things = dedup(things)
+    for k, v in things:
+        print(f"{k}: len(v)")
+    # types = []
+    # typed = {}
+    # for thing in things:
+    #     try:
+    #         typed[str(type(thing))].append(thing)
+    #     except KeyError:
+    #         typed[str(type(thing))] = [thing]
+    #     if (t := type(thing)) not in types:
+    #         types.append(t)
+    #     if isinstance(thing, list):
+    #         for thing in things:
+    #             try:
+    #                 typed[str(type(thing))].append(thing)
+    #             except KeyError:
+    #                 typed[str(type(thing))] = [thing]
+    #             if (t := type(thing)) not in types:
+    #                 types.append(t)
+    # debug(types)
 
-    return things, typed
+    # return things, typed
+    return things
 
 
 if __name__ == "__main__":
