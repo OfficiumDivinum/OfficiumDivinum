@@ -24,9 +24,8 @@ def test_hash():
         # parts=None,
         parts=[LineBase(content="line 1")],
     )
-    assert m.__hash__() == m.__hash__()
-    assert m.__hash__() == n.__hash__()
-    assert hash(m) == m.__hash__()
+    assert m.__custom_hash__() == m.__custom_hash__()
+    assert m.__custom_hash__() == n.__custom_hash__()
 
 
 candidates = (
@@ -124,9 +123,9 @@ candidates = (
 @pytest.mark.parametrize("candidate,correct", candidates)
 def test_dedup_manual(candidate, correct):
     resp = dedup.dedup(candidate)
-    # assert resp == correct
-    for k, v in correct.items():
-        # non-orderable and non-hashable, but we don't care about order
-        resp_v = resp[k]
-        assert len(resp_v) == len(v), f"Repsonse for {k} not of correct length"
-        assert all((x in resp_v for x in v)), f"Response for {k} doesn't match test"
+    for k, objs in correct.items():
+        for i, obj in enumerate(objs):
+            assert set(resp[k][i].versions) == set(obj.versions)
+            obj.versions = None
+            resp[k][i].versions = None
+            assert obj == resp[k][i]
