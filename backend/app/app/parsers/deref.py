@@ -13,6 +13,7 @@ def deref(linkstr: str, originf: Path):
             part = re.search(r"(.*):s/.*", part).group(1)
         if (match := re.search(r"(.*):[0-9]+-*[0-9]*", part)) is not None:
             part = match.group(1)
+        part = part.replace(":", "")
     except AttributeError:
         linkstr = linkstr.replace("@", "").strip()
         part = None
