@@ -156,6 +156,14 @@ link_candidates = (
         "length": 6,
         "section": "Lectio1",
     },
+    {
+        "fn": "Latin/SanctiM/03-25.txt",
+        "linkstr": "@Tempora/Pent11-0:Lectio2:s/!.*//:s/4 .*//s",
+        "targetf": Path("app/tests/parsers/test-DO-data/Latin/Tempora/Pent11-0.txt"),
+        "part": "Lectio2",
+        "length": 5,
+        "section": "Lectio1",
+    },
 )
 
 
