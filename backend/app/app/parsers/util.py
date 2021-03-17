@@ -394,9 +394,13 @@ def parse_file_as_dict(
                 new_section.append(verse)
             logger.debug("Added commemoration links to antiphons.")
 
-        for verse_index, verse in enumerate(section):
+        for verse_index in range(len(section)):
             line_index = 0
-            for line in verse:
+            for line in section[verse_index]:
+                logger.debug(
+                    f"Verse started out as {section[verse_index]}, {section[verse_index]}"
+                )
+
                 line_index += 1
 
                 if not follow_links:
@@ -450,25 +454,59 @@ def parse_file_as_dict(
                     line_index -= 1
                     continue
 
-                logger.debug(f"Resolving for {key} {section}, {verse}")
+                logger.debug(
+                    f"Resolving for {key}, section: {section}, verse: {section[verse_index]}, line: {line}"
+                )
                 sublinks = False if (targetf == fn) else True
                 linked_content = resolve_link(
                     targetf, part, sublinks, line.content, version
                 )
 
-                for extra_line in verse[line_index:]:
-                    logger.debug(f"Appending line {extra_line}")
+                if key == "Lectio1":
+                    debug(linked_content)
+
+                if not linked_content[0]:
+                    debug("here")
+                    # trash current line
+                    section[verse_index].pop(line_index)
+                    if len(section[verse_index]) >= line_index:
+                        continue
+                    else:
+                        break
+
+                logger.debug(f"Got {linked_content} for {key}.")
+                jump = len(linked_content[0]) - 1
+
+                for extra_line in section[verse_index][line_index:]:
+                    logger.debug(f"Appending line {extra_line} to linked_content.")
                     linked_content[-1].append(extra_line)
 
+                    # this is where the problem is.  Something is up with the references.
+
+                # append all lines in resp at current point.
+                debug(section[verse_index], section[verse_index][line_index])
                 if line_index > 0:
-                    section[verse_index] = verse[: line_index - 1] + linked_content[0]
+                    section[verse_index] = (
+                        section[verse_index][: line_index - 1] + linked_content[0]
+                    )
                 else:
                     section[verse_index] = linked_content[0]
+
+                # move pointer forward to end of marked section
+                line_index += jump - 1
+                debug(
+                    jump, len(linked_content[0]), len(section[verse_index]), line_index
+                )
+                # line_index += len(section[verse_index]) - 1
+                debug(jump, section[verse_index], section[verse_index][line_index])
 
                 for i, linked_verse in enumerate(linked_content[1:]):
                     section.insert(verse_index + i + 1, linked_verse)
 
-                logger.debug(f"Final version was {section}")
+                if line_index > len(section[verse_index]):
+                    break
+
+                logger.debug(f"Final version was {section[verse_index]}")
 
                 # add in anything else *after* matched section
 
@@ -478,6 +516,12 @@ def parse_file_as_dict(
                     section[i][j].content = re.sub(regex, "", section[i][j].content)
 
         things[key] = Thing(section, crossref, sourcefile, key)
+        logger.debug("Returning")
+
+        try:
+            debug(things["Lectio1"])
+        except KeyError:
+            pass
     return things
 
 
@@ -532,6 +576,7 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
         new_content = []
 
         for linked_verse in linked_content:
+            debug(linked_verse)
             new_verse = []
             joined = None
             trash = None
@@ -545,14 +590,16 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
                     linked_line.content = re.sub(
                         pattern, sub, linked_line.content, count=count
                     ).strip()
+
+                    if "s" in multiline:
+                        logger.debug("Trashing other lines")
+                        trash = True
+                        if linked_line.content:
+                            new_verse.append(linked_line)
+                        break
                     if not linked_line.content:
                         logger.debug("Trashing emptied line.")
                         continue
-
-                    if "s" in multiline:
-                        trash = True
-                        new_verse.append(linked_line)
-                        break
                 else:
                     logger.debug(f"Unable to match {pattern} in {linked_line.content}")
                     if linked_line.content.endswith("~"):
