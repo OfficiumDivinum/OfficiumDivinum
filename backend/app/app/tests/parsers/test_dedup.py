@@ -6,6 +6,28 @@ from app.schemas import LineBase, MartyrologyCreate
 
 # format is [things to pass],{resp}
 
+
+def test_hash():
+    m = MartyrologyCreate(
+        title="",
+        language="",
+        datestr="1 Jan",
+        versions=["1960"],
+        # parts=None,
+        parts=[LineBase(content="line 1")],
+    )
+    n = MartyrologyCreate(
+        title="",
+        language="",
+        datestr="1 Jan",
+        versions=["1960"],
+        # parts=None,
+        parts=[LineBase(content="line 1")],
+    )
+    assert m.__hash__() == m.__hash__()
+    assert m.__hash__() == n.__hash__()
+
+
 candidates = (
     (
         (
