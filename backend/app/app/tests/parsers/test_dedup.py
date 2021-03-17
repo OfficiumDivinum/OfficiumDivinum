@@ -123,9 +123,9 @@ candidates = (
 @pytest.mark.parametrize("candidate,correct", candidates)
 def test_dedup_manual(candidate, correct):
     resp = dedup.dedup(candidate)
-    assert resp == correct
-    # for k, v in correct.items():
-    #     # non-orderable and non-hashable, but we don't care about order
-    #     resp_v = resp[k]
-    #     assert len(resp_v) == len(v), f"Repsonse for {k} not of correct length"
-    #     assert all((x in resp_v for x in v)), f"Response for {k} doesn't match test"
+    # assert resp == correct
+    for k, v in correct.items():
+        # non-orderable and non-hashable, but we don't care about order
+        resp_v = resp[k]
+        assert len(resp_v) == len(v), f"Repsonse for {k} not of correct length"
+        assert all((x in resp_v for x in v)), f"Response for {k} doesn't match test"
