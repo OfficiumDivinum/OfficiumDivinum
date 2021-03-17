@@ -408,6 +408,9 @@ def parse_section(
                     continue
                 line.content = content
 
+            if re.search("^[0-9]", line.content):
+                lineobj = parse_bible_verse(line, data["ref"], language)
+
             if not lineobj:
                 if " * " in line.content and verse_obj is not VerseCreate:
                     lineobj = parse_antiphon(line)
@@ -526,9 +529,13 @@ def parse_versicle(line, rubrics):
 
 
 def parse_bible_verse(line: Line, ref: str, lang: str):
-    book, chap = re.search(r"(.+) ([0-9]):*.*", ref).groups()
+    try:
+        book, chap = re.search(r"(.+) ([0-9]+):*.*", ref).groups()
+    except AttributeError:
+        book = ref
+        chap = None
     verseno, content = re.search(r"([0-9]+) (.*)", line.content).groups()
-    prefix = f"{chap}:{verseno}"
+    prefix = f"{chap}:{verseno}" if chap else verseno
     return BibleVerseCreate(
         lineno=line.lineno, content=content, prefix=prefix, book=book, language=lang
     )

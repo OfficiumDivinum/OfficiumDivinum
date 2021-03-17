@@ -451,8 +451,8 @@ candidates = [
             (
                 Line(content="Lectio.", lineno=1),
                 Line(content="!In Psalmum quodlibet", lineno=2),
-                Line(content="20 line 1", lineno=3),
-                Line(content="21 line 2", lineno=4),
+                Line(content="line 1", lineno=3),
+                Line(content="line 2", lineno=4),
             )
         ],
         ReadingCreate(
@@ -463,8 +463,8 @@ candidates = [
             language="latin",
             parts=[
                 LineBase(content="Lectio.", lineno=1),
-                LineBase(content="20 line 1", lineno=3),
-                LineBase(content="21 line 2", lineno=4),
+                LineBase(content="line 1", lineno=3),
+                LineBase(content="line 2", lineno=4),
             ],
             ref="In Psalmum quodlibet",
         ),
@@ -490,7 +490,7 @@ candidates = [
                 LineBase(content="Sequéntia ++ sancti Evangélii", lineno=1),
                 LineBase(content="line 1 line 2 line 3 line 4", lineno=3),
             ],
-            ref="Matt 2:19-23",
+            ref="Matt 2:19-22",
         ),
     ),
 ]
@@ -659,7 +659,7 @@ section_test = (
                 liturgical_context="Laudes",
                 language="latin",
                 lineno=161,
-                content="Oblátus est * qui ipse portávit.",
+                content="Oblátus est * quia ipse portávit.",
             ),
         ],
     ),
