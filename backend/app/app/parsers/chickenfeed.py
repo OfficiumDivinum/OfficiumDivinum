@@ -27,7 +27,7 @@ from app.schemas.custom_types import versions
 
 from .divinumofficium_structures import commands as office_names
 
-logging.basicConfig(level=logging.DEBUG)
+# logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 create_types = (
@@ -329,9 +329,6 @@ def parse_section(
 
     rubrics = None
     section_content = []
-
-    if section_name == "Ant Laudes":
-        debug(section, section_obj, section_data)
 
     for verse in section.content:
         if not verse:
