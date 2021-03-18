@@ -518,104 +518,49 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
       : ParsingError: if no substitution found.
     """
 
+    offset = linked_content[0][0].lineno
+    verses = []
+    for verse in linked_content:
+        verses.append("\n".join(x.content for x in verse))
+    one_line = "\n_\n".join(verses)
+
     matches = re.findall(r".*?(s/(.*?)/(.*?)/(s*m*g*))", linkstr)
     if not matches:
         raise ParsingError(f"No substitution found in {linkstr}")
-    offset = linked_content[0][0].lineno
 
+    debug(linked_content, linkstr)
     sub_index = 0
     for _, pattern, sub, multiline in matches:
         if "g" in multiline:
             count = 0
         else:
             count = 1
+
+        flags = 0
+        if "m" in multiline:
+            flags = re.MULTILINE
+        if "s" in multiline:
+            flags += re.S
+
         sub = sub.replace("$", "\\")
         sub_index += 1
         logger.debug(
             f"Doing substition {sub_index}/{len(matches)} {pattern} {sub} {multiline}"
         )
+        one_line = re.sub(pattern, sub, one_line, count, flags=flags)
 
-        if pattern == "^v. ":
-            logger.debug("Skipping substitution of v. as we always do that.")
-            continue
+        debug(one_line)
 
-        if "m" in multiline:
-            logger.debug("Turning into one line and handling")
-            verses = []
-            for verse in linked_content:
-                verses.append("\n".join((x.content for x in verse)))
-            one_line = "\n_\n".join(verses)
-            debug(
-                one_line,
-                pattern,
-                sub,
-            )
-            one_line = re.sub(pattern, sub, one_line, count, flags=re.MULTILINE + re.S)
-            debug(one_line)
+    # one_line = re.sub("~ *\n", " ", one_line)
 
-            linked_content = [[Line(0, one_line)]]
-            continue
+    verses = []
+    for verse in one_line.split("_"):
+        v = []
+        for i, line in enumerate(verse.split("\n")):
+            line = Line(i + offset, line.strip())
+            if line.content:
+                v.append(line)
+        verses.append(v)
+    debug(verses)
 
-        new_content = []
-
-        for linked_verse in linked_content:
-            new_verse = []
-            joined = None
-            trash = None
-            skip = False
-            for linked_line in linked_verse:
-                if joined:
-                    logger.debug("Joining.")
-                    linked_line.content = joined + " " + linked_line.content
-                    joined = None
-
-                match = re.search(pattern, linked_line.content)
-                if match and not skip:
-                    logger.debug(f"Found match for {pattern} in {linked_line.content}.")
-                    linked_line.content = re.sub(
-                        pattern, sub, linked_line.content, count=count
-                    ).strip()
-
-                    if "s" in multiline:
-                        logger.debug("Trashing other lines")
-                        trash = True
-                        if linked_line.content:
-                            new_verse.append(linked_line)
-                        break
-                    else:
-                        skip = True
-                    if not linked_line.content:
-                        logger.debug("Trashing emptied line.")
-                        continue
-                elif not match and not skip:
-                    logger.debug(f"Unable to match {pattern} in {linked_line.content}")
-                    if linked_line.content.endswith("~"):
-                        joined = linked_line.content[:-1]
-                        continue
-                else:
-                    logger.debug("Continuing")
-
-                new_verse.append(linked_line)
-
-            new_content.append(new_verse)
-            if trash:
-                break
-
-        linked_content = new_content
-        debug(linked_content)
-
-    if any(("\n" in x.content for y in linked_content for x in y)):
-        verses = []
-        for verse in linked_content:
-            lines = []
-            i = 0
-            for line in linked_content[0]:
-                split_lines = line.content.split("\n")
-                for content in split_lines:
-                    lines.append(Line(i + offset, content))
-                    i += 1
-            verses.append(lines)
-        linked_content = verses
-
-    debug(linked_content)
-    return linked_content
+    return verses
