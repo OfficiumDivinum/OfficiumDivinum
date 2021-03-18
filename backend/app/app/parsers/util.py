@@ -566,11 +566,18 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
             continue
 
         if "m" in multiline:
+            logger.debug("Turning into one line and handling")
             verses = []
             for verse in linked_content:
                 verses.append("\n".join((x.content for x in verse)))
             one_line = "\n_\n".join(verses)
-            one_line = re.sub(pattern, sub, one_line, count=count)
+            debug(
+                one_line,
+                pattern,
+                sub,
+            )
+            one_line = re.sub(pattern, sub, one_line, count, flags=re.MULTILINE + re.S)
+            debug(one_line)
 
             linked_content = [[Line(0, one_line)]]
             continue
@@ -581,13 +588,16 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
             new_verse = []
             joined = None
             trash = None
+            skip = False
             for linked_line in linked_verse:
                 if joined:
+                    logger.debug("Joining.")
                     linked_line.content = joined + " " + linked_line.content
                     joined = None
 
                 match = re.search(pattern, linked_line.content)
-                if match:
+                if match and not skip:
+                    logger.debug(f"Found match for {pattern} in {linked_line.content}.")
                     linked_line.content = re.sub(
                         pattern, sub, linked_line.content, count=count
                     ).strip()
@@ -598,14 +608,18 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
                         if linked_line.content:
                             new_verse.append(linked_line)
                         break
+                    else:
+                        skip = True
                     if not linked_line.content:
                         logger.debug("Trashing emptied line.")
                         continue
-                else:
+                elif not match and not skip:
                     logger.debug(f"Unable to match {pattern} in {linked_line.content}")
                     if linked_line.content.endswith("~"):
                         joined = linked_line.content[:-1]
                         continue
+                else:
+                    logger.debug("Continuing")
 
                 new_verse.append(linked_line)
 
@@ -614,6 +628,7 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
                 break
 
         linked_content = new_content
+        debug(linked_content)
 
     if any(("\n" in x.content for y in linked_content for x in y)):
         verses = []
@@ -628,4 +643,5 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
             verses.append(lines)
         linked_content = verses
 
+    debug(linked_content)
     return linked_content
