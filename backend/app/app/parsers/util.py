@@ -289,8 +289,6 @@ def resolve_link(
         follow_only_interesting_links=False,
     )[part]
     linked_content = linked_content.content
-    assert all(x for x in linked_content)
-    debug(linked_content)
 
     verses = []
     for verse in linked_content:
@@ -301,7 +299,6 @@ def resolve_link(
         verses.append(v)
 
     linked_content = verses
-    assert all(x[0] for x in linked_content)
 
     if "s/" in linkstr:
         logger.debug(f"Doing substitution for {linkstr}.")
@@ -334,9 +331,6 @@ def resolve_link(
                 verse.append(line)
         if verse:
             linked_content.append(verse)
-
-    # assert linked_content, f"Link was empty {linked_content}, {linkstr}"
-    # assert linked_content[0], f"{linked_content}"
 
     return linked_content
 
@@ -393,7 +387,6 @@ def parse_file_as_dict(
         flat_section = []
         for thing in section:
             flat_section += thing
-
         just_links = all(
             (
                 ("@" in line.content and "s/" not in line.content)
@@ -481,13 +474,6 @@ def parse_file_as_dict(
                     linked_content = resolve_link(
                         targetf, part, sublinks, line.content, version
                     )
-                    assert (
-                        linked_content
-                    ), f"Section was empty: {section}, {linked_content} {line.content}"
-                    assert linked_content[
-                        0
-                    ], f"Section[0] was empty: {section}, ({linked_content}) {line.content}"
-
                     if not linked_content[0]:
                         logger.debug(
                             f"Link {line.content} was link to nothing, skipping"
@@ -515,9 +501,6 @@ def parse_file_as_dict(
             else:
                 restart = False
 
-        assert section, "Section somehow empty!"
-        assert section[0], f"Section v1. empty! {section}"
-
         for i in range(len(section)):
             for j in range(len(section[i])):
                 for regex in nasty_stuff:
@@ -544,7 +527,7 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
     Raises:
       : ParsingError: if no substitution found.
     """
-    assert linked_content[0]
+
     offset = linked_content[0][0].lineno
     verses = []
     for verse in linked_content:
@@ -582,8 +565,6 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
             line = Line(i + offset, line.strip())
             if line.content:
                 v.append(line)
-        if v:
-            verses.append(v)
+        verses.append(v)
 
-    assert all(x[0] for x in verses), f"{verses}"
-    return verses
+    return verses or [[]]

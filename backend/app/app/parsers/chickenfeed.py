@@ -336,7 +336,6 @@ def parse_section(
     rubrics = None
     section_content = []
 
-    assert section.content
     for verse in section.content:
         if not verse:
             continue
@@ -514,7 +513,6 @@ def magic_parser(fn: Path, sections: Dict, language: str, version: str = None) -
             section_obj = None
 
         try:
-            assert thing.content[0]
             r = parse_section(fn, section_name, thing, language, version, section_obj)
             if not r:
                 continue
