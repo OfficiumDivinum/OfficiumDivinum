@@ -411,110 +411,85 @@ def parse_file_as_dict(
                 new_section.append(verse)
             logger.debug("Added commemoration links to antiphons.")
 
-        for verse_index in range(len(section)):
-            line_index = 0
-            for line in section[verse_index]:
-                logger.debug(
-                    f"Verse started out as {section[verse_index]}, {section[verse_index]}"
-                )
+        restart = False
+        while follow_links:
+            new_section = []
 
-                line_index += 1
-
-                if not follow_links:
-                    break
-
-                if "@" not in line.content:
-                    continue
-
-                targetf, part = deref(line.content, fn)
-                if not part:
-                    part = key
-
-                linked_content = None
-
-                match = re.search(r".*s/(.*?)/(.*)/(s*)", line.content)
-
-                if match:
-                    pattern, sub, multiline = match.groups()
-                else:
-                    pattern = None
-
-                # DO hand codes these, so we do too
-                if (match := re.search(r"Oratio(.*) proper Gregem", part)) :
-                    # proper only used for 1910
-                    if version == "1910":
+            for verse_index, verse in enumerate(section):
+                new_verse = []
+                for line_index, line in enumerate(verse):
+                    if "@" not in line.content:
+                        new_verse.append(line)
                         continue
-                    elif version in ["DA", "1955", "1960"]:
-                        logger.debug("Substituting Gregem prayer.")
-                        targetf = fn.parent.parent / "Commune/C4.txt"
-                        # all examples are singular, so we don't care
-                        part = "Oratio9"
-                    else:
-                        i = match.group(1)
-                        part = f"Oratio{i}" if i else "Oratio"
 
-                if (match := re.search(r"Oratio(.*) Gregem", part)) :
-                    if version in ["1910", "1570"]:
-                        i = match.group(1)
-                        part = f"Oratio{i}" if i else "Oratio"
-                        # section[verse_index].pop(line_index)
-                        # line_index -= 1
-                        # continue
-                    else:
-                        logger.debug("Substituting Gregem prayer.")
-                        targetf = fn.parent.parent / "Commune/C4.txt"
-                        # all examples are singular, so we don't care
-                        part = "Oratio9"
+                    linked_content = None
+                    targetf, part = deref(line.content, fn)
+                    if not part:
+                        part = key
+                    match = re.search(r".*s/(.*?)/(.*)/(s*)", line.content)
+                    if match:
+                        pattern, sub, multiline = match.groups()
 
-                if "Oratio proper" in part:
-                    section[verse_index].pop(line_index)
-                    line_index -= 1
-                    continue
+                    # DO hand codes these, so we do too
+                    if (match := re.search(r"Oratio(.*) proper Gregem", part)) :
+                        # proper only used for 1910
+                        if version == "1910":
+                            continue
+                        elif version in ["DA", "1955", "1960"]:
+                            logger.debug("Substituting Gregem prayer.")
+                            targetf = fn.parent.parent / "Commune/C4.txt"
+                            # all examples are singular, so we don't care
+                            part = "Oratio9"
+                        else:
+                            i = match.group(1)
+                            part = f"Oratio{i}" if i else "Oratio"
 
-                logger.debug(
-                    f"Resolving for {key}, section: {section}, verse: {section[verse_index]}, line: {line}"
-                )
-                sublinks = False if (targetf == fn) else True
-                linked_content = resolve_link(
-                    targetf, part, sublinks, line.content, version
-                )
+                    if (match := re.search(r"Oratio(.*) Gregem", part)) :
+                        if version in ["1910", "1570"]:
+                            i = match.group(1)
+                            part = f"Oratio{i}" if i else "Oratio"
+                        else:
+                            logger.debug("Substituting Gregem prayer.")
+                            targetf = fn.parent.parent / "Commune/C4.txt"
+                            # all examples are singular, so we don't care
+                            part = "Oratio9"
 
-                if not linked_content[0]:
-                    # trash current line
-                    section[verse_index].pop(line_index)
-                    if len(section[verse_index]) >= line_index:
+                    if "Oratio proper" in part:
                         continue
-                    else:
-                        break
 
-                logger.debug(f"Got {linked_content} for {key}.")
-                jump = len(linked_content[0]) - 2
-
-                # append lines left in verse to linked verse
-                for extra_line in section[verse_index][line_index:]:
-                    logger.debug(f"Appending line {extra_line} to linked_content.")
-                    linked_content[-1].append(extra_line)
-
-                # append linked verse at point
-                if line_index > 0:
-                    section[verse_index] = (
-                        section[verse_index][: line_index - 1] + linked_content[0]
+                    logger.debug(
+                        f"Resolving for {key}, section: {section}, verse: {section[verse_index]}, line: {line}"
                     )
-                else:
-                    section[verse_index] = linked_content[0]
+                    sublinks = False if (targetf == fn) else True
+                    linked_content = resolve_link(
+                        targetf, part, sublinks, line.content, version
+                    )
+                    if not linked_content[0]:
+                        logger.debug(
+                            f"Link {line.content} was link to nothing, skipping"
+                        )
+                        continue
+                    logger.debug(f"Got {linked_content} for {key}.")
 
-                # move pointer forward to end of section we just inserted.
-                line_index += jump
+                    # append linked verse at point
+                    new_verse += linked_content[0]
+                    # append rest of verse if any.
+                    new_verse += verse[line_index + 1 :]
 
-                # append any linked _verses_ to _section_
-                for i, linked_verse in enumerate(linked_content[1:]):
-                    section.insert(verse_index + i + 1, linked_verse)
-
-                # if we're over.
-                if line_index > len(section[verse_index]):
+                    new_section.append(new_verse)
+                    new_section += linked_content[1:]
+                    new_section += section[verse_index + 1 :]
+                    restart = True
                     break
 
-                logger.debug(f"Final version was {section[verse_index]}")
+                if not restart:
+                    new_section.append(new_verse)
+
+            section = new_section
+            if not restart:
+                break
+            else:
+                restart = False
 
         for i in range(len(section)):
             for j in range(len(section[i])):
@@ -522,7 +497,6 @@ def parse_file_as_dict(
                     section[i][j].content = re.sub(regex, "", section[i][j].content)
 
         things[key] = Thing(section, crossref, sourcefile, key)
-        logger.debug("Returning")
 
     return things
 
