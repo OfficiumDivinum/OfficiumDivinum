@@ -48,6 +48,37 @@ candidates = (
             )
         },
     ),
+    (
+        root / "Latin/SanctiM/12-27.txt",
+        {
+            "Lectio2": Thing(
+                content=[
+                    [
+                        Line(1, "!1 Joann. 1:1-5"),
+                        Line(
+                            2,
+                            "4 Et hæc scríbimus vobis ut gaudeátis, et gáudium vestrum sit plenum.",
+                        ),
+                        Line(
+                            3,
+                            "5 Et hæc est annuntiátio, quam audívimus ab eo, et annuntiámus vobis: Quóniam Deus lux est, et ténebræ in eo non sunt ullæ.",
+                        ),
+                        Line(
+                            4,
+                            "6 Si dixérimus quóniam societátem habémus cum eo, et in ténebris ambulámus, mentímur, et veritátem non facimus.",
+                        ),
+                        Line(
+                            5,
+                            "7 Si autem in luce ambulámus sicut et ipse est in luce, societátem habémus ad ínvicem, et sanguis Jesu Christi, Fílii ejus, emúndat nos ab omni peccáto.",
+                        ),
+                    ]
+                ],
+                crossref=None,
+                sourcefile="app/tests/parsers/test-DO-data/Latin/TemporaM/Pent11-0.txt",
+                source_section="Lectio1",
+            )
+        },
+    ),
 )
 
 
