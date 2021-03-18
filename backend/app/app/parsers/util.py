@@ -290,6 +290,16 @@ def resolve_link(
     )[part]
     linked_content = linked_content.content
 
+    verses = []
+    for verse in linked_content:
+        v = []
+        for line in verse:
+            if "&" not in line.content:
+                v.append(line)
+        verses.append(v)
+
+    linked_content = verses
+
     if "s/" in linkstr:
         logger.debug(f"Doing substitution for {linkstr}.")
         linked_content = substitute_linked_content(linked_content, linkstr)
@@ -523,12 +533,12 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
     for verse in linked_content:
         verses.append("\n".join(x.content for x in verse))
     one_line = "\n_\n".join(verses)
+    assert "&" not in one_line
 
     matches = re.findall(r".*?(s/(.*?)/(.*?)/(s*m*g*))", linkstr)
     if not matches:
         raise ParsingError(f"No substitution found in {linkstr}")
 
-    debug(linked_content, linkstr)
     sub_index = 0
     for _, pattern, sub, multiline in matches:
         if "g" in multiline:
