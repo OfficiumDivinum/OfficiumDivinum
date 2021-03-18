@@ -83,6 +83,34 @@ candidates = (
             )
         },
     ),
+    (
+        root / "Latin/SanctiM/test1.txt",
+        {
+            "Lectio2": Thing(
+                content=[
+                    [
+                        Line(113, "De Epístola secúnda beáti Petri Apóstoli"),
+                        Line(114, "!2 Pet 1:13-15"),
+                        Line(
+                            115,
+                            "13 Justum autem árbitror, quámdiu sum in hoc tabernáculo, suscitáre vos in commonitióne:",
+                        ),
+                        Line(
+                            116,
+                            "14 certus quod velox est deposítio tabernáculi mei secúndum quod et Dóminus noster Jesus Christus significávit mihi.",
+                        ),
+                        Line(
+                            128,
+                            "15 Dabo autem óperam et frequénter habére vos post óbitum meum, ut horum memóriam faciátis.",
+                        ),
+                    ],
+                ],
+                crossref=None,
+                sourcefile="app/tests/parsers/test-DO-data/Latin/SanctiM/test1.txt",
+                source_section="Lectio2",
+            )
+        },
+    ),
 )
 
 
