@@ -263,7 +263,11 @@ def guess_verse_obj(verse: List, section_name):
 def replace(verse: List[Line]) -> List:
 
     skip = [r"Dominus_vobiscum", r"Benedicamus_Domino", r".+\(.+\)"]
-    sub = {"pater_noster": "Pater_noster1", "teDeum": "Te Deum"}
+    sub = {
+        "pater_noster": "Pater_noster1",
+        "teDeum": "Te Deum",
+        "pater": "Pater_noster1",
+    }
 
     new_verse = []
     for line in verse:
