@@ -22,6 +22,18 @@ from app.schemas import (
 
 from .test_parsers import root
 
+ref_candidates = (
+    (Line(1, "!Esth 5:14"), "Esth 5:14"),
+    (Line(1, "!In psalmum xvii"), "In psalmum xvii"),
+    (Line(1, "A reading from a book.", None)),
+)
+
+
+@pytest.mark.parametrize("candidate,correct", ref_candidates)
+def test_is_reference(candidate, correct):
+    assert parsers.chickenfeed.is_reference(candidate) == correct
+
+
 verse_candidates = (
     (
         Line(1, "20 content"),
