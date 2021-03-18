@@ -28,6 +28,7 @@ ref_candidates = (
     (Line(1, "A reading from a book."), None),
     (Line(1, ""), None),
     (Line(1, "!Read this in a silly voice."), None),
+    (Line(1, "!1 Reg 10-15"), "1 Reg 10-15"),
 )
 
 
