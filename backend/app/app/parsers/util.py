@@ -301,9 +301,26 @@ def resolve_link(
         end = match.groups()[1]
         end = int(end) if end else start + 1
         assert end > start
-        linked_content = [linked_content[0][start:end]]
 
-        assert len(linked_content[0]) == end - start
+        # turn it back into a flat list, then split again
+        # this whole pattern is wrong: we should work on lists of lines, like DO does, and split later.
+        flat = []
+        for verse in linked_content:
+            flat += verse
+            flat.append("_")
+        flat = flat[start:end]
+        linked_content = []
+        verse = []
+        for line in flat:
+            if line == "_":
+                if verse:
+                    linked_content.append(verse)
+                verse = []
+                continue
+            else:
+                verse.append(line)
+        if verse:
+            linked_content.append(verse)
 
     return linked_content
 
