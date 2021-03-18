@@ -25,7 +25,9 @@ from .test_parsers import root
 ref_candidates = (
     (Line(1, "!Esth 5:14"), "Esth 5:14"),
     (Line(1, "!In psalmum xvii"), "In psalmum xvii"),
-    (Line(1, "A reading from a book.", None)),
+    (Line(1, "A reading from a book."), None),
+    (Line(1, ""), None),
+    (Line(1, "!Read this in a silly voice."), None),
 )
 
 
