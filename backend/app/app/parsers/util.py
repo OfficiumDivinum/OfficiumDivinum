@@ -606,6 +606,7 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
             split_lines = line.content.split("\n")
             for content in split_lines:
                 lines.append(Line(i + offset, content))
+                i += 1
         linked_content[0] = lines
 
     return linked_content
