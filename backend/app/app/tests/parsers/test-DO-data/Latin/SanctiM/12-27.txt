@@ -1,0 +1,3 @@
+[Lectio2]
+@Sancti/12-27:Lectio1:s/.*// s/-5/-7/ s/1-/4-/ s/^1 .*4 /4 /sm
+@Sancti/12-27:Lectio2:s/!.*// s/8 .*//s
