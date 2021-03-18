@@ -1,11 +1,15 @@
+import logging
 from unittest.mock import Mock
 
 import pytest
+from devtools import debug
 
 from app.parsers import Line, Thing
 from app.parsers.util import parse_file_as_dict
 
 from .test_parsers import root
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 def mock_file(fn: str, lines: list):
@@ -54,28 +58,28 @@ candidates = (
             "Lectio2": Thing(
                 content=[
                     [
-                        Line(1, "!1 Joann. 1:1-5"),
+                        Line(24, "!1 Joann. 1:4-7"),
                         Line(
-                            2,
+                            25,
                             "4 Et hæc scríbimus vobis ut gaudeátis, et gáudium vestrum sit plenum.",
                         ),
                         Line(
-                            3,
+                            26,
                             "5 Et hæc est annuntiátio, quam audívimus ab eo, et annuntiámus vobis: Quóniam Deus lux est, et ténebræ in eo non sunt ullæ.",
                         ),
                         Line(
-                            4,
+                            40,
                             "6 Si dixérimus quóniam societátem habémus cum eo, et in ténebris ambulámus, mentímur, et veritátem non facimus.",
                         ),
                         Line(
-                            5,
+                            41,
                             "7 Si autem in luce ambulámus sicut et ipse est in luce, societátem habémus ad ínvicem, et sanguis Jesu Christi, Fílii ejus, emúndat nos ab omni peccáto.",
                         ),
                     ]
                 ],
                 crossref=None,
-                sourcefile="app/tests/parsers/test-DO-data/Latin/TemporaM/Pent11-0.txt",
-                source_section="Lectio1",
+                sourcefile="app/tests/parsers/test-DO-data/Latin/SanctiM/12-27.txt",
+                source_section="Lectio2",
             )
         },
     ),
@@ -85,4 +89,5 @@ candidates = (
 @pytest.mark.parametrize("fn,correct", candidates)
 def test_parse_file_as_dict(fn, correct):
     resp = parse_file_as_dict(fn, "1960", follow_only_interesting_links=False)
+    debug(resp)
     assert resp == correct
