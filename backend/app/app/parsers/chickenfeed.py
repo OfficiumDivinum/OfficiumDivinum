@@ -479,7 +479,6 @@ def parse_section(
                 section_content.versions = section_data["versions"]
             except (KeyError, AttributeError, ValueError, KeyError):
                 pass
-        assert section_content
         return section_content
 
     else:
