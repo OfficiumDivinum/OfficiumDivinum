@@ -599,14 +599,16 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
         linked_content = new_content
 
     if any(("\n" in x.content for y in linked_content for x in y)):
-        assert len(linked_content) == 1
-        lines = []
-        i = 0
-        for line in linked_content[0]:
-            split_lines = line.content.split("\n")
-            for content in split_lines:
-                lines.append(Line(i + offset, content))
-                i += 1
-        linked_content[0] = lines
+        verses = []
+        for verse in linked_content:
+            lines = []
+            i = 0
+            for line in linked_content[0]:
+                split_lines = line.content.split("\n")
+                for content in split_lines:
+                    lines.append(Line(i + offset, content))
+                    i += 1
+            verses.append(lines)
+        linked_content = verses
 
     return linked_content
