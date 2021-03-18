@@ -247,8 +247,6 @@ def guess_verse_obj(verse: List, section_name):
         for candidate in candidates:
             if (ref := is_reference(candidate)) is not None:
                 return ReadingCreate, {"ref": ref}
-            else:
-                debug("Not found", candidate)
         return ReadingCreate, {}
 
     if len(verse) == 1:
