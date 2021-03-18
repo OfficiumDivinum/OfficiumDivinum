@@ -559,10 +559,6 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
         )
         one_line = re.sub(pattern, sub, one_line, count, flags=flags)
 
-        debug(one_line)
-
-    # one_line = re.sub("~ *\n", " ", one_line)
-
     verses = []
     for verse in one_line.split("_"):
         v = []
@@ -571,6 +567,5 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
             if line.content:
                 v.append(line)
         verses.append(v)
-    debug(verses)
 
     return verses

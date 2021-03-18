@@ -10,6 +10,7 @@ from app.parsers.util import parse_file_as_dict
 from .test_parsers import root
 
 logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 
 def mock_file(fn: str, lines: list):
@@ -58,13 +59,13 @@ candidates = (
             "Lectio2": Thing(
                 content=[
                     [
-                        Line(24, "!1 Joann. 1:4-7"),
+                        Line(25, "!1 Joann. 1:4-7"),
                         Line(
-                            25,
+                            26,
                             "4 Et hæc scríbimus vobis ut gaudeátis, et gáudium vestrum sit plenum.",
                         ),
                         Line(
-                            26,
+                            27,
                             "5 Et hæc est annuntiátio, quam audívimus ab eo, et annuntiámus vobis: Quóniam Deus lux est, et ténebræ in eo non sunt ullæ.",
                         ),
                         Line(
@@ -117,5 +118,4 @@ candidates = (
 @pytest.mark.parametrize("fn,correct", candidates)
 def test_parse_file_as_dict(fn, correct):
     resp = parse_file_as_dict(fn, "1960", follow_only_interesting_links=False)
-    debug(resp)
     assert resp == correct
