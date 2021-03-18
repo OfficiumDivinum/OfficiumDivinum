@@ -462,11 +462,7 @@ def parse_file_as_dict(
                     targetf, part, sublinks, line.content, version
                 )
 
-                if key == "Lectio1":
-                    debug(linked_content)
-
                 if not linked_content[0]:
-                    debug("here")
                     # trash current line
                     section[verse_index].pop(line_index)
                     if len(section[verse_index]) >= line_index:
@@ -511,10 +507,6 @@ def parse_file_as_dict(
         things[key] = Thing(section, crossref, sourcefile, key)
         logger.debug("Returning")
 
-        try:
-            debug(things["Lectio1"])
-        except KeyError:
-            pass
     return things
 
 
@@ -569,7 +561,6 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
         new_content = []
 
         for linked_verse in linked_content:
-            debug(linked_verse)
             new_verse = []
             joined = None
             trash = None
