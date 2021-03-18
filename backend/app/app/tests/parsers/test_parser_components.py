@@ -63,42 +63,74 @@ rubrica_candidates = (
     [
         "ex Tempora/Pasc5-4;(rubrica 1570 aut rubrica 1910 aut rubrica divino)",
         "1910",
-        {"line": "ex Tempora/Pasc5-4;", "replace_previous": False, "skip_next": False,},
+        {
+            "line": "ex Tempora/Pasc5-4;",
+            "replace_previous": False,
+            "skip_next": False,
+        },
     ],
     [
         "ex Tempora/Pasc5-4;(rubrica 1570 aut rubrica 1910 aut rubrica divino)",
         "1960",
-        {"line": None, "replace_previous": False, "skip_next": False,},
+        {
+            "line": None,
+            "replace_previous": False,
+            "skip_next": False,
+        },
     ],
     [
         "(rubrica 1570)",
         "1570",
-        {"line": None, "replace_previous": False, "skip_next": False,},
+        {
+            "line": None,
+            "replace_previous": False,
+            "skip_next": False,
+        },
     ],
     [
         "(rubrica 1570)",
         "1960",
-        {"line": None, "replace_previous": False, "skip_next": True,},
+        {
+            "line": None,
+            "replace_previous": False,
+            "skip_next": True,
+        },
     ],
     [
         "(rubrica 1570 hæc versus omittitur)",
         "1570",
-        {"line": None, "skip_next": False, "replace_previous": True,},
+        {
+            "line": None,
+            "skip_next": False,
+            "replace_previous": True,
+        },
     ],
     [
         "(rubrica 1570 hæc versus omittitur)",
         "1960",
-        {"line": None, "replace_previous": False, "skip_next": False,},
+        {
+            "line": None,
+            "replace_previous": False,
+            "skip_next": False,
+        },
     ],
     [
         "(rubrica 1960) Psalm5 Vespera=138",
         "1960",
-        {"line": "Psalm5 Vespera=138", "replace_previous": False, "skip_next": False,},
+        {
+            "line": "Psalm5 Vespera=138",
+            "replace_previous": False,
+            "skip_next": False,
+        },
     ],
     [
         "(rubrica 1960) Psalm5 Vespera=138",
         "1955",
-        {"line": None, "replace_previous": False, "skip_next": False,},
+        {
+            "line": None,
+            "replace_previous": False,
+            "skip_next": False,
+        },
     ],
     [
         "(rubrica 1960) Psalm5 Vespera=138",
@@ -112,12 +144,20 @@ rubrica_candidates = (
     [
         "(sed rubrica 1955 aut rubrica 1960 loco horum versuum dicuntur)",
         "1955",
-        {"line": None, "replace_previous": True, "skip_next": False,},
+        {
+            "line": None,
+            "replace_previous": True,
+            "skip_next": False,
+        },
     ],
     [
         "(sed rubrica 1955 aut rubrica 1960 loco horum versuum dicuntur)",
         "1570",
-        {"line": None, "replace_previous": False, "skip_next": True,},
+        {
+            "line": None,
+            "replace_previous": False,
+            "skip_next": True,
+        },
     ],
     [
         "v. a line which doesn't have rubrics in it!",
@@ -379,7 +419,9 @@ candidates = [
         ),
     ),
     (
-        [(Line(content="R. Deo grátias.", lineno=1),),],
+        [
+            (Line(content="R. Deo grátias.", lineno=1),),
+        ],
         VersicleCreate(
             versions=["1960"],
             sourcefile="Prayers.txt",
@@ -465,7 +507,9 @@ candidates = [
             source_section="Lectio6",
             title="Lectio6",
             language="latin",
-            parts=[LineBase(content="Nec tantum", lineno=183),],
+            parts=[
+                LineBase(content="Nec tantum", lineno=183),
+            ],
         ),
     ),
     (
@@ -523,11 +567,27 @@ section_test = (
             (
                 Line(content="Te Deum laudámus: * te", lineno=0),
                 Line(content="Te ætérnum Patrem * omnis ", lineno=1),
-                Line(content="Tibi omnes Ángeli, * tibi: ", lineno=2,),
-                Line(content="Tibi Chérubim * et Séraphim:", lineno=3,),
+                Line(
+                    content="Tibi omnes Ángeli, * tibi: ",
+                    lineno=2,
+                ),
+                Line(
+                    content="Tibi Chérubim * et Séraphim:",
+                    lineno=3,
+                ),
             ),
-            (Line(content="/:(Fit reverentia):/ Sanctus, * Dóminus.", lineno=4,),),
-            (Line(content="Pleni sunt cæli et terra * tuæ.", lineno=5,),),
+            (
+                Line(
+                    content="/:(Fit reverentia):/ Sanctus, * Dóminus.",
+                    lineno=4,
+                ),
+            ),
+            (
+                Line(
+                    content="Pleni sunt cæli et terra * tuæ.",
+                    lineno=5,
+                ),
+            ),
         ],
         HymnCreate(
             versions=["1960"],
@@ -541,8 +601,14 @@ section_test = (
                     parts=[
                         LineBase(content="Te Deum laudámus: * te", lineno=0),
                         LineBase(content="Te ætérnum Patrem * omnis", lineno=1),
-                        LineBase(content="Tibi omnes Ángeli, * tibi:", lineno=2,),
-                        LineBase(content="Tibi Chérubim * et Séraphim:", lineno=3,),
+                        LineBase(
+                            content="Tibi omnes Ángeli, * tibi:",
+                            lineno=2,
+                        ),
+                        LineBase(
+                            content="Tibi Chérubim * et Séraphim:",
+                            lineno=3,
+                        ),
                     ]
                 ),
                 VerseCreate(
@@ -556,7 +622,10 @@ section_test = (
                 ),
                 VerseCreate(
                     parts=[
-                        LineBase(content="Pleni sunt cæli et terra * tuæ.", lineno=5,)
+                        LineBase(
+                            content="Pleni sunt cæli et terra * tuæ.",
+                            lineno=5,
+                        )
                     ]
                 ),
             ],
@@ -630,11 +699,26 @@ section_test = (
     (
         [
             [
-                Line(lineno=157, content="Justifíceris, Dómine, * in judicáris.;;50",),
-                Line(lineno=158, content="Dóminus * tamquam ovis suum.;;89",),
-                Line(lineno=159, content="Contrítum est * cor , ossa mea.;;35",),
-                Line(lineno=160, content="Exhortátus es * in , tua, Dómine.;;224",),
-                Line(lineno=161, content="Oblátus est * quia ipse portávit.;;146",),
+                Line(
+                    lineno=157,
+                    content="Justifíceris, Dómine, * in judicáris.;;50",
+                ),
+                Line(
+                    lineno=158,
+                    content="Dóminus * tamquam ovis suum.;;89",
+                ),
+                Line(
+                    lineno=159,
+                    content="Contrítum est * cor , ossa mea.;;35",
+                ),
+                Line(
+                    lineno=160,
+                    content="Exhortátus es * in , tua, Dómine.;;224",
+                ),
+                Line(
+                    lineno=161,
+                    content="Oblátus est * quia ipse portávit.;;146",
+                ),
             ]
         ],
         [
@@ -712,7 +796,11 @@ def test_parse_section(section, correct_obj):
     kwargs = {"sourcefile": sourcefile, "source_section": section_name}
 
     resp = parsers.parse_section(
-        Path(sourcefile), section_name, Thing(section, **kwargs), "latin", "1960",
+        Path(sourcefile),
+        section_name,
+        Thing(section, **kwargs),
+        "latin",
+        "1960",
     )
     assert resp == correct_obj
 
