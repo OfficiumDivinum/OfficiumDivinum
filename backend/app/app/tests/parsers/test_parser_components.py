@@ -896,7 +896,7 @@ sub_candidates = (
             Line(2, "Nec ita multo post Bonifátius Papa."),
         ],
         "@:Lectio6:s/.*(Nec ita)/$1/s",
-        [Line(2, "Nec ita multo post Bonifátius Papa.")],
+        [Line(1, "Nec ita multo post Bonifátius Papa.")],
     ),
     (
         [
@@ -904,7 +904,7 @@ sub_candidates = (
             Line(2, "Nec ita multo post Bonifátius Papa."),
         ],
         "@:Lectio6:s/.*(Nec ita)/$1/s",
-        [Line(2, "Nec ita multo post Bonifátius Papa.")],
+        [Line(1, "Nec ita multo post Bonifátius Papa.")],
     ),
     (
         [
