@@ -294,7 +294,7 @@ def resolve_link(
     for verse in linked_content:
         v = []
         for line in verse:
-            if "&" not in line.content:
+            if "&TeDeum" not in line.content:
                 v.append(line)
         verses.append(v)
 
@@ -533,7 +533,6 @@ def substitute_linked_content(linked_content: List, linkstr: str) -> List[Line]:
     for verse in linked_content:
         verses.append("\n".join(x.content for x in verse))
     one_line = "\n_\n".join(verses)
-    assert "&" not in one_line
 
     matches = re.findall(r".*?(s/(.*?)/(.*?)/(s*m*g*))", linkstr)
     if not matches:
