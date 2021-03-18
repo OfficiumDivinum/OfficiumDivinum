@@ -220,8 +220,12 @@ def markup(content: str) -> LineBase:
 
 
 def is_reference(line: Line):
-    match = re.search(r"!(.*? [0-9]+:[0-9]+-[0-9]+)", line.content)
-    return match if match else (re.search(r"!(In .*)", line.content))
+    if (match := re.search(r"!(.*? [0-9]+:[0-9]+(-[0-9]+)*)", line.content)) :
+        return match.group(1)
+    elif (match := re.search(r"!(In .*)", line.content)) :
+        return match.group(1)
+    else:
+        return None
 
 
 def guess_verse_obj(verse: List, section_name):
@@ -241,8 +245,10 @@ def guess_verse_obj(verse: List, section_name):
     if any((x in section_name for x in ["Lectio", "Capitulum"])):
         candidates = verse[:2]
         for candidate in candidates:
-            if (match := is_reference(candidate)) is not None:
-                return ReadingCreate, {"ref": match.group(1)}
+            if (ref := is_reference(candidate)) is not None:
+                return ReadingCreate, {"ref": ref}
+            else:
+                debug("Not found", candidate)
         return ReadingCreate, {}
 
     if len(verse) == 1:
