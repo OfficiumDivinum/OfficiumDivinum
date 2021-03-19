@@ -454,7 +454,10 @@ def guess_psalm_version(fn) -> str:
 
 
 @app.command()
-def parser_test(root: Path, lang: str,) -> None:
+def parser_test(
+    root: Path,
+    lang: str,
+) -> None:
 
     import typer
 
