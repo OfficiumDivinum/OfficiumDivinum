@@ -154,20 +154,24 @@ def is_rubric(line: Line) -> Optional[str]:
     return None, None
 
 
-def parse_prayers_txt(root: Path, language: str):
-    fn = root / f"{language}/Psalterium/Prayers.txt"
-    version = versions
+def parse_prayers_translations(root: Path, language: str):
+    fns = (f"{language}/Psalterium/Prayers.txt", f"{language}/Psalterium/Translate.txt")
+    for fn in fns:
+        fn = root / fn
+        debug(fn)
+        version = versions
 
-    sections = parse_file_as_dict(fn, version)
+        sections = parse_file_as_dict(fn, version)
 
-    matched, unmatched = magic_parser(fn, sections, language)
+        matched, unmatched = magic_parser(fn, sections, language)
 
-    logger.debug("Setting parser vars.")
-    parser_vars.replacements = matched.copy()
-    matched, unmatched = magic_parser(fn, sections, language)
+        logger.debug("Setting parser vars.")
+        parser_vars.replacements.update(matched)
+        debug(parser_vars.replacements)
+        matched, unmatched = magic_parser(fn, sections, language)
 
-    assert not unmatched
-    return matched
+        assert not unmatched
+    return parser_vars.replacements
 
 
 def parse_generic_file(fn: Path, version: str, language: str) -> Dict:
@@ -262,11 +266,17 @@ def guess_verse_obj(verse: List, section_name):
 
 def replace(verse: List[Line]) -> List:
 
-    skip = [r"Dominus_vobiscum", r"Benedicamus_Domino", r".+\(.+\)"]
+    skip = [
+        r"Dominus_vobiscum",
+        r"Benedicamus_Domino",
+        r".+\(.+\)",
+        "antiphona_finalis",
+    ]
     sub = {
         "pater_noster": "Pater_noster1",
         "teDeum": "Te Deum",
         "pater": "Pater_noster1",
+        "Divinum_auxilium": "Divinum auxilium",
     }
 
     new_verse = []
