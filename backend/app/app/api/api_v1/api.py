@@ -38,7 +38,7 @@ antiphon_router = create_item_crud(
     schemas.AntiphonCreate,
     schemas.AntiphonUpdate,
 )
-api_router.include_router(antiphon_router, prefix="/antiphon")
+api_router.include_router(antiphon_router, prefix="/antiphon", tags=["antiphon"])
 
 versicle_router = create_item_crud(
     schemas.Versicle,
@@ -46,7 +46,7 @@ versicle_router = create_item_crud(
     schemas.VersicleCreate,
     schemas.VersicleUpdate,
 )
-api_router.include_router(versicle_router, prefix="/versicle")
+api_router.include_router(versicle_router, prefix="/versicle", tags=["versicle"])
 
 reading_router = create_item_crud(
     schemas.Reading,
@@ -54,7 +54,7 @@ reading_router = create_item_crud(
     schemas.ReadingCreate,
     schemas.ReadingUpdate,
 )
-api_router.include_router(reading_router, prefix="/reading")
+api_router.include_router(reading_router, prefix="/reading", tags=["reading"])
 
 rubric_router = create_item_crud(
     schemas.Rubric,
@@ -62,4 +62,4 @@ rubric_router = create_item_crud(
     schemas.RubricCreate,
     schemas.RubricUpdate,
 )
-api_router.include_router(rubric_router, prefix="/rubric")
+api_router.include_router(rubric_router, prefix="/rubric", tags=["rubric"])
