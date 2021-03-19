@@ -259,7 +259,7 @@ def guess_section_header(fn: Path) -> str:
     Returns:
       : A regex matching the section header.
     """
-    if "Ordinarium" in fn.name:
+    if "Ordinarium" in fn.parent.name:
         logger.debug("Guessed # for section header.")
         return r"#(.*)"
     else:

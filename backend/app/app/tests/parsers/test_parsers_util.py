@@ -1,11 +1,12 @@
 import logging
+from pathlib import Path
 from unittest.mock import Mock
 
 import pytest
 from devtools import debug
 
 from app.parsers import Line, Thing
-from app.parsers.util import parse_file_as_dict
+from app.parsers.util import guess_section_header, parse_file_as_dict
 
 from .test_parsers import root
 
@@ -179,3 +180,14 @@ candidates = (
 def test_parse_file_as_dict(fn, correct):
     resp = parse_file_as_dict(fn, "1960", follow_only_interesting_links=False)
     assert resp == correct
+
+
+section_headers = (
+    (Path("/thing/Ordinarium/Compline.txt"), r"#(.*)"),
+    (Path("/thing/SanctiM/12-27.txt"), r"\[(.*)\]"),
+)
+
+
+@pytest.mark.parametrize("fn,correct", section_headers)
+def test_guess_section_header(fn, correct):
+    assert guess_section_header(fn) == correct
