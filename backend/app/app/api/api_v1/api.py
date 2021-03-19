@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 
+from app import crud, schemas
 from app.api.api_v1.endpoints import (
     bible,
     calendar,
@@ -11,6 +12,7 @@ from app.api.api_v1.endpoints import (
     users,
     utils,
 )
+from app.api.api_v1.endpoints.item_base import create_item_crud
 
 api_router = APIRouter()
 api_router.include_router(login.router, tags=["login"])
@@ -29,3 +31,35 @@ api_router.include_router(bible.router, prefix="/bible", tags=["bible"])
 api_router.include_router(calendar.router, prefix="/calendar", tags=["calendar"])
 
 api_router.include_router(hymn.router, prefix="/hymn", tags=["hymn"])
+
+antiphon_router = create_item_crud(
+    schemas.Antiphon,
+    crud.antiphon,
+    schemas.AntiphonCreate,
+    schemas.AntiphonUpdate,
+)
+api_router.include_router(antiphon_router, prefix="/antiphon")
+
+versicle_router = create_item_crud(
+    schemas.Versicle,
+    crud.versicle,
+    schemas.VersicleCreate,
+    schemas.VersicleUpdate,
+)
+api_router.include_router(versicle_router, prefix="/versicle")
+
+reading_router = create_item_crud(
+    schemas.Reading,
+    crud.reading,
+    schemas.ReadingCreate,
+    schemas.ReadingUpdate,
+)
+api_router.include_router(reading_router, prefix="/reading")
+
+rubric_router = create_item_crud(
+    schemas.Rubric,
+    crud.rubric,
+    schemas.RubricCreate,
+    schemas.RubricUpdate,
+)
+api_router.include_router(rubric_router, prefix="/rubric")

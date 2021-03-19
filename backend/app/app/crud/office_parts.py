@@ -11,77 +11,77 @@ from .base import CRUDWithOwnerBase
 
 class CRUDBlock(
     CRUDWithOwnerBase[
-        models.office_parts.Block,
-        schemas.office_parts.BlockCreate,
-        schemas.office_parts.BlockUpdate,
+        models.Block,
+        schemas.BlockCreate,
+        schemas.BlockUpdate,
     ]
 ):
     pass
 
 
-block = CRUDBlock(models.office_parts.Block)
+block = CRUDBlock(models.Block)
 
 
 class CRUDLine(
     CRUDWithOwnerBase[
-        models.office_parts.Line,
-        schemas.office_parts.LineCreate,
-        schemas.office_parts.LineUpdate,
+        models.Line,
+        schemas.LineCreate,
+        schemas.LineUpdate,
     ]
 ):
     pass
 
 
-line = CRUDLine(models.office_parts.Line)
+line = CRUDLine(models.Line)
 
 
 class CRUDAntiphon(
     CRUDWithOwnerBase[
-        models.office_parts.Antiphon,
-        schemas.office_parts.AntiphonCreate,
-        schemas.office_parts.AntiphonUpdate,
+        models.Antiphon,
+        schemas.AntiphonCreate,
+        schemas.AntiphonUpdate,
     ]
 ):
     pass
 
 
-antiphon = CRUDAntiphon(models.office_parts.Antiphon)
+antiphon = CRUDAntiphon(models.Antiphon)
 
 
 class CRUDVersicle(
     CRUDWithOwnerBase[
-        models.office_parts.Versicle,
-        schemas.office_parts.VersicleCreate,
-        schemas.office_parts.VersicleUpdate,
+        models.Versicle,
+        schemas.VersicleCreate,
+        schemas.VersicleUpdate,
     ]
 ):
     pass
 
 
-versicle = CRUDVersicle(models.office_parts.Versicle)
+versicle = CRUDVersicle(models.Versicle)
 
 
 class CRUDReading(
     CRUDWithOwnerBase[
-        models.office_parts.Reading,
-        schemas.office_parts.ReadingCreate,
-        schemas.office_parts.ReadingUpdate,
+        models.Reading,
+        schemas.ReadingCreate,
+        schemas.ReadingUpdate,
     ]
 ):
     pass
 
 
-reading = CRUDReading(models.office_parts.Reading)
+reading = CRUDReading(models.Reading)
 
 
 class CRUDRubric(
     CRUDWithOwnerBase[
-        models.office_parts.Rubric,
-        schemas.office_parts.RubricCreate,
-        schemas.office_parts.RubricUpdate,
+        models.Rubric,
+        schemas.RubricCreate,
+        schemas.RubricUpdate,
     ]
 ):
     pass
 
 
-rubric = CRUDRubric(models.office_parts.Rubric)
+rubric = CRUDRubric(models.Rubric)
