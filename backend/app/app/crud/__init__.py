@@ -5,6 +5,7 @@ from .crud_item import item  # noqa
 from .crud_martyrology import martyrology, old_date_template, ordinals  # noqa
 from .crud_user import user  # noqa
 from .office_parts import *  # noqa
+from .ordinarium import *  # noqa
 
 # For a new basic set of CRUD operations you could just do
 

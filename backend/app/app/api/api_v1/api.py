@@ -63,3 +63,11 @@ rubric_router = create_item_crud(
     schemas.RubricUpdate,
 )
 api_router.include_router(rubric_router, prefix="/rubric", tags=["rubric"])
+
+compline_router = create_item_crud(
+    schemas.Compline,
+    crud.compline,
+    schemas.ComplineCreate,
+    schemas.ComplineUpdate,
+)
+api_router.include_router(compline_router, prefix="/compline", tags=["compline"])
