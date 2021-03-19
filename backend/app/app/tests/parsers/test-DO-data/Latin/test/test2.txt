@@ -1,0 +1,2 @@
+[Lectio2]
+@Commune/C6:Lectio11:s/:1/:4/ s/1 .*4 /4 /s
