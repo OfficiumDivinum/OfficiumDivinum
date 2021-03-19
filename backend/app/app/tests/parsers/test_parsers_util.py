@@ -112,6 +112,66 @@ candidates = (
             )
         },
     ),
+    (
+        root / "Latin/test/test2.txt",
+        {
+            "Lectio2": Thing(
+                content=[
+                    [
+                        Line(360, "De libro Ecclesiástici"),
+                        Line(361, "!Sir 51:4-7"),
+                        Line(
+                            362,
+                            "4 Et liberásti me secúndum multitúdinem misericórdiæ nóminis tui a rugiéntibus, præparátis ad escam:",
+                        ),
+                        Line(
+                            363,
+                            "5 de mánibus quæréntium ánimam meam, et de portis tribulatiónum, quæ circumdedérunt me;",
+                        ),
+                        Line(
+                            364,
+                            "6 a pressúra flammæ, quæ circúmdedit me, et in médio ignis non sum æstuáta;",
+                        ),
+                        Line(
+                            365,
+                            "7 de altitúdine ventris ínferi, et a lingua coinquináta, et a verbo mendácii, a rege iníquo, et a lingua injústa.",
+                        ),
+                    ]
+                ],
+                crossref=None,
+                sourcefile="app/tests/parsers/test-DO-data/Latin/test/test2.txt",
+                source_section="Lectio2",
+            )
+        },
+    ),
+    (
+        root / "Latin/SanctiM/test1.txt",
+        {
+            "Lectio2": Thing(
+                content=[
+                    [
+                        Line(113, "De Epístola secúnda beáti Petri Apóstoli"),
+                        Line(114, "!2 Pet 1:13-15"),
+                        Line(
+                            115,
+                            "13 Justum autem árbitror, quámdiu sum in hoc tabernáculo, suscitáre vos in commonitióne:",
+                        ),
+                        Line(
+                            116,
+                            "14 certus quod velox est deposítio tabernáculi mei secúndum quod et Dóminus noster Jesus Christus significávit mihi.",
+                        ),
+                        Line(
+                            128,
+                            "15 Dabo autem óperam et frequénter habére vos post óbitum meum, ut horum memóriam faciátis.",
+                        ),
+                    ],
+                ],
+                crossref=None,
+                sourcefile="app/tests/parsers/test-DO-data/Latin/SanctiM/test1.txt",
+                source_section="Lectio2",
+            )
+        },
+    ),
 )
 
 
