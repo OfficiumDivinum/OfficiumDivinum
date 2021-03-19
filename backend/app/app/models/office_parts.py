@@ -1,4 +1,7 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
+
+from app.db.base_class import Base
 
 
 class BlockMixin:
@@ -18,3 +21,17 @@ class LineMixin:
 
 class FromDOMixin:
     sourcefile = Column(String, index=True)
+
+
+class Block(Base, FromDOMixin, BlockMixin):
+    """Collections of objects or anything not worth representing individually."""
+
+    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner = relationship("User", back_populates="blocks")
+
+
+class Line(Base, FromDOMixin, LineMixin):
+    """Collections of objects or anything not worth representing individually."""
+
+    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner = relationship("User", back_populates="lines")
