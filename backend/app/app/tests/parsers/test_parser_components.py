@@ -566,6 +566,24 @@ section_test = (
     (
         [
             (
+                Line(1, "Divinum auxílium + máneat."),
+                Line(2, "Et cum frátribus abséntibus. Amen.")
+        ],
+        BlockBase(
+            versions=["1960"],
+            sourcefile="Translate.txt",
+            source_section="Divinum auxilium",
+            title="Divinum auxilium",
+            language="latin",
+            parts=[
+                LineBase(1, "Divinum auxílium + máneat."),
+                LineBase(2, "Et cum frátribus abséntibus. Amen.")
+            ],
+        ),
+    ),
+    (
+        [
+            (
                 Line(content="Te Deum laudámus: * te", lineno=0),
                 Line(content="Te ætérnum Patrem * omnis ", lineno=1),
                 Line(
