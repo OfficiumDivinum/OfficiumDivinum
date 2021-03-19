@@ -31,3 +31,7 @@ class User(Base):
     prayers = relationship("Prayer", back_populates="owner")
     blocks = relationship("Block", back_populates="owner")
     lines = relationship("Line", back_populates="owner")
+    antiphons = relationship("Line", back_populates="owner")
+    versicles = relationship("Line", back_populates="owner")
+    readings = relationship("Line", back_populates="owner")
+    rubrics = relationship("Line", back_populates="owner")
