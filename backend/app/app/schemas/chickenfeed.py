@@ -2,7 +2,6 @@ from typing import List, Optional
 
 from pydantic import Field
 
-from app.schemas.custom_types import HymnTypeLiteral
 from app.schemas.office_parts import BlockBase, LineBase
 
 

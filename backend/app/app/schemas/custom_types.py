@@ -1,8 +1,10 @@
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from app.DSL.dsl_parser import dsl_parser
+
+nullable = Field(None, nullable=True)
 
 RankLiteral = Literal[
     "feria",
