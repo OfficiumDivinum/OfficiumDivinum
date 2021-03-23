@@ -408,6 +408,7 @@ def parse_section(
                 except AttributeError:
                     data["parts"][-1].parts[-1].parts[-1].content += f" {marked_up}"
                 continue
+            debug(line)
             if line.content.endswith("~"):
                 line.content = line.content[:-1]
                 join = True

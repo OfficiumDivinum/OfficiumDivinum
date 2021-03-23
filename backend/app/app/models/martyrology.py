@@ -1,9 +1,9 @@
-import json
 from functools import total_ordering
 from typing import TYPE_CHECKING
 
 import pylunar
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, PickleType, String, Table
+from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from sqlalchemy.ext.mutable import MutableList
 from sqlalchemy.orm import relationship
 from sqlalchemy.types import VARCHAR, Date, TypeDecorator
@@ -12,63 +12,34 @@ from app.db.base_class import Base
 
 from ..DSL import dsl_parser
 from .calendar import calendar_date_association_table
-from .office_parts import BlockMixin, FromDOMixin, LineMixin
+from .office import Block, JSONEncoded, Line, OfficeAssoc, OfficeThing
 
 if TYPE_CHECKING:
     from .user import User  # noqa: F401
-
-
-class JSONEncodedDict(TypeDecorator):
-    """Represents an immutable structure as a json-encoded string."""
-
-    impl = VARCHAR
-
-    def process_bind_param(self, value, dialect):
-        if value is not None:
-            value = json.dumps(value)
-        return value
-
-    def process_result_value(self, value, dialect):
-        if value is not None:
-            value = json.loads(value)
-        return value
 
 
 date_association_table = Table(
     "date_association_table",
     Base.metadata,
     Column("date_id", Integer, ForeignKey("datetable.id"), primary_key=True),
-    Column("martyrology_id", ForeignKey("martyrology.id"), primary_key=True),
-)
-
-
-line_association_table = Table(
-    "line_association_table",
-    Base.metadata,
-    Column("martyrology_id", Integer, ForeignKey("martyrology.id"), primary_key=True),
-    Column("martyrologyline_id", ForeignKey("martyrologyline.id"), primary_key=True),
+    Column("martyrology_id", ForeignKey("officething.id"), primary_key=True),
 )
 
 
 @total_ordering
-class Martyrology(Base, BlockMixin, FromDOMixin):
+class Martyrology(Block):
     """Martyrology object in database."""
 
-    language = Column(String)
+    @declared_attr
+    def language(cls):
+        """Language if not already defined."""
+        return OfficeThing.__table__.c.get("language", Column(String, index=True))
 
     datestr = Column(String, index=True)
     old_date_template_id = Column(Integer, ForeignKey("olddatetemplate.id"))
     old_date_template = relationship("OldDateTemplate", lazy="joined")
     julian_date = Column(String)
     old_date = None
-    parts = relationship(
-        "MartyrologyLine",
-        secondary=line_association_table,
-        back_populates="martyrologies",
-        lazy="joined",
-    )
-    owner_id = Column(Integer, ForeignKey("user.id"))
-    owner = relationship("User", back_populates="martyrologies")
     dates = relationship(
         "DateTable",
         secondary=date_association_table,
@@ -115,7 +86,7 @@ class Ordinals(Base):
     """Class to represent a list of ordinals in some language or other."""
 
     id = Column(Integer, primary_key=True, index=True)
-    content = Column(MutableList.as_mutable(PickleType), default=[])
+    content = Column(MutableList.as_mutable(JSONEncoded), default=[])
     language = Column(String())
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="ordinals")
@@ -156,17 +127,3 @@ class DateTable(Base):
         back_populates="dates",
         lazy="joined",
     )
-
-
-class MartyrologyLine(Base, LineMixin):
-    """Lines of a martyrology entry."""
-
-    title = Column(String, index=True)
-    martyrologies = relationship(
-        "Martyrology",
-        secondary=line_association_table,
-        back_populates="parts",
-        lazy="joined",
-    )
-    owner_id = Column(Integer, ForeignKey("user.id"))
-    owner = relationship("User", back_populates="martyrology_lines")

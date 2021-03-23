@@ -33,41 +33,29 @@ api_router.include_router(calendar.router, prefix="/calendar", tags=["calendar"]
 api_router.include_router(hymn.router, prefix="/hymn", tags=["hymn"])
 
 antiphon_router = create_item_crud(
-    schemas.Antiphon,
-    crud.antiphon,
-    schemas.AntiphonCreate,
-    schemas.AntiphonUpdate,
+    schemas.Antiphon, crud.antiphon, schemas.AntiphonCreate, schemas.AntiphonUpdate,
 )
 api_router.include_router(antiphon_router, prefix="/antiphon", tags=["antiphon"])
 
 versicle_router = create_item_crud(
-    schemas.Versicle,
-    crud.versicle,
-    schemas.VersicleCreate,
-    schemas.VersicleUpdate,
+    schemas.Versicle, crud.versicle, schemas.VersicleCreate, schemas.VersicleUpdate,
 )
 api_router.include_router(versicle_router, prefix="/versicle", tags=["versicle"])
 
 reading_router = create_item_crud(
-    schemas.Reading,
-    crud.reading,
-    schemas.ReadingCreate,
-    schemas.ReadingUpdate,
+    schemas.Reading, crud.reading, schemas.ReadingCreate, schemas.ReadingUpdate,
 )
 api_router.include_router(reading_router, prefix="/reading", tags=["reading"])
 
 rubric_router = create_item_crud(
-    schemas.Rubric,
-    crud.rubric,
-    schemas.RubricCreate,
-    schemas.RubricUpdate,
+    schemas.Rubric, crud.rubric, schemas.RubricCreate, schemas.RubricUpdate,
 )
 api_router.include_router(rubric_router, prefix="/rubric", tags=["rubric"])
 
-compline_router = create_item_crud(
-    schemas.Compline,
-    crud.compline,
-    schemas.ComplineCreate,
-    schemas.ComplineUpdate,
-)
-api_router.include_router(compline_router, prefix="/compline", tags=["compline"])
+# compline_router = create_item_crud(
+#     schemas.Compline,
+#     crud.compline,
+#     schemas.ComplineCreate,
+#     schemas.ComplineUpdate,
+# )
+# api_router.include_router(compline_router, prefix="/compline", tags=["compline"])

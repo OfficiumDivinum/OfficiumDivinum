@@ -22,7 +22,7 @@ from app.parsers import (
 from app.parsers.chickenfeed import (
     guess_version,
     parse_generic_file,
-    parse_prayers_txt,
+    parse_prayers_translation,
     parse_translations,
 )
 from app.parsers.dedup import dedup
@@ -461,7 +461,7 @@ def parser_test(
 
     import typer
 
-    parse_prayers_txt(root, lang)
+    parse_prayers_translation(root, lang)
 
     root = root / lang
     things = []

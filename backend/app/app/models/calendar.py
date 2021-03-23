@@ -11,7 +11,7 @@ from app.parsers.divinumofficium_structures import (
     traditional_rank_lookup_table,
 )
 
-from .office_parts import FromDOMixin
+from .office import FromDOMixin
 
 if TYPE_CHECKING:
     from .user import User  # noqa: F401
