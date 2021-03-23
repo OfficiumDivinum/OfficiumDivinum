@@ -21,4 +21,6 @@ class User(Base):
     old_date_templates = relationship("OldDateTemplate", back_populates="owner")
     feasts = relationship("Feast", back_populates="owner")
     commemorations = relationship("Commemoration", back_populates="owner")
-    # officethings = relationship("OfficeThing", back_populates="owner")
+    officethings = relationship(
+        "OfficeThing", back_populates="owner", primaryjoin="id==OfficeThing.id"
+    )

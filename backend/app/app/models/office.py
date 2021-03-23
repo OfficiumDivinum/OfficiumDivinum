@@ -49,8 +49,8 @@ class OfficeThing(Base, FromDOMixin):
 
     id = Column(Integer, primary_key=True)
     discriminator = Column(String)
-    # owner_id = Column(Integer, ForeignKey("user.id"))
-    # owner = relationship("User", back_populates="officethings")
+    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner = relationship("User", back_populates="officethings")
     rubrics = Column(String, index=True)
     posture = Column(String, index=True)
     __mapper_args__ = {
