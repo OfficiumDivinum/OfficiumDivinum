@@ -6,7 +6,17 @@ from devtools import debug
 
 
 def deref(linkstr: str, originf: Path):
-    """Deref linkstr from original file."""
+    """
+    Deref linkstr from original file.
+
+    Args:
+      linkstr: str: String containing DO link content.
+      originf: Path: Path to original file to resolve against.
+
+    Returns:
+      targetf: Path: Path to target file
+      part: str: Part to extract
+    """
     try:
         linkstr, part = re.search(r"@(.*?):(.*):*", linkstr).groups()
         if "s/" in part:
