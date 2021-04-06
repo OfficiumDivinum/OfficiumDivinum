@@ -38,7 +38,7 @@ class FromDOMixin:
     """
     Properties to store for lining things up with DO sources.
 
-    Not everything, of course, coemes from DO.
+    Not everything, of course, comes from DO.
     """
 
     sourcefile = Column(String, index=True)
